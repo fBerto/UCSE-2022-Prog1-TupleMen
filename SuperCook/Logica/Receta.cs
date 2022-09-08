@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica {
     internal class Receta {
+        public int CodigoReceta { get; set; }
         public MomentosComida MomentoComida { get; set; }
         public string NombreReceta { get; set; }
         public bool EsSaludable { get; set; }
