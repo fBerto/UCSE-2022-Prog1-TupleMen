@@ -1,5 +1,5 @@
 ﻿namespace Logica {
-    public enum HorasComida {
+    public enum MomentosComida {
         Desayuno,
         Almuerzo,
         Merienda,

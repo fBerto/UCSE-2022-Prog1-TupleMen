@@ -46,6 +46,7 @@
     <Compile Include="Principal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
+    <Compile Include="TiposBebidas.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
