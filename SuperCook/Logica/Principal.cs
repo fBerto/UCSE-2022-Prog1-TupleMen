@@ -9,15 +9,15 @@ namespace Logica
 {
     public class Principal {
         /*CONSULTAS:
-         * Cargar los ingredientes como clase diferente o con parametros null?
-         * Para eliminar un ingrediente, podemos usar uno tanto para los de la lista de cada receta como para la lista general?
-         * Los filtros son de receta o de comida???
+         * Alternativa de ingredientes clase unica con atributos cargados y otros no
+         * Como diferenciar metodos de sobrecarga (caso unidadNueva y unidadMinimaNueva)?
+         * Los filtros son de comida.
          */
 
-        List<Ingrediente> Despensa = new List<Ingrediente>();
+        List<IngredienteCompleto> Despensa = new List<IngredienteCompleto>();
         List<Receta> Recetas = new List<Receta>();
         List<Comida> Comidas = new List<Comida>();
-        List<Ingrediente> Super = new List<Ingrediente>();
+        List<IngredienteCompleto> Super = new List<IngredienteCompleto>();
 
         //---------------------------------------------------------------------------------------------------------------
         //DESPENSA
@@ -34,11 +34,12 @@ namespace Logica
 
         public void EliminarIngrediente(int codigo) { }
 
+        //
         public void ModificarIngrediente(int codigo, string nombreNuevo) { }
         public void ModificarIngrediente(int codigo, TiposIngredientes nuevoTipoIngrediente) { }
         public void ModificarIngrediente(int codigo, decimal precioNuevo) { }
-
-        //public void ModificarIngrediente(int PesoVolumenCantidad) { }
+        public void ModificarIngrediente(int codigo, int nuevaUnidadMedida) { }
+        public void ModificarIngrediente(int codigo, uint nuevaUnidadMinimo) { }
 
         //----------------------------------------------------------------------------------------------------------------
         //RECETA
@@ -47,7 +48,13 @@ namespace Logica
 
         public void EliminarReceta(int codigoReceta) { }
 
-        public void ModificarReceta() { }
+        public void ModificarReceta(int codigoReceta, MomentosComida momentoComida) { }
+        public void ModificarReceta(int codigoReceta, string nombreReceta) { }
+        public void ModificarReceta(int codigoReceta, bool esSaludable) { }
+
+        //Devuelve true si lo encuentra en la lista de la receta y false si no
+        //Si encuentra el ingrediente, modifica su cantidad con la que le hayamos pasado como parametro
+        public bool ModificarReceta(int codigoReceta, int codigoIngrediente, int cantidadIngrediente) { return false; }
 
         //----------------------------------------------------------------------------------------------------------------
         //COMIDA
@@ -57,6 +64,7 @@ namespace Logica
          * Saludable o no
          * Momento de la comida
          * Fecha Comida
+         * -
          */
 
         //----------------------------------------------------------------------------------------------------------------
@@ -68,6 +76,9 @@ namespace Logica
 
         /* Filtros:
          * Por tipo de ingrediente
+         * -
+         * -
+         * -
          */
 
         private decimal CalcularTotalCompra () { return 0; }

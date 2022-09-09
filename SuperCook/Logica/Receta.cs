@@ -11,7 +11,7 @@ namespace Logica {
         public string NombreReceta { get; set; }
         public bool EsSaludable { get; set; }
         //Guardamos una lista de Ingredientes por la necesidad de guardar la cantidad/peso/volumen.
-        public List<Ingrediente> Ingredientes { get; set; }
+        public List<IngredienteParcial> Ingredientes { get; set; }
     }
 
     internal class Comida : Receta {
