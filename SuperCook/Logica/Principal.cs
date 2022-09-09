@@ -9,7 +9,6 @@ namespace Logica
 {
     public class Principal {
         /*CONSULTAS:
-         * Dar la opcion de modificar los tipos de ingredientes o no?
          * Cargar los ingredientes como clase diferente o con parametros null?
          * Para eliminar un ingrediente, podemos usar uno tanto para los de la lista de cada receta como para la lista general?
          * Los filtros son de receta o de comida???
@@ -35,11 +34,9 @@ namespace Logica
 
         public void EliminarIngrediente(int codigo) { }
 
-        //public void ModificarIngrediente(string NombreNuevo) {
-        //}
-
-        //public void ModificarIngrediente(decimal PrecioNuevo) {
-        //}
+        public void ModificarIngrediente(int codigo, string nombreNuevo) { }
+        public void ModificarIngrediente(int codigo, TiposIngredientes nuevoTipoIngrediente) { }
+        public void ModificarIngrediente(int codigo, decimal precioNuevo) { }
 
         //public void ModificarIngrediente(int PesoVolumenCantidad) { }
 
