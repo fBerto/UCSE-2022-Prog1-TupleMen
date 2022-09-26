@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Logica {
     internal class Receta {
-        public int CodigoReceta { get; set; }
+        public int Codigo { get; set; }
         public MomentosComida MomentoComida { get; set; }
-        public string NombreReceta { get; set; }
+        public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
         //Guardamos una lista de Ingredientes por la necesidad de guardar la cantidad/peso/volumen.
         public List<IngredienteParcial> Ingredientes { get; set; }
-    }
-
-    internal class Comida : Receta {
-        public DateTime FechaComida { get; set; }
     }
 }

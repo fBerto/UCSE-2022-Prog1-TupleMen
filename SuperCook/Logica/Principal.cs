@@ -67,6 +67,9 @@ namespace Logica
          * -
          */
 
+        //Dentro de registrar comida tendria que buscar la receta en la lista, y comprobar que los ingredientes
+        //de esta se encuentren en la despensa, sino no debe permitir registrar la comida.
+
         //----------------------------------------------------------------------------------------------------------------
         //LISTA SUPER
 
