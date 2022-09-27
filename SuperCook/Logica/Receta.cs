@@ -10,7 +10,6 @@ namespace Logica {
         public MomentosComida MomentoComida { get; set; }
         public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
-        //Guardamos una lista de Ingredientes por la necesidad de guardar la cantidad/peso/volumen.
-        public List<IngredienteParcial> Ingredientes { get; set; }
+        public List<Ingrediente> Ingredientes { get; set; }
     }
 }
