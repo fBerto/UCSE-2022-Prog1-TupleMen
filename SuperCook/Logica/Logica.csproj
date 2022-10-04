@@ -43,14 +43,14 @@
   <ItemGroup>
     <Compile Include="Archivos.cs" />
     <Compile Include="Comida.cs" />
-    <Compile Include="Despensa.cs" />
-    <Compile Include="Recetas.cs" />
+    <Compile Include="AdministradorIngredientes.cs" />
+    <Compile Include="AdministradorRecetas.cs" />
     <Compile Include="MomentosComida.cs" />
     <Compile Include="Ingrediente.cs" />
-    <Compile Include="Comidas.cs" />
+    <Compile Include="AdministradorComidas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
-    <Compile Include="Super.cs" />
+    <Compile Include="AdministradorCompras.cs" />
     <Compile Include="TiposBebidas.cs" />
     <Compile Include="TiposIngrediente.cs" />
   </ItemGroup>

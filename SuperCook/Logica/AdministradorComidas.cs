@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    internal class Comidas : Archivos {
+    internal class AdministradorComidas : Archivos {
         List<Comida> HistorialComidas = new List<Comida>();
 
         public void RegistrarComida(int codigoReceta, DateTime FechaComida) { }
@@ -15,7 +15,7 @@ namespace Logica
          * Saludable o no
          * Momento de la comida
          * Fecha Comida
-         * -
+         * Veces que se preparo una comida
          */
 
         //Dentro de registrar comida tendria que buscar la receta en la lista, y comprobar que los ingredientes

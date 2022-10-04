@@ -12,7 +12,7 @@ namespace Logica {
         public TiposIngredientes TipoIngrediente { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioPorUnidad { get; set; }
-        public uint UnidadMinima { get; set; }
+        public int UnidadMinima { get; set; }
         public decimal CalcularCostoIngrediente() {
             return PrecioPorUnidad * UnidadMinima;
         }
