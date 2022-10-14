@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica {
     //Ingrediente incompleto para la receta
-    public class Ingrediente {
+    public abstract class Ingrediente {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public TiposIngredientes TipoIngrediente { get; set; }
@@ -20,6 +20,8 @@ namespace Logica {
         //Funcion que devuelve si le corresponde kilo, litro o unidad.
         public string GetUnidadMedida(TiposIngredientes tipoIngrediente) { return ""; }
     }
+
+    public class Solido : Ingrediente { }
 
     public class Bebida : Ingrediente {
         public TiposBebidas TipoBebida { get; set; }
