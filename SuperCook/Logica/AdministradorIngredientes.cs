@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica {
     public class AdministradorIngredientes : Archivos{
-        List<Ingrediente> Ingredientes = new List<Ingrediente>();
+        List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
         public void CargarIngrediente(Ingrediente nuevoIngrediente) { }
         public void EliminarIngrediente(int codigo) { }
