@@ -8,17 +8,17 @@ using Newtonsoft.Json;
 
 namespace Logica {
     public abstract class Archivos {
-        public bool GuardarLista(List<object> listaAGuardar, string nombreArchivo) {
+        public bool GuardarLista(string listaSerializada, string nombreArchivoAGuardar) {
             string pathListaAGuardar = AppDomain.CurrentDomain.BaseDirectory + "\\JSON";
-            pathListaAGuardar += nombreArchivo;
+            pathListaAGuardar += nombreArchivoAGuardar;
 
             using (StreamWriter writer = new StreamWriter(pathListaAGuardar, false)) {
-                string serialIngredientesEnDespensa = JsonConvert.SerializeObject(listaAGuardar);
-                writer.Write(serialIngredientesEnDespensa);
+                writer.Write(listaSerializada);
                 return true;
             }
         }
-    public void LecturaArchivos() { }
+
+        public void LecturaArchivos() { }
         //2 metodos apra leer uno soldio y el otro bebidas , de lista de bebidas la puedo trasnformar a lista de ingredientes , hacerlo por instancias 
         private List<Ingrediente> LeerIngredientesEnDespensa() 
         {

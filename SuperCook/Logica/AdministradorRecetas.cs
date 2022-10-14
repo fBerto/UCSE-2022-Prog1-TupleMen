@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,9 @@ namespace Logica {
         public void CargarReceta(Receta nuevaReceta) { }
         public void EliminarReceta(int codigoReceta) { }
         public void ModificarReceta(Receta recetaModificada) { }
+
+        private string SerializarLista(List<Receta> listaASerializar) {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
     }
 }

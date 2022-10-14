@@ -21,5 +21,7 @@ namespace Logica {
          */
 
         private decimal CalcularTotalCompra() { return 0; }
+
+
     }
 }

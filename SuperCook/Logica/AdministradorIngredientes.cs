@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,11 @@ namespace Logica {
         public void CargarIngrediente(Ingrediente nuevoIngrediente) { }
         public void EliminarIngrediente(int codigo) { }
         public void ModificarIngrediente(Ingrediente ingredienteModificado) { }
+
+        private string SerializarLista(List<Ingrediente> listaASerializar) {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
+
+        private void UnificarBebidasySolidos() { }
     }
 }

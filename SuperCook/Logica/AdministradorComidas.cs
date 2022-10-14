@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -20,5 +21,9 @@ namespace Logica
 
         //Dentro de registrar comida tendria que buscar la receta en la lista, y comprobar que los ingredientes
         //de esta se encuentren en la despensa, sino no debe permitir registrar la comida.
+
+        private string SerializarLista(List<Comida> listaASerializar) {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
     }
 }
