@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logica {
-    internal class AdministradorCompras : Archivos {
+    public class AdministradorCompras : Archivos {
         List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         private void ActualizarIngredientesAComprar(int codigoIngrediente) {

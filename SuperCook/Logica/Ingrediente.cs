@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica {
     //Ingrediente incompleto para la receta
-    internal class Ingrediente {
+    public class Ingrediente {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public TiposIngredientes TipoIngrediente { get; set; }
@@ -21,7 +21,7 @@ namespace Logica {
         public string GetUnidadMedida(TiposIngredientes tipoIngrediente) { return ""; }
     }
 
-    internal class Bebida : Ingrediente {
+    public class Bebida : Ingrediente {
         public TiposBebidas TipoBebida { get; set; }
     }
 }

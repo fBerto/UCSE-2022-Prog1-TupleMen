@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logica {
-    internal class AdministradorIngredientes : Archivos{
+    public class AdministradorIngredientes : Archivos{
         List<Ingrediente> Ingredientes = new List<Ingrediente>();
 
         public void CargarIngrediente(Ingrediente nuevoIngrediente) { }

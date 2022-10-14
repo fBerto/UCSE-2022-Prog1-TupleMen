@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    internal class AdministradorComidas : Archivos {
+    public class AdministradorComidas : Archivos {
         List<Comida> HistorialComidas = new List<Comida>();
 
         public void RegistrarComida(int codigoReceta, DateTime FechaComida) { }
