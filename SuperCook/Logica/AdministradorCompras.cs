@@ -10,12 +10,12 @@ namespace Logica {
     public class AdministradorCompras : Archivos {
         List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
-        private void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente) {
+        public void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente) {
             IngredientesAComprar.Add(nuevoIngrediente);
             GuardarIngredientesAComprar();
         }
 
-        private void GuardarIngredientesAComprar() {
+        public void GuardarIngredientesAComprar() {
             List<Bebida> Bebidas = ExtraerBebidasDe(IngredientesAComprar);
             List<Solido> Solidos = ExtraerSolidosDe(IngredientesAComprar);
 
@@ -23,16 +23,29 @@ namespace Logica {
             GuardarLista(SerializarLista(Solidos), "serialSolidosAComprar");
         }
 
-        //TODO: Duplicacion de codigo con administrador ingrediente
+        public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente) {
+            return IngredientesAComprar.Where(x => x.TipoIngrediente == tipoDeIngrediente).ToList();
+        }
 
+        public List<Ingrediente> FiltrarPorTipoDeBebida(TiposBebidas tipoDeBebida) {
+            return ExtraerBebidasDe(IngredientesAComprar).Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
+        }
 
-        /* Filtros:
-         * Por tipo de ingrediente
-         *  - Por tipo de bebida
-         * Por precio
-         * Por magnitud medida (kg, l, o unidades)
-         * Por cantidad en la despensa en relacion a la unidad minima
-         */
+        public List<Ingrediente> FiltrarPorPrecioMinimoOMaximo(decimal precio, bool esMinimo) {
+            if (esMinimo) {
+                return IngredientesAComprar.Where(x => x.PrecioPorUnidad >= precio).ToList();
+            } else {
+                return IngredientesAComprar.Where(x => x.PrecioPorUnidad <= precio).ToList();
+            }
+        }
+
+        public List<Ingrediente> FiltrarPorUnidadDeMedida(UnidadesDeMedida unidad) {
+            return IngredientesAComprar.Where(x => x.GetUnidadMedida() == unidad).ToList();
+        }
+
+        public List<Ingrediente> FiltrarPorEscasez(GradosDeEscasez escasez) {
+            return IngredientesAComprar.Where(x => x.GetGradoDeEscasez() == escasez).ToList();
+        }
 
         private decimal CalcularTotalCompra() {
             decimal totalCompra = 0;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,8 +18,37 @@ namespace Logica {
             return PrecioPorUnidad * UnidadMinima;
         }
 
-        //Funcion que devuelve si le corresponde kilo, litro o unidad.
-        public string GetUnidadMedida(TiposIngredientes tipoIngrediente) { return ""; }
+        public UnidadesDeMedida GetUnidadMedida() {
+            switch (this.TipoIngrediente) {
+                case TiposIngredientes.Carne: return UnidadesDeMedida.Kg;
+                case TiposIngredientes.Pescado: return UnidadesDeMedida.Kg;
+                case TiposIngredientes.Panaderia: return UnidadesDeMedida.Kg;
+                case TiposIngredientes.Queso: return UnidadesDeMedida.Kg;
+                case TiposIngredientes.Lacteo: return UnidadesDeMedida.Litro;
+                case TiposIngredientes.Bebida: return UnidadesDeMedida.Unidad;
+                case TiposIngredientes.Fruta: return UnidadesDeMedida.Unidad;
+                case TiposIngredientes.HortalizaVerdura: return UnidadesDeMedida.Unidad;
+                default: return UnidadesDeMedida.Unidad;
+            }
+        }
+
+        //No que asqueroso
+        public GradosDeEscasez GetGradoDeEscasez() {
+            float relacion = this.Cantidad / this.UnidadMinima;
+            if (relacion > 10) {
+                return GradosDeEscasez.Sobra;
+            } else {
+                if (relacion > 3) {
+                    return GradosDeEscasez.Normal;
+                } else {
+                    if (relacion > 0.3) {
+                        return GradosDeEscasez.Bajo;
+                    } else {
+                        return GradosDeEscasez.Vacio;
+                    }
+                }
+            }
+        }
     }
 
     public class Solido : Ingrediente { }
