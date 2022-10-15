@@ -12,30 +12,19 @@ namespace Logica {
 
         private void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente) {
             IngredientesAComprar.Add(nuevoIngrediente);
-            GuardarEnDisco();
+            GuardarIngredientesAComprar();
         }
 
-        private void GuardarEnDisco() {
-            GuardarLista(SerializarLista(ExtraerBebidasDe(IngredientesAComprar)), "serialBebidasEnDespensa");
-            GuardarLista(SerializarLista(ExtraerSolidosDe(IngredientesAComprar)), "serialSolidosEnDespensa");
+        private void GuardarIngredientesAComprar() {
+            List<Bebida> Bebidas = ExtraerBebidasDe(IngredientesAComprar);
+            List<Solido> Solidos = ExtraerSolidosDe(IngredientesAComprar);
+
+            GuardarLista(SerializarLista(Bebidas), "serialBebidasAComprar");
+            GuardarLista(SerializarLista(Solidos), "serialSolidosAComprar");
         }
 
         //TODO: Duplicacion de codigo con administrador ingrediente
-        private List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes) {
-            return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
-        }
 
-        private List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes) {
-            return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
-        }
-
-        private string SerializarLista(List<Bebida> listaASerializar) {
-            return JsonConvert.SerializeObject(listaASerializar);
-        }
-
-        private string SerializarLista(List<Solido> listaASerializar) {
-            return JsonConvert.SerializeObject(listaASerializar);
-        }
 
         /* Filtros:
          * Por tipo de ingrediente

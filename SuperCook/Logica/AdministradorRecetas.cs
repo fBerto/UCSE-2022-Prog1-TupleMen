@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 
 namespace Logica {
     public class AdministradorRecetas : Archivos {
-        List<Receta> LibroRecetas = new List<Receta>();
+        private List<Receta> LibroRecetas = new List<Receta>();
         
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
             GuardarLista(SerializarLista(LibroRecetas), "\\serialLibroRecetas.txt");
         }
+
         public void EliminarReceta(int codigoReceta) {
-            LibroRecetas.Remove(LibroRecetas[LibroRecetas.FindIndex(x => x.Codigo == codigoReceta)]);
+            int indiceRecetaAEliminar = LibroRecetas.FindIndex(x => x.Codigo == codigoReceta);
+            LibroRecetas.RemoveAt(indiceRecetaAEliminar);
         }
+
         public void ModificarReceta(Receta recetaModificada)  
         {
             int IndiceRecetaModificar = LibroRecetas.FindIndex(x => x.Codigo == recetaModificada.Codigo);

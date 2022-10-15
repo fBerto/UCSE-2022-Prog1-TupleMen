@@ -20,6 +20,23 @@ namespace Logica {
             return AppDomain.CurrentDomain.BaseDirectory + "\\JSON";
         }
 
+        //TODO: Consultar a Maxi, son funciones que usan AdministradorIngredientes y AdministradorCompras
+        protected List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes) {
+            return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
+        }
+
+        protected List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes) {
+            return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
+        }
+
+        protected string SerializarLista(List<Bebida> listaASerializar) {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
+
+        protected string SerializarLista(List<Solido> listaASerializar) {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
+
         public void LecturaArchivosAlIniciar()
         {        
             LeerIngredientesAComprar();
@@ -115,7 +132,8 @@ namespace Logica {
             
 
 
-        /* Hago todo aca e instancio en los administradores los metodos que necesito?
+        /* TODO:
+         * Hago todo aca e instancio en los administradores los metodos que necesito?
          * No puedo tener un solo metodo de lectura de listas que reciba el path?
          * Como vamos a hacer para saber si nuestro ingrediente es por ej carne?, no deberia trasnformarlo cuando leo?
          */

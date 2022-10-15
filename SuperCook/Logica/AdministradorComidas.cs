@@ -11,46 +11,33 @@ namespace Logica
     public class AdministradorComidas : Archivos {
         List<Comida> HistorialComidas = new List<Comida>();
 
-        public void RegistrarComida(int codigoReceta, DateTime FechaComida) {
+        Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
+
+        public void RegistrarComida(int codigoReceta, DateTime FechaComida) { //TODO: Terminar
             //Dentro de registrar comida tendria que buscar la receta en la lista, y comprobar que los ingredientes
             //de esta se encuentren en la despensa, sino no debe permitir registrar la comida.
-            AdministradorRecetas. //no nos faltan las relaciones?
+
+            //AdministradorRecetas //no nos faltan las relaciones?
             /* Como accedo a las listas, por metodos no puedo, debo hacer una isntanciade ellas?*/
+            
         }
         
-        private List<Comida> FiltroSaludable()
+        private List<Comida> FiltroSaludable(bool condicion) //dadoo por un chekbox de winfrom 
         {
-            return HistorialComidas.Where(x=>x.Receta.EsSaludable == true).ToList();
+            return HistorialComidas.Where(x => x.Receta.EsSaludable == condicion).ToList();
         }
-        private List<Comida> FiltroNoSaludable()
+
+        private List<Comida> FiltroMomentoComida(MomentosComida momento)
         {
-            return HistorialComidas.Where(x => x.Receta.EsSaludable == false).ToList();
+            return HistorialComidas.Where(x => x.Receta.MomentoComida == momento).ToList();
         }
-        private List<Comida> FiltroMomentoComidaDesayuno()
-        {
-            return HistorialComidas.Where(x => x.Receta.MomentoComida== MomentosComida.Desayuno).ToList();
-        }
-        private List<Comida> FiltroMomentoComidaAlmuerzo()
-        {
-            return HistorialComidas.Where(x => x.Receta.MomentoComida == MomentosComida.Almuerzo).ToList();
-        }
-        private List<Comida> FiltroMomentoComidaMerienda()
-        {
-            return HistorialComidas.Where(x => x.Receta.MomentoComida == MomentosComida.Merienda).ToList();
-        }
-        private List<Comida> FiltroMomentoComidaCena()
-        {
-            return HistorialComidas.Where(x => x.Receta.MomentoComida == MomentosComida.Cena).ToList();
-        }
+        
         private List<Comida> FlitroFecha(DateTime FechaMenor, DateTime FechaMayor)
         {
             return HistorialComidas.Where(x => x.Fecha>= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
-        private List<Comida> FiltroVecesPreparoComidaDia(DateTime Fecha, Receta recetaRealizada) //no podriamos cambiarlo por lo q mas comiste en una semana?
-        {
-            List<Comida> Comidas HistorialComidas.Where(x => x.Fecha == Fecha && x.Receta.Codigo == recetaRealizada.Codigo).ToList();
-        }
+        // TODO: Pensar otro criterio para flitrar comidas 
 
         private string SerializarLista(List<Comida> listaASerializar) {
             return JsonConvert.SerializeObject(listaASerializar);
