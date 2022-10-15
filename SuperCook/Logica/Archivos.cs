@@ -27,7 +27,7 @@ namespace Logica {
             //string pathIngredientesEnDespensa = path + "\\serialCamiones.txt";
             //string pathIngredientesAComprar = path + "\\serialCamiones.txt";
             //string pathLibroRecetas = path + "\\serialCamiones.txt";
-            //string pathHistorialComidas = path + "\\serialCamiones.txt";
+            //string pathHistorialComidas = path + "\\serialCamiones.txt";a
         }
         //2 metodos para leer uno soldio y el otro bebidas , de lista de bebidas la puedo trasnformar a lista de ingredientes , hacerlo por instancias 
         private List<Ingrediente> LeerIngredientesEnDespensa()
