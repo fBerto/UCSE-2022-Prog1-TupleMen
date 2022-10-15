@@ -23,7 +23,12 @@ namespace Logica {
         public void LecturaArchivosAlIniciar()
         {        
             LeerIngredientesAComprar();
-            
+            LeerListaLibroRecetas();
+            LeerHistorialComidas();
+            LeerIngredentesBebidasDespensa();
+            LeerIngredeitnesSolidosDespensa();
+            LeerIngredentesBebidasAComprar();
+            LeerIngredeitnesSolidosAComprar();
         }
 
         private List<Ingrediente> LeerIngredientesAComprar()
@@ -38,7 +43,8 @@ namespace Logica {
         }
         private List<Receta> LeerListaLibroRecetas()
         {
-            using (StreamReader reader = new StreamReader(pathIngredientesEnDespensa))
+            string pathRecetas = GetPathDominio() + "\\serialLibroRecetas.txt";
+            using (StreamReader reader = new StreamReader(pathRecetas))
             {
                 string json = reader.ReadToEnd();
                 List<Receta> LibroRecetasDesdeArchivo = JsonConvert.DeserializeObject<List<Receta>>(json);
@@ -47,7 +53,8 @@ namespace Logica {
         }
         private List<Comida> LeerHistorialComidas()
         {
-            using (StreamReader reader = new StreamReader(pathIngredientesEnDespensa))
+            string pathComidas = GetPathDominio() + "\\serialHistorialComidas.txt";
+            using (StreamReader reader = new StreamReader(pathComidas))
             {
                 string json = reader.ReadToEnd();
                 List<Comida> HistorialComidasDesdeArchivo = JsonConvert.DeserializeObject<List<Comida>>(json);
