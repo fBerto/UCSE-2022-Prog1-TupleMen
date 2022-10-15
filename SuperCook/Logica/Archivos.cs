@@ -8,14 +8,16 @@ using Newtonsoft.Json;
 
 namespace Logica {
     public abstract class Archivos {
-        public bool GuardarLista(string listaSerializada, string nombreArchivoAGuardar) {
-            string pathListaAGuardar = AppDomain.CurrentDomain.BaseDirectory + "\\JSON";
-            pathListaAGuardar += nombreArchivoAGuardar;
+        public void GuardarLista(string listaSerializada, string nombreArchivoAGuardar) {
+            string pathArchivo = GetPathDominio() + nombreArchivoAGuardar;
 
-            using (StreamWriter writer = new StreamWriter(pathListaAGuardar, false)) {
+            using (StreamWriter writer = new StreamWriter(pathArchivo, false)) {
                 writer.Write(listaSerializada);
-                return true;
             }
+        }
+
+        private string GetPathDominio() {
+            return AppDomain.CurrentDomain.BaseDirectory + "\\JSON";
         }
 
         public void LecturaArchivosAlIniciar()
@@ -30,7 +32,7 @@ namespace Logica {
         //2 metodos para leer uno soldio y el otro bebidas , de lista de bebidas la puedo trasnformar a lista de ingredientes , hacerlo por instancias 
         private List<Ingrediente> LeerIngredientesEnDespensa()
         {
-            string pathIngredientesEnDespensa = PathDominio + "\\serialIngredientesEnDespensa.txt";
+            string pathIngredientesEnDespensa = GetPathDominio() + "\\serialIngredientesEnDespensa.txt";
             using (StreamReader reader = new StreamReader(pathIngredientesEnDespensa))
             {
                 string json = reader.ReadToEnd();
@@ -40,7 +42,7 @@ namespace Logica {
         }
         private List<Ingrediente> LeerIngredientesAComprar()
         {
-            string pathIngredientesAComprar = PathDominio + "\\serialIngredientesAComprar.txt";
+            string pathIngredientesAComprar = GetPathDominio() + "\\serialIngredientesAComprar.txt";
             using (StreamReader reader = new StreamReader(pathIngredientesAComprar))
             {
                 string json = reader.ReadToEnd();
@@ -68,7 +70,7 @@ namespace Logica {
         }
         private List<Ingrediente> LeerIngredentesBebidas()
         {
-            string pathBebidas = PathDominio + "\\serialBebidas.txt";
+            string pathBebidas = GetPathDominio() + "\\serialBebidas.txt";
             using (StreamReader reader = new StreamReader(pathBebidas))
             {
                 string json = reader.ReadToEnd();
@@ -79,7 +81,7 @@ namespace Logica {
         }
         private List<Ingrediente> LeerIngredeitnesSolidos()
         {
-            string pathIngredientesSolidos = PathDominio + "\\serialIngredientesSolidos.txt";
+            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidos.txt";
             using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
             {
                 string json = reader.ReadToEnd();
