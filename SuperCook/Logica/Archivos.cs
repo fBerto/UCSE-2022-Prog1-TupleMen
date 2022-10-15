@@ -21,25 +21,11 @@ namespace Logica {
         }
 
         public void LecturaArchivosAlIniciar()
-        {
-            LeerIngredientesEnDespensa();
+        {        
             LeerIngredientesAComprar();
-            //string pathIngredientesEnDespensa = path + "\\serialCamiones.txt";
-            //string pathIngredientesAComprar = path + "\\serialCamiones.txt";
-            //string pathLibroRecetas = path + "\\serialCamiones.txt";
-            //string pathHistorialComidas = path + "\\serialCamiones.txt";a
+            
         }
-        //2 metodos para leer uno soldio y el otro bebidas , de lista de bebidas la puedo trasnformar a lista de ingredientes , hacerlo por instancias 
-        private List<Ingrediente> LeerIngredientesEnDespensa()
-        {
-            string pathIngredientesEnDespensa = GetPathDominio() + "\\serialIngredientesEnDespensa.txt";
-            using (StreamReader reader = new StreamReader(pathIngredientesEnDespensa))
-            {
-                string json = reader.ReadToEnd();
-                List<Ingrediente> IngredientesEnDespensaDesdeArchivo = JsonConvert.DeserializeObject<List<Ingrediente>>(json);
-                return IngredientesEnDespensaDesdeArchivo;
-            }
-        }
+
         private List<Ingrediente> LeerIngredientesAComprar()
         {
             string pathIngredientesAComprar = GetPathDominio() + "\\serialIngredientesAComprar.txt";
@@ -68,9 +54,9 @@ namespace Logica {
                 return HistorialComidasDesdeArchivo;
             }
         }
-        private List<Ingrediente> LeerIngredentesBebidas()
+        private List<Ingrediente> LeerIngredentesBebidasDespensa()
         {
-            string pathBebidas = GetPathDominio() + "\\serialBebidas.txt";
+            string pathBebidas = GetPathDominio() + "\\serialBebidasDespensa.txt";
             using (StreamReader reader = new StreamReader(pathBebidas))
             {
                 string json = reader.ReadToEnd();
@@ -79,20 +65,52 @@ namespace Logica {
                 return HistorialBebidasComoIngredientes;
             }
         }
-        private List<Ingrediente> LeerIngredeitnesSolidos()
+        private List<Ingrediente> LeerIngredeitnesSolidosDespensa()
         {
-            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidos.txt";
+            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidosDespensa.txt";
             using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
             {
                 string json = reader.ReadToEnd();
-                List<Ingrediente> IngredientesEnDespensaDesdeArchivo = JsonConvert.DeserializeObject<List<Ingrediente>>(json);
-                return IngredientesEnDespensaDesdeArchivo;
+                List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
+                List<Ingrediente> HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                return HistorialSolidosComoIngredientes;
             }
         }
 
-        /*Estoy seguro sobre el metodo de ingredientes bebidas, pero el de los solidos no me quedo claro, no enteindo si
-        * Debo hacer un solo metodo de leer ingredeitnes solidos y dsp para trasnforar eso se hace por cada clase 
-            o si hacer un metodo distinto por cada archivo 
-        *Tampoco tengo claro a que se referia con lo de instancias, quiere que haga todo aca y que instance en los administradores los metodos que necesita?*/
+        private List<Ingrediente> LeerIngredentesBebidasAComprar()
+        {
+            string pathBebidas = GetPathDominio() + "\\serialBebidasAComprar.txt";
+            using (StreamReader reader = new StreamReader(pathBebidas))
+            {
+                string json = reader.ReadToEnd();
+                List<Bebida> HistorialBebidasDesdeArchivo = JsonConvert.DeserializeObject<List<Bebida>>(json);
+                List<Ingrediente> HistorialBebidasComoIngredientes = HistorialBebidasDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                return HistorialBebidasComoIngredientes;
+            }
+        }
+        private List<Ingrediente> LeerIngredeitnesSolidosAComprar()
+        {
+            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidosAComprar.txt";
+            using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
+            {
+                string json = reader.ReadToEnd();
+                List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
+                List<Ingrediente> HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                return HistorialSolidosComoIngredientes;
+            }
+        }
+
+        private List<Ingrediente> UnificarBebidasYSolidos(List<Ingrediente> Bebidas, List<Ingrediente> Solidos) //El mismo metodo para compra y en despensa, cambia la lista que le esten pasando
+        {
+            Solidos.AddRange(Bebidas); //podria transformar dentro del metodo las listas en listas de ingredientes 
+            return Solidos;
+        }
+            
+
+
+        /* Hago todo aca e instancio en los administradores los metodos que necesito?
+         * No puedo tener un solo metodo de lectura de listas que reciba el path?
+         * Como vamos a hacer para saber si nuestro ingrediente es por ej carne?, no deberia trasnformarlo cuando leo?
+         */
     }
 }
