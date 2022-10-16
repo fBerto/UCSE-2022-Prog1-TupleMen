@@ -12,16 +12,28 @@ namespace Logica
         List<Comida> HistorialComidas = new List<Comida>();
 
         Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
+        Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
-        public void RegistrarComida(int codigoReceta, DateTime FechaComida) { //TODO: Terminar
-            //Dentro de registrar comida tendria que buscar la receta en la lista, y comprobar que los ingredientes
-            //de esta se encuentren en la despensa, sino no debe permitir registrar la comida.
+        public void RegistrarComida(Receta RecetaUtilizada, DateTime FechaComida) {
+            List<Receta> Recetas = administradorRecetas.getLibroRecetas();
+            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.getIngredientesEnDespensa();
 
-            //AdministradorRecetas //no nos faltan las relaciones?
-            /* Como accedo a las listas, por metodos no puedo, debo hacer una isntanciade ellas?*/
-            
+            if (RevisarIngredienteExisteEnDespensa(RecetaUtilizada , Recetas, IngredientesEnDespensa))
+            {
+               Comida comida = new Comida(); //TODO:Constructor o no?
+                comida.Receta = RecetaUtilizada;
+                comida.Fecha = FechaComida;
+                HistorialComidas.Add(comida);
+                GuardarLista(SerializarLista(HistorialComidas), "\\serialHistorialComidas.txt");
+            }
+            else //TODO: Devolver algun error , no lo podemos hacer con un try catch?
+            {
+
+            }
+
         }
-        
+
+
         private List<Comida> FiltroSaludable(bool condicion) //dadoo por un chekbox de winfrom 
         {
             return HistorialComidas.Where(x => x.Receta.EsSaludable == condicion).ToList();
@@ -37,10 +49,27 @@ namespace Logica
             return HistorialComidas.Where(x => x.Fecha>= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
-        // TODO: Pensar otro criterio para flitrar comidas 
+        private List<Comida> FlitroPorRecetas(Receta receta)
+        {
+            return HistorialComidas.Where(x => x.Receta.Codigo == receta.Codigo).ToList();
+        }
 
         private string SerializarLista(List<Comida> listaASerializar) {
             return JsonConvert.SerializeObject(listaASerializar);
+        }
+        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Receta> Recetas, List<Ingrediente> IngredientesEnDespensa)
+        {
+            List<Ingrediente> IngredientesDeLaRecetaUtilizada = RecetaUtilizada.Ingredientes.Select(x => x as Ingrediente).ToList();
+
+            bool FueEncontrado = true;
+            while (!FueEncontrado)
+            {
+                int i = 0;
+                Ingrediente ingredienteParticular = IngredientesDeLaRecetaUtilizada[i];
+                FueEncontrado = IngredientesDeLaRecetaUtilizada.Exists(x => x.Codigo == ingredienteParticular.Codigo);
+                i++;
+            }
+            return FueEncontrado;
         }
     }
 }

@@ -9,4 +9,5 @@ namespace Logica {
         public Receta Receta { get; set; }
         public DateTime Fecha { get; set; }
     }
+
 }

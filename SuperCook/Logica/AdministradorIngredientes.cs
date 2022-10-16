@@ -33,5 +33,9 @@ namespace Logica {
             GuardarLista(SerializarLista(Bebidas), "serialBebidasEnDespensa");
             GuardarLista(SerializarLista(Solidos), "serialSolidosEnDespensa");
         }
+        public List<Ingrediente> getIngredientesEnDespensa()
+        {
+            return IngredientesEnDespensa;
+        }
     }
 }
