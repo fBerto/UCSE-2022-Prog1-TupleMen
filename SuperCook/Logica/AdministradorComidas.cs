@@ -14,10 +14,11 @@ namespace Logica
         Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
+        //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida) {
             List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.getIngredientesEnDespensa();
 
-            if (RevisarIngredienteExisteEnDespensa(nuevaComida.Receta, IngredientesEnDespensa)) //TODO: Devolver algun error , no lo podemos hacer con un try catch?
+            if (RevisarIngredienteExisteEnDespensa(nuevaComida.Receta, IngredientesEnDespensa))
             {
                 HistorialComidas.Add(nuevaComida);
                 GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
