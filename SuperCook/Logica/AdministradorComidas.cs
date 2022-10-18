@@ -14,34 +14,24 @@ namespace Logica
         Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
-        public void RegistrarComida(Receta RecetaUtilizada, DateTime FechaComida) {
-            List<Receta> Recetas = administradorRecetas.getLibroRecetas();
+        public void RegistrarComida(Comida nuevaComida) {
             List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.getIngredientesEnDespensa();
 
-            if (RevisarIngredienteExisteEnDespensa(RecetaUtilizada , Recetas, IngredientesEnDespensa))
+            if (RevisarIngredienteExisteEnDespensa(nuevaComida.Receta, IngredientesEnDespensa)) //TODO: Devolver algun error , no lo podemos hacer con un try catch?
             {
-               Comida comida = new Comida(); //TODO:Constructor o no?
-                comida.Receta = RecetaUtilizada;
-                comida.Fecha = FechaComida;
-                HistorialComidas.Add(comida);
-                GuardarLista(SerializarLista(HistorialComidas), "\\serialHistorialComidas.txt");
+                HistorialComidas.Add(nuevaComida);
+                GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
             }
-            else //TODO: Devolver algun error , no lo podemos hacer con un try catch?
-            {
-
-            }
-
         }
-        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Receta> Recetas, List<Ingrediente> IngredientesEnDespensa)
+        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Ingrediente> IngredientesEnDespensa)
         {
-            List<Ingrediente> IngredientesDeLaRecetaUtilizada = RecetaUtilizada.Ingredientes.Select(x => x as Ingrediente).ToList();
-
             bool FueEncontrado = true;
-            while (!FueEncontrado)
+            int i = 0;
+
+            while (!FueEncontrado && i < RecetaUtilizada.Ingredientes.Count())
             {
-                int i = 0;
-                Ingrediente ingredienteParticular = IngredientesDeLaRecetaUtilizada[i];
-                FueEncontrado = IngredientesDeLaRecetaUtilizada.Exists(x => x.Codigo == ingredienteParticular.Codigo);
+                Ingrediente ingredienteParticular = RecetaUtilizada.Ingredientes[i];
+                FueEncontrado = IngredientesEnDespensa.Exists(x => x.Codigo == ingredienteParticular.Codigo);
                 i++;
             }
             return FueEncontrado;

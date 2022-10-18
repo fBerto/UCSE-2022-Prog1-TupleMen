@@ -32,7 +32,6 @@ namespace Logica {
             }
         }
 
-        //No que asqueroso
         public GradosDeEscasez GetGradoDeEscasez() {
             float relacion = this.Cantidad / this.UnidadMinima;
             if (relacion > 10) {

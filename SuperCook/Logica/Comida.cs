@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logica {
-    internal class Comida {
+    public class Comida {
         public Receta Receta { get; set; }
         public DateTime Fecha { get; set; }
     }
-
 }

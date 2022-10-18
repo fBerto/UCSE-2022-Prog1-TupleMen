@@ -6,61 +6,76 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Logica {
-    public abstract class Archivos {
-        public void GuardarLista(string listaSerializada, string nombreArchivoAGuardar) {
+namespace Logica
+{
+    public abstract class Archivos
+    {
+        public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
+        public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
+        public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
+        public const string nombreArchivoSolidosDespensa = "IngredientesSolidosDespensa.txt";
+        public const string nombreArchivoBebidasAComprar = "BebidasAComprar.txt";
+        public const string nombreArchivoSolidosAComprar = "IngredientesSolidosAComprar.txt";
+
+        public void GuardarLista(string listaSerializada, string nombreArchivoAGuardar)
+        {
             string pathArchivo = GetPathDominio() + nombreArchivoAGuardar;
 
-            using (StreamWriter writer = new StreamWriter(pathArchivo, false)) {
+            using (StreamWriter writer = new StreamWriter(pathArchivo, false))
+            {
                 writer.Write(listaSerializada);
             }
         }
 
-        private string GetPathDominio() {
-            return AppDomain.CurrentDomain.BaseDirectory + "\\JSON";
+        private string GetPathDominio()
+        {
+            return AppDomain.CurrentDomain.BaseDirectory + "\\JSON\\";
         }
 
-        //TODO: Consultar a Maxi, son funciones que usan AdministradorIngredientes y AdministradorCompras
-        protected List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes) {
+        protected List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
+        {
             return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
         }
 
-        protected List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes) {
+        protected List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
+        {
             return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
         }
 
-        protected string SerializarLista(List<Bebida> listaASerializar) {
+        protected string SerializarLista(List<Bebida> listaASerializar)
+        {
             return JsonConvert.SerializeObject(listaASerializar);
         }
 
-        protected string SerializarLista(List<Solido> listaASerializar) {
+        protected string SerializarLista(List<Solido> listaASerializar)
+        {
             return JsonConvert.SerializeObject(listaASerializar);
         }
 
         public void LecturaArchivosAlIniciar()
-        {        
+        {
             LeerIngredientesAComprar();
-            LeerListaLibroRecetas();
+            LeerLibroRecetas();
             LeerHistorialComidas();
-            LeerIngredentesBebidasDespensa();
-            LeerIngredeitnesSolidosDespensa();
-            LeerIngredentesBebidasAComprar();
-            LeerIngredeitnesSolidosAComprar();
+            LeerBebidasDespensa();
+            LeerSolidosDespensa();
+            LeerBebidasAComprar();
+            LeerSolidosAComprar();
         }
 
         private List<Ingrediente> LeerIngredientesAComprar()
         {
-            string pathIngredientesAComprar = GetPathDominio() + "\\serialIngredientesAComprar.txt";
-            using (StreamReader reader = new StreamReader(pathIngredientesAComprar))
-            {
-                string json = reader.ReadToEnd();
-                List<Ingrediente> IngredientesAComprarDesdeArchivo = JsonConvert.DeserializeObject<List<Ingrediente>>(json);
-                return IngredientesAComprarDesdeArchivo;
-            }
+            return UnificarBebidasYSolidos(LeerBebidasAComprar(), LeerSolidosAComprar());
         }
-        private List<Receta> LeerListaLibroRecetas()
+
+        private List<Ingrediente> LeerIngredientesEnDespensa()
         {
-            string pathRecetas = GetPathDominio() + "\\serialLibroRecetas.txt";
+            return UnificarBebidasYSolidos(LeerBebidasDespensa(), LeerSolidosDespensa());
+        }
+
+        private List<Receta> LeerLibroRecetas()
+        {
+            string pathRecetas = GetPathDominio() + nombreArchivoLibroRecetas;
             using (StreamReader reader = new StreamReader(pathRecetas))
             {
                 string json = reader.ReadToEnd();
@@ -70,7 +85,7 @@ namespace Logica {
         }
         private List<Comida> LeerHistorialComidas()
         {
-            string pathComidas = GetPathDominio() + "\\serialHistorialComidas.txt";
+            string pathComidas = GetPathDominio() + nombreArchivoHistorialComidas;
             using (StreamReader reader = new StreamReader(pathComidas))
             {
                 string json = reader.ReadToEnd();
@@ -78,9 +93,9 @@ namespace Logica {
                 return HistorialComidasDesdeArchivo;
             }
         }
-        private List<Ingrediente> LeerIngredentesBebidasDespensa()
+        private List<Ingrediente> LeerBebidasDespensa()
         {
-            string pathBebidas = GetPathDominio() + "\\serialBebidasDespensa.txt";
+            string pathBebidas = GetPathDominio() + nombreArchivoBebidasDespensa;
             using (StreamReader reader = new StreamReader(pathBebidas))
             {
                 string json = reader.ReadToEnd();
@@ -89,9 +104,9 @@ namespace Logica {
                 return HistorialBebidasComoIngredientes;
             }
         }
-        private List<Ingrediente> LeerIngredeitnesSolidosDespensa()
+        private List<Ingrediente> LeerSolidosDespensa()
         {
-            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidosDespensa.txt";
+            string pathIngredientesSolidos = GetPathDominio() + nombreArchivoSolidosDespensa;
             using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
             {
                 string json = reader.ReadToEnd();
@@ -101,9 +116,9 @@ namespace Logica {
             }
         }
 
-        private List<Ingrediente> LeerIngredentesBebidasAComprar()
+        private List<Ingrediente> LeerBebidasAComprar()
         {
-            string pathBebidas = GetPathDominio() + "\\serialBebidasAComprar.txt";
+            string pathBebidas = GetPathDominio() +  nombreArchivoBebidasAComprar;
             using (StreamReader reader = new StreamReader(pathBebidas))
             {
                 string json = reader.ReadToEnd();
@@ -112,9 +127,9 @@ namespace Logica {
                 return HistorialBebidasComoIngredientes;
             }
         }
-        private List<Ingrediente> LeerIngredeitnesSolidosAComprar()
+        private List<Ingrediente> LeerSolidosAComprar()
         {
-            string pathIngredientesSolidos = GetPathDominio() + "\\serialIngredientesSolidosAComprar.txt";
+            string pathIngredientesSolidos = GetPathDominio()  + nombreArchivoSolidosAComprar;
             using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
             {
                 string json = reader.ReadToEnd();
@@ -124,18 +139,14 @@ namespace Logica {
             }
         }
 
-        private List<Ingrediente> UnificarBebidasYSolidos(List<Ingrediente> Bebidas, List<Ingrediente> Solidos) //El mismo metodo para compra y en despensa, cambia la lista que le esten pasando
+        private List<Ingrediente> UnificarBebidasYSolidos(List<Ingrediente> Bebidas, List<Ingrediente> Solidos)
         {
-            Solidos.AddRange(Bebidas); //podria transformar dentro del metodo las listas en listas de ingredientes 
+            Solidos.AddRange(Bebidas);
             return Solidos;
         }
-            
-
 
         /* TODO:
-         * Hago todo aca e instancio en los administradores los metodos que necesito?
-         * No puedo tener un solo metodo de lectura de listas que reciba el path?
-         * Como vamos a hacer para saber si nuestro ingrediente es por ej carne?, no deberia trasnformarlo cuando leo?
+         * Hago todo aca e instancio en los administradores los metodos que necesito
          */
     }
 }

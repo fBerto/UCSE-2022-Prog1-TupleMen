@@ -19,8 +19,8 @@ namespace Logica {
             List<Bebida> Bebidas = ExtraerBebidasDe(IngredientesAComprar);
             List<Solido> Solidos = ExtraerSolidosDe(IngredientesAComprar);
 
-            GuardarLista(SerializarLista(Bebidas), "serialBebidasAComprar");
-            GuardarLista(SerializarLista(Solidos), "serialSolidosAComprar");
+            GuardarLista(SerializarLista(Bebidas), nombreArchivoBebidasAComprar);
+            GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosAComprar);
         }
 
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente) {
