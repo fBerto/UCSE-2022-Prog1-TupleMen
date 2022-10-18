@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{631AD542-8949-4538-8B63-1E4C601FD7B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion de Consola", "Aplicacion de Consola\Aplicacion de Consola.csproj", "{E9747CB8-6A77-4246-B12B-4A30A1E5D8B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{631AD542-8949-4538-8B63-1E4C601FD7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{631AD542-8949-4538-8B63-1E4C601FD7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{631AD542-8949-4538-8B63-1E4C601FD7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9747CB8-6A77-4246-B12B-4A30A1E5D8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9747CB8-6A77-4246-B12B-4A30A1E5D8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9747CB8-6A77-4246-B12B-4A30A1E5D8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9747CB8-6A77-4246-B12B-4A30A1E5D8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

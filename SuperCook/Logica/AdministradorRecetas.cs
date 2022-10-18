@@ -12,7 +12,7 @@ namespace Logica {
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
-            GuardarLista(SerializarLista(LibroRecetas), "\\serialLibroRecetas.txt");
+            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
         public void EliminarReceta(int codigoReceta) {
