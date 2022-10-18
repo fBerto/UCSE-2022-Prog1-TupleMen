@@ -32,7 +32,20 @@ namespace Logica
             }
 
         }
+        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Receta> Recetas, List<Ingrediente> IngredientesEnDespensa)
+        {
+            List<Ingrediente> IngredientesDeLaRecetaUtilizada = RecetaUtilizada.Ingredientes.Select(x => x as Ingrediente).ToList();
 
+            bool FueEncontrado = true;
+            while (!FueEncontrado)
+            {
+                int i = 0;
+                Ingrediente ingredienteParticular = IngredientesDeLaRecetaUtilizada[i];
+                FueEncontrado = IngredientesDeLaRecetaUtilizada.Exists(x => x.Codigo == ingredienteParticular.Codigo);
+                i++;
+            }
+            return FueEncontrado;
+        }
 
         private List<Comida> FiltroSaludable(bool condicion) //dadoo por un chekbox de winfrom 
         {
@@ -57,19 +70,6 @@ namespace Logica
         private string SerializarLista(List<Comida> listaASerializar) {
             return JsonConvert.SerializeObject(listaASerializar);
         }
-        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Receta> Recetas, List<Ingrediente> IngredientesEnDespensa)
-        {
-            List<Ingrediente> IngredientesDeLaRecetaUtilizada = RecetaUtilizada.Ingredientes.Select(x => x as Ingrediente).ToList();
-
-            bool FueEncontrado = true;
-            while (!FueEncontrado)
-            {
-                int i = 0;
-                Ingrediente ingredienteParticular = IngredientesDeLaRecetaUtilizada[i];
-                FueEncontrado = IngredientesDeLaRecetaUtilizada.Exists(x => x.Codigo == ingredienteParticular.Codigo);
-                i++;
-            }
-            return FueEncontrado;
-        }
+        
     }
 }
