@@ -11,5 +11,14 @@ namespace Logica {
         public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
         public List<Ingrediente> Ingredientes { get; set; }
+
+        public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
+            List<Ingrediente> ingredientes) {
+            this.Codigo = codigo;
+            this.MomentoComida = momentoComida;
+            this.Nombre = nombre;
+            this.EsSaludable = esSaludable;
+            this.Ingredientes = ingredientes;
+        }
     }
 }

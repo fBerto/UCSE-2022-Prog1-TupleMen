@@ -50,9 +50,29 @@ namespace Logica {
         }
     }
 
-    public class Solido : Ingrediente { }
+    public class Solido : Ingrediente {
+        public Solido(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+            decimal precioPorUnidad, int unidadMinima) {
+            this.Codigo = codigo;
+            this.Nombre = nombre;
+            this.TipoIngrediente = tipoIngrediente;
+            this.Cantidad = cantidad;
+            this.PrecioPorUnidad = precioPorUnidad;
+            this.UnidadMinima = unidadMinima;
+        }
+    }
 
     public class Bebida : Ingrediente {
         public TiposBebidas TipoBebida { get; set; }
+
+        public Bebida(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+            decimal precioPorUnidad, int unidadMinima) {
+            this.Codigo = codigo;
+            this.Nombre = nombre;
+            this.TipoIngrediente = tipoIngrediente;
+            this.Cantidad = cantidad;
+            this.PrecioPorUnidad = precioPorUnidad;
+            this.UnidadMinima = unidadMinima;
+        }
     }
 }
