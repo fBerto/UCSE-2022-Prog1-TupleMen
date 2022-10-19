@@ -52,28 +52,17 @@ namespace Logica
             return JsonConvert.SerializeObject(listaASerializar);
         }
 
-        public void LecturaArchivosAlIniciar()
-        {
-            LeerIngredientesAComprar();
-            LeerLibroRecetas();
-            LeerHistorialComidas();
-            LeerBebidasDespensa();
-            LeerSolidosDespensa();
-            LeerBebidasAComprar();
-            LeerSolidosAComprar();
-        }
-
-        private List<Ingrediente> LeerIngredientesAComprar()
+        public List<Ingrediente> LeerIngredientesAComprar()
         {
             return UnificarBebidasYSolidos(LeerBebidasAComprar(), LeerSolidosAComprar());
         }
 
-        private List<Ingrediente> LeerIngredientesEnDespensa()
+        public List<Ingrediente> LeerIngredientesEnDespensa()
         {
             return UnificarBebidasYSolidos(LeerBebidasDespensa(), LeerSolidosDespensa());
         }
 
-        private List<Receta> LeerLibroRecetas()
+        public List<Receta> LeerLibroRecetas()
         {
             string pathRecetas = GetPathDominio() + nombreArchivoLibroRecetas;
             using (StreamReader reader = new StreamReader(pathRecetas))
@@ -83,7 +72,8 @@ namespace Logica
                 return LibroRecetasDesdeArchivo;
             }
         }
-        private List<Comida> LeerHistorialComidas()
+
+        public List<Comida> LeerHistorialComidas()
         {
             string pathComidas = GetPathDominio() + nombreArchivoHistorialComidas;
             using (StreamReader reader = new StreamReader(pathComidas))
@@ -118,7 +108,7 @@ namespace Logica
 
         private List<Ingrediente> LeerBebidasAComprar()
         {
-            string pathBebidas = GetPathDominio() +  nombreArchivoBebidasAComprar;
+            string pathBebidas = GetPathDominio() + nombreArchivoBebidasAComprar;
             using (StreamReader reader = new StreamReader(pathBebidas))
             {
                 string json = reader.ReadToEnd();
@@ -129,7 +119,7 @@ namespace Logica
         }
         private List<Ingrediente> LeerSolidosAComprar()
         {
-            string pathIngredientesSolidos = GetPathDominio()  + nombreArchivoSolidosAComprar;
+            string pathIngredientesSolidos = GetPathDominio() + nombreArchivoSolidosAComprar;
             using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
             {
                 string json = reader.ReadToEnd();

@@ -16,39 +16,48 @@ namespace Aplicacion_de_Consola
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
-            Bebida bebida1 = new Bebida();
-            Bebida bebida2 = new Bebida();
-            Solido solido1 = new Solido();
-            Solido solido2 = new Solido();
+            Bebida bebida1 = new Bebida(1, "Coca", TiposIngredientes.Bebida, 5, 200, 1, TiposBebidas.AltaEnAzucar);
+            Bebida bebida2 = new Bebida(2, "Agua", TiposIngredientes.Bebida, 3, 150, 1, TiposBebidas.Normal);
+            Solido solido1 = new Solido(3, "Pechuga", TiposIngredientes.Carne, 3, 700, 2);
+            Solido solido2 = new Solido(4, "Tomate", TiposIngredientes.Fruta, 2, 300, 1);
 
-            Bebida bebida3 = new Bebida(); // para compras 
-            Solido solido3 = new Solido();
-            
-            Comida comida1 = new Comida();
-            Comida comida2 = new Comida();
-            Comida comida3 = new Comida();  
-            
-            Receta receta1 = new Receta();
-            Receta receta2 = new Receta();
-            Receta receta3 = new Receta();
+            Bebida bebida3 = new Bebida(5, "Vodka", TiposIngredientes.Bebida, 6, 2000, 1, TiposBebidas.Alcoholica); // para compras 
+            Solido solido3 = new Solido(6, "Yogurth", TiposIngredientes.Lacteo, 8, 350, 2);
 
+            List<Ingrediente> listaIngredientesParaReceta = new List<Ingrediente> { bebida1, solido2, bebida3 };
+            List<Ingrediente> listaIngredientesParaReceta2 = new List<Ingrediente> { bebida3, solido2, bebida1 };
+            List<Ingrediente> listaIngredientesParaReceta3 = new List<Ingrediente> { bebida2, solido1, bebida3 };
 
-            administradorIngredientes.CargarIngrediente(bebida1);
-            administradorIngredientes.CargarIngrediente(bebida2);
-            administradorIngredientes.CargarIngrediente(solido1);
-            administradorIngredientes.CargarIngrediente(solido2);
+            Receta receta1 = new Receta(123, MomentosComida.Merienda, "Panchos", false , listaIngredientesParaReceta);
+            Receta receta2 = new Receta(1234, MomentosComida.Desayuno, "PANKEKES PROTEICOS", true, listaIngredientesParaReceta2);
+            Receta receta3 = new Receta(12345, MomentosComida.Cena, "Pollo con pan", true, listaIngredientesParaReceta3);
 
-            administradorCompras.ActualizarIngredientesAComprar(bebida3);
-            administradorCompras.ActualizarIngredientesAComprar(solido3);
+            Comida comida1 = new Comida(receta1, DateTime.Today);
+            Comida comida2 = new Comida(receta2, DateTime.Today);
+            Comida comida3 = new Comida(receta3, DateTime.Today);
 
-            administradorComidas.RegistrarComida(comida1);
-            administradorComidas.RegistrarComida(comida2);
-            administradorComidas.RegistrarComida(comida3);
+            List<Ingrediente> IngredientesAComprar = administradorCompras.GetIngredientesAComprar();
+            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
+            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas();
+            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas();
 
-            administradorRecetas.CargarReceta(receta1);
-            administradorRecetas.CargarReceta(receta2);
-            administradorRecetas.CargarReceta(receta3);
+            Console.ReadKey();
 
+            //administradorIngredientes.CargarIngrediente(bebida1);
+            //administradorIngredientes.CargarIngrediente(bebida2);
+            //administradorIngredientes.CargarIngrediente(solido1);
+            //administradorIngredientes.CargarIngrediente(solido2);
+
+            //administradorCompras.ActualizarIngredientesAComprar(bebida3);
+            //administradorCompras.ActualizarIngredientesAComprar(solido3);
+
+            //administradorComidas.RegistrarComida(comida1);
+            //administradorComidas.RegistrarComida(comida2);
+            //administradorComidas.RegistrarComida(comida3);
+
+            //administradorRecetas.CargarReceta(receta1);
+            //administradorRecetas.CargarReceta(receta2);
+            //administradorRecetas.CargarReceta(receta3);
         }
     }
 }

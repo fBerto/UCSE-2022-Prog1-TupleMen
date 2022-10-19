@@ -8,14 +8,28 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class AdministradorComidas : Archivos {
-        List<Comida> HistorialComidas = new List<Comida>();
+    public class AdministradorComidas : Archivos
+    {
+        public AdministradorComidas()
+        {
+            this.HistorialComidas = LeerHistorialComidas();
+        }
+
+        private List<Comida> HistorialComidas = new List<Comida>();
 
         Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
+        //-----------------BORRAR--------------------------
+        public List<Comida> GetHistorialComidas()
+        {
+            return HistorialComidas;
+        }
+        //--------------------------------------------
+
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
-        public void RegistrarComida(Comida nuevaComida) {
+        public void RegistrarComida(Comida nuevaComida)
+        {
             List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.getIngredientesEnDespensa();
 
             if (RevisarIngredienteExisteEnDespensa(nuevaComida.Receta, IngredientesEnDespensa))
@@ -47,10 +61,10 @@ namespace Logica
         {
             return HistorialComidas.Where(x => x.Receta.MomentoComida == momento).ToList();
         }
-        
+
         private List<Comida> FlitroFecha(DateTime FechaMenor, DateTime FechaMayor)
         {
-            return HistorialComidas.Where(x => x.Fecha>= FechaMenor && x.Fecha <= FechaMayor).ToList();
+            return HistorialComidas.Where(x => x.Fecha >= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
         private List<Comida> FlitroPorRecetas(Receta receta)
@@ -58,9 +72,10 @@ namespace Logica
             return HistorialComidas.Where(x => x.Receta.Codigo == receta.Codigo).ToList();
         }
 
-        private string SerializarLista(List<Comida> listaASerializar) {
+        private string SerializarLista(List<Comida> listaASerializar)
+        {
             return JsonConvert.SerializeObject(listaASerializar);
         }
-        
+
     }
 }
