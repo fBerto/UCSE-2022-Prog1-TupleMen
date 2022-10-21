@@ -10,6 +10,8 @@ namespace Logica
 {
     public class AdministradorCompras : Archivos
     {
+        private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
+
         public AdministradorCompras()
         {
             this.IngredientesAComprar = LeerIngredientesAComprar();
@@ -21,8 +23,6 @@ namespace Logica
             return IngredientesAComprar;
         }
         //-----------------BORRAR--------------------------
-
-        private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         public void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente)
         {

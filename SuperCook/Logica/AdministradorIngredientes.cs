@@ -9,12 +9,12 @@ namespace Logica
 {
     public class AdministradorIngredientes : Archivos
     {
+        private List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
+
         public AdministradorIngredientes()
         {
             this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
-
-        private List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
         //-----------------BORRAR--------------------------
         public List<Ingrediente> GetIngredientesEnDespensa()

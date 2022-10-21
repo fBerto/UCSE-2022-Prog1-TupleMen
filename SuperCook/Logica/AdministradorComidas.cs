@@ -10,14 +10,15 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
+        //TODO: Es necesario inicializar la lista???? ES una variable de instancia, no se inicializan
+        //En tal caso corregir el resto de administradores.
+        private List<Comida> HistorialComidas = new List<Comida>();
+
         public AdministradorComidas()
         {
             this.HistorialComidas = LeerHistorialComidas();
         }
 
-        private List<Comida> HistorialComidas = new List<Comida>();
-
-        Logica.AdministradorRecetas administradorRecetas = new Logica.AdministradorRecetas();
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
         //-----------------BORRAR--------------------------
@@ -38,6 +39,8 @@ namespace Logica
                 GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
             }
         }
+
+        //TODO: Este metodo no pertenece a la clase AdministradorIngrediente???
         private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Ingrediente> IngredientesEnDespensa)
         {
             bool FueEncontrado = true;
@@ -52,7 +55,7 @@ namespace Logica
             return FueEncontrado;
         }
 
-        private List<Comida> FiltroSaludable(bool condicion) //dadoo por un chekbox de winfrom 
+        private List<Comida> FiltroSaludable(bool condicion) //dado por un chekbox de winfrom 
         {
             return HistorialComidas.Where(x => x.Receta.EsSaludable == condicion).ToList();
         }

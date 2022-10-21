@@ -13,9 +13,9 @@ namespace Logica
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
         public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
-        public const string nombreArchivoSolidosDespensa = "IngredientesSolidosDespensa.txt";
+        public const string nombreArchivoSolidosDespensa = "SolidosDespensa.txt";
         public const string nombreArchivoBebidasAComprar = "BebidasAComprar.txt";
-        public const string nombreArchivoSolidosAComprar = "IngredientesSolidosAComprar.txt";
+        public const string nombreArchivoSolidosAComprar = "SolidosAComprar.txt";
 
         public void GuardarLista(string listaSerializada, string nombreArchivoAGuardar)
         {
@@ -83,6 +83,7 @@ namespace Logica
                 return HistorialComidasDesdeArchivo;
             }
         }
+
         private List<Ingrediente> LeerBebidasDespensa()
         {
             string pathBebidas = GetPathDominio() + nombreArchivoBebidasDespensa;

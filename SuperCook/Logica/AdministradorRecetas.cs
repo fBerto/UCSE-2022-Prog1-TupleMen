@@ -9,18 +9,19 @@ namespace Logica
 {
     public class AdministradorRecetas : Archivos
     {
+        private List<Receta> LibroRecetas = new List<Receta>();
+
         public AdministradorRecetas()
         {
             this.LibroRecetas = LeerLibroRecetas();
         }
-        
-        private List<Receta> LibroRecetas = new List<Receta>();
 
         //-----------------BORRAR--------------------------
         public List<Receta> GetLibroRecetas()
         {
             return LibroRecetas;
         }
+
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
@@ -42,11 +43,6 @@ namespace Logica
         private string SerializarLista(List<Receta> listaASerializar)
         {
             return JsonConvert.SerializeObject(listaASerializar);
-        }
-
-        public List<Receta> getLibroRecetas()
-        {
-            return LibroRecetas;
         }
     }
 }
