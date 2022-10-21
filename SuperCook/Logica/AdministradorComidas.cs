@@ -10,11 +10,11 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
-        private List<Comida> HistorialComidas;
+        private List<Comida> HistorialComidas = new List<Comida>();
 
         public AdministradorComidas()
         {
-            this.HistorialComidas = LeerHistorialComidas();
+            //this.HistorialComidas = LeerHistorialComidas();
         }
 
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();

@@ -41,23 +41,23 @@ namespace Aplicacion_de_Consola
             List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas();
             List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas();
 
+            administradorIngredientes.CargarIngrediente(bebida1);
+            administradorIngredientes.CargarIngrediente(bebida2);
+            administradorIngredientes.CargarIngrediente(solido1);
+            administradorIngredientes.CargarIngrediente(solido2);
+
+            administradorCompras.ActualizarIngredientesAComprar(bebida3);
+            administradorCompras.ActualizarIngredientesAComprar(solido3);
+
+            administradorRecetas.CargarReceta(receta1);
+            administradorRecetas.CargarReceta(receta2);
+            administradorRecetas.CargarReceta(receta3);
+
+            administradorComidas.RegistrarComida(comida1);
+            administradorComidas.RegistrarComida(comida2);
+            administradorComidas.RegistrarComida(comida3);
+
             Console.ReadKey();
-
-            //administradorIngredientes.CargarIngrediente(bebida1);
-            //administradorIngredientes.CargarIngrediente(bebida2);
-            //administradorIngredientes.CargarIngrediente(solido1);
-            //administradorIngredientes.CargarIngrediente(solido2);
-
-            //administradorCompras.ActualizarIngredientesAComprar(bebida3);
-            //administradorCompras.ActualizarIngredientesAComprar(solido3);
-
-            //administradorComidas.RegistrarComida(comida1);
-            //administradorComidas.RegistrarComida(comida2);
-            //administradorComidas.RegistrarComida(comida3);
-
-            //administradorRecetas.CargarReceta(receta1);
-            //administradorRecetas.CargarReceta(receta2);
-            //administradorRecetas.CargarReceta(receta3);
         }
     }
 }

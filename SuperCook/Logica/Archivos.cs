@@ -63,6 +63,7 @@ namespace Logica
             return UnificarBebidasYSolidos(LeerBebidasDespensa(), LeerSolidosDespensa());
         }
 
+        //Tiene que leer la lista de RecetasArchivo
         public List<Receta> LeerLibroRecetas()
         {
             string pathRecetas = GetPathDominio() + nombreArchivoLibroRecetas;

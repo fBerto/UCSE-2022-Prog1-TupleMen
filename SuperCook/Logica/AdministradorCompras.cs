@@ -11,11 +11,11 @@ namespace Logica
     public class AdministradorCompras : Archivos
     {
         //super no necesita trabajar con los archivos.
-        private List<Ingrediente> IngredientesAComprar;
+        private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         public AdministradorCompras()
         {
-            this.IngredientesAComprar = LeerIngredientesAComprar();
+            //this.IngredientesAComprar = LeerIngredientesAComprar();
         }
 
         //-----------------BORRAR--------------------------

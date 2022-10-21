@@ -9,11 +9,11 @@ namespace Logica
 {
     public class AdministradorRecetas : Archivos
     {
-        private List<Receta> LibroRecetas;
+        private List<Receta> LibroRecetas = new List<Receta>();
 
         public AdministradorRecetas()
         {
-            this.LibroRecetas = LeerLibroRecetas();
+            //this.LibroRecetas = LeerLibroRecetas();
         }
 
         //-----------------BORRAR--------------------------
@@ -25,7 +25,7 @@ namespace Logica
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
-            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
+            GuardarLista(SerializarLista(ConvertirLibroRecetasALibroRecetasArchivos()), nombreArchivoLibroRecetas);
         }
 
         public void EliminarReceta(int codigoReceta)
@@ -40,7 +40,34 @@ namespace Logica
             LibroRecetas[IndiceRecetaModificar] = recetaModificada;
         }
 
-        private string SerializarLista(List<Receta> listaASerializar)
+        public List<RecetaArchivo> ConvertirLibroRecetasALibroRecetasArchivos()
+        {
+            List<RecetaArchivo> LibroRecetasArchivos = new List<RecetaArchivo>();
+            //List<RecetaArchivo> LibroRecetasArchivos = LibroRecetas.Where(x => x is Receta).Select(x => x as RecetaArchivo).ToList();
+            foreach (Receta receta in LibroRecetas)
+            {
+                LibroRecetasArchivos.Add(receta as RecetaArchivo);
+            }
+            foreach (RecetaArchivo receta in LibroRecetasArchivos)
+            {
+                int indiceingrediente = 0;
+
+                foreach (Ingrediente ingrediente in receta.Ingredientes)
+                {
+                    receta.CodigosIngredientes[indiceingrediente] = ingrediente.Codigo;
+                    indiceingrediente++;
+                }
+            }
+            return LibroRecetasArchivos;
+        }
+
+        //TODO: codear
+        public List<Receta> ConvertirRecetasArchivoARecetas()
+        {
+            return null;
+        }
+
+        private string SerializarLista(List<RecetaArchivo> listaASerializar)
         {
             return JsonConvert.SerializeObject(listaASerializar);
         }

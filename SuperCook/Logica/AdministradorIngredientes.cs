@@ -9,11 +9,11 @@ namespace Logica
 {
     public class AdministradorIngredientes : Archivos
     {
-        private List<Ingrediente> IngredientesEnDespensa;
+        private List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
         public AdministradorIngredientes()
         {
-            this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
+            //this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
 
         //-----------------BORRAR--------------------------
