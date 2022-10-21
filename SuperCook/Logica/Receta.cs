@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace Logica {
         public MomentosComida MomentoComida { get; set; }
         public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
+
+        [JsonIgnore]
         public List<Ingrediente> Ingredientes { get; set; }
 
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,

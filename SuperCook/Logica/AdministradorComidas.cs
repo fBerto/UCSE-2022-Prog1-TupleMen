@@ -10,9 +10,7 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
-        //TODO: Es necesario inicializar la lista???? ES una variable de instancia, no se inicializan
-        //En tal caso corregir el resto de administradores.
-        private List<Comida> HistorialComidas = new List<Comida>();
+        private List<Comida> HistorialComidas;
 
         public AdministradorComidas()
         {
@@ -31,28 +29,11 @@ namespace Logica
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida)
         {
-            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.getIngredientesEnDespensa();
-
-            if (RevisarIngredienteExisteEnDespensa(nuevaComida.Receta, IngredientesEnDespensa))
+            if (administradorIngredientes.RevisarExistenciaIngredientesDeReceta(nuevaComida.Receta))
             {
                 HistorialComidas.Add(nuevaComida);
                 GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
             }
-        }
-
-        //TODO: Este metodo no pertenece a la clase AdministradorIngrediente???
-        private bool RevisarIngredienteExisteEnDespensa(Receta RecetaUtilizada, List<Ingrediente> IngredientesEnDespensa)
-        {
-            bool FueEncontrado = true;
-            int i = 0;
-
-            while (!FueEncontrado && i < RecetaUtilizada.Ingredientes.Count())
-            {
-                Ingrediente ingredienteParticular = RecetaUtilizada.Ingredientes[i];
-                FueEncontrado = IngredientesEnDespensa.Exists(x => x.Codigo == ingredienteParticular.Codigo);
-                i++;
-            }
-            return FueEncontrado;
         }
 
         private List<Comida> FiltroSaludable(bool condicion) //dado por un chekbox de winfrom 
@@ -79,6 +60,5 @@ namespace Logica
         {
             return JsonConvert.SerializeObject(listaASerializar);
         }
-
     }
 }

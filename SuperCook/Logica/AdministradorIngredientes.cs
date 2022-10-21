@@ -9,7 +9,7 @@ namespace Logica
 {
     public class AdministradorIngredientes : Archivos
     {
-        private List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
+        private List<Ingrediente> IngredientesEnDespensa;
 
         public AdministradorIngredientes()
         {
@@ -50,9 +50,19 @@ namespace Logica
             GuardarLista(SerializarLista(Bebidas), nombreArchivoBebidasDespensa);
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
-        public List<Ingrediente> getIngredientesEnDespensa()
+
+        public bool RevisarExistenciaIngredientesDeReceta(Receta RecetaUtilizada)
         {
-            return IngredientesEnDespensa;
+            bool FueEncontrado = true;
+            int i = 0;
+
+            while (!FueEncontrado && i < RecetaUtilizada.Ingredientes.Count())
+            {
+                Ingrediente ingredienteParticular = RecetaUtilizada.Ingredientes[i];
+                FueEncontrado = IngredientesEnDespensa.Exists(x => x.Codigo == ingredienteParticular.Codigo);
+                i++;
+            }
+            return FueEncontrado;
         }
     }
 }

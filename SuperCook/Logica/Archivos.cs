@@ -10,6 +10,7 @@ namespace Logica
 {
     public abstract class Archivos
     {
+        //recibe las recetas comunes, no las recetas archivo
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
         public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
@@ -67,7 +68,7 @@ namespace Logica
             string pathRecetas = GetPathDominio() + nombreArchivoLibroRecetas;
             using (StreamReader reader = new StreamReader(pathRecetas))
             {
-                string json = reader.ReadToEnd();
+                string json = reader.ReadToEnd(); //por cada receta leida llamamos al amdmin ingredientes y buscamos los ingredientes , les pasamos ingredientes (o codigo???), leer lista receta archivo 
                 List<Receta> LibroRecetasDesdeArchivo = JsonConvert.DeserializeObject<List<Receta>>(json);
                 return LibroRecetasDesdeArchivo;
             }
@@ -138,6 +139,7 @@ namespace Logica
 
         /* TODO:
          * Hago todo aca e instancio en los administradores los metodos que necesito
+         * Comida archivos tmb y tiene que tener un codigo de receta 
          */
     }
 }

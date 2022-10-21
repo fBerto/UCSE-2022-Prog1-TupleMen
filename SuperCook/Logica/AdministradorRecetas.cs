@@ -9,7 +9,7 @@ namespace Logica
 {
     public class AdministradorRecetas : Archivos
     {
-        private List<Receta> LibroRecetas = new List<Receta>();
+        private List<Receta> LibroRecetas;
 
         public AdministradorRecetas()
         {

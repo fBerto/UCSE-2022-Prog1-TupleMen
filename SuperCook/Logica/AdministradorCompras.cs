@@ -10,7 +10,8 @@ namespace Logica
 {
     public class AdministradorCompras : Archivos
     {
-        private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
+        //super no necesita trabajar con los archivos.
+        private List<Ingrediente> IngredientesAComprar;
 
         public AdministradorCompras()
         {
