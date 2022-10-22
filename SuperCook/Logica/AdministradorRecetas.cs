@@ -43,28 +43,12 @@ namespace Logica
         public List<RecetaArchivo> ConvertirLibroRecetasALibroRecetasArchivos()
         {
             List<RecetaArchivo> LibroRecetasArchivos = new List<RecetaArchivo>();
-            //List<RecetaArchivo> LibroRecetasArchivos = LibroRecetas.Where(x => x is Receta).Select(x => x as RecetaArchivo).ToList();
+
             foreach (Receta receta in LibroRecetas)
             {
-                LibroRecetasArchivos.Add(receta as RecetaArchivo);
-            }
-            foreach (RecetaArchivo receta in LibroRecetasArchivos)
-            {
-                int indiceingrediente = 0;
-
-                foreach (Ingrediente ingrediente in receta.Ingredientes)
-                {
-                    receta.CodigosIngredientes[indiceingrediente] = ingrediente.Codigo;
-                    indiceingrediente++;
-                }
+                LibroRecetasArchivos.Add(receta.ConvertirRecetaARecetaArchivo());
             }
             return LibroRecetasArchivos;
-        }
-
-        //TODO: codear
-        public List<Receta> ConvertirRecetasArchivoARecetas()
-        {
-            return null;
         }
 
         private string SerializarLista(List<RecetaArchivo> listaASerializar)

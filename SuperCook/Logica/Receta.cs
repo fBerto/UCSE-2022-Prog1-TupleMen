@@ -26,16 +26,42 @@ namespace Logica
             this.EsSaludable = esSaludable;
             this.Ingredientes = ingredientes;
         }
+
+        public List<int> GetListaCodigosIngredientes()
+        {
+            List<int> codigosIngredientes = new List<int>();
+
+            foreach (Ingrediente ingrediente in this.Ingredientes)
+            {
+                codigosIngredientes.Add(ingrediente.Codigo);
+            }
+
+            return codigosIngredientes;
+        }
+
+        public RecetaArchivo ConvertirRecetaARecetaArchivo()
+        {
+            RecetaArchivo recetaArchivo = new RecetaArchivo(
+                this.GetListaCodigosIngredientes(),
+                this.Codigo,
+                this.MomentoComida,
+                this.Nombre,
+                this.EsSaludable,
+                this.Ingredientes);
+
+            return recetaArchivo;
+        }
     }
 
     public class RecetaArchivo : Receta
     {
-        //TODO: constructor innecesario pero no compila si lo sacamos
-        public RecetaArchivo(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable, List<Ingrediente> ingredientes) : base(codigo, momentoComida, nombre, esSaludable, ingredientes)
-        {
-        }
-
         public List<int> CodigosIngredientes { get; set; }
+
+        public RecetaArchivo(List<int> codigosIngredientes, int codigo, MomentosComida momentoComida, string nombre, bool esSaludable, List<Ingrediente> ingredientes)
+            : base(codigo, momentoComida, nombre, esSaludable, ingredientes)
+        {
+            CodigosIngredientes = codigosIngredientes;
+        }
     }
 }
 
