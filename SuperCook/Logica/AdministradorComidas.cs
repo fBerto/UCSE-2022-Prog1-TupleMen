@@ -19,13 +19,6 @@ namespace Logica
 
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
 
-        //-----------------BORRAR--------------------------
-        public List<Comida> GetHistorialComidas()
-        {
-            return HistorialComidas;
-        }
-        //--------------------------------------------
-
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida)
         {

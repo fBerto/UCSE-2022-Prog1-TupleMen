@@ -15,15 +15,9 @@ namespace Logica
 
         public AdministradorCompras()
         {
-            this.IngredientesAComprar = LeerIngredientesAComprar();
+            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
+            this.IngredientesAComprar = adminIngredientes.GetIngredientesAComprar();
         }
-
-        //-----------------BORRAR--------------------------
-        public List<Ingrediente> GetIngredientesAComprar()
-        {
-            return IngredientesAComprar;
-        }
-        //-----------------BORRAR--------------------------
 
         public void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente)
         {

@@ -29,18 +29,6 @@ namespace Logica
             this.CodigosIngredientes = codigosIngredientes;
             this.Ingredientes = adminIngredientes.GetIngredientesRecetaPorCodigo(codigosIngredientes);
         }
-
-        public List<int> GetListaCodigosIngredientes()
-        {
-            List<int> codigosIngredientes = new List<int>();
-
-            foreach (Ingrediente ingrediente in this.Ingredientes)
-            {
-                codigosIngredientes.Add(ingrediente.Codigo);
-            }
-
-            return codigosIngredientes;
-        }
     }
 }
 

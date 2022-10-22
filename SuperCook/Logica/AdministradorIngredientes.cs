@@ -16,12 +16,6 @@ namespace Logica
             this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
 
-        //-----------------BORRAR--------------------------
-        public List<Ingrediente> GetIngredientesEnDespensa()
-        {
-            return IngredientesEnDespensa;
-        }
-
         public void CargarIngrediente(Ingrediente nuevoIngrediente)
         {
             IngredientesEnDespensa.Add(nuevoIngrediente);
@@ -65,9 +59,32 @@ namespace Logica
             return FueEncontrado;
         }
 
+        public bool ConsultarStockIngredientesDeReceta(Receta recetaAPreparar)
+        {
+            foreach (Ingrediente ingredienteReceta in recetaAPreparar.Ingredientes)
+            {
+                Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
+                
+                int cantidadEnStock = ingredienteDespensa.Cantidad;
+                int cantidadRequerida = ingredienteReceta.Cantidad;
+
+                if (cantidadEnStock < cantidadRequerida)
+                {
+                    //Si no hay stock para hacer la receta (en el ingrediente que sea) automaticamente corta el codigo y devuelve false
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public List<Ingrediente> GetIngredientesRecetaPorCodigo(List<int> codigosIngredientes)
         {
             return IngredientesEnDespensa.FindAll(x => codigosIngredientes.Contains(x.Codigo));
+        }
+
+        public List<Ingrediente> GetIngredientesAComprar()
+        {
+            return IngredientesEnDespensa.FindAll(x => x.NoHaySuficienteIngrediente() == true);
         }
     }
 }

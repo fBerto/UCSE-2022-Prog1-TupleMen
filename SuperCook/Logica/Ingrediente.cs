@@ -68,6 +68,11 @@ namespace Logica
                 }
             }
         }
+
+        public bool NoHaySuficienteIngrediente()
+        {
+            return this.Cantidad < this.UnidadMinima;
+        }
     }
 
     public class Solido : Ingrediente

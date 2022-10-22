@@ -16,12 +16,6 @@ namespace Logica
             this.LibroRecetas = LeerLibroRecetas();
         }
 
-        //-----------------BORRAR--------------------------
-        public List<Receta> GetLibroRecetas()
-        {
-            return LibroRecetas;
-        }
-
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
