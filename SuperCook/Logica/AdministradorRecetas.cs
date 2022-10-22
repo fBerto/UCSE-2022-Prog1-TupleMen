@@ -13,7 +13,7 @@ namespace Logica
 
         public AdministradorRecetas()
         {
-            //this.LibroRecetas = LeerLibroRecetas();
+            this.LibroRecetas = LeerLibroRecetas();
         }
 
         //-----------------BORRAR--------------------------
@@ -25,7 +25,7 @@ namespace Logica
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
-            GuardarLista(SerializarLista(ConvertirLibroRecetasALibroRecetasArchivos()), nombreArchivoLibroRecetas);
+            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
         public void EliminarReceta(int codigoReceta)
@@ -40,18 +40,7 @@ namespace Logica
             LibroRecetas[IndiceRecetaModificar] = recetaModificada;
         }
 
-        public List<RecetaArchivo> ConvertirLibroRecetasALibroRecetasArchivos()
-        {
-            List<RecetaArchivo> LibroRecetasArchivos = new List<RecetaArchivo>();
-
-            foreach (Receta receta in LibroRecetas)
-            {
-                LibroRecetasArchivos.Add(receta.ConvertirRecetaARecetaArchivo());
-            }
-            return LibroRecetasArchivos;
-        }
-
-        private string SerializarLista(List<RecetaArchivo> listaASerializar)
+        private string SerializarLista(List<Receta> listaASerializar)
         {
             return JsonConvert.SerializeObject(listaASerializar);
         }

@@ -24,9 +24,13 @@ namespace Aplicacion_de_Consola
             Bebida bebida3 = new Bebida(5, "Vodka", TiposIngredientes.Bebida, 6, 2000, 1, TiposBebidas.Alcoholica); // para compras 
             Solido solido3 = new Solido(6, "Yogurth", TiposIngredientes.Lacteo, 8, 350, 2);
 
-            List<Ingrediente> listaIngredientesParaReceta = new List<Ingrediente> { bebida1, solido2, bebida3 };
-            List<Ingrediente> listaIngredientesParaReceta2 = new List<Ingrediente> { bebida3, solido2, bebida1 };
-            List<Ingrediente> listaIngredientesParaReceta3 = new List<Ingrediente> { bebida2, solido1, bebida3 };
+            List<int> listaIngredientesParaReceta = new List<int> { bebida1.Codigo, solido2.Codigo, bebida3.Codigo };
+            List<int> listaIngredientesParaReceta2 = new List<int> { bebida3.Codigo, solido2.Codigo, bebida1.Codigo };
+            List<int> listaIngredientesParaReceta3 = new List<int> { bebida2.Codigo, solido1.Codigo, bebida3.Codigo };
+
+            //List<Ingrediente> listaIngredientesParaReceta = new List<Ingrediente> { bebida1, solido2, bebida3 };
+            //List<Ingrediente> listaIngredientesParaReceta2 = new List<Ingrediente> { bebida3, solido2, bebida1 };
+            //List<Ingrediente> listaIngredientesParaReceta3 = new List<Ingrediente> { bebida2, solido1, bebida3 };
 
             Receta receta1 = new Receta(123, MomentosComida.Merienda, "Panchos", false , listaIngredientesParaReceta);
             Receta receta2 = new Receta(1234, MomentosComida.Desayuno, "PANKEKES PROTEICOS", true, listaIngredientesParaReceta2);
@@ -38,24 +42,24 @@ namespace Aplicacion_de_Consola
 
             List<Ingrediente> IngredientesAComprar = administradorCompras.GetIngredientesAComprar();
             List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
-            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas();
-            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas();
+            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas(); //Lo programamos para que si el ingrediente no esta en despensa no lo cargue 
+            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas(); //no carga los elemenots q no esten en despensa 
 
-            administradorIngredientes.CargarIngrediente(bebida1);
-            administradorIngredientes.CargarIngrediente(bebida2);
-            administradorIngredientes.CargarIngrediente(solido1);
-            administradorIngredientes.CargarIngrediente(solido2);
+            //administradorIngredientes.CargarIngrediente(bebida1);
+            //administradorIngredientes.CargarIngrediente(bebida2);
+            //administradorIngredientes.CargarIngrediente(solido1);
+            //administradorIngredientes.CargarIngrediente(solido2);
 
-            administradorCompras.ActualizarIngredientesAComprar(bebida3);
-            administradorCompras.ActualizarIngredientesAComprar(solido3);
+            //administradorCompras.ActualizarIngredientesAComprar(bebida3);
+            //administradorCompras.ActualizarIngredientesAComprar(solido3);
 
-            administradorRecetas.CargarReceta(receta1);
-            administradorRecetas.CargarReceta(receta2);
-            administradorRecetas.CargarReceta(receta3);
+            //administradorRecetas.CargarReceta(receta1);
+            //administradorRecetas.CargarReceta(receta2);
+            //administradorRecetas.CargarReceta(receta3);
 
-            administradorComidas.RegistrarComida(comida1);
-            administradorComidas.RegistrarComida(comida2);
-            administradorComidas.RegistrarComida(comida3);
+            //administradorComidas.RegistrarComida(comida1);
+            //administradorComidas.RegistrarComida(comida2);
+            //administradorComidas.RegistrarComida(comida3);
 
             Console.ReadKey();
         }

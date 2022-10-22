@@ -13,18 +13,21 @@ namespace Logica
         public MomentosComida MomentoComida { get; set; }
         public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
-
         [JsonIgnore]
         public List<Ingrediente> Ingredientes { get; set; }
+        public List<int> CodigosIngredientes { get; set; }
 
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
-            List<Ingrediente> ingredientes)
+            List<int> codigosIngredientes)
         {
+            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
+
             this.Codigo = codigo;
             this.MomentoComida = momentoComida;
             this.Nombre = nombre;
             this.EsSaludable = esSaludable;
-            this.Ingredientes = ingredientes;
+            this.CodigosIngredientes = codigosIngredientes;
+            this.Ingredientes = adminIngredientes.GetIngredientesRecetaPorCodigo(codigosIngredientes);
         }
 
         public List<int> GetListaCodigosIngredientes()
@@ -37,30 +40,6 @@ namespace Logica
             }
 
             return codigosIngredientes;
-        }
-
-        public RecetaArchivo ConvertirRecetaARecetaArchivo()
-        {
-            RecetaArchivo recetaArchivo = new RecetaArchivo(
-                this.GetListaCodigosIngredientes(),
-                this.Codigo,
-                this.MomentoComida,
-                this.Nombre,
-                this.EsSaludable,
-                this.Ingredientes);
-
-            return recetaArchivo;
-        }
-    }
-
-    public class RecetaArchivo : Receta
-    {
-        public List<int> CodigosIngredientes { get; set; }
-
-        public RecetaArchivo(List<int> codigosIngredientes, int codigo, MomentosComida momentoComida, string nombre, bool esSaludable, List<Ingrediente> ingredientes)
-            : base(codigo, momentoComida, nombre, esSaludable, ingredientes)
-        {
-            CodigosIngredientes = codigosIngredientes;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Logica
 
         public AdministradorIngredientes()
         {
-            //this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
+            this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
 
         //-----------------BORRAR--------------------------
@@ -63,6 +63,11 @@ namespace Logica
                 i++;
             }
             return FueEncontrado;
+        }
+
+        public List<Ingrediente> GetIngredientesRecetaPorCodigo(List<int> codigosIngredientes)
+        {
+            return IngredientesEnDespensa.FindAll(x => codigosIngredientes.Contains(x.Codigo));
         }
     }
 }

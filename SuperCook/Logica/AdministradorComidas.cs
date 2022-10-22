@@ -14,7 +14,7 @@ namespace Logica
 
         public AdministradorComidas()
         {
-            //this.HistorialComidas = LeerHistorialComidas();
+            this.HistorialComidas = LeerHistorialComidas();
         }
 
         Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();

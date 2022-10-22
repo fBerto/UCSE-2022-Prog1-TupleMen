@@ -15,7 +15,7 @@ namespace Logica
 
         public AdministradorCompras()
         {
-            //this.IngredientesAComprar = LeerIngredientesAComprar();
+            this.IngredientesAComprar = LeerIngredientesAComprar();
         }
 
         //-----------------BORRAR--------------------------
