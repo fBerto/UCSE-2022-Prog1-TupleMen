@@ -45,6 +45,7 @@ namespace Logica
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
 
+        //TODO: eliminar
         public bool RevisarExistenciaIngredientesDeReceta(Receta RecetaUtilizada)
         {
             bool FueEncontrado = true;
@@ -75,6 +76,17 @@ namespace Logica
                 }
             }
             return true;
+        }
+
+        public void ActualizarStockIngredientes(Receta recetaPreparada)
+        {
+            foreach (Ingrediente ingredienteReceta in recetaPreparada.Ingredientes)
+            {
+                Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
+
+                ingredienteDespensa.Cantidad -= ingredienteReceta.Cantidad;
+            }
+            GuardarIngredientesEnDespensa();
         }
 
         public List<Ingrediente> GetIngredientesRecetaPorCodigo(List<int> codigosIngredientes)

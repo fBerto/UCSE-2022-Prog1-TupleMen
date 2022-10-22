@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class AdministradorCompras : Archivos
+    public class AdministradorCompras
     {
-        //super no necesita trabajar con los archivos.
         private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         public AdministradorCompras()
@@ -19,19 +18,10 @@ namespace Logica
             this.IngredientesAComprar = adminIngredientes.GetIngredientesAComprar();
         }
 
-        public void ActualizarIngredientesAComprar(Ingrediente nuevoIngrediente)
+        //TODO: Falta actualizar la lista al hacer una comida y consumir un ingrediente
+        public void CargarIngredientesAComprar(Ingrediente nuevoIngrediente)
         {
             IngredientesAComprar.Add(nuevoIngrediente);
-            GuardarIngredientesAComprar();
-        }
-
-        public void GuardarIngredientesAComprar()
-        {
-            List<Bebida> Bebidas = ExtraerBebidasDe(IngredientesAComprar);
-            List<Solido> Solidos = ExtraerSolidosDe(IngredientesAComprar);
-
-            GuardarLista(SerializarLista(Bebidas), nombreArchivoBebidasAComprar);
-            GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosAComprar);
         }
 
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
@@ -41,7 +31,8 @@ namespace Logica
 
         public List<Ingrediente> FiltrarPorTipoDeBebida(TiposBebidas tipoDeBebida)
         {
-            return ExtraerBebidasDe(IngredientesAComprar).Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
+            List<Bebida> BebidasAComprar = IngredientesAComprar.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
+            return BebidasAComprar.Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
         }
 
         public List<Ingrediente> FiltrarPorPrecioMinimoOMaximo(decimal precio, bool esMinimo)
