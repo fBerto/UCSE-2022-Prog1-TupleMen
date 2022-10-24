@@ -52,6 +52,7 @@
             this.BotonIngredientes.Size = new System.Drawing.Size(60, 60);
             this.BotonIngredientes.TabIndex = 0;
             this.BotonIngredientes.UseVisualStyleBackColor = false;
+            this.BotonIngredientes.Click += new System.EventHandler(this.BotonIngredientes_Click);
             // 
             // BotonCompras
             // 
@@ -64,6 +65,7 @@
             this.BotonCompras.Size = new System.Drawing.Size(60, 60);
             this.BotonCompras.TabIndex = 1;
             this.BotonCompras.UseVisualStyleBackColor = false;
+            this.BotonCompras.Click += new System.EventHandler(this.BotonCompras_Click);
             // 
             // BotonRecetas
             // 
@@ -76,6 +78,7 @@
             this.BotonRecetas.Size = new System.Drawing.Size(60, 60);
             this.BotonRecetas.TabIndex = 2;
             this.BotonRecetas.UseVisualStyleBackColor = false;
+            this.BotonRecetas.Click += new System.EventHandler(this.BotonRecetas_Click);
             // 
             // BotonComidas
             // 
@@ -88,6 +91,7 @@
             this.BotonComidas.Size = new System.Drawing.Size(60, 60);
             this.BotonComidas.TabIndex = 3;
             this.BotonComidas.UseVisualStyleBackColor = false;
+            this.BotonComidas.Click += new System.EventHandler(this.BotonComidas_Click);
             // 
             // Titulo
             // 

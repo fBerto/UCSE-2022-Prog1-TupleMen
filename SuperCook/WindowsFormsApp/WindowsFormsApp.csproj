@@ -46,16 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MenuComidas.Designer.cs">
+      <DependentUpon>MenuComidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuCompras.Designer.cs">
+      <DependentUpon>MenuCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuIngredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuIngredientes.Designer.cs">
+      <DependentUpon>MenuIngredientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuRecetas.Designer.cs">
+      <DependentUpon>MenuRecetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PantallaPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallaPrincipal.Designer.cs">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PantallaPrincipal.resx">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

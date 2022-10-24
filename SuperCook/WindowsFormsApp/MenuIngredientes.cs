@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class PantallaPrincipal : Form
+    public partial class MenuIngredientes : Form
     {
-        public PantallaPrincipal()
+        public MenuIngredientes()
         {
             InitializeComponent();
         }
