@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp
 {
-    partial class Form1
+    partial class PantallaPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,13 +28,152 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPrincipal));
+            this.BotonIngredientes = new System.Windows.Forms.Button();
+            this.BotonCompras = new System.Windows.Forms.Button();
+            this.BotonRecetas = new System.Windows.Forms.Button();
+            this.BotonComidas = new System.Windows.Forms.Button();
+            this.Titulo = new System.Windows.Forms.PictureBox();
+            this.EtiquetaBotonIngredientes = new System.Windows.Forms.Label();
+            this.EtiquetaBotonRecetas = new System.Windows.Forms.Label();
+            this.EtiquetaBotonComidas = new System.Windows.Forms.Label();
+            this.EtiquetaBotonSuper = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Titulo)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // BotonIngredientes
+            // 
+            this.BotonIngredientes.AutoSize = true;
+            this.BotonIngredientes.BackColor = System.Drawing.Color.SaddleBrown;
+            this.BotonIngredientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonIngredientes.Image = global::WindowsFormsApp.Properties.Resources.Sin_título_1;
+            this.BotonIngredientes.Location = new System.Drawing.Point(47, 138);
+            this.BotonIngredientes.Name = "BotonIngredientes";
+            this.BotonIngredientes.Size = new System.Drawing.Size(60, 60);
+            this.BotonIngredientes.TabIndex = 0;
+            this.BotonIngredientes.UseVisualStyleBackColor = false;
+            // 
+            // BotonCompras
+            // 
+            this.BotonCompras.AutoSize = true;
+            this.BotonCompras.BackColor = System.Drawing.Color.SaddleBrown;
+            this.BotonCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonCompras.Image = global::WindowsFormsApp.Properties.Resources.dsa;
+            this.BotonCompras.Location = new System.Drawing.Point(47, 336);
+            this.BotonCompras.Name = "BotonCompras";
+            this.BotonCompras.Size = new System.Drawing.Size(60, 60);
+            this.BotonCompras.TabIndex = 1;
+            this.BotonCompras.UseVisualStyleBackColor = false;
+            // 
+            // BotonRecetas
+            // 
+            this.BotonRecetas.AutoSize = true;
+            this.BotonRecetas.BackColor = System.Drawing.Color.SaddleBrown;
+            this.BotonRecetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonRecetas.Image = global::WindowsFormsApp.Properties.Resources.dasds;
+            this.BotonRecetas.Location = new System.Drawing.Point(47, 204);
+            this.BotonRecetas.Name = "BotonRecetas";
+            this.BotonRecetas.Size = new System.Drawing.Size(60, 60);
+            this.BotonRecetas.TabIndex = 2;
+            this.BotonRecetas.UseVisualStyleBackColor = false;
+            // 
+            // BotonComidas
+            // 
+            this.BotonComidas.AutoSize = true;
+            this.BotonComidas.BackColor = System.Drawing.Color.SaddleBrown;
+            this.BotonComidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonComidas.Image = global::WindowsFormsApp.Properties.Resources.Sin_título_12;
+            this.BotonComidas.Location = new System.Drawing.Point(47, 270);
+            this.BotonComidas.Name = "BotonComidas";
+            this.BotonComidas.Size = new System.Drawing.Size(60, 60);
+            this.BotonComidas.TabIndex = 3;
+            this.BotonComidas.UseVisualStyleBackColor = false;
+            // 
+            // Titulo
+            // 
+            this.Titulo.BackColor = System.Drawing.Color.Transparent;
+            this.Titulo.Image = global::WindowsFormsApp.Properties.Resources.Captura;
+            this.Titulo.Location = new System.Drawing.Point(239, 52);
+            this.Titulo.Name = "Titulo";
+            this.Titulo.Size = new System.Drawing.Size(277, 50);
+            this.Titulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Titulo.TabIndex = 4;
+            this.Titulo.TabStop = false;
+            // 
+            // EtiquetaBotonIngredientes
+            // 
+            this.EtiquetaBotonIngredientes.AutoSize = true;
+            this.EtiquetaBotonIngredientes.BackColor = System.Drawing.Color.Beige;
+            this.EtiquetaBotonIngredientes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EtiquetaBotonIngredientes.Location = new System.Drawing.Point(113, 162);
+            this.EtiquetaBotonIngredientes.Name = "EtiquetaBotonIngredientes";
+            this.EtiquetaBotonIngredientes.Size = new System.Drawing.Size(65, 13);
+            this.EtiquetaBotonIngredientes.TabIndex = 5;
+            this.EtiquetaBotonIngredientes.Text = "Ingredientes";
+            // 
+            // EtiquetaBotonRecetas
+            // 
+            this.EtiquetaBotonRecetas.AutoSize = true;
+            this.EtiquetaBotonRecetas.Location = new System.Drawing.Point(113, 228);
+            this.EtiquetaBotonRecetas.Name = "EtiquetaBotonRecetas";
+            this.EtiquetaBotonRecetas.Size = new System.Drawing.Size(47, 13);
+            this.EtiquetaBotonRecetas.TabIndex = 6;
+            this.EtiquetaBotonRecetas.Text = "Recetas";
+            // 
+            // EtiquetaBotonComidas
+            // 
+            this.EtiquetaBotonComidas.AutoSize = true;
+            this.EtiquetaBotonComidas.Location = new System.Drawing.Point(113, 294);
+            this.EtiquetaBotonComidas.Name = "EtiquetaBotonComidas";
+            this.EtiquetaBotonComidas.Size = new System.Drawing.Size(47, 13);
+            this.EtiquetaBotonComidas.TabIndex = 7;
+            this.EtiquetaBotonComidas.Text = "Comidas";
+            // 
+            // EtiquetaBotonSuper
+            // 
+            this.EtiquetaBotonSuper.AutoSize = true;
+            this.EtiquetaBotonSuper.Location = new System.Drawing.Point(113, 360);
+            this.EtiquetaBotonSuper.Name = "EtiquetaBotonSuper";
+            this.EtiquetaBotonSuper.Size = new System.Drawing.Size(35, 13);
+            this.EtiquetaBotonSuper.TabIndex = 8;
+            this.EtiquetaBotonSuper.Text = "Super";
+            // 
+            // PantallaPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::WindowsFormsApp.Properties.Resources.si__1_;
+            this.ClientSize = new System.Drawing.Size(749, 425);
+            this.Controls.Add(this.EtiquetaBotonSuper);
+            this.Controls.Add(this.EtiquetaBotonComidas);
+            this.Controls.Add(this.EtiquetaBotonRecetas);
+            this.Controls.Add(this.EtiquetaBotonIngredientes);
+            this.Controls.Add(this.Titulo);
+            this.Controls.Add(this.BotonComidas);
+            this.Controls.Add(this.BotonRecetas);
+            this.Controls.Add(this.BotonCompras);
+            this.Controls.Add(this.BotonIngredientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "PantallaPrincipal";
+            this.Text = "Super Cook";
+            ((System.ComponentModel.ISupportInitialize)(this.Titulo)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button BotonIngredientes;
+        private System.Windows.Forms.Button BotonCompras;
+        private System.Windows.Forms.Button BotonRecetas;
+        private System.Windows.Forms.Button BotonComidas;
+        private System.Windows.Forms.PictureBox Titulo;
+        private System.Windows.Forms.Label EtiquetaBotonIngredientes;
+        private System.Windows.Forms.Label EtiquetaBotonRecetas;
+        private System.Windows.Forms.Label EtiquetaBotonComidas;
+        private System.Windows.Forms.Label EtiquetaBotonSuper;
     }
 }
 
