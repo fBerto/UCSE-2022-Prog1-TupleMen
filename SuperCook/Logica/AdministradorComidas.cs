@@ -41,12 +41,12 @@ namespace Logica
             return HistorialComidas.Where(x => x.Receta.MomentoComida == momento).ToList();
         }
 
-        private List<Comida> FlitroFecha(DateTime FechaMenor, DateTime FechaMayor)
+        private List<Comida> FiltroFecha(DateTime FechaMenor, DateTime FechaMayor)
         {
             return HistorialComidas.Where(x => x.Fecha >= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
-        private List<Comida> FlitroPorRecetas(Receta receta)
+        private List<Comida> FiltroPorRecetas(Receta receta)
         {
             return HistorialComidas.Where(x => x.Receta.Codigo == receta.Codigo).ToList();
         }
