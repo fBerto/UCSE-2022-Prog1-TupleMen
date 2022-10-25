@@ -30,84 +30,126 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCargaRecetas));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.checkBoxRecetaSaludable = new System.Windows.Forms.CheckBox();
+            this.textBoxNombreRecetas = new System.Windows.Forms.TextBox();
+            this.buttonAceptarCargaRecetas = new System.Windows.Forms.Button();
+            this.radioButtonDesayuno = new System.Windows.Forms.RadioButton();
+            this.radioButtonAlmuerzo = new System.Windows.Forms.RadioButton();
+            this.radioButtonMerienda = new System.Windows.Forms.RadioButton();
+            this.radioButtonCena = new System.Windows.Forms.RadioButton();
+            this.groupBoxMomentoComida = new System.Windows.Forms.GroupBox();
+            this.groupBoxMomentoComida.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 19);
+            this.label1.Location = new System.Drawing.Point(23, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
             // 
-            // label2
+            // checkBoxRecetaSaludable
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Momento de la Comida";
+            this.checkBoxRecetaSaludable.AutoSize = true;
+            this.checkBoxRecetaSaludable.Location = new System.Drawing.Point(182, 25);
+            this.checkBoxRecetaSaludable.Name = "checkBoxRecetaSaludable";
+            this.checkBoxRecetaSaludable.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxRecetaSaludable.TabIndex = 2;
+            this.checkBoxRecetaSaludable.Text = "Saludable";
+            this.checkBoxRecetaSaludable.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // textBoxNombreRecetas
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(26, 119);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(73, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Saludable";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.textBoxNombreRecetas.Location = new System.Drawing.Point(26, 25);
+            this.textBoxNombreRecetas.Name = "textBoxNombreRecetas";
+            this.textBoxNombreRecetas.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNombreRecetas.TabIndex = 3;
             // 
-            // textBox1
+            // buttonAceptarCargaRecetas
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.buttonAceptarCargaRecetas.Location = new System.Drawing.Point(104, 176);
+            this.buttonAceptarCargaRecetas.Name = "buttonAceptarCargaRecetas";
+            this.buttonAceptarCargaRecetas.Size = new System.Drawing.Size(75, 23);
+            this.buttonAceptarCargaRecetas.TabIndex = 5;
+            this.buttonAceptarCargaRecetas.Text = "Aceptar";
+            this.buttonAceptarCargaRecetas.UseVisualStyleBackColor = true;
+            this.buttonAceptarCargaRecetas.Click += new System.EventHandler(this.buttonAceptarCargaRecetas_Click);
             // 
-            // comboBox1
+            // radioButtonDesayuno
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Desayuno",
-            "Almuerzo",
-            "Merienda",
-            "Cena"});
-            this.comboBox1.Location = new System.Drawing.Point(34, 80);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.radioButtonDesayuno.AutoSize = true;
+            this.radioButtonDesayuno.Checked = true;
+            this.radioButtonDesayuno.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonDesayuno.Name = "radioButtonDesayuno";
+            this.radioButtonDesayuno.Size = new System.Drawing.Size(73, 17);
+            this.radioButtonDesayuno.TabIndex = 6;
+            this.radioButtonDesayuno.TabStop = true;
+            this.radioButtonDesayuno.Text = "Desayuno";
+            this.radioButtonDesayuno.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // radioButtonAlmuerzo
             // 
-            this.button1.Location = new System.Drawing.Point(100, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.radioButtonAlmuerzo.AutoSize = true;
+            this.radioButtonAlmuerzo.Location = new System.Drawing.Point(6, 42);
+            this.radioButtonAlmuerzo.Name = "radioButtonAlmuerzo";
+            this.radioButtonAlmuerzo.Size = new System.Drawing.Size(68, 17);
+            this.radioButtonAlmuerzo.TabIndex = 7;
+            this.radioButtonAlmuerzo.Text = "Almuerzo";
+            this.radioButtonAlmuerzo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMerienda
+            // 
+            this.radioButtonMerienda.AutoSize = true;
+            this.radioButtonMerienda.Location = new System.Drawing.Point(6, 65);
+            this.radioButtonMerienda.Name = "radioButtonMerienda";
+            this.radioButtonMerienda.Size = new System.Drawing.Size(69, 17);
+            this.radioButtonMerienda.TabIndex = 8;
+            this.radioButtonMerienda.Text = "Merienda";
+            this.radioButtonMerienda.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCena
+            // 
+            this.radioButtonCena.AutoSize = true;
+            this.radioButtonCena.Location = new System.Drawing.Point(6, 89);
+            this.radioButtonCena.Name = "radioButtonCena";
+            this.radioButtonCena.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonCena.TabIndex = 9;
+            this.radioButtonCena.Text = "Cena";
+            this.radioButtonCena.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMomentoComida
+            // 
+            this.groupBoxMomentoComida.Controls.Add(this.radioButtonDesayuno);
+            this.groupBoxMomentoComida.Controls.Add(this.radioButtonCena);
+            this.groupBoxMomentoComida.Controls.Add(this.radioButtonAlmuerzo);
+            this.groupBoxMomentoComida.Controls.Add(this.radioButtonMerienda);
+            this.groupBoxMomentoComida.Location = new System.Drawing.Point(88, 58);
+            this.groupBoxMomentoComida.Name = "groupBoxMomentoComida";
+            this.groupBoxMomentoComida.Size = new System.Drawing.Size(105, 112);
+            this.groupBoxMomentoComida.TabIndex = 10;
+            this.groupBoxMomentoComida.TabStop = false;
+            this.groupBoxMomentoComida.Text = "Momento Comida";
             // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 211);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.groupBoxMomentoComida);
+            this.Controls.Add(this.buttonAceptarCargaRecetas);
+            this.Controls.Add(this.textBoxNombreRecetas);
+            this.Controls.Add(this.checkBoxRecetaSaludable);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCargaRecetas";
             this.Text = "Carga de Recetas";
+            this.groupBoxMomentoComida.ResumeLayout(false);
+            this.groupBoxMomentoComida.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,10 +158,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBoxRecetaSaludable;
+        private System.Windows.Forms.TextBox textBoxNombreRecetas;
+        private System.Windows.Forms.Button buttonAceptarCargaRecetas;
+        private System.Windows.Forms.RadioButton radioButtonDesayuno;
+        private System.Windows.Forms.RadioButton radioButtonAlmuerzo;
+        private System.Windows.Forms.RadioButton radioButtonMerienda;
+        private System.Windows.Forms.RadioButton radioButtonCena;
+        private System.Windows.Forms.GroupBox groupBoxMomentoComida;
     }
 }

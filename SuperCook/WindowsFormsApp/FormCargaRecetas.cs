@@ -16,5 +16,13 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
+        {
+            if (!checkBoxRecetaSaludable.Checked || string.IsNullOrEmpty(textBoxNombreRecetas.Text))
+            {
+                MessageBox.Show("Campos sin informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@
             this.textBoxCantidadIngrediente = new System.Windows.Forms.TextBox();
             this.textBoxPrecioPorUnidadIngrediente = new System.Windows.Forms.TextBox();
             this.textBoxUnidadMinimaIngrediente = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAceptarIngredientes = new System.Windows.Forms.ComboBox();
             this.BotonConfirmarCargaIngredientes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -115,10 +115,14 @@
             this.textBoxUnidadMinimaIngrediente.Size = new System.Drawing.Size(100, 20);
             this.textBoxUnidadMinimaIngrediente.TabIndex = 8;
             // 
-            // comboBox1
+            // comboBoxAceptarIngredientes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxAceptarIngredientes.AutoCompleteCustomSource.AddRange(new string[] {
+            "Carnes"});
+            this.comboBoxAceptarIngredientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxAceptarIngredientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxAceptarIngredientes.FormattingEnabled = true;
+            this.comboBoxAceptarIngredientes.Items.AddRange(new object[] {
             "Bebida",
             "Carne",
             "Fruta",
@@ -127,10 +131,10 @@
             "Panaderia",
             "Pescado",
             "Queso"});
-            this.comboBox1.Location = new System.Drawing.Point(89, 134);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 10;
+            this.comboBoxAceptarIngredientes.Location = new System.Drawing.Point(89, 134);
+            this.comboBoxAceptarIngredientes.Name = "comboBoxAceptarIngredientes";
+            this.comboBoxAceptarIngredientes.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAceptarIngredientes.TabIndex = 10;
             // 
             // BotonConfirmarCargaIngredientes
             // 
@@ -140,6 +144,7 @@
             this.BotonConfirmarCargaIngredientes.TabIndex = 11;
             this.BotonConfirmarCargaIngredientes.Text = "Aceptar";
             this.BotonConfirmarCargaIngredientes.UseVisualStyleBackColor = true;
+            this.BotonConfirmarCargaIngredientes.Click += new System.EventHandler(this.BotonConfirmarCargaIngredientes_Click);
             // 
             // FormCargaIngredientes
             // 
@@ -147,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 211);
             this.Controls.Add(this.BotonConfirmarCargaIngredientes);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxAceptarIngredientes);
             this.Controls.Add(this.textBoxUnidadMinimaIngrediente);
             this.Controls.Add(this.textBoxPrecioPorUnidadIngrediente);
             this.Controls.Add(this.textBoxCantidadIngrediente);
@@ -157,8 +162,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNombreIngrediente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCargaIngredientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Carga de Ingredientes";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,7 +185,7 @@
         private System.Windows.Forms.TextBox textBoxCantidadIngrediente;
         private System.Windows.Forms.TextBox textBoxPrecioPorUnidadIngrediente;
         private System.Windows.Forms.TextBox textBoxUnidadMinimaIngrediente;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAceptarIngredientes;
         private System.Windows.Forms.Button BotonConfirmarCargaIngredientes;
     }
 }
