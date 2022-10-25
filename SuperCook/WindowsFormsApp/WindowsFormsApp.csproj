@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCargaComidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargaComidas.Designer.cs">
+      <DependentUpon>FormCargaComidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCargaIngredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargaIngredientes.Designer.cs">
+      <DependentUpon>FormCargaIngredientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCargaRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargaRecetas.Designer.cs">
+      <DependentUpon>FormCargaRecetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +96,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCargaComidas.resx">
+      <DependentUpon>FormCargaComidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCargaIngredientes.resx">
+      <DependentUpon>FormCargaIngredientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCargaRecetas.resx">
+      <DependentUpon>FormCargaRecetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuComidas.resx">
+      <DependentUpon>MenuComidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuCompras.resx">
+      <DependentUpon>MenuCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuIngredientes.resx">
+      <DependentUpon>MenuIngredientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuRecetas.resx">
+      <DependentUpon>MenuRecetas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +130,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\Logica.AdministradorComidas.datasource" />
+    <None Include="Properties\DataSources\Logica.AdministradorCompras.datasource" />
+    <None Include="Properties\DataSources\Logica.AdministradorIngredientes.datasource" />
+    <None Include="Properties\DataSources\Logica.AdministradorRecetas.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,6 +167,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\unnamed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{631ad542-8949-4538-8b63-1e4c601fd7b5}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

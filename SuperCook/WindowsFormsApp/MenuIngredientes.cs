@@ -16,5 +16,11 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void cargarIngredientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
+            formCargaIngredientes.ShowDialog();
+        }
     }
 }

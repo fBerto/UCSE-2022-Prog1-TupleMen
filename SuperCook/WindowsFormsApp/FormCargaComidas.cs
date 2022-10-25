@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class MenuComidas : Form
+    public partial class FormCargaComidas : Form
     {
-        public MenuComidas()
+        public FormCargaComidas()
         {
             InitializeComponent();
-        }
-
-        private void cargarComidaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormCargaComidas formCargaComidas = new FormCargaComidas();
-            formCargaComidas.ShowDialog();
         }
     }
 }
