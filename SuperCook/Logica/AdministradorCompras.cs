@@ -18,12 +18,6 @@ namespace Logica
             this.IngredientesAComprar = adminIngredientes.GetIngredientesAComprar();
         }
 
-        //TODO: Falta actualizar la lista al hacer una comida y consumir un ingrediente
-        public void CargarIngredientesAComprar(Ingrediente nuevoIngrediente)
-        {
-            IngredientesAComprar.Add(nuevoIngrediente);
-        }
-
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
         {
             return IngredientesAComprar.Where(x => x.TipoIngrediente == tipoDeIngrediente).ToList();

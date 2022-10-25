@@ -31,9 +31,9 @@ namespace Logica
             }
         }
 
-        private List<Comida> FiltroSaludable(bool condicion) //dado por un chekbox de winfrom 
+        private List<Comida> FiltroSaludable(bool saludable)
         {
-            return HistorialComidas.Where(x => x.Receta.EsSaludable == condicion).ToList();
+            return HistorialComidas.Where(x => x.Receta.EsSaludable == saludable).ToList();
         }
 
         private List<Comida> FiltroMomentoComida(MomentosComida momento)

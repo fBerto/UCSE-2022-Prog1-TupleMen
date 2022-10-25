@@ -10,7 +10,8 @@ namespace Logica
 {
     public abstract class Archivos
     {
-        //recibe las recetas comunes, no las recetas archivo
+        //TODO: Faltaria una funcion que cree los archivos por defecto si no existen
+
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
         public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
@@ -137,10 +138,5 @@ namespace Logica
             Solidos.AddRange(Bebidas);
             return Solidos;
         }
-
-        /* TODO:
-         * Hago todo aca e instancio en los administradores los metodos que necesito
-         * Comida archivos tmb y tiene que tener un codigo de receta 
-         */
     }
 }

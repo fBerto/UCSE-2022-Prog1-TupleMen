@@ -45,21 +45,6 @@ namespace Logica
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
 
-        //TODO: eliminar
-        public bool RevisarExistenciaIngredientesDeReceta(Receta RecetaUtilizada)
-        {
-            bool FueEncontrado = true;
-            int i = 0;
-
-            while (!FueEncontrado && i < RecetaUtilizada.Ingredientes.Count())
-            {
-                Ingrediente ingredienteParticular = RecetaUtilizada.Ingredientes[i];
-                FueEncontrado = IngredientesEnDespensa.Exists(x => x.Codigo == ingredienteParticular.Codigo);
-                i++;
-            }
-            return FueEncontrado;
-        }
-
         public bool ConsultarStockIngredientesDeReceta(Receta recetaAPreparar)
         {
             foreach (Ingrediente ingredienteReceta in recetaAPreparar.Ingredientes)
