@@ -83,5 +83,10 @@ namespace Logica
         {
             return IngredientesEnDespensa.FindAll(x => x.NoHaySuficienteIngrediente() == true);
         }
+
+        public List<Ingrediente> GetIngredientesEnDespensa()
+        {
+            return IngredientesEnDespensa;
+        }
     }
 }

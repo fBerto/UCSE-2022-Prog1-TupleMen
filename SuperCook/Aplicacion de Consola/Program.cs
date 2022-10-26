@@ -12,7 +12,6 @@ namespace Aplicacion_de_Consola
         static void Main(string[] args)
         {
             AdministradorComidas administradorComidas = new AdministradorComidas();
-            AdministradorCompras administradorCompras = new AdministradorCompras();
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
@@ -24,7 +23,7 @@ namespace Aplicacion_de_Consola
             Bebida bebida3 = new Bebida(5, "Vodka", TiposIngredientes.Bebida, 6, 2000, 1, TiposBebidas.Alcoholica); // para compras 
             Solido solido3 = new Solido(6, "Yogurth", TiposIngredientes.Lacteo, 8, 350, 2);
 
-            List<int> listaIngredientesParaReceta = new List<int> { bebida1.Codigo, solido2.Codigo, bebida3.Codigo };
+            List<int> listaIngredientesParaReceta = new List<int> { bebida1.Codigo, solido2.Codigo, solido3.Codigo };
             List<int> listaIngredientesParaReceta2 = new List<int> { bebida3.Codigo, solido2.Codigo, bebida1.Codigo };
             List<int> listaIngredientesParaReceta3 = new List<int> { bebida2.Codigo, solido1.Codigo, bebida3.Codigo };
 
@@ -40,26 +39,24 @@ namespace Aplicacion_de_Consola
             Comida comida2 = new Comida(receta2, DateTime.Today);
             Comida comida3 = new Comida(receta3, DateTime.Today);
 
-            //List<Ingrediente> IngredientesAComprar = administradorCompras.GetIngredientesAComprar();
-            //List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
-            //List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas(); //Lo programamos para que si el ingrediente no esta en despensa no lo cargue 
-            //List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas(); //no carga los elemenots q no esten en despensa 
+            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
+            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas(); //Lo programamos para que si el ingrediente no esta en despensa no lo cargue 
+            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas(); //no carga los elemenots q no esten en despensa 
 
-            //administradorIngredientes.CargarIngrediente(bebida1);
-            //administradorIngredientes.CargarIngrediente(bebida2);
-            //administradorIngredientes.CargarIngrediente(solido1);
-            //administradorIngredientes.CargarIngrediente(solido2);
+            administradorIngredientes.CargarIngrediente(bebida1);
+            administradorIngredientes.CargarIngrediente(bebida2);
+            administradorIngredientes.CargarIngrediente(solido1);
+            administradorIngredientes.CargarIngrediente(solido2);
 
-            //administradorCompras.ActualizarIngredientesAComprar(bebida3);
-            //administradorCompras.ActualizarIngredientesAComprar(solido3);
+            administradorRecetas.CargarReceta(receta1);
+            administradorRecetas.CargarReceta(receta2);
+            administradorRecetas.CargarReceta(receta3);
 
-            //administradorRecetas.CargarReceta(receta1);
-            //administradorRecetas.CargarReceta(receta2);
-            //administradorRecetas.CargarReceta(receta3);
+            administradorComidas.RegistrarComida(comida1);
+            administradorComidas.RegistrarComida(comida2);
+            administradorComidas.RegistrarComida(comida3);
 
-            //administradorComidas.RegistrarComida(comida1);
-            //administradorComidas.RegistrarComida(comida2);
-            //administradorComidas.RegistrarComida(comida3);
+            AdministradorCompras administradorCompras = new AdministradorCompras();
 
             Console.ReadKey();
         }

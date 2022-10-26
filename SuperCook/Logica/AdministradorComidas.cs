@@ -55,5 +55,10 @@ namespace Logica
         {
             return JsonConvert.SerializeObject(listaASerializar);
         }
+
+        public List<Comida> GetHistorialComidas()
+        {
+            return HistorialComidas;
+        }
     }
 }

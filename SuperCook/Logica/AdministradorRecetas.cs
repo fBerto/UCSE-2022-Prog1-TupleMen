@@ -38,5 +38,10 @@ namespace Logica
         {
             return JsonConvert.SerializeObject(listaASerializar);
         }
+
+        public List<Receta> GetLibroRecetas()
+        {
+            return LibroRecetas;
+        }
     }
 }

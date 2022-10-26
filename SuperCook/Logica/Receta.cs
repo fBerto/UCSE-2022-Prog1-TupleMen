@@ -29,6 +29,11 @@ namespace Logica
             this.CodigosIngredientes = codigosIngredientes;
             this.Ingredientes = adminIngredientes.GetIngredientesRecetaPorCodigo(codigosIngredientes);
         }
+
+        public string GetNombre()
+        {
+            return Nombre;
+        }
     }
 }
 
