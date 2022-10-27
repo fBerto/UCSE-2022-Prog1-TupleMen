@@ -15,7 +15,13 @@ namespace Logica
         public int Cantidad { get; set; }
         public decimal PrecioPorUnidad { get; set; }
         public int UnidadMinima { get; set; }
-        public decimal CalcularCostoIngrediente()
+
+
+        //Redundante, pero si no no hay forma de mostrarlo en la grilla
+        public UnidadesDeMedida UnidadDeMedida { get { return GetUnidadMedida(); } }
+
+
+        public decimal CalcularCosto()
         {
             return PrecioPorUnidad * UnidadMinima;
         }

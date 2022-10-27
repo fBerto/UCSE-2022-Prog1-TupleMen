@@ -55,7 +55,7 @@ namespace Logica
             decimal totalCompra = 0;
             foreach (Ingrediente ingrediente in IngredientesAComprar)
             {
-                totalCompra += ingrediente.CalcularCostoIngrediente();
+                totalCompra += ingrediente.CalcularCosto();
             }
             return totalCompra;
         }

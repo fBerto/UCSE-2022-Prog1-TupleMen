@@ -38,7 +38,7 @@
             this.textBoxCantidadIngrediente = new System.Windows.Forms.TextBox();
             this.textBoxPrecioPorUnidadIngrediente = new System.Windows.Forms.TextBox();
             this.textBoxUnidadMinimaIngrediente = new System.Windows.Forms.TextBox();
-            this.comboBoxAceptarIngredientes = new System.Windows.Forms.ComboBox();
+            this.comboBoxTipoIngrediente = new System.Windows.Forms.ComboBox();
             this.BotonConfirmarCargaIngredientes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -115,26 +115,17 @@
             this.textBoxUnidadMinimaIngrediente.Size = new System.Drawing.Size(100, 20);
             this.textBoxUnidadMinimaIngrediente.TabIndex = 8;
             // 
-            // comboBoxAceptarIngredientes
+            // comboBoxTipoIngrediente
             // 
-            this.comboBoxAceptarIngredientes.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboBoxTipoIngrediente.AutoCompleteCustomSource.AddRange(new string[] {
             "Carnes"});
-            this.comboBoxAceptarIngredientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.comboBoxAceptarIngredientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxAceptarIngredientes.FormattingEnabled = true;
-            this.comboBoxAceptarIngredientes.Items.AddRange(new object[] {
-            "Bebida",
-            "Carne",
-            "Fruta",
-            "Hortaliza y Verdura",
-            "Lacteo",
-            "Panaderia",
-            "Pescado",
-            "Queso"});
-            this.comboBoxAceptarIngredientes.Location = new System.Drawing.Point(89, 134);
-            this.comboBoxAceptarIngredientes.Name = "comboBoxAceptarIngredientes";
-            this.comboBoxAceptarIngredientes.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxAceptarIngredientes.TabIndex = 10;
+            this.comboBoxTipoIngrediente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxTipoIngrediente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxTipoIngrediente.FormattingEnabled = true;
+            this.comboBoxTipoIngrediente.Location = new System.Drawing.Point(89, 134);
+            this.comboBoxTipoIngrediente.Name = "comboBoxTipoIngrediente";
+            this.comboBoxTipoIngrediente.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTipoIngrediente.TabIndex = 10;
             // 
             // BotonConfirmarCargaIngredientes
             // 
@@ -152,7 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 211);
             this.Controls.Add(this.BotonConfirmarCargaIngredientes);
-            this.Controls.Add(this.comboBoxAceptarIngredientes);
+            this.Controls.Add(this.comboBoxTipoIngrediente);
             this.Controls.Add(this.textBoxUnidadMinimaIngrediente);
             this.Controls.Add(this.textBoxPrecioPorUnidadIngrediente);
             this.Controls.Add(this.textBoxCantidadIngrediente);
@@ -185,7 +176,7 @@
         private System.Windows.Forms.TextBox textBoxCantidadIngrediente;
         private System.Windows.Forms.TextBox textBoxPrecioPorUnidadIngrediente;
         private System.Windows.Forms.TextBox textBoxUnidadMinimaIngrediente;
-        private System.Windows.Forms.ComboBox comboBoxAceptarIngredientes;
+        private System.Windows.Forms.ComboBox comboBoxTipoIngrediente;
         private System.Windows.Forms.Button BotonConfirmarCargaIngredientes;
     }
 }
