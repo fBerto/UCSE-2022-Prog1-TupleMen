@@ -23,17 +23,36 @@ namespace WindowsFormsApp
         {
             if(NoHayCamposNulos())
             {
+                //TODO: Corroborar ingresos del usuario
                 string nombre = textBoxNombreIngrediente.Text;
-                string tipoIngrediente = comboBoxTipoIngrediente.Text;
+                TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
+                if(Int32.TryParse(textBoxCantidadIngrediente.Text, out int cantidad) == false){
+                    //No puede ingresar una cantidad string
+                }
+                if (Decimal.TryParse(textBoxPrecioPorUnidadIngrediente.Text, out decimal precioPorUnidad) == false)
+                {
+                    //No puede ingresar una cantidad string
+                }
+                if (Int32.TryParse(textBoxUnidadMinimaIngrediente.Text, out int unidadMinima) == false)
+                {
+                    //No puede ingresar una cantidad string
+                }
 
-                //if (comboBoxTipoIngrediente.Text == "Bebida")
-                //{
-                //    Bebida nuevaBebida = new Bebida(textBoxNombreIngrediente.Text, )
-                //}
+                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+
+                if (tipoIngrediente is TiposIngredientes.Bebida)
+                {
+                    //Crear formulario o combobox que se dispare para ingresar el tipo de bebida.
+                    //Bebida nuevaBebida = new Bebida(nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
+                    //administradorIngredientes.CargarIngrediente(nuevaBebida);
+                } else
+                {
+                    Solido nuevoSolido = new Solido(nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
+                    administradorIngredientes.CargarIngrediente(nuevoSolido);
+                }
+
+                //TODO: Actualizar lista
             }
-            
-
-           
         }
 
         private bool NoHayCamposNulos()

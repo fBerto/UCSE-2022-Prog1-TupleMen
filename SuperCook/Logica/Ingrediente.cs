@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime;
 using System.Text;
@@ -79,14 +80,20 @@ namespace Logica
         {
             return this.Cantidad < this.UnidadMinima;
         }
+
+        protected int GenerarCodigoAleatorio()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1000);
+        }
     }
 
     public class Solido : Ingrediente
     {
-        public Solido(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+        public Solido(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima)
         {
-            this.Codigo = codigo;
+            this.Codigo = GenerarCodigoAleatorio();
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;
@@ -99,10 +106,10 @@ namespace Logica
     {
         public TiposBebidas TipoBebida { get; set; }
 
-        public Bebida(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+        public Bebida(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima, TiposBebidas tipoBebida)
         {
-            this.Codigo = codigo;
+            this.Codigo = GenerarCodigoAleatorio();
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;
