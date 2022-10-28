@@ -20,7 +20,7 @@ namespace Logica
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida)
         {
-            Logica.AdministradorIngredientes administradorIngredientes = new Logica.AdministradorIngredientes();
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
             if (administradorIngredientes.ConsultarStockIngredientesDeReceta(nuevaComida.Receta))
             {

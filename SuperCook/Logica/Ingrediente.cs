@@ -81,6 +81,7 @@ namespace Logica
             return this.Cantidad < this.UnidadMinima;
         }
 
+        //TODO: Cambiar de codigo aleatorio a autoincremental estatico, sino pueden coincidir
         protected int GenerarCodigoAleatorio()
         {
             Random rnd = new Random();

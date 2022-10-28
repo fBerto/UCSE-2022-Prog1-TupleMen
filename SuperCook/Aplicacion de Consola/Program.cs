@@ -39,10 +39,6 @@ namespace Aplicacion_de_Consola
             Comida comida2 = new Comida(receta2, DateTime.Today);
             Comida comida3 = new Comida(receta3, DateTime.Today);
 
-            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
-            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas(); //Lo programamos para que si el ingrediente no esta en despensa no lo cargue 
-            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas(); //no carga los elemenots q no esten en despensa 
-
             administradorIngredientes.CargarIngrediente(bebida1);
             administradorIngredientes.CargarIngrediente(bebida2);
             administradorIngredientes.CargarIngrediente(solido1);
@@ -55,6 +51,10 @@ namespace Aplicacion_de_Consola
             administradorComidas.RegistrarComida(comida1);
             administradorComidas.RegistrarComida(comida2);
             administradorComidas.RegistrarComida(comida3);
+
+            List<Ingrediente> IngredientesEnDespensa = administradorIngredientes.GetIngredientesEnDespensa();
+            List<Comida> HistorialComidas = administradorComidas.GetHistorialComidas(); //Lo programamos para que si el ingrediente no esta en despensa no lo cargue 
+            List<Receta> LibroRecetas = administradorRecetas.GetLibroRecetas(); //no carga los elemenots q no esten en despensa 
 
             AdministradorCompras administradorCompras = new AdministradorCompras();
 

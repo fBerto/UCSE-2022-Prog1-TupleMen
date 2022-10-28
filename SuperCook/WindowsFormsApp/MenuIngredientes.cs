@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class MenuIngredientes : Form
+    public partial class MenuIngredientes : Form, IActualizarGrillaIngredientes
     {
         public MenuIngredientes()
         {
@@ -24,18 +24,29 @@ namespace WindowsFormsApp
             ActualizarGrillaIngredientes();
         }
 
-        private void cargarIngredientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
-            formCargaIngredientes.ShowDialog();
-        }
-
         private void ActualizarGrillaIngredientes()
         {
             AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
 
             grillaIngredientes.DataSource = null;
             grillaIngredientes.DataSource = adminIngredientes.GetIngredientesEnDespensa();
+        }
+
+        public void CargarGrillaIngredientes()
+        {
+            ActualizarGrillaIngredientes();
+        }
+
+        private void cargarIngredientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
+            formCargaIngredientes.ShowDialog();
+        }
+
+        private void btnNuevoIngrediente_Click(object sender, EventArgs e)
+        {
+            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
+            formCargaIngredientes.ShowDialog();
         }
     }
 }

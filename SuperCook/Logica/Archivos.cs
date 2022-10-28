@@ -11,6 +11,8 @@ namespace Logica
     public abstract class Archivos
     {
         //TODO: Faltaria una funcion que cree los archivos por defecto si no existen
+        //TODO: Guardar los archivos en un path que no ignore al subir a GitHub,
+        //o ver para que no ignore esos archivos.
 
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";

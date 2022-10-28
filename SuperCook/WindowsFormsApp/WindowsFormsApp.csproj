@@ -64,6 +64,7 @@
     <Compile Include="FormCargaRecetas.Designer.cs">
       <DependentUpon>FormCargaRecetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="IActualizarGrillaIngredientes.cs" />
     <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +174,9 @@
       <Project>{631ad542-8949-4538-8b63-1e4c601fd7b5}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura-removebg-preview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
