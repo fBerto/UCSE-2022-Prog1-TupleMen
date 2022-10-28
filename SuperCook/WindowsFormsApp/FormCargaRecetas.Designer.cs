@@ -33,12 +33,8 @@
             this.checkBoxRecetaSaludable = new System.Windows.Forms.CheckBox();
             this.textBoxNombreRecetas = new System.Windows.Forms.TextBox();
             this.buttonAceptarCargaRecetas = new System.Windows.Forms.Button();
-            this.radioButtonDesayuno = new System.Windows.Forms.RadioButton();
-            this.radioButtonAlmuerzo = new System.Windows.Forms.RadioButton();
-            this.radioButtonMerienda = new System.Windows.Forms.RadioButton();
-            this.radioButtonCena = new System.Windows.Forms.RadioButton();
-            this.groupBoxMomentoComida = new System.Windows.Forms.GroupBox();
-            this.groupBoxMomentoComida.SuspendLayout();
+            this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -77,67 +73,32 @@
             this.buttonAceptarCargaRecetas.UseVisualStyleBackColor = true;
             this.buttonAceptarCargaRecetas.Click += new System.EventHandler(this.buttonAceptarCargaRecetas_Click);
             // 
-            // radioButtonDesayuno
+            // comboBoxMomentosComida
             // 
-            this.radioButtonDesayuno.AutoSize = true;
-            this.radioButtonDesayuno.Checked = true;
-            this.radioButtonDesayuno.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonDesayuno.Name = "radioButtonDesayuno";
-            this.radioButtonDesayuno.Size = new System.Drawing.Size(73, 17);
-            this.radioButtonDesayuno.TabIndex = 6;
-            this.radioButtonDesayuno.TabStop = true;
-            this.radioButtonDesayuno.Text = "Desayuno";
-            this.radioButtonDesayuno.UseVisualStyleBackColor = true;
+            this.comboBoxMomentosComida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxMomentosComida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxMomentosComida.FormattingEnabled = true;
+            this.comboBoxMomentosComida.Location = new System.Drawing.Point(83, 96);
+            this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
+            this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMomentosComida.TabIndex = 6;
             // 
-            // radioButtonAlmuerzo
+            // label2
             // 
-            this.radioButtonAlmuerzo.AutoSize = true;
-            this.radioButtonAlmuerzo.Location = new System.Drawing.Point(6, 42);
-            this.radioButtonAlmuerzo.Name = "radioButtonAlmuerzo";
-            this.radioButtonAlmuerzo.Size = new System.Drawing.Size(68, 17);
-            this.radioButtonAlmuerzo.TabIndex = 7;
-            this.radioButtonAlmuerzo.Text = "Almuerzo";
-            this.radioButtonAlmuerzo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonMerienda
-            // 
-            this.radioButtonMerienda.AutoSize = true;
-            this.radioButtonMerienda.Location = new System.Drawing.Point(6, 65);
-            this.radioButtonMerienda.Name = "radioButtonMerienda";
-            this.radioButtonMerienda.Size = new System.Drawing.Size(69, 17);
-            this.radioButtonMerienda.TabIndex = 8;
-            this.radioButtonMerienda.Text = "Merienda";
-            this.radioButtonMerienda.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCena
-            // 
-            this.radioButtonCena.AutoSize = true;
-            this.radioButtonCena.Location = new System.Drawing.Point(6, 89);
-            this.radioButtonCena.Name = "radioButtonCena";
-            this.radioButtonCena.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonCena.TabIndex = 9;
-            this.radioButtonCena.Text = "Cena";
-            this.radioButtonCena.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxMomentoComida
-            // 
-            this.groupBoxMomentoComida.Controls.Add(this.radioButtonDesayuno);
-            this.groupBoxMomentoComida.Controls.Add(this.radioButtonCena);
-            this.groupBoxMomentoComida.Controls.Add(this.radioButtonAlmuerzo);
-            this.groupBoxMomentoComida.Controls.Add(this.radioButtonMerienda);
-            this.groupBoxMomentoComida.Location = new System.Drawing.Point(88, 58);
-            this.groupBoxMomentoComida.Name = "groupBoxMomentoComida";
-            this.groupBoxMomentoComida.Size = new System.Drawing.Size(105, 112);
-            this.groupBoxMomentoComida.TabIndex = 10;
-            this.groupBoxMomentoComida.TabStop = false;
-            this.groupBoxMomentoComida.Text = "Momento Comida";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(90, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Momento de la comida";
             // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 211);
-            this.Controls.Add(this.groupBoxMomentoComida);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxMomentosComida);
             this.Controls.Add(this.buttonAceptarCargaRecetas);
             this.Controls.Add(this.textBoxNombreRecetas);
             this.Controls.Add(this.checkBoxRecetaSaludable);
@@ -148,8 +109,6 @@
             this.MinimizeBox = false;
             this.Name = "FormCargaRecetas";
             this.Text = "Carga de Recetas";
-            this.groupBoxMomentoComida.ResumeLayout(false);
-            this.groupBoxMomentoComida.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,10 +120,7 @@
         private System.Windows.Forms.CheckBox checkBoxRecetaSaludable;
         private System.Windows.Forms.TextBox textBoxNombreRecetas;
         private System.Windows.Forms.Button buttonAceptarCargaRecetas;
-        private System.Windows.Forms.RadioButton radioButtonDesayuno;
-        private System.Windows.Forms.RadioButton radioButtonAlmuerzo;
-        private System.Windows.Forms.RadioButton radioButtonMerienda;
-        private System.Windows.Forms.RadioButton radioButtonCena;
-        private System.Windows.Forms.GroupBox groupBoxMomentoComida;
+        private System.Windows.Forms.ComboBox comboBoxMomentosComida;
+        private System.Windows.Forms.Label label2;
     }
 }
