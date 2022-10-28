@@ -33,10 +33,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarRecetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grillaRecetas = new System.Windows.Forms.DataGridView();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNuevaReceta = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaRecetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,38 +62,48 @@
             // cargarRecetaToolStripMenuItem
             // 
             this.cargarRecetaToolStripMenuItem.Name = "cargarRecetaToolStripMenuItem";
-            this.cargarRecetaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarRecetaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.cargarRecetaToolStripMenuItem.Text = "Cargar Receta";
             this.cargarRecetaToolStripMenuItem.Click += new System.EventHandler(this.cargarRecetaToolStripMenuItem_Click);
             // 
-            // dataGridView1
+            // grillaRecetas
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.administradorRecetasBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(88, 57);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 1;
+            this.grillaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaRecetas.Location = new System.Drawing.Point(27, 76);
+            this.grillaRecetas.Name = "grillaRecetas";
+            this.grillaRecetas.Size = new System.Drawing.Size(579, 157);
+            this.grillaRecetas.TabIndex = 1;
             // 
             // administradorRecetasBindingSource
             // 
             this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
+            // 
+            // btnNuevaReceta
+            // 
+            this.btnNuevaReceta.Location = new System.Drawing.Point(236, 47);
+            this.btnNuevaReceta.Name = "btnNuevaReceta";
+            this.btnNuevaReceta.Size = new System.Drawing.Size(149, 23);
+            this.btnNuevaReceta.TabIndex = 2;
+            this.btnNuevaReceta.Text = "Nueva Receta";
+            this.btnNuevaReceta.UseVisualStyleBackColor = true;
+            this.btnNuevaReceta.Click += new System.EventHandler(this.btnNuevaReceta_Click);
             // 
             // MenuRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 261);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnNuevaReceta);
+            this.Controls.Add(this.grillaRecetas);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MenuRecetas";
             this.Text = "Menu Recetas";
+            this.Load += new System.EventHandler(this.MenuRecetas_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaRecetas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -104,7 +115,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem accionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarRecetaToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grillaRecetas;
         private System.Windows.Forms.BindingSource administradorRecetasBindingSource;
+        private System.Windows.Forms.Button btnNuevaReceta;
     }
 }

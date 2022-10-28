@@ -47,7 +47,7 @@ namespace WindowsFormsApp
                         administradorIngredientes.CargarIngrediente(nuevoSolido);
                     }
 
-                    IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                    IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes; 
                     if (padre != null)
                     {
                         padre.CargarGrillaIngredientes();
@@ -60,6 +60,7 @@ namespace WindowsFormsApp
                 }
             }
         }
+
 
         //TODO: Funcion a limpiar
         private bool IngresoCorrectoDeNumeros()
