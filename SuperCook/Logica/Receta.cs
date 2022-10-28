@@ -16,18 +16,33 @@ namespace Logica
         [JsonIgnore]
         public List<Ingrediente> Ingredientes { get; set; }
         public List<int> CodigosIngredientes { get; set; }
+        public List<int> CantidadesIngredientes { get; set; }
 
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
-            List<int> codigosIngredientes)
+            List<int> codigosIngredientes, List<int> cantidadesIngredientes)
         {
-            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
-
             this.Codigo = codigo;
             this.MomentoComida = momentoComida;
             this.Nombre = nombre;
             this.EsSaludable = esSaludable;
             this.CodigosIngredientes = codigosIngredientes;
-            this.Ingredientes = adminIngredientes.GetIngredientesRecetaPorCodigo(codigosIngredientes);
+            this.CantidadesIngredientes = cantidadesIngredientes;
+            this.Ingredientes = GetIngredientesConCantidad();
+        }
+
+        private List<Ingrediente> GetIngredientesConCantidad()
+        {
+            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
+
+            List<Ingrediente> IngredientesReceta = adminIngredientes.GetIngredientesRecetaPorCodigo(this.CodigosIngredientes);
+
+            int indice = 0;
+            foreach (Ingrediente ingrediente in IngredientesReceta)
+            {
+                ingrediente.Cantidad = this.CantidadesIngredientes[indice];
+                indice++;
+            }
+            return IngredientesReceta;
         }
 
         public string GetNombre()
