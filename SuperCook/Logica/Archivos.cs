@@ -180,7 +180,7 @@ namespace Logica
                 return true;
             } else
             {
-                File.Create(path);
+                File.WriteAllText(path, "[]");
                 return false;
             }
         }

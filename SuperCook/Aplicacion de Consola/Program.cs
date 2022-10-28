@@ -35,9 +35,9 @@ namespace Aplicacion_de_Consola
             Receta receta2 = new Receta(1234, MomentosComida.Desayuno, "PANKEKES PROTEICOS", true, listaIngredientesParaReceta2);
             Receta receta3 = new Receta(12345, MomentosComida.Cena, "Pollo con pan", true, listaIngredientesParaReceta3);
 
-            Comida comida1 = new Comida(receta1, DateTime.Today);
-            Comida comida2 = new Comida(receta2, DateTime.Today);
-            Comida comida3 = new Comida(receta3, DateTime.Today);
+            Comida comida1 = new Comida(receta1.Codigo, DateTime.Today);
+            Comida comida2 = new Comida(receta2.Codigo, DateTime.Today);
+            Comida comida3 = new Comida(receta3.Codigo, DateTime.Today);
 
             administradorIngredientes.CargarIngrediente(bebida1);
             administradorIngredientes.CargarIngrediente(bebida2);

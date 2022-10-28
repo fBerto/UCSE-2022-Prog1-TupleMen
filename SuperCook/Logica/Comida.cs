@@ -8,6 +8,7 @@ namespace Logica {
     public class Comida {
         public Receta Receta { get; set; }
         public DateTime Fecha { get; set; }
+        public string NombreReceta { get; set; }
 
         public Comida(Receta receta, DateTime fecha) {
             this.Receta = receta;
