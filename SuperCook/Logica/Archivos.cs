@@ -70,12 +70,18 @@ namespace Logica
         public List<Receta> LeerLibroRecetas()
         {
             string pathRecetas = GetPathDominio() + nombreArchivoLibroRecetas;
-            using (StreamReader reader = new StreamReader(pathRecetas))
+
+            List<Receta> LibroRecetasDesdeArchivo = new List<Receta>();
+
+            if (ArchivoYaExisteOCrearlo(pathRecetas))
             {
-                string json = reader.ReadToEnd(); //por cada receta leida llamamos al amdmin ingredientes y buscamos los ingredientes , les pasamos ingredientes (o codigo???), leer lista receta archivo 
-                List<Receta> LibroRecetasDesdeArchivo = JsonConvert.DeserializeObject<List<Receta>>(json);
-                return LibroRecetasDesdeArchivo;
+                using (StreamReader reader = new StreamReader(pathRecetas))
+                {
+                    string json = reader.ReadToEnd();
+                    LibroRecetasDesdeArchivo = JsonConvert.DeserializeObject<List<Receta>>(json);
+                }
             }
+            return LibroRecetasDesdeArchivo;
         }
 
         public List<Comida> LeerHistorialComidas()

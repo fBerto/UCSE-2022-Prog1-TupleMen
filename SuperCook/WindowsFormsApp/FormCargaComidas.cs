@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,20 @@ namespace WindowsFormsApp
         public FormCargaComidas()
         {
             InitializeComponent();
+        }
+
+        private void ActualizarGrillaSeleccionRecetas()
+        {
+            AdministradorRecetas adminRecetas = new AdministradorRecetas();
+
+            grillaSeleccionRecetas.DataSource = null;
+            grillaSeleccionRecetas.DataSource = adminRecetas.GetLibroRecetas();
+        }
+
+        private void FormCargaComidas_Load(object sender, EventArgs e)
+        {
+            grillaSeleccionRecetas.AutoGenerateColumns = false;
+            ActualizarGrillaSeleccionRecetas();
         }
     }
 }

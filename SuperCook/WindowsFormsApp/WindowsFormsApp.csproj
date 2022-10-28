@@ -64,6 +64,7 @@
     <Compile Include="FormCargaRecetas.Designer.cs">
       <DependentUpon>FormCargaRecetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="IActualizarGrillaComidas.cs" />
     <Compile Include="IActualizarGrillaIngredientes.cs" />
     <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>

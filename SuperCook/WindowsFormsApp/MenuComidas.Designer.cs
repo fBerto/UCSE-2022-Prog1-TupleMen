@@ -39,10 +39,10 @@
             this.porRecetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grillaComidas = new System.Windows.Forms.DataGridView();
-            this.nombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNuevaComida = new System.Windows.Forms.Button();
             this.lblFiltros = new System.Windows.Forms.Label();
+            this.nombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaComidas)).BeginInit();
             this.SuspendLayout();
@@ -128,24 +128,6 @@
             this.grillaComidas.Size = new System.Drawing.Size(479, 326);
             this.grillaComidas.TabIndex = 1;
             // 
-            // nombreReceta
-            // 
-            this.nombreReceta.DataPropertyName = "Receta.GetNombre()";
-            this.nombreReceta.HeaderText = "Receta";
-            this.nombreReceta.MinimumWidth = 6;
-            this.nombreReceta.Name = "nombreReceta";
-            this.nombreReceta.ReadOnly = true;
-            this.nombreReceta.Width = 125;
-            // 
-            // fechaComida
-            // 
-            this.fechaComida.DataPropertyName = "Fecha";
-            this.fechaComida.HeaderText = "Fecha";
-            this.fechaComida.MinimumWidth = 6;
-            this.fechaComida.Name = "fechaComida";
-            this.fechaComida.ReadOnly = true;
-            this.fechaComida.Width = 125;
-            // 
             // btnNuevaComida
             // 
             this.btnNuevaComida.Location = new System.Drawing.Point(12, 53);
@@ -164,6 +146,24 @@
             this.lblFiltros.Size = new System.Drawing.Size(34, 13);
             this.lblFiltros.TabIndex = 3;
             this.lblFiltros.Text = "Filtros";
+            // 
+            // nombreReceta
+            // 
+            this.nombreReceta.DataPropertyName = "NombreReceta";
+            this.nombreReceta.HeaderText = "Receta";
+            this.nombreReceta.MinimumWidth = 6;
+            this.nombreReceta.Name = "nombreReceta";
+            this.nombreReceta.ReadOnly = true;
+            this.nombreReceta.Width = 125;
+            // 
+            // fechaComida
+            // 
+            this.fechaComida.DataPropertyName = "Fecha";
+            this.fechaComida.HeaderText = "Fecha";
+            this.fechaComida.MinimumWidth = 6;
+            this.fechaComida.Name = "fechaComida";
+            this.fechaComida.ReadOnly = true;
+            this.fechaComida.Width = 125;
             // 
             // MenuComidas
             // 
