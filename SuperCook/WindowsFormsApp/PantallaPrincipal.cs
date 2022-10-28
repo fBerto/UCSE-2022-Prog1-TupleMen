@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class PantallaPrincipal : Form
+    public partial class PantallaPrincipal : Form 
     {
         public PantallaPrincipal()
         {
@@ -40,5 +40,6 @@ namespace WindowsFormsApp
             MenuCompras menuCompras = new MenuCompras();
             menuCompras.ShowDialog(this);
         }
+
     }
 }

@@ -40,13 +40,13 @@ namespace WindowsFormsApp
         private void cargarIngredientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
-            formCargaIngredientes.ShowDialog();
+            formCargaIngredientes.ShowDialog(this);
         }
 
         private void btnNuevoIngrediente_Click(object sender, EventArgs e)
         {
             FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes();
-            formCargaIngredientes.ShowDialog();
+            formCargaIngredientes.ShowDialog(this);
         }
     }
 }
