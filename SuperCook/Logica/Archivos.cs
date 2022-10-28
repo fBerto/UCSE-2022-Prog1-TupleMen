@@ -15,8 +15,6 @@ namespace Logica
         //O guardamos una carpeta JSON fuera de la solucion para que el usuario
         //pueda elegir si usarla como su base de datos o comenzar de cero???
 
-        //TODO: Faltaria una funcion que cree los archivos por defecto si no existen
-
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
         public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
@@ -36,7 +34,7 @@ namespace Logica
 
         private string GetPathDominio()
         {
-            return AppDomain.CurrentDomain.BaseDirectory + "\\JSON\\";
+            return AppDomain.CurrentDomain.BaseDirectory;
         }
 
         protected List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
@@ -95,18 +93,6 @@ namespace Logica
                 }
             }
             return HistorialComidasDesdeArchivo;
-        }
-
-        private bool ArchivoYaExisteOCrearlo(string path)
-        {
-            if (File.Exists(path))
-            {
-                return true;
-            } else
-            {
-                File.Create(path);
-                return false;
-            }
         }
 
         private List<Ingrediente> LeerBebidasDespensa()
@@ -185,6 +171,18 @@ namespace Logica
         {
             Solidos.AddRange(Bebidas);
             return Solidos;
+        }
+
+        private bool ArchivoYaExisteOCrearlo(string path)
+        {
+            if (File.Exists(path))
+            {
+                return true;
+            } else
+            {
+                File.Create(path);
+                return false;
+            }
         }
     }
 }
