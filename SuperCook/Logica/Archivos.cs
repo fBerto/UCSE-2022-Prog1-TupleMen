@@ -10,9 +10,12 @@ namespace Logica
 {
     public abstract class Archivos
     {
+        //CONSULTA PARA MAXI:
+        //Guardamos la carpeta JSON con las listas modificando el gitignore?
+        //O guardamos una carpeta JSON fuera de la solucion para que el usuario
+        //pueda elegir si usarla como su base de datos o comenzar de cero???
+
         //TODO: Faltaria una funcion que cree los archivos por defecto si no existen
-        //TODO: Guardar los archivos en un path que no ignore al subir a GitHub,
-        //o ver para que no ignore esos archivos.
 
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
@@ -80,59 +83,102 @@ namespace Logica
         public List<Comida> LeerHistorialComidas()
         {
             string pathComidas = GetPathDominio() + nombreArchivoHistorialComidas;
-            using (StreamReader reader = new StreamReader(pathComidas))
+
+            List<Comida> HistorialComidasDesdeArchivo = new List<Comida>();
+
+            if (ArchivoYaExisteOCrearlo(pathComidas))
             {
-                string json = reader.ReadToEnd();
-                List<Comida> HistorialComidasDesdeArchivo = JsonConvert.DeserializeObject<List<Comida>>(json);
-                return HistorialComidasDesdeArchivo;
+                using (StreamReader reader = new StreamReader(pathComidas))
+                {
+                    string json = reader.ReadToEnd();
+                    HistorialComidasDesdeArchivo = JsonConvert.DeserializeObject<List<Comida>>(json);
+                }
+            }
+            return HistorialComidasDesdeArchivo;
+        }
+
+        private bool ArchivoYaExisteOCrearlo(string path)
+        {
+            if (File.Exists(path))
+            {
+                return true;
+            } else
+            {
+                File.Create(path);
+                return false;
             }
         }
 
         private List<Ingrediente> LeerBebidasDespensa()
         {
             string pathBebidas = GetPathDominio() + nombreArchivoBebidasDespensa;
-            using (StreamReader reader = new StreamReader(pathBebidas))
+
+            List<Ingrediente> HistorialBebidasComoIngredientes = new List<Ingrediente>();
+
+            if (ArchivoYaExisteOCrearlo(pathBebidas))
             {
-                string json = reader.ReadToEnd();
-                List<Bebida> HistorialBebidasDesdeArchivo = JsonConvert.DeserializeObject<List<Bebida>>(json);
-                List<Ingrediente> HistorialBebidasComoIngredientes = HistorialBebidasDesdeArchivo.Select(x => x as Ingrediente).ToList();
-                return HistorialBebidasComoIngredientes;
+                using (StreamReader reader = new StreamReader(pathBebidas))
+                {
+                    string json = reader.ReadToEnd();
+                    List<Bebida> HistorialBebidasDesdeArchivo = JsonConvert.DeserializeObject<List<Bebida>>(json);
+                    HistorialBebidasComoIngredientes = HistorialBebidasDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                }
             }
+            return HistorialBebidasComoIngredientes;
         }
 
         private List<Ingrediente> LeerSolidosDespensa()
         {
-            string pathIngredientesSolidos = GetPathDominio() + nombreArchivoSolidosDespensa;
-            using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
+            string pathSolidos = GetPathDominio() + nombreArchivoSolidosDespensa;
+
+            List<Ingrediente> HistorialSolidosComoIngredientes = new List<Ingrediente>();
+
+            if (ArchivoYaExisteOCrearlo(pathSolidos))
             {
-                string json = reader.ReadToEnd();
-                List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
-                List<Ingrediente> HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
-                return HistorialSolidosComoIngredientes;
+                using (StreamReader reader = new StreamReader(pathSolidos))
+                {
+                    string json = reader.ReadToEnd();
+                    List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
+                    HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                }
             }
+            return HistorialSolidosComoIngredientes;
         }
 
         private List<Ingrediente> LeerBebidasAComprar()
         {
             string pathBebidas = GetPathDominio() + nombreArchivoBebidasAComprar;
-            using (StreamReader reader = new StreamReader(pathBebidas))
+
+            List<Ingrediente> HistorialBebidasComoIngredientes = new List<Ingrediente>();
+
+            if (ArchivoYaExisteOCrearlo(pathBebidas))
             {
-                string json = reader.ReadToEnd();
-                List<Bebida> HistorialBebidasDesdeArchivo = JsonConvert.DeserializeObject<List<Bebida>>(json);
-                List<Ingrediente> HistorialBebidasComoIngredientes = HistorialBebidasDesdeArchivo.Select(x => x as Ingrediente).ToList();
-                return HistorialBebidasComoIngredientes;
+                using (StreamReader reader = new StreamReader(pathBebidas))
+                {
+                    string json = reader.ReadToEnd();
+                    List<Bebida> HistorialBebidasDesdeArchivo = JsonConvert.DeserializeObject<List<Bebida>>(json);
+                    HistorialBebidasComoIngredientes = HistorialBebidasDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                }
             }
+            return HistorialBebidasComoIngredientes;
         }
+
         private List<Ingrediente> LeerSolidosAComprar()
         {
-            string pathIngredientesSolidos = GetPathDominio() + nombreArchivoSolidosAComprar;
-            using (StreamReader reader = new StreamReader(pathIngredientesSolidos))
+            string pathSolidos = GetPathDominio() + nombreArchivoSolidosAComprar;
+
+            List<Ingrediente> HistorialSolidosComoIngredientes = new List<Ingrediente>();
+
+            if (ArchivoYaExisteOCrearlo(pathSolidos))
             {
-                string json = reader.ReadToEnd();
-                List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
-                List<Ingrediente> HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
-                return HistorialSolidosComoIngredientes;
+                using (StreamReader reader = new StreamReader(pathSolidos))
+                {
+                    string json = reader.ReadToEnd();
+                    List<Solido> HistorialSolidosDesdeArchivo = JsonConvert.DeserializeObject<List<Solido>>(json);
+                    HistorialSolidosComoIngredientes = HistorialSolidosDesdeArchivo.Select(x => x as Ingrediente).ToList();
+                }
             }
+            return HistorialSolidosComoIngredientes;
         }
 
         private List<Ingrediente> UnificarBebidasYSolidos(List<Ingrediente> Bebidas, List<Ingrediente> Solidos)

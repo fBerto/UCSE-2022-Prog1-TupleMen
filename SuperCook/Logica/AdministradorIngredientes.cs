@@ -88,10 +88,5 @@ namespace Logica
         {
             return IngredientesEnDespensa;
         }
-
-        public int GetCodigoNuevo()
-        {
-            return IngredientesEnDespensa.Count + 1;
-        }
     }
 }
