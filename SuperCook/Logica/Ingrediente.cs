@@ -10,6 +10,7 @@ namespace Logica
     //Ingrediente incompleto para la receta
     public abstract class Ingrediente
     {
+        private static int CodigoAnterior { get; set; }
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public TiposIngredientes TipoIngrediente { get; set; }
@@ -81,11 +82,10 @@ namespace Logica
             return this.Cantidad < this.UnidadMinima;
         }
 
-        //TODO: Cambiar de codigo aleatorio a autoincremental estatico, sino pueden coincidir
-        protected int GenerarCodigoAleatorio()
+        protected int GetNuevoCodigo()
         {
-            Random rnd = new Random();
-            return rnd.Next(1000);
+            CodigoAnterior += 1;
+            return CodigoAnterior;
         }
     }
 
@@ -94,7 +94,7 @@ namespace Logica
         public Solido(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima)
         {
-            this.Codigo = GenerarCodigoAleatorio();
+            this.Codigo = GetNuevoCodigo();
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;
@@ -110,7 +110,7 @@ namespace Logica
         public Bebida(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima, TiposBebidas tipoBebida)
         {
-            this.Codigo = GenerarCodigoAleatorio();
+            this.Codigo = GetNuevoCodigo();
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;

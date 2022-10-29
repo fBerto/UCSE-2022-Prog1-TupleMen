@@ -22,12 +22,17 @@ namespace Logica
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
-            if (administradorIngredientes.ConsultarStockIngredientesDeReceta(nuevaComida.Receta))
+            List<Bebida> BebidasComida = nuevaComida.Receta.GetBebidasReceta();
+            List<Solido> SolidosComida = nuevaComida.Receta.GetSolidosReceta();
+
+            List<Ingrediente> IngredientesComida = UnificarBebidasYSolidos(BebidasComida, SolidosComida);
+
+            if (administradorIngredientes.ConsultarStockIngredientesDeReceta(IngredientesComida))
             {
                 HistorialComidas.Add(nuevaComida);
                 GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
 
-                administradorIngredientes.ActualizarStockIngredientes(nuevaComida.Receta);
+                administradorIngredientes.ActualizarStockIngredientes(IngredientesComida);
             }
         }
 

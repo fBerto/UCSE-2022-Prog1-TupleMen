@@ -9,45 +9,44 @@ namespace Logica
 {
     public class Receta
     {
+        private static int CodigoAnterior { get; set; }
         public int Codigo { get; set; }
         public MomentosComida MomentoComida { get; set; }
         public string Nombre { get; set; }
         public bool EsSaludable { get; set; }
-        [JsonIgnore]
-        public List<Ingrediente> Ingredientes { get; set; }
-        public List<int> CodigosIngredientes { get; set; }
-        public List<int> CantidadesIngredientes { get; set; }
+        public List<Bebida> Bebidas { get; set; }
+        public List<Solido> Solidos { get; set; }
 
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
-            List<int> codigosIngredientes, List<int> cantidadesIngredientes)
+            List<Bebida> bebidas, List<Solido> solidos)
         {
-            this.Codigo = codigo;
+            this.Codigo = GetNuevoCodigo();
             this.MomentoComida = momentoComida;
             this.Nombre = nombre;
             this.EsSaludable = esSaludable;
-            this.CodigosIngredientes = codigosIngredientes;
-            this.CantidadesIngredientes = cantidadesIngredientes;
-            this.Ingredientes = GetIngredientesConCantidad();
+            this.Bebidas = bebidas;
+            this.Solidos = solidos;
         }
 
-        private List<Ingrediente> GetIngredientesConCantidad()
+        private int GetNuevoCodigo()
         {
-            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
-
-            List<Ingrediente> IngredientesReceta = adminIngredientes.GetIngredientesRecetaPorCodigo(this.CodigosIngredientes);
-
-            int indice = 0;
-            foreach (Ingrediente ingrediente in IngredientesReceta)
-            {
-                ingrediente.Cantidad = this.CantidadesIngredientes[indice];
-                indice++;
-            }
-            return IngredientesReceta;
+            CodigoAnterior += 1;
+            return CodigoAnterior;
         }
 
         public string GetNombre()
         {
             return Nombre;
+        }
+
+        public List<Bebida> GetBebidasReceta()
+        {
+            return this.Bebidas;
+        }
+
+        public List<Solido> GetSolidosReceta()
+        {
+            return this.Solidos;
         }
     }
 }
