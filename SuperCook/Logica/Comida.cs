@@ -16,16 +16,16 @@ namespace Logica
         [JsonIgnore]
         public string NombreReceta { get { return this.Receta.GetNombre(); } }
 
-        public Comida(Receta receta, DateTime fecha)
+        public Comida(int codigo, Receta receta, DateTime fecha)
         {
-            this.Codigo = GetNuevoCodigo();
+            this.Codigo = codigo;
             this.Receta = receta;
             this.Fecha = fecha;
         }
 
         private int GetNuevoCodigo()
         {
-            CodigoAnterior += 1;
+            CodigoAnterior = CodigoAnterior + 1;
             return CodigoAnterior;
         }
     }

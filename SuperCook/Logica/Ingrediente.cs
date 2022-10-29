@@ -84,17 +84,17 @@ namespace Logica
 
         protected int GetNuevoCodigo()
         {
-            CodigoAnterior += 1;
+            CodigoAnterior = CodigoAnterior + 1;
             return CodigoAnterior;
         }
     }
 
     public class Solido : Ingrediente
     {
-        public Solido(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+        public Solido(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima)
         {
-            this.Codigo = GetNuevoCodigo();
+            this.Codigo = codigo;
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;
@@ -107,10 +107,10 @@ namespace Logica
     {
         public TiposBebidas TipoBebida { get; set; }
 
-        public Bebida(string nombre, TiposIngredientes tipoIngrediente, int cantidad,
+        public Bebida(int codigo, string nombre, TiposIngredientes tipoIngrediente, int cantidad,
             decimal precioPorUnidad, int unidadMinima, TiposBebidas tipoBebida)
         {
-            this.Codigo = GetNuevoCodigo();
+            this.Codigo = codigo;
             this.Nombre = nombre;
             this.TipoIngrediente = tipoIngrediente;
             this.Cantidad = cantidad;

@@ -44,7 +44,8 @@ namespace WindowsFormsApp
                         //administradorIngredientes.CargarIngrediente(nuevaBebida);
                     } else
                     {
-                        Solido nuevoSolido = new Solido(nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
+                        int codigo = GeneradorCodigos.GetNuevoCodigoIngrediente();
+                        Solido nuevoSolido = new Solido(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
                         administradorIngredientes.CargarIngrediente(nuevoSolido);
                     }
 

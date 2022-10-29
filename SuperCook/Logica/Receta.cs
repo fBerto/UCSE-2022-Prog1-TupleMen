@@ -20,7 +20,7 @@ namespace Logica
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
             List<Bebida> bebidas, List<Solido> solidos)
         {
-            this.Codigo = GetNuevoCodigo();
+            this.Codigo = codigo;
             this.MomentoComida = momentoComida;
             this.Nombre = nombre;
             this.EsSaludable = esSaludable;
@@ -30,7 +30,7 @@ namespace Logica
 
         private int GetNuevoCodigo()
         {
-            CodigoAnterior += 1;
+            CodigoAnterior = CodigoAnterior + 1;
             return CodigoAnterior;
         }
 
