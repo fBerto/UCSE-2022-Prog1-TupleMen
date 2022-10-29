@@ -22,7 +22,8 @@ namespace WindowsFormsApp
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
         {
             //TODO: Limpiar esto, es asqueroso
-            if(NoHayCamposNulos())
+            //TODO : como se si un string tiene numeros 
+            if (NoHayCamposNulos())
             {
                 bool ingresoCorrectoCantidad = Int32.TryParse(textBoxCantidadIngrediente.Text, out int cantidad);
                 bool ingresoCorrectoPrecio = Decimal.TryParse(textBoxPrecioPorUnidadIngrediente.Text, out decimal precioPorUnidad);

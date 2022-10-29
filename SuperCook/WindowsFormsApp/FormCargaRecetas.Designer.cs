@@ -78,7 +78,7 @@
             this.comboBoxMomentosComida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxMomentosComida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxMomentosComida.FormattingEnabled = true;
-            this.comboBoxMomentosComida.Location = new System.Drawing.Point(83, 96);
+            this.comboBoxMomentosComida.Location = new System.Drawing.Point(26, 82);
             this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
             this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMomentosComida.TabIndex = 6;
@@ -86,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(90, 71);
+            this.label2.Location = new System.Drawing.Point(23, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 7;

@@ -45,7 +45,7 @@ namespace WindowsFormsApp
         private void AbrirFormCargaComidas()
         {
             FormCargaComidas formCargaComidas = new FormCargaComidas();
-            formCargaComidas.ShowDialog();
+            formCargaComidas.ShowDialog(this);
         }
     }
 }
