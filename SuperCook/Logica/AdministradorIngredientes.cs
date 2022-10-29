@@ -45,9 +45,9 @@ namespace Logica
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
 
-        public bool ConsultarStockIngredientesDeReceta(Receta recetaAPreparar)
+        public bool ConsultarStockIngredientesDeReceta(List<Ingrediente> ingredientesReceta)
         {
-            foreach (Ingrediente ingredienteReceta in recetaAPreparar.Ingredientes)
+            foreach (Ingrediente ingredienteReceta in ingredientesReceta)
             {
                 Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
                 
@@ -63,20 +63,15 @@ namespace Logica
             return true;
         }
 
-        public void ActualizarStockIngredientes(Receta recetaPreparada)
+        public void ActualizarStockIngredientes(List<Ingrediente> ingredientesUsados)
         {
-            foreach (Ingrediente ingredienteReceta in recetaPreparada.Ingredientes)
+            foreach (Ingrediente ingredienteUsado in ingredientesUsados)
             {
-                Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
+                Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteUsado.Codigo);
 
-                ingredienteDespensa.Cantidad -= ingredienteReceta.Cantidad;
+                ingredienteDespensa.Cantidad -= ingredienteUsado.Cantidad;
             }
             GuardarIngredientesEnDespensa();
-        }
-
-        public List<Ingrediente> GetIngredientesRecetaPorCodigo(List<int> codigosIngredientes)
-        {
-            return IngredientesEnDespensa.FindAll(x => codigosIngredientes.Contains(x.Codigo));
         }
 
         public List<Ingrediente> GetIngredientesAComprar()
