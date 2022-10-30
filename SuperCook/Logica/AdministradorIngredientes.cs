@@ -73,13 +73,11 @@ namespace Logica
 
         public List<Ingrediente> GetIngredientesAComprar()
         {
-            IngredientesEnDespensa = LeerIngredientesEnDespensa();
             return IngredientesEnDespensa.FindAll(x => x.NoHaySuficienteIngrediente() == true);
         }
 
         public List<Ingrediente> GetIngredientesEnDespensa()
         {
-            IngredientesEnDespensa = LeerIngredientesEnDespensa();
             return IngredientesEnDespensa;
         }
 
@@ -98,6 +96,11 @@ namespace Logica
         {
             int codigoMaximo = IngredientesEnDespensa.Max(x => x.Codigo);
             return codigoMaximo + 1;
+        }
+
+        public void BuscarIngredientesEnArchivos()
+        {
+            IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
     }
 }

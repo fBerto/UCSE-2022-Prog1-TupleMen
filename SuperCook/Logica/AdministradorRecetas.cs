@@ -55,8 +55,12 @@ namespace Logica
 
         public List<Receta> GetLibroRecetas()
         {
-            LibroRecetas = LeerLibroRecetas();
             return LibroRecetas;
+        }
+
+        public void BuscarRecetasEnArchivos()
+        {
+            LibroRecetas = LeerLibroRecetas();
         }
     }
 }

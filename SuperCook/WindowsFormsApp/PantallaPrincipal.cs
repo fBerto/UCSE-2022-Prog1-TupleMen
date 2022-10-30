@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,5 +42,20 @@ namespace WindowsFormsApp
             menuCompras.ShowDialog(this);
         }
 
+        private void PantallaPrincipal_Load(object sender, EventArgs e)
+        {
+            LeerArchivosListasEnDisco();
+        }
+
+        private void LeerArchivosListasEnDisco()
+        {
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+            AdministradorComidas administradorComidas = new AdministradorComidas();
+
+            administradorIngredientes.BuscarIngredientesEnArchivos();
+            administradorRecetas.BuscarRecetasEnArchivos();
+            administradorComidas.BuscarComidasEnArchivos();
+        }
     }
 }

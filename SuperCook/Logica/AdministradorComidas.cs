@@ -77,8 +77,12 @@ namespace Logica
 
         public List<Comida> GetHistorialComidas()
         {
-            HistorialComidas = LeerHistorialComidas();
             return HistorialComidas;
+        }
+
+        public void BuscarComidasEnArchivos()
+        {
+            HistorialComidas = LeerHistorialComidas();
         }
     }
 }
