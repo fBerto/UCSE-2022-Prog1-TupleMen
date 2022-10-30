@@ -9,12 +9,7 @@ namespace Logica
 {
     public class AdministradorIngredientes : Archivos
     {
-        private List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
-
-        public AdministradorIngredientes()
-        {
-            this.IngredientesEnDespensa = LeerIngredientesEnDespensa();
-        }
+        private static List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
         public void CargarIngrediente(Ingrediente nuevoIngrediente)
         {
@@ -76,11 +71,13 @@ namespace Logica
 
         public List<Ingrediente> GetIngredientesAComprar()
         {
+            IngredientesEnDespensa = LeerIngredientesEnDespensa();
             return IngredientesEnDespensa.FindAll(x => x.NoHaySuficienteIngrediente() == true);
         }
 
         public List<Ingrediente> GetIngredientesEnDespensa()
         {
+            IngredientesEnDespensa = LeerIngredientesEnDespensa();
             return IngredientesEnDespensa;
         }
     }

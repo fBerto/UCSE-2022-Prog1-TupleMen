@@ -10,12 +10,7 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
-        private List<Comida> HistorialComidas = new List<Comida>();
-
-        public AdministradorComidas()
-        {
-            this.HistorialComidas = LeerHistorialComidas();
-        }
+        private static List<Comida> HistorialComidas = new List<Comida>();
 
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida)
@@ -63,6 +58,7 @@ namespace Logica
 
         public List<Comida> GetHistorialComidas()
         {
+            HistorialComidas = LeerHistorialComidas();
             return HistorialComidas;
         }
     }

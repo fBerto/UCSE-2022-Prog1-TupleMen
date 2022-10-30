@@ -9,12 +9,7 @@ namespace Logica
 {
     public class AdministradorRecetas : Archivos
     {
-        private List<Receta> LibroRecetas = new List<Receta>();
-
-        public AdministradorRecetas()
-        {
-            this.LibroRecetas = LeerLibroRecetas();
-        }
+        private static List<Receta> LibroRecetas = new List<Receta>();
 
         public void CargarReceta(Receta nuevaReceta)
         {
@@ -41,6 +36,7 @@ namespace Logica
 
         public List<Receta> GetLibroRecetas()
         {
+            LibroRecetas = LeerLibroRecetas();
             return LibroRecetas;
         }
     }

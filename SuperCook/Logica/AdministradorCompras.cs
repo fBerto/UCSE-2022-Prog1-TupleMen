@@ -10,13 +10,7 @@ namespace Logica
 {
     public class AdministradorCompras
     {
-        private List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
-
-        public AdministradorCompras()
-        {
-            AdministradorIngredientes adminIngredientes = new AdministradorIngredientes();
-            this.IngredientesAComprar = adminIngredientes.GetIngredientesAComprar();
-        }
+        private static List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
         {

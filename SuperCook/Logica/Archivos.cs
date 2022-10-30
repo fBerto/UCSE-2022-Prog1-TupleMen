@@ -10,6 +10,9 @@ namespace Logica
 {
     public abstract class Archivos
     {
+        //TODO: Se podria leer solamente al iniciar la aplicacion?? Que pasa al crear una nueva instancia
+        //Las listas deberian ser estaticas?
+
         //CONSULTA PARA MAXI:
         //Guardamos la carpeta JSON con las listas modificando el gitignore?
         //O guardamos una carpeta JSON fuera de la solucion para que el usuario
