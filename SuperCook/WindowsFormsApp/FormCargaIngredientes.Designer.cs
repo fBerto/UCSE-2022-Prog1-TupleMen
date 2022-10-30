@@ -40,6 +40,8 @@
             this.textBoxUnidadMinimaIngrediente = new System.Windows.Forms.TextBox();
             this.comboBoxTipoIngrediente = new System.Windows.Forms.ComboBox();
             this.BotonConfirmarCargaIngredientes = new System.Windows.Forms.Button();
+            this.comboBoxTipoBebida = new System.Windows.Forms.ComboBox();
+            this.lblTipoBebida = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxNombreIngrediente
@@ -61,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 137);
+            this.label2.Location = new System.Drawing.Point(12, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 2;
@@ -122,10 +124,11 @@
             this.comboBoxTipoIngrediente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxTipoIngrediente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxTipoIngrediente.FormattingEnabled = true;
-            this.comboBoxTipoIngrediente.Location = new System.Drawing.Point(89, 134);
+            this.comboBoxTipoIngrediente.Location = new System.Drawing.Point(15, 141);
             this.comboBoxTipoIngrediente.Name = "comboBoxTipoIngrediente";
-            this.comboBoxTipoIngrediente.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTipoIngrediente.Size = new System.Drawing.Size(100, 21);
             this.comboBoxTipoIngrediente.TabIndex = 10;
+            this.comboBoxTipoIngrediente.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTipoIngrediente_SelectionChangeCommitted);
             // 
             // BotonConfirmarCargaIngredientes
             // 
@@ -137,11 +140,30 @@
             this.BotonConfirmarCargaIngredientes.UseVisualStyleBackColor = true;
             this.BotonConfirmarCargaIngredientes.Click += new System.EventHandler(this.BotonConfirmarCargaIngredientes_Click);
             // 
+            // comboBoxTipoBebida
+            // 
+            this.comboBoxTipoBebida.FormattingEnabled = true;
+            this.comboBoxTipoBebida.Location = new System.Drawing.Point(155, 141);
+            this.comboBoxTipoBebida.Name = "comboBoxTipoBebida";
+            this.comboBoxTipoBebida.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxTipoBebida.TabIndex = 12;
+            // 
+            // lblTipoBebida
+            // 
+            this.lblTipoBebida.AutoSize = true;
+            this.lblTipoBebida.Location = new System.Drawing.Point(155, 125);
+            this.lblTipoBebida.Name = "lblTipoBebida";
+            this.lblTipoBebida.Size = new System.Drawing.Size(64, 13);
+            this.lblTipoBebida.TabIndex = 13;
+            this.lblTipoBebida.Text = "Tipo Bebida";
+            // 
             // FormCargaIngredientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 211);
+            this.Controls.Add(this.lblTipoBebida);
+            this.Controls.Add(this.comboBoxTipoBebida);
             this.Controls.Add(this.textBoxNombreIngrediente);
             this.Controls.Add(this.BotonConfirmarCargaIngredientes);
             this.Controls.Add(this.comboBoxTipoIngrediente);
@@ -178,5 +200,7 @@
         private System.Windows.Forms.TextBox textBoxUnidadMinimaIngrediente;
         private System.Windows.Forms.ComboBox comboBoxTipoIngrediente;
         private System.Windows.Forms.Button BotonConfirmarCargaIngredientes;
+        private System.Windows.Forms.ComboBox comboBoxTipoBebida;
+        private System.Windows.Forms.Label lblTipoBebida;
     }
 }

@@ -17,72 +17,61 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             comboBoxTipoIngrediente.DataSource = Enum.GetValues(typeof(TiposIngredientes));
+            comboBoxTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
+            comboBoxTipoBebida.Visible = false;
+            lblTipoBebida.Visible = false;
         }
 
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
         {
-            //TODO: Limpiar esto, es asqueroso
-            //TODO : como se si un string tiene numeros 
-            if (NoHayCamposNulos())
+            if (NoHayCamposNulos() && NoHayLetrasEnCamposNumericos() && NoHayNumerosEnElNombre())
             {
-                bool ingresoCorrectoCantidad = Int32.TryParse(textBoxCantidadIngrediente.Text, out int cantidad);
-                bool ingresoCorrectoPrecio = Decimal.TryParse(textBoxPrecioPorUnidadIngrediente.Text, out decimal precioPorUnidad);
-                bool ingresoCorrectoUnidad = Int32.TryParse(textBoxUnidadMinimaIngrediente.Text, out int unidadMinima);
+                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
-                if (ingresoCorrectoCantidad && ingresoCorrectoPrecio && ingresoCorrectoUnidad)
+                int codigo = administradorIngredientes.GetNuevoCodigo();
+
+                string nombre = textBoxNombreIngrediente.Text;
+                int cantidad = int.Parse(textBoxCantidadIngrediente.Text);
+                int precioPorUnidad = int.Parse(textBoxPrecioPorUnidadIngrediente.Text);
+                int unidadMinima = int.Parse(textBoxUnidadMinimaIngrediente.Text);
+
+                TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
+
+                if (tipoIngrediente is TiposIngredientes.Bebida)
                 {
-                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-
-                    int codigo = administradorIngredientes.GetNuevoCodigo();
-                    string nombre = textBoxNombreIngrediente.Text;
-                    TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
-
-                    if (tipoIngrediente is TiposIngredientes.Bebida)
-                    {
-                        //TODO:
-                        //Crear formulario o combobox que se dispare para ingresar el tipo de bebida.
-                        //Bebida nuevaBebida = new Bebida(nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
-                        //administradorIngredientes.CargarIngrediente(nuevaBebida);
-                    } else
-                    {
-                        Solido nuevoSolido = new Solido(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
-                        administradorIngredientes.CargarIngrediente(nuevoSolido);
-                    }
-
-                    IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes; 
-                    if (padre != null)
-                    {
-                        padre.CargarGrillaIngredientes();
-                    }
-
-                    this.Close();
+                    TiposBebidas tipoBebida = (TiposBebidas)comboBoxTipoBebida.SelectedItem;
+                    Bebida nuevaBebida = new Bebida(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
+                    administradorIngredientes.CargarIngrediente(nuevaBebida);
                 } else
                 {
-                    MessageBox.Show("Cantidad, Precio y Unidad son campos numericos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Solido nuevoSolido = new Solido(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
+                    administradorIngredientes.CargarIngrediente(nuevoSolido);
                 }
+
+                IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                if (padre != null)
+                {
+                    padre.CargarGrillaIngredientes();
+                }
+
+                this.Close();
             }
         }
 
-
-        //TODO: Funcion a limpiar
-        private bool IngresoCorrectoDeNumeros()
+        private bool NoHayLetrasEnCamposNumericos()
         {
-            if (Int32.TryParse(textBoxCantidadIngrediente.Text, out int cantidad) == false)
+            bool ingresoCorrectoCantidad = Int32.TryParse(textBoxCantidadIngrediente.Text, out int cantidad);
+            bool ingresoCorrectoPrecio = Decimal.TryParse(textBoxPrecioPorUnidadIngrediente.Text, out decimal precioPorUnidad);
+            bool ingresoCorrectoUnidad = Int32.TryParse(textBoxUnidadMinimaIngrediente.Text, out int unidadMinima);
+
+            if (ingresoCorrectoCantidad && ingresoCorrectoPrecio && ingresoCorrectoUnidad)
             {
-                MessageBox.Show("La cantidad debe ser numerica", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (Decimal.TryParse(textBoxPrecioPorUnidadIngrediente.Text, out decimal precioPorUnidad) == false)
+                return true;
+            } else
             {
-                MessageBox.Show("El Precio por Unidad debe ser numerico", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cantidad, Precio y Unidad son campos numericos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
-            if (Int32.TryParse(textBoxUnidadMinimaIngrediente.Text, out int unidadMinima) == false)
-            {
-                MessageBox.Show("La Unidad Minima debe ser numerica", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
+            } 
         }
 
         private bool NoHayCamposNulos()
@@ -96,6 +85,48 @@ namespace WindowsFormsApp
             {
                 return true;
             }
+        }
+
+        private bool NoHayNumerosEnElNombre()
+        {
+            string nombre = textBoxNombreIngrediente.Text;
+            if (NoContieneNumeros(nombre))
+            {
+                return true;
+            } else
+            {
+                MessageBox.Show("No puede haber numeros en el nombre", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool NoContieneNumeros(string strAVerificar)
+        {
+            return strAVerificar.All(Char.IsLetter);
+        }
+
+        private void comboBoxTipoIngrediente_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            TiposIngredientes tipoSeleccionado = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
+            if (tipoSeleccionado is TiposIngredientes.Bebida)
+            {
+                MostrarSeleccionTipoBebida();
+            } else
+            {
+                OcultarSeleccionTipoBebida();
+            }
+        }
+
+        private void OcultarSeleccionTipoBebida()
+        {
+            comboBoxTipoBebida.Visible = false;
+            lblTipoBebida.Visible = false;
+        }
+
+        private void MostrarSeleccionTipoBebida()
+        {
+            comboBoxTipoBebida.Visible = true;
+            lblTipoBebida.Visible = true;
         }
     }
 }
