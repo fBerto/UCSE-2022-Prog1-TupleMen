@@ -10,7 +10,6 @@ namespace Logica
     //Ingrediente incompleto para la receta
     public abstract class Ingrediente
     {
-        private static int CodigoAnterior { get; set; }
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public TiposIngredientes TipoIngrediente { get; set; }
@@ -80,12 +79,6 @@ namespace Logica
         public bool NoHaySuficienteIngrediente()
         {
             return this.Cantidad < this.UnidadMinima;
-        }
-
-        protected int GetNuevoCodigo()
-        {
-            CodigoAnterior = CodigoAnterior + 1;
-            return CodigoAnterior;
         }
     }
 

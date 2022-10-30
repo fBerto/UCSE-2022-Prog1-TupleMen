@@ -31,11 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCargaComidas));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.botonCargarComida = new System.Windows.Forms.Button();
             this.grillaSeleccionRecetas = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsSaludable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MomentoComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,57 +52,75 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(292, 20);
+            this.label2.Location = new System.Drawing.Point(9, 377);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fecha de Preparacion";
             // 
-            // button1
+            // botonCargarComida
             // 
-            this.button1.Location = new System.Drawing.Point(260, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(295, 44);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 4;
+            this.botonCargarComida.Location = new System.Drawing.Point(217, 445);
+            this.botonCargarComida.Name = "botonCargarComida";
+            this.botonCargarComida.Size = new System.Drawing.Size(75, 23);
+            this.botonCargarComida.TabIndex = 3;
+            this.botonCargarComida.Text = "Aceptar";
+            this.botonCargarComida.UseVisualStyleBackColor = true;
+            this.botonCargarComida.Click += new System.EventHandler(this.botonConfirmarCargaComida_Click);
             // 
             // grillaSeleccionRecetas
             // 
             this.grillaSeleccionRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaSeleccionRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Seleccion,
-            this.Receta});
-            this.grillaSeleccionRecetas.Location = new System.Drawing.Point(15, 44);
+            this.Receta,
+            this.EsSaludable,
+            this.MomentoComida});
+            this.grillaSeleccionRecetas.Location = new System.Drawing.Point(12, 36);
+            this.grillaSeleccionRecetas.MultiSelect = false;
             this.grillaSeleccionRecetas.Name = "grillaSeleccionRecetas";
-            this.grillaSeleccionRecetas.Size = new System.Drawing.Size(240, 150);
+            this.grillaSeleccionRecetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grillaSeleccionRecetas.Size = new System.Drawing.Size(474, 307);
             this.grillaSeleccionRecetas.TabIndex = 5;
             // 
-            // Seleccion
+            // dateTimePicker
             // 
-            this.Seleccion.HeaderText = "Seleccionar";
-            this.Seleccion.Name = "Seleccion";
+            this.dateTimePicker.CustomFormat = "dd/mm/yyyy";
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 393);
+            this.dateTimePicker.MaxDate = new System.DateTime(2022, 10, 30, 0, 0, 0, 0);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.TabIndex = 6;
+            this.dateTimePicker.Value = new System.DateTime(2022, 10, 30, 0, 0, 0, 0);
             // 
             // Receta
             // 
+            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Receta.DataPropertyName = "Nombre";
-            this.Receta.HeaderText = "Receta";
+            this.Receta.HeaderText = "Nombre";
             this.Receta.Name = "Receta";
+            // 
+            // EsSaludable
+            // 
+            this.EsSaludable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EsSaludable.DataPropertyName = "EsSaludable";
+            this.EsSaludable.HeaderText = "Es Saludable?";
+            this.EsSaludable.Name = "EsSaludable";
+            // 
+            // MomentoComida
+            // 
+            this.MomentoComida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MomentoComida.DataPropertyName = "MomentoComida";
+            this.MomentoComida.HeaderText = "Momento del Dia";
+            this.MomentoComida.Name = "MomentoComida";
             // 
             // FormCargaComidas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(603, 297);
+            this.ClientSize = new System.Drawing.Size(498, 491);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.grillaSeleccionRecetas);
-            this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.botonCargarComida);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -122,10 +141,11 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button botonCargarComida;
         private System.Windows.Forms.DataGridView grillaSeleccionRecetas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Seleccion;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EsSaludable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MomentoComida;
     }
 }

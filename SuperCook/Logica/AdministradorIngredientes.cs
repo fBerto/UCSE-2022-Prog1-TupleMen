@@ -42,6 +42,26 @@ namespace Logica
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
 
+        private List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
+        {
+            return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
+        }
+
+        private List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
+        {
+            return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
+        }
+
+        private string SerializarLista(List<Bebida> listaASerializar)
+        {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
+
+        private string SerializarLista(List<Solido> listaASerializar)
+        {
+            return JsonConvert.SerializeObject(listaASerializar);
+        }
+
         public bool ConsultarStockIngredientesDeReceta(List<Ingrediente> ingredientesReceta)
         {
             foreach (Ingrediente ingredienteReceta in ingredientesReceta)

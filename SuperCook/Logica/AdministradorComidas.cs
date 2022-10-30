@@ -14,23 +14,11 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        //TODO: Devolver algun error , no lo podemos hacer con un try catch?
-        public void RegistrarComida(Comida nuevaComida)
+        //TODO: Lo de consultar el stock lo debe hacer en winform
+        public void CargarComida(Comida nuevaComida)
         {
-            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-
-            List<Bebida> BebidasComida = nuevaComida.Receta.GetBebidasReceta();
-            List<Solido> SolidosComida = nuevaComida.Receta.GetSolidosReceta();
-
-            List<Ingrediente> IngredientesComida = UnificarBebidasYSolidos(BebidasComida, SolidosComida);
-
-            if (administradorIngredientes.ConsultarStockIngredientesDeReceta(IngredientesComida))
-            {
-                HistorialComidas.Add(nuevaComida);
-                GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
-
-                administradorIngredientes.ActualizarStockIngredientes(IngredientesComida);
-            }
+            HistorialComidas.Add(nuevaComida);
+            GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
         }
 
         private List<Comida> FiltroSaludable(bool saludable)

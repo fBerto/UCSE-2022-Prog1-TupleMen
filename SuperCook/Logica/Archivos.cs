@@ -10,8 +10,6 @@ namespace Logica
 {
     public abstract class Archivos
     {
-        //TODO: En que funcion hacer la lectura de archivos?
-
         //CONSULTA PARA MAXI:
         //Guardamos la carpeta JSON con las listas modificando el gitignore?
         //O guardamos una carpeta JSON fuera de la solucion para que el usuario
@@ -35,26 +33,6 @@ namespace Logica
         private string GetPathDominio()
         {
             return AppDomain.CurrentDomain.BaseDirectory;
-        }
-
-        protected List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
-        {
-            return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
-        }
-
-        protected List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
-        {
-            return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
-        }
-
-        protected string SerializarLista(List<Bebida> listaASerializar)
-        {
-            return JsonConvert.SerializeObject(listaASerializar);
-        }
-
-        protected string SerializarLista(List<Solido> listaASerializar)
-        {
-            return JsonConvert.SerializeObject(listaASerializar);
         }
 
         public List<Receta> LeerLibroRecetas()

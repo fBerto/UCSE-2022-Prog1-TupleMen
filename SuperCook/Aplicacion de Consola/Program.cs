@@ -15,12 +15,12 @@ namespace Aplicacion_de_Consola
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
-            Bebida bebida1 = new Bebida(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Coca", TiposIngredientes.Bebida, 5, 200, 1, TiposBebidas.AltaEnAzucar);
-            Bebida bebida2 = new Bebida(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Agua", TiposIngredientes.Bebida, 3, 150, 1, TiposBebidas.Normal);
-            Solido solido1 = new Solido(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Pechuga", TiposIngredientes.Carne, 3, 700, 2);
-            Solido solido2 = new Solido(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Tomate", TiposIngredientes.Fruta, 2, 300, 1);
-            Bebida bebida3 = new Bebida(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Vodka", TiposIngredientes.Bebida, 6, 2000, 1, TiposBebidas.Alcoholica); // para compras 
-            Solido solido3 = new Solido(GeneradorCodigos.GetNuevoCodigoIngrediente(), "Yogurth", TiposIngredientes.Lacteo, 8, 350, 2);
+            Bebida bebida1 = new Bebida(administradorIngredientes.GetNuevoCodigo(), "Coca", TiposIngredientes.Bebida, 5, 200, 1, TiposBebidas.AltaEnAzucar);
+            Bebida bebida2 = new Bebida(administradorIngredientes.GetNuevoCodigo(), "Agua", TiposIngredientes.Bebida, 3, 150, 1, TiposBebidas.Normal);
+            Solido solido1 = new Solido(administradorIngredientes.GetNuevoCodigo(), "Pechuga", TiposIngredientes.Carne, 3, 700, 2);
+            Solido solido2 = new Solido(administradorIngredientes.GetNuevoCodigo(), "Tomate", TiposIngredientes.Fruta, 2, 300, 1);
+            Bebida bebida3 = new Bebida(administradorIngredientes.GetNuevoCodigo(), "Vodka", TiposIngredientes.Bebida, 6, 2000, 1, TiposBebidas.Alcoholica); // para compras 
+            Solido solido3 = new Solido(administradorIngredientes.GetNuevoCodigo(), "Yogurth", TiposIngredientes.Lacteo, 8, 350, 2);
 
             //List<int> listaIngredientesParaReceta = new List<int> { bebida1.Codigo, solido2.Codigo, solido3.Codigo };
             //List<int> listaIngredientesParaReceta2 = new List<int> { bebida3.Codigo, solido2.Codigo, bebida1.Codigo };
@@ -39,13 +39,13 @@ namespace Aplicacion_de_Consola
             //List<Ingrediente> listaIngredientesParaReceta2 = new List<Ingrediente> { bebida3, solido2, bebida1 };
             //List<Ingrediente> listaIngredientesParaReceta3 = new List<Ingrediente> { bebida2, solido1, bebida3 };
 
-            Receta receta1 = new Receta(GeneradorCodigos.GetNuevoCodigoReceta(), MomentosComida.Merienda, "Panchos", false, listaBebidasReceta1, listaSolidosReceta1);
-            Receta receta2 = new Receta(GeneradorCodigos.GetNuevoCodigoReceta(), MomentosComida.Desayuno, "PANKEKES PROTEICOS", true, listaBebidasReceta2, listaSolidosReceta2);
-            Receta receta3 = new Receta(GeneradorCodigos.GetNuevoCodigoReceta(), MomentosComida.Cena, "Pollo con pan", true, listaBebidasReceta3, listaSolidosReceta3);
+            Receta receta1 = new Receta(administradorRecetas.GetNuevoCodigo(), MomentosComida.Merienda, "Panchos", false, listaBebidasReceta1, listaSolidosReceta1);
+            Receta receta2 = new Receta(administradorRecetas.GetNuevoCodigo(), MomentosComida.Desayuno, "PANKEKES PROTEICOS", true, listaBebidasReceta2, listaSolidosReceta2);
+            Receta receta3 = new Receta(administradorRecetas.GetNuevoCodigo(), MomentosComida.Cena, "Pollo con pan", true, listaBebidasReceta3, listaSolidosReceta3);
 
-            Comida comida1 = new Comida(GeneradorCodigos.GetNuevoCodigoComida(), receta1, DateTime.Today);
-            Comida comida2 = new Comida(GeneradorCodigos.GetNuevoCodigoComida(), receta2, DateTime.Today);
-            Comida comida3 = new Comida(GeneradorCodigos.GetNuevoCodigoComida(), receta3, DateTime.Today);
+            Comida comida1 = new Comida(administradorComidas.GetNuevoCodigo(), receta1, DateTime.Today);
+            Comida comida2 = new Comida(administradorComidas.GetNuevoCodigo(), receta2, DateTime.Today);
+            Comida comida3 = new Comida(administradorComidas.GetNuevoCodigo(), receta3, DateTime.Today);
 
             administradorIngredientes.CargarIngrediente(bebida1);
             administradorIngredientes.CargarIngrediente(bebida2);

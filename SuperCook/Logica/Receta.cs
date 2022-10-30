@@ -9,7 +9,6 @@ namespace Logica
 {
     public class Receta
     {
-        private static int CodigoAnterior { get; set; }
         public int Codigo { get; set; }
         public MomentosComida MomentoComida { get; set; }
         public string Nombre { get; set; }
@@ -28,25 +27,15 @@ namespace Logica
             this.Solidos = solidos;
         }
 
-        private int GetNuevoCodigo()
-        {
-            CodigoAnterior = CodigoAnterior + 1;
-            return CodigoAnterior;
-        }
-
         public string GetNombre()
         {
             return Nombre;
         }
 
-        public List<Bebida> GetBebidasReceta()
+        public List<Ingrediente> GetIngredientesReceta()
         {
-            return this.Bebidas;
-        }
-
-        public List<Solido> GetSolidosReceta()
-        {
-            return this.Solidos;
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            return administradorIngredientes.UnificarBebidasYSolidos(this.Bebidas, this.Solidos);
         }
     }
 }

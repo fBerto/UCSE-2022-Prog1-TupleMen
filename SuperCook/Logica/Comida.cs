@@ -9,7 +9,6 @@ namespace Logica
 {
     public class Comida
     {
-        private static int CodigoAnterior { get; set; }
         public int Codigo { get; set; }
         public Receta Receta { get; set; }
         public DateTime Fecha { get; set; }
@@ -21,12 +20,6 @@ namespace Logica
             this.Codigo = codigo;
             this.Receta = receta;
             this.Fecha = fecha;
-        }
-
-        private int GetNuevoCodigo()
-        {
-            CodigoAnterior = CodigoAnterior + 1;
-            return CodigoAnterior;
         }
     }
 }

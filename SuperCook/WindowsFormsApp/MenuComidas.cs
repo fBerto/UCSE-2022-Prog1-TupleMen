@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class MenuComidas : Form
+    public partial class MenuComidas : Form, IActualizarGrillaComidas
     {
         public MenuComidas()
         {
@@ -24,7 +24,7 @@ namespace WindowsFormsApp
             ActualizarGrillaComidas();
         }
 
-        private void ActualizarGrillaComidas()
+        public void ActualizarGrillaComidas()
         {
             AdministradorComidas adminComidas = new AdministradorComidas();
 
