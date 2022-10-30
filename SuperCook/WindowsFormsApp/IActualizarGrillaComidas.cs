@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace WindowsFormsApp
 {
     public interface IActualizarGrillaComidas
     {
-        void ActualizarGrillaComidas();
+        void ActualizarGrillaComidas(List<Comida> dataSource);
     }
 }

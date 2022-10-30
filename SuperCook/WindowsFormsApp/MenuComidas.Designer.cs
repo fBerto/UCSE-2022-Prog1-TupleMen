@@ -40,7 +40,7 @@
             this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grillaComidas = new System.Windows.Forms.DataGridView();
             this.btnNuevaComida = new System.Windows.Forms.Button();
-            this.lblFiltros = new System.Windows.Forms.Label();
+            this.botonFiltrarComidas = new System.Windows.Forms.Button();
             this.nombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
@@ -54,7 +54,7 @@
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(503, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(398, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,7 +71,7 @@
             // cargarComidaToolStripMenuItem
             // 
             this.cargarComidaToolStripMenuItem.Name = "cargarComidaToolStripMenuItem";
-            this.cargarComidaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.cargarComidaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cargarComidaToolStripMenuItem.Text = "Cargar Comida";
             this.cargarComidaToolStripMenuItem.Click += new System.EventHandler(this.cargarComidaToolStripMenuItem_Click);
             // 
@@ -83,7 +83,7 @@
             this.porFechaToolStripMenuItem,
             this.porRecetaToolStripMenuItem});
             this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
-            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.filtrarToolStripMenuItem.Text = "Filtrar";
             // 
             // porSaludableToolStripMenuItem
@@ -113,7 +113,7 @@
             // eliminarFiltrosToolStripMenuItem
             // 
             this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
-            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
             // 
             // grillaComidas
@@ -122,15 +122,15 @@
             this.grillaComidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreReceta,
             this.fechaComida});
-            this.grillaComidas.Location = new System.Drawing.Point(12, 149);
+            this.grillaComidas.Location = new System.Drawing.Point(12, 82);
             this.grillaComidas.Name = "grillaComidas";
             this.grillaComidas.RowHeadersWidth = 51;
-            this.grillaComidas.Size = new System.Drawing.Size(479, 326);
+            this.grillaComidas.Size = new System.Drawing.Size(374, 338);
             this.grillaComidas.TabIndex = 1;
             // 
             // btnNuevaComida
             // 
-            this.btnNuevaComida.Location = new System.Drawing.Point(12, 53);
+            this.btnNuevaComida.Location = new System.Drawing.Point(38, 38);
             this.btnNuevaComida.Name = "btnNuevaComida";
             this.btnNuevaComida.Size = new System.Drawing.Size(123, 23);
             this.btnNuevaComida.TabIndex = 2;
@@ -138,39 +138,40 @@
             this.btnNuevaComida.UseVisualStyleBackColor = true;
             this.btnNuevaComida.Click += new System.EventHandler(this.btnNuevaComida_Click);
             // 
-            // lblFiltros
+            // botonFiltrarComidas
             // 
-            this.lblFiltros.AutoSize = true;
-            this.lblFiltros.Location = new System.Drawing.Point(201, 35);
-            this.lblFiltros.Name = "lblFiltros";
-            this.lblFiltros.Size = new System.Drawing.Size(34, 13);
-            this.lblFiltros.TabIndex = 3;
-            this.lblFiltros.Text = "Filtros";
+            this.botonFiltrarComidas.Location = new System.Drawing.Point(222, 38);
+            this.botonFiltrarComidas.Name = "botonFiltrarComidas";
+            this.botonFiltrarComidas.Size = new System.Drawing.Size(120, 23);
+            this.botonFiltrarComidas.TabIndex = 3;
+            this.botonFiltrarComidas.Text = "Filtrar Comidas";
+            this.botonFiltrarComidas.UseVisualStyleBackColor = true;
+            this.botonFiltrarComidas.Click += new System.EventHandler(this.botonFiltrarComidas_Click);
             // 
             // nombreReceta
             // 
+            this.nombreReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombreReceta.DataPropertyName = "NombreReceta";
             this.nombreReceta.HeaderText = "Receta";
             this.nombreReceta.MinimumWidth = 6;
             this.nombreReceta.Name = "nombreReceta";
             this.nombreReceta.ReadOnly = true;
-            this.nombreReceta.Width = 125;
             // 
             // fechaComida
             // 
+            this.fechaComida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.fechaComida.DataPropertyName = "Fecha";
             this.fechaComida.HeaderText = "Fecha";
             this.fechaComida.MinimumWidth = 6;
             this.fechaComida.Name = "fechaComida";
             this.fechaComida.ReadOnly = true;
-            this.fechaComida.Width = 125;
             // 
             // MenuComidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 487);
-            this.Controls.Add(this.lblFiltros);
+            this.ClientSize = new System.Drawing.Size(398, 432);
+            this.Controls.Add(this.botonFiltrarComidas);
             this.Controls.Add(this.btnNuevaComida);
             this.Controls.Add(this.grillaComidas);
             this.Controls.Add(this.menuStrip1);
@@ -200,8 +201,8 @@
         private System.Windows.Forms.ToolStripMenuItem porMomentoDeComidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porFechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porRecetaToolStripMenuItem;
-        private System.Windows.Forms.Label lblFiltros;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreReceta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaComida;
+        private System.Windows.Forms.Button botonFiltrarComidas;
     }
 }

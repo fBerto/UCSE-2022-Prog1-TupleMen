@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormFiltrosComidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFiltrosComidas.Designer.cs">
+      <DependentUpon>FormFiltrosComidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCargaComidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormFiltrosComidas.resx">
+      <DependentUpon>FormFiltrosComidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCargaComidas.resx">
       <DependentUpon>FormCargaComidas.cs</DependentUpon>
     </EmbeddedResource>

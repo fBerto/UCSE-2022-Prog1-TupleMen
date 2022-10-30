@@ -58,7 +58,7 @@ namespace WindowsFormsApp
                 IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
                 if (padre != null)
                 {
-                    padre.ActualizarGrillaComidas();
+                    padre.ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
                 }
 
                 this.Close();

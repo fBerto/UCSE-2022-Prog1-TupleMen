@@ -14,29 +14,28 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        //TODO: Lo de consultar el stock lo debe hacer en winform
         public void CargarComida(Comida nuevaComida)
         {
             HistorialComidas.Add(nuevaComida);
             GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
         }
 
-        private List<Comida> FiltroSaludable(bool saludable)
+        public List<Comida> FiltroSaludable(bool saludable)
         {
             return HistorialComidas.Where(x => x.Receta.EsSaludable == saludable).ToList();
         }
 
-        private List<Comida> FiltroMomentoComida(MomentosComida momento)
+        public List<Comida> FiltroMomentoComida(MomentosComida momento)
         {
             return HistorialComidas.Where(x => x.Receta.MomentoComida == momento).ToList();
         }
 
-        private List<Comida> FiltroFecha(DateTime FechaMenor, DateTime FechaMayor)
+        public List<Comida> FiltroFecha(DateTime FechaMenor, DateTime FechaMayor)
         {
             return HistorialComidas.Where(x => x.Fecha >= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
-        private List<Comida> FiltroPorRecetas(Receta receta)
+        public List<Comida> FiltroPorRecetas(Receta receta)
         {
             return HistorialComidas.Where(x => x.Receta.Codigo == receta.Codigo).ToList();
         }
