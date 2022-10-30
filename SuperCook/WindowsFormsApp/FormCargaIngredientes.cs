@@ -31,10 +31,11 @@ namespace WindowsFormsApp
 
                 if (ingresoCorrectoCantidad && ingresoCorrectoPrecio && ingresoCorrectoUnidad)
                 {
+                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+
+                    int codigo = administradorIngredientes.GetNuevoCodigo();
                     string nombre = textBoxNombreIngrediente.Text;
                     TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
-
-                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
                     if (tipoIngrediente is TiposIngredientes.Bebida)
                     {
@@ -44,7 +45,6 @@ namespace WindowsFormsApp
                         //administradorIngredientes.CargarIngrediente(nuevaBebida);
                     } else
                     {
-                        int codigo = GeneradorCodigos.GetNuevoCodigoIngrediente();
                         Solido nuevoSolido = new Solido(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
                         administradorIngredientes.CargarIngrediente(nuevoSolido);
                     }

@@ -11,6 +11,8 @@ namespace Logica
     {
         private static List<Receta> LibroRecetas = new List<Receta>();
 
+        const int codigoInicial = 1;
+
         public void CargarReceta(Receta nuevaReceta)
         {
             LibroRecetas.Add(nuevaReceta);
@@ -27,6 +29,23 @@ namespace Logica
         {
             int IndiceRecetaModificar = LibroRecetas.FindIndex(x => x.Codigo == recetaModificada.Codigo);
             LibroRecetas[IndiceRecetaModificar] = recetaModificada;
+        }
+
+        public int GetNuevoCodigo()
+        {
+            if (LibroRecetas.Count == 0)
+            {
+                return codigoInicial;
+            } else
+            {
+                return GetCodigoSiguiente();
+            }
+        }
+
+        private int GetCodigoSiguiente()
+        {
+            int codigoMaximo = LibroRecetas.Max(x => x.Codigo);
+            return codigoMaximo + 1;
         }
 
         private string SerializarLista(List<Receta> listaASerializar)

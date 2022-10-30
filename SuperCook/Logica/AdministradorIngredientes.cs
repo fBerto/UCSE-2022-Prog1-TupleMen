@@ -11,6 +11,8 @@ namespace Logica
     {
         private static List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
+        const int codigoInicial = 1;
+
         public void CargarIngrediente(Ingrediente nuevoIngrediente)
         {
             IngredientesEnDespensa.Add(nuevoIngrediente);
@@ -79,6 +81,23 @@ namespace Logica
         {
             IngredientesEnDespensa = LeerIngredientesEnDespensa();
             return IngredientesEnDespensa;
+        }
+
+        public int GetNuevoCodigo()
+        {
+            if (IngredientesEnDespensa.Count == 0)
+            {
+                return codigoInicial;
+            } else
+            {
+                return GetCodigoSiguiente();
+            }
+        }
+
+        private int GetCodigoSiguiente()
+        {
+            int codigoMaximo = IngredientesEnDespensa.Max(x => x.Codigo);
+            return codigoMaximo + 1;
         }
     }
 }

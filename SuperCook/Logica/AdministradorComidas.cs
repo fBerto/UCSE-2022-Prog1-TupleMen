@@ -12,6 +12,8 @@ namespace Logica
     {
         private static List<Comida> HistorialComidas = new List<Comida>();
 
+        const int codigoInicial = 1;
+
         //TODO: Devolver algun error , no lo podemos hacer con un try catch?
         public void RegistrarComida(Comida nuevaComida)
         {
@@ -54,6 +56,23 @@ namespace Logica
         private string SerializarLista(List<Comida> listaASerializar)
         {
             return JsonConvert.SerializeObject(listaASerializar);
+        }
+
+        public int GetNuevoCodigo()
+        {
+            if (HistorialComidas.Count == 0)
+            {
+                return codigoInicial;
+            } else
+            {
+                return GetCodigoSiguiente();
+            }
+        }
+
+        private int GetCodigoSiguiente()
+        {
+            int codigoMaximo = HistorialComidas.Max(x => x.Codigo);
+            return codigoMaximo + 1;
         }
 
         public List<Comida> GetHistorialComidas()
