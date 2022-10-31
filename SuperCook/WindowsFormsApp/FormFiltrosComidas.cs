@@ -27,6 +27,9 @@ namespace WindowsFormsApp
 
             comboBoxFiltroMomentoComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             CargarGrillaRecetas();
+
+            comboBoxFiltroSaludable.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxFiltroMomentoComida.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void CargarGrillaRecetas()
@@ -68,15 +71,30 @@ namespace WindowsFormsApp
 
         private void botonConfirmarFiltrosComidas_Click(object sender, EventArgs e)
         {
-            //TODO: Verificar ingreso de usuario
-
-            IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
-            if (padre != null)
+            if (IngresoCorrecto())
             {
-                padre.ActualizarGrillaComidas(FiltrarComidas());
+                IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
+                if (padre != null)
+                {
+                    padre.ActualizarGrillaComidas(FiltrarComidas());
+                }
+
+                this.Close();
+            }
+        }
+
+        private bool IngresoCorrecto()
+        {
+            if (checkBoxFiltroPorFecha.Checked == true)
+            {
+                if (dateTimeFechaFinal.Value < dateTimeFechaInicial.Value)
+                {
+                    MessageBox.Show("La fecha final debe ser mayor a la inicial", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
 
-            this.Close();
+            return true;
         }
 
         private List<Comida> FiltrarComidas()
