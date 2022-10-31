@@ -12,7 +12,7 @@ using Logica;
 
 namespace WindowsFormsApp
 {
-    public partial class MenuRecetas : Form, IActualizarGrillaIngredientes
+    public partial class MenuRecetas : Form, IActualizarGrillaRecetas
     {
         public MenuRecetas()
         {
@@ -33,8 +33,7 @@ namespace WindowsFormsApp
             grillaRecetas.DataSource = administradorRecetas.GetLibroRecetas();
 
         }
-
-        public void CargarGrillaIngredientes()
+        public void CargarGrillaRecetas()
         {
             ActualizarGrillaRecetas();
         }

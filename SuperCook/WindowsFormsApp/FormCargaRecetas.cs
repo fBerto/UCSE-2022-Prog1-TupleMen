@@ -36,6 +36,26 @@ namespace WindowsFormsApp
         {
             if (NoHayCamposNulos())
             {
+                List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+
+                foreach (DataGridViewRow row in grillaCargaRecetas.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
+                    if (chk.Value == chk.TrueValue)
+                    {
+                        var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[row.Index].Cells[0].Value.ToString());
+                        AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+                        Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+                        ingredientesSeleccionados.Add(ingredienteSeleccionado);
+                    }
+                }
+
+                IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                if (padre != null)
+                {
+                    padre.CargarGrillaIngredientes();
+                }
+                /*
                 AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
                 //Obtengo propiedades de la receta
@@ -43,38 +63,59 @@ namespace WindowsFormsApp
                 MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
                 string nombre = textBoxNombreRecetas.Text;
                 bool esSaludable = checkBoxRecetaSaludable.Checked;
-                List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
-
-                //TODO: Agregar columna con check, sino va a ser muy dificil seleccionar (tiene que apretar ctrl)
-                //foreach (DataGridViewRow fila in grillaIngredientesSeleccionados.SelectedRows)
-                //{
-                //    Ingrediente ingrediente = fila.DataBoundItem as Ingrediente;
-                //    ingredientesSeleccionados.Add(ingrediente);
-                //}
 
                 Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ingredientesSeleccionados);
+                administradorRecetas.CargarReceta(nuevaReceta);
 
-                IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
                 if (padre != null)
                 {
-                    padre.CargarGrillaIngredientes();
-                    IActualizarGrillaRecetas padre2 = this.Owner as IActualizarGrillaRecetas;
-                    if (padre2 != null)
-                    {
-                        padre2.CargarGrillaRecetas();
-                    }
+                    padre.CargarGrillaRecetas();
                 }
                 else
                 {
-                    MessageBox.Show("Cantidad, Precio y Unidad son campos numericos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                */
+                /* actualizar la segunda grilla con ingredientes seleccioados 
+                 * instanciar los objetos con su cantidad creada
+                 * editar solo cantidad 
+                 * label de cantidad kilo 
+                 */
             }
         }
 
+        private void grillaCargaRecetas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            Int32 selectedRowCount = grillaCargaRecetas.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            List<Ingrediente> SolidosSeleccionados = new List<Ingrediente>();
+            List<Ingrediente> BebidasSeleccionados = new List<Ingrediente>();
+            if (selectedRowCount > 0)
+            {
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    var indice = (grillaCargaRecetas.SelectedRows[i].Index);
+                    var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[indice].Cells[0].Value.ToString());
+                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+                    Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+                    if (ingredienteSeleccionado is Solido)
+                    {
+                        SolidosSeleccionados.Add(ingredienteSeleccionado);
+                    }
+                    else
+                    {
+                        BebidasSeleccionados.Add(ingredienteSeleccionado);
+                    }
+
+                }
+            }
+
+        }
         private bool NoHayCamposNulos()
         {
             bool resultado = true;
-            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text) || grillaCargaRecetas.SelectedRows.Count == 0)
+            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text))
             {
                 MessageBox.Show("Falta de informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 resultado = false;
@@ -112,23 +153,7 @@ namespace WindowsFormsApp
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
-        private void grillaCargaRecetas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-            Int32 selectedRowCount = grillaCargaRecetas.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
-            if (selectedRowCount > 0)
-            {
-                for (int i = 0; i < selectedRowCount; i++)
-                {
-                    var indice = (grillaCargaRecetas.SelectedRows[i].Index);
-                    var codigoIngrediente = grillaCargaRecetas.Rows[indice].Cells[0].Value.ToString();
-                    //buscar codigo ingrediente 
-                    //agg lista ingredientes seleccionados
-                }
-            }
-
-        }
+       
     }
 
 
