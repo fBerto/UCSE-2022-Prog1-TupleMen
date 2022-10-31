@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EdicionIngredientesEnRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdicionIngredientesEnRecetas.Designer.cs">
+      <DependentUpon>EdicionIngredientesEnRecetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFiltrosComidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,7 @@
     </Compile>
     <Compile Include="IActualizarGrillaComidas.cs" />
     <Compile Include="IActualizarGrillaIngredientes.cs" />
+    <Compile Include="IActualizarGrillaRecetas.cs" />
     <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>
     </Compile>

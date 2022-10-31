@@ -42,12 +42,12 @@ namespace Logica
             GuardarLista(SerializarLista(Solidos), nombreArchivoSolidosDespensa);
         }
 
-        private List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
+        public List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
         {
             return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
         }
 
-        private List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
+        public List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
         {
             return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
         }
@@ -67,7 +67,7 @@ namespace Logica
             foreach (Ingrediente ingredienteReceta in ingredientesReceta)
             {
                 Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
-                
+
                 int cantidadEnStock = ingredienteDespensa.Cantidad;
                 int cantidadRequerida = ingredienteReceta.Cantidad;
 
@@ -106,7 +106,8 @@ namespace Logica
             if (IngredientesEnDespensa.Count == 0)
             {
                 return codigoInicial;
-            } else
+            }
+            else
             {
                 return GetCodigoSiguiente();
             }
@@ -122,5 +123,13 @@ namespace Logica
         {
             IngredientesEnDespensa = LeerIngredientesEnDespensa();
         }
+
+        public Ingrediente BuscarCodigoIngrediente(int codigoPasado)
+        {
+            Ingrediente ingredienteEncontrado = IngredientesEnDespensa.Find(x => x.Codigo == codigoPasado);
+            return ingredienteEncontrado;
+        }
+
+
     }
 }
