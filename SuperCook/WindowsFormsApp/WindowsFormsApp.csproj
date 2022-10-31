@@ -83,6 +83,7 @@
       <DependentUpon>FormFiltrosCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="IActualizarGrillaComidas.cs" />
+    <Compile Include="IActualizarGrillaCompras.cs" />
     <Compile Include="IActualizarGrillaIngredientes.cs" />
     <Compile Include="IActualizarGrillaRecetas.cs" />
     <Compile Include="MenuComidas.cs">
@@ -128,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCargaRecetas.resx">
       <DependentUpon>FormCargaRecetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFiltrosCompras.resx">
+      <DependentUpon>FormFiltrosCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuComidas.resx">
       <DependentUpon>MenuComidas.cs</DependentUpon>

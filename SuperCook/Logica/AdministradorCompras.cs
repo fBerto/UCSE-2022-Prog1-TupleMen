@@ -23,15 +23,14 @@ namespace Logica
             return BebidasAComprar.Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorPrecioMinimoOMaximo(decimal precio, bool esMinimo)
+        public List<Ingrediente> FiltrarPorPrecioMinimo(decimal precio)
         {
-            if (esMinimo)
-            {
-                return IngredientesAComprar.Where(x => x.PrecioPorUnidad >= precio).ToList();
-            } else
-            {
-                return IngredientesAComprar.Where(x => x.PrecioPorUnidad <= precio).ToList();
-            }
+            return IngredientesAComprar.Where(x => x.PrecioPorUnidad >= precio).ToList();
+        }
+
+        public List<Ingrediente> FiltrarPorPrecioMaximo(decimal precio)
+        {
+            return IngredientesAComprar.Where(x => x.PrecioPorUnidad <= precio).ToList();
         }
 
         public List<Ingrediente> FiltrarPorUnidadDeMedida(UnidadesDeMedida unidad)

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class MenuCompras : Form
+    public partial class MenuCompras : Form, IActualizarGrillaCompras
     {
         public MenuCompras()
         {
@@ -23,13 +23,13 @@ namespace WindowsFormsApp
             grillaCompras.AutoGenerateColumns = false;
 
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-            ActualizarGrillaIngredientes(administradorIngredientes.GetIngredientesAComprar());
+            ActualizarGrillaCompras(administradorIngredientes.GetIngredientesAComprar());
 
             AdministradorCompras administradorCompras = new AdministradorCompras();
             lblCostoTotalCompra.Text = administradorCompras.CalcularTotalCompra().ToString();
         }
 
-        private void ActualizarGrillaIngredientes(List<Ingrediente> dataSource)
+        public void ActualizarGrillaCompras(List<Ingrediente> dataSource)
         {
             grillaCompras.DataSource = null;
             grillaCompras.DataSource = dataSource;

@@ -68,6 +68,8 @@ namespace WindowsFormsApp
 
         private void botonConfirmarFiltrosComidas_Click(object sender, EventArgs e)
         {
+            //TODO: Verificar ingreso de usuario
+
             IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
             if (padre != null)
             {
