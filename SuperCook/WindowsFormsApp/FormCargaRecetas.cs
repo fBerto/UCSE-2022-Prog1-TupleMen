@@ -87,8 +87,9 @@ namespace WindowsFormsApp
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar= administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
 
-                //Edicion_de_Ingredientes_en_Recetas edicion_De_Ingredientes_En_Recetas = new Edicion_de_Ingredientes_en_Recetas(ingredienteAEditar);
-                //edicion_De_Ingredientes_En_Recetas.ShowDialog(this);
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar);
+                edicionIngredientesEnRecetas.ShowDialog(this);
+                
             }
         }
 

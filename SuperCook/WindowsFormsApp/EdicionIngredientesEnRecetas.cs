@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,18 @@ namespace WindowsFormsApp
 {
     public partial class EdicionIngredientesEnRecetas : Form
     {
+        private Ingrediente ingrediente { get; set; }
         public EdicionIngredientesEnRecetas()
         {
             InitializeComponent();
         }
+
+        public EdicionIngredientesEnRecetas(Ingrediente ingredienteAEditar)
+        {
+            this.ingrediente = ingredienteAEditar;
+            InitializeComponent();
+        }
+
     }
 }
+
