@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,29 @@ namespace WindowsFormsApp
         public MenuCompras()
         {
             InitializeComponent();
+        }
+
+        private void MenuCompras_Load(object sender, EventArgs e)
+        {
+            grillaCompras.AutoGenerateColumns = false;
+
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            ActualizarGrillaIngredientes(administradorIngredientes.GetIngredientesAComprar());
+
+            AdministradorCompras administradorCompras = new AdministradorCompras();
+            lblCostoTotalCompra.Text = administradorCompras.CalcularTotalCompra().ToString();
+        }
+
+        private void ActualizarGrillaIngredientes(List<Ingrediente> dataSource)
+        {
+            grillaCompras.DataSource = null;
+            grillaCompras.DataSource = dataSource;
+        }
+
+        private void filtrarComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFiltrosCompras formFiltrosCompras = new FormFiltrosCompras();
+            formFiltrosCompras.ShowDialog(this);
         }
     }
 }

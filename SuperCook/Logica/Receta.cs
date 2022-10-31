@@ -16,15 +16,35 @@ namespace Logica
         public List<Bebida> Bebidas { get; set; }
         public List<Solido> Solidos { get; set; }
 
+        [JsonConstructor]
+        public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable, List<Bebida> bebidas, List<Solido> solidos)
+        {
+            Codigo = codigo;
+            MomentoComida = momentoComida;
+            Nombre = nombre;
+            EsSaludable = esSaludable;
+            Bebidas = bebidas;
+            Solidos = solidos;
+        }
+
         public Receta(int codigo, MomentosComida momentoComida, string nombre, bool esSaludable,
-            List<Bebida> bebidas, List<Solido> solidos)
+            List<Ingrediente> ingredientes)
         {
             this.Codigo = codigo;
             this.MomentoComida = momentoComida;
             this.Nombre = nombre;
             this.EsSaludable = esSaludable;
-            this.Bebidas = bebidas;
-            this.Solidos = solidos;
+
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+
+            if (ingredientes.Exists(x => x is Bebida))
+            {
+                this.Bebidas = administradorIngredientes.ExtraerBebidasDe(ingredientes);
+            }
+            if (ingredientes.Exists(x => x is Solido))
+            {
+                this.Solidos = administradorIngredientes.ExtraerSolidosDe(ingredientes);
+            }
         }
 
         public string GetNombre()

@@ -18,10 +18,9 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
-
         }
 
-        private void ActualziarGrillaSeleccionIngredientes()
+        private void ActualizarGrillaSeleccionIngredientes()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             grillaCargaRecetas.DataSource = null;
@@ -30,23 +29,30 @@ namespace WindowsFormsApp
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
             grillaCargaRecetas.AutoGenerateColumns = false;
-            ActualziarGrillaSeleccionIngredientes();
+            ActualizarGrillaSeleccionIngredientes();
         }
 
         private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e) 
         {
             if (NoHayCamposNulos())
             {
-                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+
+                //Obtengo propiedades de la receta
                 int codigo = administradorRecetas.GetNuevoCodigo();
-                MomentosComida momentosComida = (MomentosComida)comboBoxMomentosComida.SelectedItem; 
-                List<Ingrediente> ingredientesSeleccionados = grillaCargaRecetas.SelectedRows[0].DataBoundItem as List<Ingrediente>;
+                MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
+                string nombre = textBoxNombreRecetas.Text;
+                bool esSaludable = checkBoxRecetaSaludable.Checked;
+                List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
 
-                List<Solido> solidosSeleccionados = administradorIngredientes.ExtraerSolidosDe(ingredientesSeleccionados);
-                List<Bebida> bebidasSellecionadas = administradorIngredientes.ExtraerBebidasDe(ingredientesSeleccionados);
+                //TODO: Agregar columna con check, sino va a ser muy dificil seleccionar (tiene que apretar ctrl)
+                //foreach (DataGridViewRow fila in grillaIngredientesSeleccionados.SelectedRows)
+                //{
+                //    Ingrediente ingrediente = fila.DataBoundItem as Ingrediente;
+                //    ingredientesSeleccionados.Add(ingrediente);
+                //}
 
-                Receta nuevaReceta = new Receta(codigo, MomentosComida.Desayuno, textBoxNombreRecetas.Text, checkBoxRecetaSaludable.Checked, bebidasSellecionadas, solidosSeleccionados);
+                Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ingredientesSeleccionados);
 
                 IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
                 if (padre != null)
@@ -57,7 +63,6 @@ namespace WindowsFormsApp
                     {
                         padre2.CargarGrillaRecetas();
                     }
-
                 }
                 else
                 {
@@ -65,10 +70,11 @@ namespace WindowsFormsApp
                 }
             }
         }
+
         private bool NoHayCamposNulos()
         {
             bool resultado = true;
-            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text) || grillaCargaRecetas.SelectedRows[0] == null)
+            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text) || grillaCargaRecetas.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Falta de informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 resultado = false;

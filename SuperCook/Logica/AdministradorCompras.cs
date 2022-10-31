@@ -44,7 +44,7 @@ namespace Logica
             return IngredientesAComprar.Where(x => x.GetGradoDeEscasez() == escasez).ToList();
         }
 
-        private decimal CalcularTotalCompra()
+        public decimal CalcularTotalCompra()
         {
             decimal totalCompra = 0;
             foreach (Ingrediente ingrediente in IngredientesAComprar)

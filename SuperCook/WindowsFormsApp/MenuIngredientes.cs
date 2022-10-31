@@ -13,6 +13,7 @@ namespace WindowsFormsApp
 {
     public partial class MenuIngredientes : Form, IActualizarGrillaIngredientes
     {
+        //TODO: Agregar columnas editar y eliminar
         public MenuIngredientes()
         {
             InitializeComponent();

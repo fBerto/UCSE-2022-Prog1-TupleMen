@@ -31,91 +31,43 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuIngredientes));
             this.grillaIngredientes = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarIngredientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNuevoIngrediente = new System.Windows.Forms.Button();
+            this.administradorIngredientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoIngrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioPorUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.administradorIngredientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargarIngredientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNuevoIngrediente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.administradorIngredientesBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.administradorIngredientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grillaIngredientes
             // 
-            this.grillaIngredientes.AutoGenerateColumns = false;
             this.grillaIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
+            this.Editar,
+            this.Eliminar,
             this.Nombre,
             this.TipoIngrediente,
             this.Cantidad,
             this.UnidadMinima,
             this.Medida,
             this.PrecioPorUnidad});
-            this.grillaIngredientes.DataSource = this.administradorIngredientesBindingSource;
             this.grillaIngredientes.Location = new System.Drawing.Point(12, 78);
             this.grillaIngredientes.Name = "grillaIngredientes";
-            this.grillaIngredientes.Size = new System.Drawing.Size(653, 211);
+            this.grillaIngredientes.ReadOnly = true;
+            this.grillaIngredientes.Size = new System.Drawing.Size(764, 211);
             this.grillaIngredientes.TabIndex = 0;
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.Width = 50;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // TipoIngrediente
-            // 
-            this.TipoIngrediente.DataPropertyName = "TipoIngrediente";
-            this.TipoIngrediente.HeaderText = "Tipo";
-            this.TipoIngrediente.Name = "TipoIngrediente";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 60;
-            // 
-            // UnidadMinima
-            // 
-            this.UnidadMinima.DataPropertyName = "UnidadMinima";
-            this.UnidadMinima.HeaderText = "Minimo en Despensa";
-            this.UnidadMinima.Name = "UnidadMinima";
-            this.UnidadMinima.Width = 130;
-            // 
-            // Medida
-            // 
-            this.Medida.DataPropertyName = "UnidadDeMedida";
-            this.Medida.HeaderText = "Medida";
-            this.Medida.Name = "Medida";
-            this.Medida.Width = 50;
-            // 
-            // PrecioPorUnidad
-            // 
-            this.PrecioPorUnidad.DataPropertyName = "PrecioPorUnidad";
-            this.PrecioPorUnidad.HeaderText = "Precio por Unidad";
-            this.PrecioPorUnidad.Name = "PrecioPorUnidad";
-            this.PrecioPorUnidad.Width = 120;
-            // 
-            // administradorIngredientesBindingSource
-            // 
-            this.administradorIngredientesBindingSource.DataSource = typeof(Logica.AdministradorIngredientes);
             // 
             // menuStrip1
             // 
@@ -123,7 +75,7 @@
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(677, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -138,8 +90,8 @@
             // cargarIngredientesToolStripMenuItem
             // 
             this.cargarIngredientesToolStripMenuItem.Name = "cargarIngredientesToolStripMenuItem";
-            this.cargarIngredientesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.cargarIngredientesToolStripMenuItem.Text = "Cargar Ingredientes";
+            this.cargarIngredientesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.cargarIngredientesToolStripMenuItem.Text = "Cargar Ingrediente";
             this.cargarIngredientesToolStripMenuItem.Click += new System.EventHandler(this.cargarIngredientesToolStripMenuItem_Click);
             // 
             // btnNuevoIngrediente
@@ -152,11 +104,85 @@
             this.btnNuevoIngrediente.UseVisualStyleBackColor = true;
             this.btnNuevoIngrediente.Click += new System.EventHandler(this.btnNuevoIngrediente_Click);
             // 
+            // administradorIngredientesBindingSource
+            // 
+            this.administradorIngredientesBindingSource.DataSource = typeof(Logica.AdministradorIngredientes);
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 50;
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 49;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // TipoIngrediente
+            // 
+            this.TipoIngrediente.DataPropertyName = "TipoIngrediente";
+            this.TipoIngrediente.HeaderText = "Tipo";
+            this.TipoIngrediente.Name = "TipoIngrediente";
+            this.TipoIngrediente.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 60;
+            // 
+            // UnidadMinima
+            // 
+            this.UnidadMinima.DataPropertyName = "UnidadMinima";
+            this.UnidadMinima.HeaderText = "Minimo en Despensa";
+            this.UnidadMinima.Name = "UnidadMinima";
+            this.UnidadMinima.ReadOnly = true;
+            this.UnidadMinima.Width = 130;
+            // 
+            // Medida
+            // 
+            this.Medida.DataPropertyName = "UnidadDeMedida";
+            this.Medida.HeaderText = "Medida";
+            this.Medida.Name = "Medida";
+            this.Medida.ReadOnly = true;
+            this.Medida.Width = 50;
+            // 
+            // PrecioPorUnidad
+            // 
+            this.PrecioPorUnidad.DataPropertyName = "PrecioPorUnidad";
+            this.PrecioPorUnidad.HeaderText = "Precio por Unidad";
+            this.PrecioPorUnidad.Name = "PrecioPorUnidad";
+            this.PrecioPorUnidad.ReadOnly = true;
+            this.PrecioPorUnidad.Width = 120;
+            // 
             // MenuIngredientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 301);
+            this.ClientSize = new System.Drawing.Size(788, 301);
             this.Controls.Add(this.btnNuevoIngrediente);
             this.Controls.Add(this.grillaIngredientes);
             this.Controls.Add(this.menuStrip1);
@@ -166,9 +192,9 @@
             this.Text = "Menu Ingredientes";
             this.Load += new System.EventHandler(this.MenuIngredientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.administradorIngredientesBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.administradorIngredientesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,6 +209,8 @@
         private System.Windows.Forms.ToolStripMenuItem cargarIngredientesToolStripMenuItem;
         private System.Windows.Forms.Button btnNuevoIngrediente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoIngrediente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;

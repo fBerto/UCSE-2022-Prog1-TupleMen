@@ -32,12 +32,12 @@ namespace WindowsFormsApp
             grillaComidas.DataSource = dataSource;
         }
 
-        private void cargarComidaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void registrarComidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormCargaComidas();
         }
 
-        private void btnNuevaComida_Click(object sender, EventArgs e)
+        private void btnRegistrarComida_Click(object sender, EventArgs e)
         {
             AbrirFormCargaComidas();
         }
@@ -52,6 +52,19 @@ namespace WindowsFormsApp
         {
             FormFiltrosComidas formFiltrosComidas = new FormFiltrosComidas();
             formFiltrosComidas.ShowDialog(this);
+        }
+
+        private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFiltrosComidas formFiltrosComidas = new FormFiltrosComidas();
+            formFiltrosComidas.ShowDialog(this);
+        }
+
+        private void eliminarFiltrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministradorComidas administradorComidas = new AdministradorComidas();
+
+            ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
         }
     }
 }
