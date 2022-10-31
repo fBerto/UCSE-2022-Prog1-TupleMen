@@ -36,6 +36,8 @@
             this.grillaRecetas = new System.Windows.Forms.DataGridView();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNuevaReceta = new System.Windows.Forms.Button();
+            this.CodigoReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRecetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -69,6 +71,9 @@
             // grillaRecetas
             // 
             this.grillaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoReceta,
+            this.NombreReceta});
             this.grillaRecetas.Location = new System.Drawing.Point(27, 76);
             this.grillaRecetas.Name = "grillaRecetas";
             this.grillaRecetas.Size = new System.Drawing.Size(579, 157);
@@ -87,6 +92,18 @@
             this.btnNuevaReceta.Text = "Nueva Receta";
             this.btnNuevaReceta.UseVisualStyleBackColor = true;
             this.btnNuevaReceta.Click += new System.EventHandler(this.btnNuevaReceta_Click);
+            // 
+            // CodigoReceta
+            // 
+            this.CodigoReceta.DataPropertyName = "Codigo";
+            this.CodigoReceta.HeaderText = "Codigo";
+            this.CodigoReceta.Name = "CodigoReceta";
+            // 
+            // NombreReceta
+            // 
+            this.NombreReceta.DataPropertyName = "Nombre";
+            this.NombreReceta.HeaderText = "Nombre";
+            this.NombreReceta.Name = "NombreReceta";
             // 
             // MenuRecetas
             // 
@@ -118,5 +135,7 @@
         private System.Windows.Forms.DataGridView grillaRecetas;
         private System.Windows.Forms.BindingSource administradorRecetasBindingSource;
         private System.Windows.Forms.Button btnNuevaReceta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoReceta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreReceta;
     }
 }

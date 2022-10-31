@@ -41,14 +41,14 @@
             this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.FinalizarCargaRecetas = new System.Windows.Forms.Button();
             this.grillaIngredientesSeleccionados = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grillaCargaRecetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -82,11 +82,11 @@
             // 
             // buttonAceptarCargaRecetas
             // 
-            this.buttonAceptarCargaRecetas.Location = new System.Drawing.Point(134, 318);
+            this.buttonAceptarCargaRecetas.Location = new System.Drawing.Point(47, 318);
             this.buttonAceptarCargaRecetas.Name = "buttonAceptarCargaRecetas";
-            this.buttonAceptarCargaRecetas.Size = new System.Drawing.Size(75, 23);
+            this.buttonAceptarCargaRecetas.Size = new System.Drawing.Size(263, 23);
             this.buttonAceptarCargaRecetas.TabIndex = 5;
-            this.buttonAceptarCargaRecetas.Text = "Aceptar";
+            this.buttonAceptarCargaRecetas.Text = "Confirmar Ingredientes para receta";
             this.buttonAceptarCargaRecetas.UseVisualStyleBackColor = true;
             this.buttonAceptarCargaRecetas.Click += new System.EventHandler(this.buttonAceptarCargaRecetas_Click);
             // 
@@ -123,7 +123,6 @@
             this.grillaCargaRecetas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grillaCargaRecetas.Size = new System.Drawing.Size(343, 290);
             this.grillaCargaRecetas.TabIndex = 8;
-            this.grillaCargaRecetas.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grillaCargaRecetas_RowHeaderMouseClick);
             // 
             // CodigoIngredientes
             // 
@@ -153,14 +152,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Seleccionar Ingredientes para la Receta";
             // 
-            // button1
+            // FinalizarCargaRecetas
             // 
-            this.button1.Location = new System.Drawing.Point(500, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Finalizar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.FinalizarCargaRecetas.Location = new System.Drawing.Point(479, 206);
+            this.FinalizarCargaRecetas.Name = "FinalizarCargaRecetas";
+            this.FinalizarCargaRecetas.Size = new System.Drawing.Size(75, 23);
+            this.FinalizarCargaRecetas.TabIndex = 10;
+            this.FinalizarCargaRecetas.Text = "Finalizar";
+            this.FinalizarCargaRecetas.UseVisualStyleBackColor = true;
+            this.FinalizarCargaRecetas.Click += new System.EventHandler(this.FinalizarCargaRecetas_Click);
             // 
             // grillaIngredientesSeleccionados
             // 
@@ -170,24 +170,11 @@
             this.Nombre,
             this.Cantidad,
             this.Editar});
-            this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 25);
+            this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 34);
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
             this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(413, 150);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
             this.grillaIngredientesSeleccionados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(651, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(189, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Ingresar cantidad por cada ingrediente";
-            // 
-            // administradorRecetasBindingSource
-            // 
-            this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
             // 
             // Codigo
             // 
@@ -212,6 +199,19 @@
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(651, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(189, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Ingresar cantidad por cada ingrediente";
+            // 
+            // administradorRecetasBindingSource
+            // 
+            this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
+            // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,7 +219,7 @@
             this.ClientSize = new System.Drawing.Size(1165, 353);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grillaIngredientesSeleccionados);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.FinalizarCargaRecetas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.grillaCargaRecetas);
             this.Controls.Add(this.label2);
@@ -253,7 +253,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView grillaCargaRecetas;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button FinalizarCargaRecetas;
         private System.Windows.Forms.DataGridView grillaIngredientesSeleccionados;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource administradorRecetasBindingSource;

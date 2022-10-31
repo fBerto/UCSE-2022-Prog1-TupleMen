@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,30 +15,36 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaRecetas : Form
     {
+        List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
         public FormCargaRecetas()
         {
             InitializeComponent();
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
         }
 
-        private void ActualizarGrillaSeleccionIngredientes()
+        private void ActualizarGrillaCargaIngredientes()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             grillaCargaRecetas.DataSource = null;
             grillaCargaRecetas.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
         }
+
+        private void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
+        {
+            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
+            grillaIngredientesSeleccionados.DataSource = null;
+            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+        }
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
             grillaCargaRecetas.AutoGenerateColumns = false;
-            ActualizarGrillaSeleccionIngredientes();
+            ActualizarGrillaCargaIngredientes();
         }
 
         private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
         {
             if (NoHayCamposNulos())
             {
-                List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
-
                 foreach (DataGridViewRow row in grillaCargaRecetas.Rows)
                 {
                     DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
@@ -49,68 +56,15 @@ namespace WindowsFormsApp
                         ingredientesSeleccionados.Add(ingredienteSeleccionado);
                     }
                 }
+                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
                 IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
                 if (padre != null)
                 {
                     padre.CargarGrillaIngredientes();
                 }
-                /*
-                AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
-                //Obtengo propiedades de la receta
-                int codigo = administradorRecetas.GetNuevoCodigo();
-                MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
-                string nombre = textBoxNombreRecetas.Text;
-                bool esSaludable = checkBoxRecetaSaludable.Checked;
-
-                Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ingredientesSeleccionados);
-                administradorRecetas.CargarReceta(nuevaReceta);
-
-                IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
-                if (padre != null)
-                {
-                    padre.CargarGrillaRecetas();
-                }
-                else
-                {
-                    MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                */
-                /* actualizar la segunda grilla con ingredientes seleccioados 
-                 * instanciar los objetos con su cantidad creada
-                 * editar solo cantidad 
-                 * label de cantidad kilo 
-                 */
             }
-        }
-
-        private void grillaCargaRecetas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-            Int32 selectedRowCount = grillaCargaRecetas.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            List<Ingrediente> SolidosSeleccionados = new List<Ingrediente>();
-            List<Ingrediente> BebidasSeleccionados = new List<Ingrediente>();
-            if (selectedRowCount > 0)
-            {
-                for (int i = 0; i < selectedRowCount; i++)
-                {
-                    var indice = (grillaCargaRecetas.SelectedRows[i].Index);
-                    var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[indice].Cells[0].Value.ToString());
-                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                    Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                    if (ingredienteSeleccionado is Solido)
-                    {
-                        SolidosSeleccionados.Add(ingredienteSeleccionado);
-                    }
-                    else
-                    {
-                        BebidasSeleccionados.Add(ingredienteSeleccionado);
-                    }
-
-                }
-            }
-
         }
         private bool NoHayCamposNulos()
         {
@@ -153,7 +107,36 @@ namespace WindowsFormsApp
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
-       
+        private void FinalizarCargaRecetas_Click(object sender, EventArgs e)
+        {
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+
+            //Obtengo propiedades de la receta
+            int codigo = administradorRecetas.GetNuevoCodigo();
+            MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
+            string nombre = textBoxNombreRecetas.Text;
+            bool esSaludable = checkBoxRecetaSaludable.Checked;
+
+            Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ingredientesSeleccionados);
+            administradorRecetas.CargarReceta(nuevaReceta);
+
+            IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
+            if (padre != null)
+            {
+                padre.CargarGrillaRecetas();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            /*
+             * 
+             * editar solo cantidad 
+             * label de cantidad kilo 
+             */
+        }
     }
 
 
