@@ -37,6 +37,8 @@
             this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.grillaCargaRecetas = new System.Windows.Forms.DataGridView();
+            this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.grillaIngredientesSeleccionados = new System.Windows.Forms.DataGridView();
@@ -46,7 +48,6 @@
             this.Editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCargaRecetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -93,7 +94,7 @@
             this.comboBoxMomentosComida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxMomentosComida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxMomentosComida.FormattingEnabled = true;
-            this.comboBoxMomentosComida.Location = new System.Drawing.Point(26, 82);
+            this.comboBoxMomentosComida.Location = new System.Drawing.Point(5, 82);
             this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
             this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMomentosComida.TabIndex = 6;
@@ -113,12 +114,26 @@
             this.grillaCargaRecetas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.grillaCargaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaCargaRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoIngredientes,
             this.Nombre_Ingrediente});
-            this.grillaCargaRecetas.Location = new System.Drawing.Point(198, 25);
+            this.grillaCargaRecetas.Location = new System.Drawing.Point(143, 25);
             this.grillaCargaRecetas.Name = "grillaCargaRecetas";
             this.grillaCargaRecetas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.grillaCargaRecetas.Size = new System.Drawing.Size(127, 290);
+            this.grillaCargaRecetas.Size = new System.Drawing.Size(230, 290);
             this.grillaCargaRecetas.TabIndex = 8;
+            this.grillaCargaRecetas.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grillaCargaRecetas_RowHeaderMouseClick);
+            // 
+            // CodigoIngredientes
+            // 
+            this.CodigoIngredientes.DataPropertyName = "Codigo";
+            this.CodigoIngredientes.HeaderText = "Codigo";
+            this.CodigoIngredientes.Name = "CodigoIngredientes";
+            // 
+            // Nombre_Ingrediente
+            // 
+            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
+            this.Nombre_Ingrediente.HeaderText = "Nombre";
+            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
             // 
             // label3
             // 
@@ -185,12 +200,6 @@
             // 
             this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
             // 
-            // Nombre_Ingrediente
-            // 
-            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
-            this.Nombre_Ingrediente.HeaderText = "Nombre";
-            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
-            // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +249,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Editar;
         private System.Windows.Forms.BindingSource administradorRecetasBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoIngredientes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Ingrediente;
     }
 }

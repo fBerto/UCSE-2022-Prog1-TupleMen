@@ -32,7 +32,7 @@ namespace WindowsFormsApp
             ActualizarGrillaSeleccionIngredientes();
         }
 
-        private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e) 
+        private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
         {
             if (NoHayCamposNulos())
             {
@@ -87,19 +87,19 @@ namespace WindowsFormsApp
             int indiceEditar = ObtenerIndice(grillaCargaRecetas, "Editar");
             if (indiceEditar == e.ColumnIndex)
             {
-                var indiceIdentificador = ObtenerIndice(grillaCargaRecetas, "Codigo"); 
+                var indiceIdentificador = ObtenerIndice(grillaCargaRecetas, "Codigo");
                 int codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[e.RowIndex].Cells[indiceIdentificador].Value.ToString()); //accede tipo matris 
 
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                Ingrediente ingredienteAEditar= administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+                Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
 
                 EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar);
                 edicionIngredientesEnRecetas.ShowDialog(this);
-                
+
             }
         }
 
-        private int  ObtenerIndice(DataGridView grilla, string nombreColumna)
+        private int ObtenerIndice(DataGridView grilla, string nombreColumna)
         {
             foreach (DataGridViewColumn column in grilla.Columns)
             {
@@ -111,11 +111,29 @@ namespace WindowsFormsApp
 
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
+
+        private void grillaCargaRecetas_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            Int32 selectedRowCount = grillaCargaRecetas.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+            if (selectedRowCount > 0)
+            {
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    var indice = (grillaCargaRecetas.SelectedRows[i].Index);
+                    var codigoIngrediente = grillaCargaRecetas.Rows[indice].Cells[0].Value.ToString();
+                    //buscar codigo ingrediente 
+                    //agg lista ingredientes seleccionados
+                }
+            }
+
+        }
     }
 
 
 
-       
 
-    
+
+
 }
