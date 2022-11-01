@@ -42,13 +42,16 @@
             this.EsSaludable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MomentoComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxFiltroMomentoComida = new System.Windows.Forms.ComboBox();
-            this.comboBoxFiltroSaludable = new System.Windows.Forms.ComboBox();
+            this.groupBoxFiltroSaludable = new System.Windows.Forms.GroupBox();
+            this.radioButtonSaludables = new System.Windows.Forms.RadioButton();
+            this.radioButtonNOSaludables = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).BeginInit();
+            this.groupBoxFiltroSaludable.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonConfirmarFiltrosComidas
             // 
-            this.botonConfirmarFiltrosComidas.Location = new System.Drawing.Point(212, 457);
+            this.botonConfirmarFiltrosComidas.Location = new System.Drawing.Point(199, 512);
             this.botonConfirmarFiltrosComidas.Name = "botonConfirmarFiltrosComidas";
             this.botonConfirmarFiltrosComidas.Size = new System.Drawing.Size(75, 23);
             this.botonConfirmarFiltrosComidas.TabIndex = 0;
@@ -70,7 +73,7 @@
             // checkBoxFiltroPorReceta
             // 
             this.checkBoxFiltroPorReceta.AutoSize = true;
-            this.checkBoxFiltroPorReceta.Location = new System.Drawing.Point(12, 186);
+            this.checkBoxFiltroPorReceta.Location = new System.Drawing.Point(12, 240);
             this.checkBoxFiltroPorReceta.Name = "checkBoxFiltroPorReceta";
             this.checkBoxFiltroPorReceta.Size = new System.Drawing.Size(80, 17);
             this.checkBoxFiltroPorReceta.TabIndex = 2;
@@ -81,7 +84,7 @@
             // checkBoxFiltroPorFecha
             // 
             this.checkBoxFiltroPorFecha.AutoSize = true;
-            this.checkBoxFiltroPorFecha.Location = new System.Drawing.Point(12, 99);
+            this.checkBoxFiltroPorFecha.Location = new System.Drawing.Point(12, 143);
             this.checkBoxFiltroPorFecha.Name = "checkBoxFiltroPorFecha";
             this.checkBoxFiltroPorFecha.Size = new System.Drawing.Size(75, 17);
             this.checkBoxFiltroPorFecha.TabIndex = 3;
@@ -102,14 +105,14 @@
             // 
             // dateTimeFechaInicial
             // 
-            this.dateTimeFechaInicial.Location = new System.Drawing.Point(12, 138);
+            this.dateTimeFechaInicial.Location = new System.Drawing.Point(12, 182);
             this.dateTimeFechaInicial.Name = "dateTimeFechaInicial";
             this.dateTimeFechaInicial.Size = new System.Drawing.Size(200, 20);
             this.dateTimeFechaInicial.TabIndex = 5;
             // 
             // dateTimeFechaFinal
             // 
-            this.dateTimeFechaFinal.Location = new System.Drawing.Point(271, 138);
+            this.dateTimeFechaFinal.Location = new System.Drawing.Point(271, 182);
             this.dateTimeFechaFinal.Name = "dateTimeFechaFinal";
             this.dateTimeFechaFinal.Size = new System.Drawing.Size(200, 20);
             this.dateTimeFechaFinal.TabIndex = 6;
@@ -117,7 +120,7 @@
             // lblFechaInicial
             // 
             this.lblFechaInicial.AutoSize = true;
-            this.lblFechaInicial.Location = new System.Drawing.Point(12, 119);
+            this.lblFechaInicial.Location = new System.Drawing.Point(12, 163);
             this.lblFechaInicial.Name = "lblFechaInicial";
             this.lblFechaInicial.Size = new System.Drawing.Size(67, 13);
             this.lblFechaInicial.TabIndex = 7;
@@ -126,7 +129,7 @@
             // lblFechaFinal
             // 
             this.lblFechaFinal.AutoSize = true;
-            this.lblFechaFinal.Location = new System.Drawing.Point(268, 119);
+            this.lblFechaFinal.Location = new System.Drawing.Point(268, 163);
             this.lblFechaFinal.Name = "lblFechaFinal";
             this.lblFechaFinal.Size = new System.Drawing.Size(62, 13);
             this.lblFechaFinal.TabIndex = 8;
@@ -139,7 +142,7 @@
             this.Receta,
             this.EsSaludable,
             this.MomentoComida});
-            this.grillaSeleccionRecetas.Location = new System.Drawing.Point(12, 209);
+            this.grillaSeleccionRecetas.Location = new System.Drawing.Point(12, 263);
             this.grillaSeleccionRecetas.MultiSelect = false;
             this.grillaSeleccionRecetas.Name = "grillaSeleccionRecetas";
             this.grillaSeleccionRecetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -169,31 +172,54 @@
             // 
             // comboBoxFiltroMomentoComida
             // 
+            this.comboBoxFiltroMomentoComida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltroMomentoComida.FormattingEnabled = true;
             this.comboBoxFiltroMomentoComida.Location = new System.Drawing.Point(271, 50);
             this.comboBoxFiltroMomentoComida.Name = "comboBoxFiltroMomentoComida";
             this.comboBoxFiltroMomentoComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxFiltroMomentoComida.TabIndex = 12;
             // 
-            // comboBoxFiltroSaludable
+            // groupBoxFiltroSaludable
             // 
-            this.comboBoxFiltroSaludable.FormattingEnabled = true;
-            this.comboBoxFiltroSaludable.Items.AddRange(new object[] {
-            "Saludables",
-            "NO Saludables"});
-            this.comboBoxFiltroSaludable.Location = new System.Drawing.Point(12, 50);
-            this.comboBoxFiltroSaludable.Name = "comboBoxFiltroSaludable";
-            this.comboBoxFiltroSaludable.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxFiltroSaludable.TabIndex = 9;
+            this.groupBoxFiltroSaludable.Controls.Add(this.radioButtonNOSaludables);
+            this.groupBoxFiltroSaludable.Controls.Add(this.radioButtonSaludables);
+            this.groupBoxFiltroSaludable.Location = new System.Drawing.Point(12, 51);
+            this.groupBoxFiltroSaludable.Name = "groupBoxFiltroSaludable";
+            this.groupBoxFiltroSaludable.Size = new System.Drawing.Size(104, 73);
+            this.groupBoxFiltroSaludable.TabIndex = 13;
+            this.groupBoxFiltroSaludable.TabStop = false;
+            this.groupBoxFiltroSaludable.Text = "Filtrar...";
+            // 
+            // radioButtonSaludables
+            // 
+            this.radioButtonSaludables.AutoSize = true;
+            this.radioButtonSaludables.Checked = true;
+            this.radioButtonSaludables.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonSaludables.Name = "radioButtonSaludables";
+            this.radioButtonSaludables.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonSaludables.TabIndex = 0;
+            this.radioButtonSaludables.TabStop = true;
+            this.radioButtonSaludables.Text = "Saludables";
+            this.radioButtonSaludables.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNOSaludables
+            // 
+            this.radioButtonNOSaludables.AutoSize = true;
+            this.radioButtonNOSaludables.Location = new System.Drawing.Point(7, 44);
+            this.radioButtonNOSaludables.Name = "radioButtonNOSaludables";
+            this.radioButtonNOSaludables.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonNOSaludables.TabIndex = 1;
+            this.radioButtonNOSaludables.Text = "NO Saludables";
+            this.radioButtonNOSaludables.UseVisualStyleBackColor = true;
             // 
             // FormFiltrosComidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 492);
+            this.ClientSize = new System.Drawing.Size(483, 547);
+            this.Controls.Add(this.groupBoxFiltroSaludable);
             this.Controls.Add(this.comboBoxFiltroMomentoComida);
             this.Controls.Add(this.grillaSeleccionRecetas);
-            this.Controls.Add(this.comboBoxFiltroSaludable);
             this.Controls.Add(this.lblFechaFinal);
             this.Controls.Add(this.lblFechaInicial);
             this.Controls.Add(this.dateTimeFechaFinal);
@@ -207,6 +233,8 @@
             this.Text = "FiltrosComidas";
             this.Load += new System.EventHandler(this.FormFiltrosComidas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).EndInit();
+            this.groupBoxFiltroSaludable.ResumeLayout(false);
+            this.groupBoxFiltroSaludable.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +256,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EsSaludable;
         private System.Windows.Forms.DataGridViewTextBoxColumn MomentoComida;
         private System.Windows.Forms.ComboBox comboBoxFiltroMomentoComida;
-        private System.Windows.Forms.ComboBox comboBoxFiltroSaludable;
+        private System.Windows.Forms.GroupBox groupBoxFiltroSaludable;
+        private System.Windows.Forms.RadioButton radioButtonNOSaludables;
+        private System.Windows.Forms.RadioButton radioButtonSaludables;
     }
 }

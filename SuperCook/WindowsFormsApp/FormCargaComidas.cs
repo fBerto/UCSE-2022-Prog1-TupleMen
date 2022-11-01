@@ -34,6 +34,7 @@ namespace WindowsFormsApp
 
             //No permito ingresar fechas futuras
             dateTimePicker.MaxDate = DateTime.Today;
+            dateTimePicker.Value = DateTime.Today;
         }
 
         private void botonConfirmarCargaComida_Click(object sender, EventArgs e)

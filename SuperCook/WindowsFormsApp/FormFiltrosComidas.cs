@@ -20,7 +20,7 @@ namespace WindowsFormsApp
 
         private void FormFiltrosComidas_Load(object sender, EventArgs e)
         {
-            comboBoxFiltroSaludable.Visible = false;
+            groupBoxFiltroSaludable.Visible = false;
             comboBoxFiltroMomentoComida.Visible = false;
             grillaSeleccionRecetas.Visible = false;
             ModificarVisibilidadFechas(false);
@@ -28,7 +28,6 @@ namespace WindowsFormsApp
             comboBoxFiltroMomentoComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             CargarGrillaRecetas();
 
-            comboBoxFiltroSaludable.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxFiltroMomentoComida.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -43,7 +42,7 @@ namespace WindowsFormsApp
 
         private void checkBoxFiltroSaludable_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxFiltroSaludable.Visible = checkBoxFiltroSaludable.Checked;
+            groupBoxFiltroSaludable.Visible = checkBoxFiltroSaludable.Checked;
         }
 
         private void checkBoxFiltroPorMomentoComida_CheckedChanged(object sender, EventArgs e)
@@ -71,7 +70,7 @@ namespace WindowsFormsApp
 
         private void botonConfirmarFiltrosComidas_Click(object sender, EventArgs e)
         {
-            if (IngresoCorrecto())
+            if (IngresoFechasCoherentes())
             {
                 IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
                 if (padre != null)
@@ -83,7 +82,7 @@ namespace WindowsFormsApp
             }
         }
 
-        private bool IngresoCorrecto()
+        private bool IngresoFechasCoherentes()
         {
             if (checkBoxFiltroPorFecha.Checked == true)
             {
@@ -93,7 +92,6 @@ namespace WindowsFormsApp
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -106,7 +104,7 @@ namespace WindowsFormsApp
 
             if (checkBoxFiltroSaludable.Checked)
             {
-                bool condicion = comboBoxFiltroSaludable.SelectedIndex == 0;
+                bool condicion = radioButtonSaludables.Checked;
                 comidasFiltradas = administradorComidas.FiltroSaludable(condicion);
             }
             if (checkBoxFiltroPorMomentoComida.Checked)
