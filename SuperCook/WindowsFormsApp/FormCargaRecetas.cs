@@ -13,10 +13,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp
 {
-    public partial class FormCargaRecetas : Form
+    public partial class FormCargaRecetas : Form, IActualizarGrillaIngredientesSeleccionados
     {
         /*TODO:
-         *Hacer que si edito un ingrediente se sobreescriba en la grilla  
+         *Hacer que si edito un ingrediente se sobreescriba en la grilla 
+         *verificar que existan elementos checkeados al confirmar la carga de estos 
          */
 
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
@@ -35,14 +36,6 @@ namespace WindowsFormsApp
             }
         }
 
-        public FormCargaRecetas(List<Ingrediente> ingredientesSelecionados)
-        {
-            InitializeComponent();
-            comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
-            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            this.ingredientesSeleccionados = ingredientesSelecionados;
-        }
-
         private void ActualizarGrillaCargaIngredientes()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
@@ -50,7 +43,7 @@ namespace WindowsFormsApp
             grillaCargaRecetas.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
         }
 
-        private void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
+        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
         {
             grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
@@ -153,8 +146,6 @@ namespace WindowsFormsApp
                 List<Ingrediente> ingredientes = recetaAEditar.GetIngredientesReceta();
                 EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientes);
                 edicionIngredientesEnRecetas.ShowDialog(this);
-                //como puedo hacer para conectar los ingredientes seleccionados de la edicion con el actualziar grilla este 
-                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
             }
         }
@@ -166,6 +157,8 @@ namespace WindowsFormsApp
             checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
             ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
         }
+
+       
     }
 
 

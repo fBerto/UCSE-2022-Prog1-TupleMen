@@ -14,6 +14,7 @@ namespace WindowsFormsApp
 {
     public partial class MenuRecetas : Form, IActualizarGrillaRecetas
     {
+        //TODO //btnNuevaReceta_Click rompe cando agg ingredintes y dsp le quiero cambiar la cantidad 
         public MenuRecetas()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace WindowsFormsApp
             cargaRecetas.ShowDialog(this);
         }
 
-        private void btnNuevaReceta_Click(object sender, EventArgs e)
+        private void btnNuevaReceta_Click(object sender, EventArgs e) 
         {
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
             FormCargaRecetas formCargaRecetas = new FormCargaRecetas(administradorRecetas.GetNuevoCodigo());

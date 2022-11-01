@@ -55,9 +55,15 @@ namespace WindowsFormsApp
                 }
                 else
                 {   //TODO: como se que tipo de bebida es?
-                    //Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
+                    //Bebida bebida = 
+                    //Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima, );
                     //ingredientesSeleccionados[indice] = bebidaModificada;
                 }
+                    IActualizarGrillaIngredientesSeleccionados padre = this.Owner as IActualizarGrillaIngredientesSeleccionados;
+                    if (padre != null)
+                    {
+                        padre.ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
+                    }
                     this.Close();
                 }
 
