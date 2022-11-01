@@ -15,11 +15,22 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaRecetas : Form
     {
+        /*TODO:
+         *Hacer que si edito un ingrediente se sobreescriba en la grilla  
+         */
+
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
-        public FormCargaRecetas()
+        public FormCargaRecetas(int codigoReceta)
         {
             InitializeComponent();
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+            Receta recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
+
+            if(recetaAEditar != null)
+            {
+                CargarContenidosRecetasAEditar(recetaAEditar);
+            }
         }
 
         private void ActualizarGrillaCargaIngredientes()
@@ -34,6 +45,14 @@ namespace WindowsFormsApp
             grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
             grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+        }
+        private void ActualizarGrillaIngredientesSeleccionados(List<Solido> solidosSeleccionados, List<Bebida> bebidasSeleccionadas)
+        {
+            /*TODO HACER METODO
+            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
+            grillaIngredientesSeleccionados.DataSource = null;
+            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+            */
         }
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
@@ -115,11 +134,6 @@ namespace WindowsFormsApp
                 MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            /*
-             * 
-             * editar solo cantidad 
-             * label de cantidad kilo 
-             */
         }
 
         private void grillaIngredientesSeleccionados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -140,6 +154,16 @@ namespace WindowsFormsApp
                 ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
             }
+        }
+
+        private void CargarContenidosRecetasAEditar(Receta recetaRecibida)
+        {
+            /* TODO los ingredientes que tenia la receta a la grilla de seleccionados
+             */
+            textBoxNombreRecetas.Text = recetaRecibida.Nombre;
+            comboBoxMomentosComida.Text = recetaRecibida.MomentoComida.ToString();
+            checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
+            //ActualizarGrillaIngredientesSeleccionados(recetaRecibida.Solidos, recetaRecibida.Bebidas);
         }
     }
 

@@ -13,6 +13,10 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaIngredientes : Form
     {
+        /*TODO:
+         *Hacer que si edito un ingrediente se sobreescriba en la grilla  
+         */
+
         public FormCargaIngredientes(int codigoIngrediente)
         {
             InitializeComponent();
@@ -29,7 +33,7 @@ namespace WindowsFormsApp
                 CargarContenidoIngredienteAEditar(ingredienteAEditar);
             }
         }
-
+        
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
         {
             if (NoHayCamposNulos() && NoHayLetrasEnCamposNumericos() && NoHayNumerosEnElNombre())
@@ -40,7 +44,7 @@ namespace WindowsFormsApp
 
                 string nombre = textBoxNombreIngrediente.Text;
                 int cantidad = int.Parse(textBoxCantidadIngrediente.Text);
-                int precioPorUnidad = int.Parse(textBoxPrecioPorUnidadIngrediente.Text);
+                int precioPorUnidad = int.Parse(textBoxPrecioPorUnidadIngrediente.Text); //TODO: rompe
                 int unidadMinima = int.Parse(textBoxUnidadMinimaIngrediente.Text);
 
                 TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;

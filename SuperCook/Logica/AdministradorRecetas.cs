@@ -62,5 +62,11 @@ namespace Logica
         {
             LibroRecetas = LeerLibroRecetas();
         }
+
+        public Receta BuscarCodigoReceta(int codigoRecibido)
+        {
+            Receta receta= LibroRecetas.Find(x => x.Codigo == codigoRecibido);
+            return receta;
+        }
     }
 }

@@ -38,6 +38,10 @@
             this.btnNuevaReceta = new System.Windows.Forms.Button();
             this.CodigoReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Momento_Comida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Es_Saludable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRecetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -49,7 +53,7 @@
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(634, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(720, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,11 +77,16 @@
             this.grillaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoReceta,
-            this.NombreReceta});
-            this.grillaRecetas.Location = new System.Drawing.Point(27, 76);
+            this.NombreReceta,
+            this.Momento_Comida,
+            this.Es_Saludable,
+            this.Editar,
+            this.Eliminar});
+            this.grillaRecetas.Location = new System.Drawing.Point(24, 76);
             this.grillaRecetas.Name = "grillaRecetas";
-            this.grillaRecetas.Size = new System.Drawing.Size(579, 157);
+            this.grillaRecetas.Size = new System.Drawing.Size(634, 157);
             this.grillaRecetas.TabIndex = 1;
+            this.grillaRecetas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRecetas_CellClick);
             // 
             // administradorRecetasBindingSource
             // 
@@ -105,11 +114,35 @@
             this.NombreReceta.HeaderText = "Nombre";
             this.NombreReceta.Name = "NombreReceta";
             // 
+            // Momento_Comida
+            // 
+            this.Momento_Comida.DataPropertyName = "MomentoComida";
+            this.Momento_Comida.HeaderText = "Momento de la Comida";
+            this.Momento_Comida.Name = "Momento_Comida";
+            // 
+            // Es_Saludable
+            // 
+            this.Es_Saludable.DataPropertyName = "EsSaludable";
+            this.Es_Saludable.FalseValue = "false";
+            this.Es_Saludable.HeaderText = "Saludable?";
+            this.Es_Saludable.Name = "Es_Saludable";
+            this.Es_Saludable.TrueValue = "true";
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            // 
             // MenuRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 261);
+            this.ClientSize = new System.Drawing.Size(720, 261);
             this.Controls.Add(this.btnNuevaReceta);
             this.Controls.Add(this.grillaRecetas);
             this.Controls.Add(this.menuStrip1);
@@ -137,5 +170,9 @@
         private System.Windows.Forms.Button btnNuevaReceta;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoReceta;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreReceta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Momento_Comida;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Es_Saludable;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }
