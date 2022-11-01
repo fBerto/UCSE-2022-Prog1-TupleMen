@@ -44,12 +44,16 @@ namespace Logica
 
         public List<Bebida> ExtraerBebidasDe(List<Ingrediente> Ingredientes)
         {
-            return Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
+            List<Bebida> bebidasExtraidas = new List<Bebida>();
+            bebidasExtraidas.AddRange(Ingredientes.Where(x => x is Bebida).Select(x => x as Bebida).ToList());
+            return bebidasExtraidas;
         }
 
         public List<Solido> ExtraerSolidosDe(List<Ingrediente> Ingredientes)
         {
-            return Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList();
+            List<Solido> solidosExtraidos = new List<Solido>();
+            solidosExtraidos.AddRange(Ingredientes.Where(x => x is Solido).Select(x => x as Solido).ToList());
+            return solidosExtraidos;
         }
 
         private string SerializarLista(List<Bebida> listaASerializar)

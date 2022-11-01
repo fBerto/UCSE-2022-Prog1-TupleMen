@@ -23,12 +23,14 @@ namespace Logica
         {
             int indiceRecetaAEliminar = LibroRecetas.FindIndex(x => x.Codigo == codigoReceta);
             LibroRecetas.RemoveAt(indiceRecetaAEliminar);
+            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
         public void ModificarReceta(Receta recetaModificada)
         {
             int IndiceRecetaModificar = LibroRecetas.FindIndex(x => x.Codigo == recetaModificada.Codigo);
             LibroRecetas[IndiceRecetaModificar] = recetaModificada;
+            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
         public int GetNuevoCodigo()
