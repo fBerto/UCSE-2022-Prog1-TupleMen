@@ -46,14 +46,7 @@ namespace WindowsFormsApp
             grillaIngredientesSeleccionados.DataSource = null;
             grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
         }
-        private void ActualizarGrillaIngredientesSeleccionados(List<Solido> solidosSeleccionados, List<Bebida> bebidasSeleccionadas)
-        {
-            /*TODO HACER METODO
-            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
-            grillaIngredientesSeleccionados.DataSource = null;
-            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
-            */
-        }
+        
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
             grillaCargaRecetas.AutoGenerateColumns = false;
@@ -139,7 +132,6 @@ namespace WindowsFormsApp
         private void grillaIngredientesSeleccionados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
-            //int indiceEditar = 3;
             if (indiceEditar == e.ColumnIndex)
             {
                 var indiceIdentificador = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
@@ -158,12 +150,10 @@ namespace WindowsFormsApp
 
         private void CargarContenidosRecetasAEditar(Receta recetaRecibida)
         {
-            /* TODO los ingredientes que tenia la receta a la grilla de seleccionados
-             */
             textBoxNombreRecetas.Text = recetaRecibida.Nombre;
             comboBoxMomentosComida.Text = recetaRecibida.MomentoComida.ToString();
             checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
-            //ActualizarGrillaIngredientesSeleccionados(recetaRecibida.Solidos, recetaRecibida.Bebidas);
+            ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
         }
     }
 
