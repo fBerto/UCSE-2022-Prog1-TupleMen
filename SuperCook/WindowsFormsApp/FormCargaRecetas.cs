@@ -20,17 +20,27 @@ namespace WindowsFormsApp
          */
 
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+        Receta recetaAEditar ;
         public FormCargaRecetas(int codigoReceta)
         {
             InitializeComponent();
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            Receta recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
+            this.recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
 
             if(recetaAEditar != null)
             {
                 CargarContenidosRecetasAEditar(recetaAEditar);
+                this.ingredientesSeleccionados = recetaAEditar.GetIngredientesReceta();
             }
+        }
+
+        public FormCargaRecetas(List<Ingrediente> ingredientesSelecionados)
+        {
+            InitializeComponent();
+            comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+            this.ingredientesSeleccionados = ingredientesSelecionados;
         }
 
         private void ActualizarGrillaCargaIngredientes()
@@ -140,9 +150,10 @@ namespace WindowsFormsApp
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
 
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesSeleccionados);
+                List<Ingrediente> ingredientes = recetaAEditar.GetIngredientesReceta();
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientes);
                 edicionIngredientesEnRecetas.ShowDialog(this);
-
+                //como puedo hacer para conectar los ingredientes seleccionados de la edicion con el actualziar grilla este 
                 ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
             }

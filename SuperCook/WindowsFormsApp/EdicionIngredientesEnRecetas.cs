@@ -58,8 +58,7 @@ namespace WindowsFormsApp
                     //Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
                     //ingredientesSeleccionados[indice] = bebidaModificada;
                 }
-
-                this.Close();
+                    this.Close();
                 }
 
             }
