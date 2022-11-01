@@ -56,6 +56,7 @@ namespace WindowsFormsApp
                         ingredientesSeleccionados.Add(ingredienteSeleccionado);
                     }
                 }
+                //TODO: Buscar si el ingrediente chequeado ya esta en la grilla, sino lo puedo repetir 
                 ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
                 IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
@@ -75,23 +76,6 @@ namespace WindowsFormsApp
                 resultado = false;
             }
             return resultado;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) // no me estaria entrando cuando hago click
-        {
-            int indiceEditar = ObtenerIndice(grillaCargaRecetas, "Editar");
-            if (indiceEditar == e.ColumnIndex)
-            {
-                var indiceIdentificador = ObtenerIndice(grillaCargaRecetas, "Codigo");
-                int codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[e.RowIndex].Cells[indiceIdentificador].Value.ToString()); //accede tipo matris 
-
-                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar);
-                edicionIngredientesEnRecetas.ShowDialog(this);
-
-            }
         }
 
         private int ObtenerIndice(DataGridView grilla, string nombreColumna)
@@ -136,6 +120,24 @@ namespace WindowsFormsApp
              * editar solo cantidad 
              * label de cantidad kilo 
              */
+        }
+
+        private void grillaIngredientesSeleccionados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
+            //int indiceEditar = 3;
+            if (indiceEditar == e.ColumnIndex)
+            {
+                var indiceIdentificador = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
+                int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[indiceIdentificador].Value.ToString()); //accede tipo matris 
+
+                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+                Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar);
+                edicionIngredientesEnRecetas.ShowDialog(this);
+
+            }
         }
     }
 

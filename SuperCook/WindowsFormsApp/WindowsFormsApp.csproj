@@ -117,6 +117,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EdicionIngredientesEnRecetas.resx">
+      <DependentUpon>EdicionIngredientesEnRecetas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFiltrosComidas.resx">
       <DependentUpon>FormFiltrosComidas.cs</DependentUpon>
     </EmbeddedResource>
