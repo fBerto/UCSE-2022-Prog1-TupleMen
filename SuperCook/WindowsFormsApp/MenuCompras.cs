@@ -40,5 +40,19 @@ namespace WindowsFormsApp
             FormFiltrosCompras formFiltrosCompras = new FormFiltrosCompras();
             formFiltrosCompras.ShowDialog(this);
         }
+
+        private void buttonFiltrarCompras_Click(object sender, EventArgs e)
+        {
+
+            FormFiltrosCompras formFiltrosCompras = new FormFiltrosCompras();
+            formFiltrosCompras.ShowDialog(this);
+
+        }
+
+        private void eliminarFiltrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            ActualizarGrillaCompras(administradorIngredientes.GetIngredientesAComprar());
+        }
     }
 }

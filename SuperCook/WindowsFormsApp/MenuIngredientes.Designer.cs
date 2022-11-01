@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuIngredientes));
             this.grillaIngredientes = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargarIngredientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNuevoIngrediente = new System.Windows.Forms.Button();
-            this.administradorIngredientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -45,6 +40,11 @@
             this.UnidadMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioPorUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarIngredientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNuevoIngrediente = new System.Windows.Forms.Button();
+            this.administradorIngredientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientes)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.administradorIngredientesBindingSource)).BeginInit();
@@ -66,47 +66,10 @@
             this.grillaIngredientes.Location = new System.Drawing.Point(12, 78);
             this.grillaIngredientes.Name = "grillaIngredientes";
             this.grillaIngredientes.ReadOnly = true;
-            this.grillaIngredientes.Size = new System.Drawing.Size(764, 211);
+            this.grillaIngredientes.Size = new System.Drawing.Size(743, 211);
             this.grillaIngredientes.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accionesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // accionesToolStripMenuItem
-            // 
-            this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cargarIngredientesToolStripMenuItem});
-            this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
-            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.accionesToolStripMenuItem.Text = "Acciones";
-            // 
-            // cargarIngredientesToolStripMenuItem
-            // 
-            this.cargarIngredientesToolStripMenuItem.Name = "cargarIngredientesToolStripMenuItem";
-            this.cargarIngredientesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.cargarIngredientesToolStripMenuItem.Text = "Cargar Ingrediente";
-            this.cargarIngredientesToolStripMenuItem.Click += new System.EventHandler(this.cargarIngredientesToolStripMenuItem_Click);
-            // 
-            // btnNuevoIngrediente
-            // 
-            this.btnNuevoIngrediente.Location = new System.Drawing.Point(272, 36);
-            this.btnNuevoIngrediente.Name = "btnNuevoIngrediente";
-            this.btnNuevoIngrediente.Size = new System.Drawing.Size(126, 23);
-            this.btnNuevoIngrediente.TabIndex = 2;
-            this.btnNuevoIngrediente.Text = "Nuevo Ingrediente";
-            this.btnNuevoIngrediente.UseVisualStyleBackColor = true;
-            this.btnNuevoIngrediente.Click += new System.EventHandler(this.btnNuevoIngrediente_Click);
-            // 
-            // administradorIngredientesBindingSource
-            // 
-            this.administradorIngredientesBindingSource.DataSource = typeof(Logica.AdministradorIngredientes);
+            this.grillaIngredientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaIngredientes_CellClick);
+            this.grillaIngredientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grillaIngredientes_DataBindingComplete);
             // 
             // Codigo
             // 
@@ -177,6 +140,45 @@
             this.PrecioPorUnidad.Name = "PrecioPorUnidad";
             this.PrecioPorUnidad.ReadOnly = true;
             this.PrecioPorUnidad.Width = 120;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accionesToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // accionesToolStripMenuItem
+            // 
+            this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cargarIngredientesToolStripMenuItem});
+            this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
+            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.accionesToolStripMenuItem.Text = "Acciones";
+            // 
+            // cargarIngredientesToolStripMenuItem
+            // 
+            this.cargarIngredientesToolStripMenuItem.Name = "cargarIngredientesToolStripMenuItem";
+            this.cargarIngredientesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.cargarIngredientesToolStripMenuItem.Text = "Cargar Ingrediente";
+            this.cargarIngredientesToolStripMenuItem.Click += new System.EventHandler(this.cargarIngredientesToolStripMenuItem_Click);
+            // 
+            // btnNuevoIngrediente
+            // 
+            this.btnNuevoIngrediente.Location = new System.Drawing.Point(272, 36);
+            this.btnNuevoIngrediente.Name = "btnNuevoIngrediente";
+            this.btnNuevoIngrediente.Size = new System.Drawing.Size(126, 23);
+            this.btnNuevoIngrediente.TabIndex = 2;
+            this.btnNuevoIngrediente.Text = "Nuevo Ingrediente";
+            this.btnNuevoIngrediente.UseVisualStyleBackColor = true;
+            this.btnNuevoIngrediente.Click += new System.EventHandler(this.btnNuevoIngrediente_Click);
+            // 
+            // administradorIngredientesBindingSource
+            // 
+            this.administradorIngredientesBindingSource.DataSource = typeof(Logica.AdministradorIngredientes);
             // 
             // MenuIngredientes
             // 

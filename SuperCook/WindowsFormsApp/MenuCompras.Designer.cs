@@ -32,15 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuCompras));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grillaCompras = new System.Windows.Forms.DataGridView();
-            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.filtrarComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
-            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
+            this.grillaCompras = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
+            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
+            this.buttonFiltrarCompras = new System.Windows.Forms.Button();
+            this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorComprasBindingSource)).BeginInit();
@@ -59,10 +61,18 @@
             // accionesToolStripMenuItem
             // 
             this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtrarComprasToolStripMenuItem});
+            this.filtrarComprasToolStripMenuItem,
+            this.eliminarFiltrosToolStripMenuItem});
             this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
             this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.accionesToolStripMenuItem.Text = "Acciones";
+            // 
+            // filtrarComprasToolStripMenuItem
+            // 
+            this.filtrarComprasToolStripMenuItem.Name = "filtrarComprasToolStripMenuItem";
+            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtrarComprasToolStripMenuItem.Text = "Filtrar Compras";
+            this.filtrarComprasToolStripMenuItem.Click += new System.EventHandler(this.filtrarComprasToolStripMenuItem_Click);
             // 
             // grillaCompras
             // 
@@ -78,35 +88,6 @@
             this.grillaCompras.Name = "grillaCompras";
             this.grillaCompras.Size = new System.Drawing.Size(486, 242);
             this.grillaCompras.TabIndex = 1;
-            // 
-            // administradorComprasBindingSource
-            // 
-            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
-            // 
-            // filtrarComprasToolStripMenuItem
-            // 
-            this.filtrarComprasToolStripMenuItem.Name = "filtrarComprasToolStripMenuItem";
-            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.filtrarComprasToolStripMenuItem.Text = "Filtrar Compras";
-            this.filtrarComprasToolStripMenuItem.Click += new System.EventHandler(this.filtrarComprasToolStripMenuItem_Click);
-            // 
-            // lblTituloTotalCompra
-            // 
-            this.lblTituloTotalCompra.AutoSize = true;
-            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 290);
-            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
-            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
-            this.lblTituloTotalCompra.TabIndex = 2;
-            this.lblTituloTotalCompra.Text = "Total Compra ($):";
-            // 
-            // lblCostoTotalCompra
-            // 
-            this.lblCostoTotalCompra.AutoSize = true;
-            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 290);
-            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
-            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
-            this.lblCostoTotalCompra.TabIndex = 3;
-            this.lblCostoTotalCompra.Text = "[costo]";
             // 
             // Nombre
             // 
@@ -133,11 +114,51 @@
             this.Medida.HeaderText = "Medida";
             this.Medida.Name = "Medida";
             // 
+            // administradorComprasBindingSource
+            // 
+            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
+            // 
+            // lblTituloTotalCompra
+            // 
+            this.lblTituloTotalCompra.AutoSize = true;
+            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 290);
+            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
+            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
+            this.lblTituloTotalCompra.TabIndex = 2;
+            this.lblTituloTotalCompra.Text = "Total Compra ($):";
+            // 
+            // lblCostoTotalCompra
+            // 
+            this.lblCostoTotalCompra.AutoSize = true;
+            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 290);
+            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
+            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
+            this.lblCostoTotalCompra.TabIndex = 3;
+            this.lblCostoTotalCompra.Text = "[costo]";
+            // 
+            // buttonFiltrarCompras
+            // 
+            this.buttonFiltrarCompras.Location = new System.Drawing.Point(423, 282);
+            this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
+            this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
+            this.buttonFiltrarCompras.TabIndex = 4;
+            this.buttonFiltrarCompras.Text = "Filtrar";
+            this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
+            this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
+            // 
+            // eliminarFiltrosToolStripMenuItem
+            // 
+            this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
+            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
+            this.eliminarFiltrosToolStripMenuItem.Click += new System.EventHandler(this.eliminarFiltrosToolStripMenuItem_Click);
+            // 
             // MenuCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 317);
+            this.Controls.Add(this.buttonFiltrarCompras);
             this.Controls.Add(this.lblCostoTotalCompra);
             this.Controls.Add(this.lblTituloTotalCompra);
             this.Controls.Add(this.grillaCompras);
@@ -169,5 +190,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Medida;
         private System.Windows.Forms.Label lblTituloTotalCompra;
         private System.Windows.Forms.Label lblCostoTotalCompra;
+        private System.Windows.Forms.Button buttonFiltrarCompras;
+        private System.Windows.Forms.ToolStripMenuItem eliminarFiltrosToolStripMenuItem;
     }
 }

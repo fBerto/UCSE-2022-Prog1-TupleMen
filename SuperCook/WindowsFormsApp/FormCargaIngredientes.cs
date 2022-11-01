@@ -13,13 +13,21 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaIngredientes : Form
     {
-        public FormCargaIngredientes()
+        public FormCargaIngredientes(int codigoIngrediente)
         {
             InitializeComponent();
             comboBoxTipoIngrediente.DataSource = Enum.GetValues(typeof(TiposIngredientes));
             comboBoxTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
             comboBoxTipoBebida.Visible = false;
             lblTipoBebida.Visible = false;
+
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+
+            if (ingredienteAEditar != null)
+            {
+                CargarContenidoIngredienteAEditar(ingredienteAEditar);
+            }
         }
 
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
@@ -127,6 +135,22 @@ namespace WindowsFormsApp
         {
             comboBoxTipoBebida.Visible = true;
             lblTipoBebida.Visible = true;
+        }
+
+        private void CargarContenidoIngredienteAEditar(Ingrediente ingredienteAEditar)
+        {
+            textBoxNombreIngrediente.Text = ingredienteAEditar.Nombre;
+            textBoxUnidadMinimaIngrediente.Text = ingredienteAEditar.UnidadMinima.ToString();
+            textBoxCantidadIngrediente.Text = ingredienteAEditar.Cantidad.ToString();
+            textBoxPrecioPorUnidadIngrediente.Text = ingredienteAEditar.PrecioPorUnidad.ToString();
+            //comboBoxTipoIngrediente.SelectedValue = ingredienteAEditar.TipoIngrediente;
+
+            comboBoxTipoIngrediente.SelectedItem = ingredienteAEditar.TipoIngrediente;
+
+            if (ingredienteAEditar.TipoIngrediente is TiposIngredientes.Bebida)
+            {
+                comboBoxTipoBebida.SelectedValue = (ingredienteAEditar as Bebida).TipoBebida;
+            }
         }
     }
 }
