@@ -14,14 +14,16 @@ namespace WindowsFormsApp
     public partial class EdicionIngredientesEnRecetas : Form
     {
         private Ingrediente ingrediente { get; set; }
+        List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
         public EdicionIngredientesEnRecetas()
         {
             InitializeComponent();
         }
 
-        public EdicionIngredientesEnRecetas(Ingrediente ingrediente)
+        public EdicionIngredientesEnRecetas(Ingrediente ingrediente, List<Ingrediente> ingredientesSeleccionados)
         {
-            this.ingrediente = ingrediente;
+            this.ingrediente = ingrediente;          
+            this.ingredientesSeleccionados = ingredientesSeleccionados;
             InitializeComponent();
         }
 
@@ -29,15 +31,44 @@ namespace WindowsFormsApp
         {
             NombreIngredienteAEditar.Text = ingrediente.Nombre;
             UnidadMedidaAEditar.Text = ingrediente.UnidadDeMedida.ToString();
-            textBoxNuevaCantidadIngrediente.Text =ingrediente.Cantidad.ToString();
         }
 
         private void buttonConfirmarNuevaCantidad_Click(object sender, EventArgs e)
-        {   //TODO:
-            //validar datos
-            //generar el objeto 
-            //guardarlo con el mismo metodo que crear, con la difeencai que aca ya tengo un codigo 
-            //Llamar al owner para actualizar grilla
+        {  
+            int nuevaCantidad = 0;
+            if (!string.IsNullOrEmpty(textBoxNuevaCantidadIngrediente.Text ))
+            {
+                nuevaCantidad = int.Parse(textBoxNuevaCantidadIngrediente.Text);
+                if (nuevaCantidad <= 0)
+                {
+                    MessageBox.Show("che pero mayor a 0 banana", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+
+                int indice = ingredientesSeleccionados.FindIndex(x => x.Codigo == ingrediente.Codigo);
+
+                if (ingrediente is Solido)
+                {
+                    Solido solidoModificado = new Solido(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
+                    ingredientesSeleccionados[indice] = solidoModificado;
+                }
+                else
+                {   //TODO: como se que tipo de bebida es?
+                    //Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
+                    //ingredientesSeleccionados[indice] = bebidaModificada;
+                }
+
+                this.Close();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Cargale numero papi", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            
         }
     }
 }

@@ -134,8 +134,10 @@ namespace WindowsFormsApp
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
 
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar);
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesSeleccionados);
                 edicionIngredientesEnRecetas.ShowDialog(this);
+
+                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
             }
         }
