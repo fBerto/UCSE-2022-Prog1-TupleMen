@@ -46,7 +46,7 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grillaCargaRecetas)).BeginInit();
@@ -172,9 +172,9 @@
             this.Editar});
             this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 34);
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
-            this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(413, 150);
+            this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 150);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
-            this.grillaIngredientesSeleccionados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaIngredientesSeleccionados_CellClick);
             // 
             // Codigo
             // 
@@ -196,7 +196,8 @@
             // 
             // Editar
             // 
-            this.Editar.HeaderText = "Editar";
+            this.Editar.HeaderText = " ";
+            this.Editar.LinkColor = System.Drawing.Color.Fuchsia;
             this.Editar.Name = "Editar";
             // 
             // label4
@@ -263,6 +264,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Editar;
+        private System.Windows.Forms.DataGridViewLinkColumn Editar;
     }
 }
