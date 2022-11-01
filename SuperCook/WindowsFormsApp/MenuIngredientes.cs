@@ -41,7 +41,7 @@ namespace WindowsFormsApp
         private void AbrirFormularioParaCarga()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes(administradorIngredientes.GetNuevoCodigo());
+            FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes(0);
             formCargaIngredientes.ShowDialog(this);
         }
 

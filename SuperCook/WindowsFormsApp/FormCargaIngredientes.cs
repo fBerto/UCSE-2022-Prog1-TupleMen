@@ -13,17 +13,20 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaIngredientes : Form
     {
-        /*TODO:
-         *Hacer que si edito un ingrediente se sobreescriba en la grilla  
-         */
+        private int Codigo { get; set; }
 
         public FormCargaIngredientes(int codigoIngrediente)
         {
+            this.Codigo = codigoIngrediente;
+
             InitializeComponent();
             comboBoxTipoIngrediente.DataSource = Enum.GetValues(typeof(TiposIngredientes));
             comboBoxTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
             comboBoxTipoBebida.Visible = false;
             lblTipoBebida.Visible = false;
+
+            comboBoxTipoBebida.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTipoIngrediente.DropDownStyle = ComboBoxStyle.DropDownList;
 
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
@@ -40,11 +43,9 @@ namespace WindowsFormsApp
             {
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
-                int codigo = administradorIngredientes.GetNuevoCodigo();
-
                 string nombre = textBoxNombreIngrediente.Text;
                 int cantidad = int.Parse(textBoxCantidadIngrediente.Text);
-                int precioPorUnidad = int.Parse(textBoxPrecioPorUnidadIngrediente.Text); //TODO: rompe
+                decimal precioPorUnidad = decimal.Parse(textBoxPrecioPorUnidadIngrediente.Text); //TODO: rompe
                 int unidadMinima = int.Parse(textBoxUnidadMinimaIngrediente.Text);
 
                 TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
@@ -52,12 +53,12 @@ namespace WindowsFormsApp
                 if (tipoIngrediente is TiposIngredientes.Bebida)
                 {
                     TiposBebidas tipoBebida = (TiposBebidas)comboBoxTipoBebida.SelectedItem;
-                    Bebida nuevaBebida = new Bebida(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
-                    administradorIngredientes.CargarIngrediente(nuevaBebida);
+                    Bebida nuevaBebida = new Bebida(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
+                    administradorIngredientes.CargarModificarIngrediente(nuevaBebida);
                 } else
                 {
-                    Solido nuevoSolido = new Solido(codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
-                    administradorIngredientes.CargarIngrediente(nuevoSolido);
+                    Solido nuevoSolido = new Solido(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
+                    administradorIngredientes.CargarModificarIngrediente(nuevoSolido);
                 }
 
                 IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
@@ -68,6 +69,27 @@ namespace WindowsFormsApp
 
                 this.Close();
             }
+        }
+
+        private bool EstaEditando()
+        {
+            return this.Codigo == 0 ? false : true;
+        }
+
+        private int GetCodigoCorrespondiente()
+        {
+            AdministradorIngredientes admin = new AdministradorIngredientes();
+
+            int codigo = 0;
+
+            if (EstaEditando())
+            {
+                codigo = this.Codigo;
+            } else
+            {
+                codigo = admin.GetNuevoCodigo();
+            }
+            return codigo;
         }
 
         private bool NoHayLetrasEnCamposNumericos()
@@ -147,13 +169,12 @@ namespace WindowsFormsApp
             textBoxUnidadMinimaIngrediente.Text = ingredienteAEditar.UnidadMinima.ToString();
             textBoxCantidadIngrediente.Text = ingredienteAEditar.Cantidad.ToString();
             textBoxPrecioPorUnidadIngrediente.Text = ingredienteAEditar.PrecioPorUnidad.ToString();
-            //comboBoxTipoIngrediente.SelectedValue = ingredienteAEditar.TipoIngrediente;
 
             comboBoxTipoIngrediente.SelectedItem = ingredienteAEditar.TipoIngrediente;
 
             if (ingredienteAEditar.TipoIngrediente is TiposIngredientes.Bebida)
             {
-                comboBoxTipoBebida.SelectedValue = (ingredienteAEditar as Bebida).TipoBebida;
+                comboBoxTipoBebida.SelectedItem = (ingredienteAEditar as Bebida).TipoBebida;
             }
         }
     }

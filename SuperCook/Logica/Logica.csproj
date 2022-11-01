@@ -49,6 +49,7 @@
     <Compile Include="AdministradorIngredientes.cs" />
     <Compile Include="AdministradorRecetas.cs" />
     <Compile Include="GradosDeEscasez.cs" />
+    <Compile Include="Resultado.cs" />
     <Compile Include="UnidadesDeMedida.cs" />
     <Compile Include="MomentosComida.cs" />
     <Compile Include="Ingrediente.cs" />
