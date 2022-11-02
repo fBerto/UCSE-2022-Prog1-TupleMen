@@ -70,5 +70,20 @@ namespace Logica
             Receta receta= LibroRecetas.Find(x => x.Codigo == codigoRecibido);
             return receta;
         }
+
+        private List<Receta> GetRecetasDisponibles()
+        {
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            List<Receta> RecetasDisponibles = new List<Receta>();
+
+            RecetasDisponibles = LibroRecetas.Where(x => administradorIngredientes.ConsultarStockIngredientesDeReceta(x.GetIngredientesReceta())).ToList();
+
+            return RecetasDisponibles;
+        }
+
+        public List<Receta> GetRecetasDisponiblesPorMomentoComida(MomentosComida momento)
+        {
+            return GetRecetasDisponibles().Where(x => x.MomentoComida == momento).ToList();
+        }
     }
 }

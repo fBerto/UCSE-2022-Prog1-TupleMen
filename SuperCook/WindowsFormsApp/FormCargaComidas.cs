@@ -22,50 +22,48 @@ namespace WindowsFormsApp
         {
             AdministradorRecetas adminRecetas = new AdministradorRecetas();
 
+            MomentosComida momentoSeleccionado = (MomentosComida)comboBoxMomentoComida.SelectedItem;
+
             grillaSeleccionRecetas.DataSource = null;
-            grillaSeleccionRecetas.DataSource = adminRecetas.GetLibroRecetas();
+            grillaSeleccionRecetas.DataSource = adminRecetas.GetRecetasDisponiblesPorMomentoComida(momentoSeleccionado);
         }
 
         private void FormCargaComidas_Load(object sender, EventArgs e)
         {
-            grillaSeleccionRecetas.AutoGenerateColumns = false;
-            ActualizarGrillaSeleccionRecetas();
-
             dateTimePicker.MaxDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
+
+            comboBoxMomentoComida.DataSource = Enum.GetValues(typeof(MomentosComida));
+            comboBoxMomentoComida.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            grillaSeleccionRecetas.AutoGenerateColumns = false;
+            ActualizarGrillaSeleccionRecetas();
         }
 
         private void botonConfirmarCargaComida_Click(object sender, EventArgs e)
         {
-            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             AdministradorComidas administradorComidas = new AdministradorComidas();
 
-            //Busco la receta que corresponde a la fila seleccionada
             Receta recetaSeleccionada = grillaSeleccionRecetas.SelectedRows[0].DataBoundItem as Receta;
 
-            List<Ingrediente> ingredientesReceta = recetaSeleccionada.GetIngredientesReceta();
+            int codigo = administradorComidas.GetNuevoCodigo();
+            DateTime fecha = dateTimePicker.Value;
 
-            //TODO: De esto se debe encargar la logica
-            if (administradorIngredientes.ConsultarStockIngredientesDeReceta(ingredientesReceta))
+            Comida nuevaComida = new Comida(codigo, recetaSeleccionada, fecha);
+            administradorComidas.CargarComida(nuevaComida);
+
+            IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
+            if (padre != null)
             {
-                int codigo = administradorComidas.GetNuevoCodigo();
-                DateTime fecha = dateTimePicker.Value;
-
-                Comida nuevaComida = new Comida(codigo, recetaSeleccionada, fecha);
-
-                administradorIngredientes.ActualizarStockIngredientes(ingredientesReceta);
-
-                IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
-                if (padre != null)
-                {
-                    padre.ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
-                }
-
-                this.Close();
-            } else
-            {
-                MessageBox.Show("No hay suficientes ingredientes en despensa", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                padre.ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
             }
+
+            this.Close();
+        }
+
+        private void comboBoxMomentoComida_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ActualizarGrillaSeleccionRecetas();
         }
     }
 }

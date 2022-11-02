@@ -43,8 +43,8 @@
             this.MomentoComida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxFiltroMomentoComida = new System.Windows.Forms.ComboBox();
             this.groupBoxFiltroSaludable = new System.Windows.Forms.GroupBox();
+            this.radioButtonConvencionales = new System.Windows.Forms.RadioButton();
             this.radioButtonSaludables = new System.Windows.Forms.RadioButton();
-            this.radioButtonNOSaludables = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).BeginInit();
             this.groupBoxFiltroSaludable.SuspendLayout();
             this.SuspendLayout();
@@ -181,7 +181,7 @@
             // 
             // groupBoxFiltroSaludable
             // 
-            this.groupBoxFiltroSaludable.Controls.Add(this.radioButtonNOSaludables);
+            this.groupBoxFiltroSaludable.Controls.Add(this.radioButtonConvencionales);
             this.groupBoxFiltroSaludable.Controls.Add(this.radioButtonSaludables);
             this.groupBoxFiltroSaludable.Location = new System.Drawing.Point(12, 51);
             this.groupBoxFiltroSaludable.Name = "groupBoxFiltroSaludable";
@@ -189,6 +189,16 @@
             this.groupBoxFiltroSaludable.TabIndex = 13;
             this.groupBoxFiltroSaludable.TabStop = false;
             this.groupBoxFiltroSaludable.Text = "Filtrar...";
+            // 
+            // radioButtonConvencionales
+            // 
+            this.radioButtonConvencionales.AutoSize = true;
+            this.radioButtonConvencionales.Location = new System.Drawing.Point(7, 44);
+            this.radioButtonConvencionales.Name = "radioButtonConvencionales";
+            this.radioButtonConvencionales.Size = new System.Drawing.Size(101, 17);
+            this.radioButtonConvencionales.TabIndex = 1;
+            this.radioButtonConvencionales.Text = "Convencionales";
+            this.radioButtonConvencionales.UseVisualStyleBackColor = true;
             // 
             // radioButtonSaludables
             // 
@@ -201,16 +211,6 @@
             this.radioButtonSaludables.TabStop = true;
             this.radioButtonSaludables.Text = "Saludables";
             this.radioButtonSaludables.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNOSaludables
-            // 
-            this.radioButtonNOSaludables.AutoSize = true;
-            this.radioButtonNOSaludables.Location = new System.Drawing.Point(7, 44);
-            this.radioButtonNOSaludables.Name = "radioButtonNOSaludables";
-            this.radioButtonNOSaludables.Size = new System.Drawing.Size(96, 17);
-            this.radioButtonNOSaludables.TabIndex = 1;
-            this.radioButtonNOSaludables.Text = "NO Saludables";
-            this.radioButtonNOSaludables.UseVisualStyleBackColor = true;
             // 
             // FormFiltrosComidas
             // 
@@ -257,7 +257,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MomentoComida;
         private System.Windows.Forms.ComboBox comboBoxFiltroMomentoComida;
         private System.Windows.Forms.GroupBox groupBoxFiltroSaludable;
-        private System.Windows.Forms.RadioButton radioButtonNOSaludables;
+        private System.Windows.Forms.RadioButton radioButtonConvencionales;
         private System.Windows.Forms.RadioButton radioButtonSaludables;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    //Ingrediente incompleto para la receta
     public abstract class Ingrediente
     {
         public int Codigo { get; set; }
@@ -16,9 +16,7 @@ namespace Logica
         public int Cantidad { get; set; }
         public decimal PrecioPorUnidad { get; set; }
         public int UnidadMinima { get; set; }
-
-
-        //Redundante, pero si no no hay forma de mostrarlo en la grilla
+        [JsonIgnore]
         public UnidadesDeMedida UnidadDeMedida { get { return GetUnidadMedida(); } }
 
 
@@ -27,6 +25,7 @@ namespace Logica
             return PrecioPorUnidad * UnidadMinima;
         }
 
+        //TODO: Mi menor unidad para los por peso es el kg, medio inutil
         public UnidadesDeMedida GetUnidadMedida()
         {
             switch (this.TipoIngrediente)
