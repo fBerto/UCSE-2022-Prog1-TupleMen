@@ -40,15 +40,14 @@ namespace WindowsFormsApp
         }
         private void cargarRecetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            FormCargaRecetas cargaRecetas = new FormCargaRecetas(administradorRecetas.GetNuevoCodigo());
+            FormCargaRecetas cargaRecetas = new FormCargaRecetas();
             cargaRecetas.ShowDialog(this);
         }
 
         private void btnNuevaReceta_Click(object sender, EventArgs e) 
         {
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            FormCargaRecetas formCargaRecetas = new FormCargaRecetas(administradorRecetas.GetNuevoCodigo());
+            FormCargaRecetas formCargaRecetas = new FormCargaRecetas();
             formCargaRecetas.ShowDialog(this);
         }
         private int ObtenerIndice(DataGridView grilla, string nombreColumna) //para poder usarlo desde cualquier formulario 
