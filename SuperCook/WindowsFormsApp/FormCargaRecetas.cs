@@ -42,12 +42,13 @@ namespace WindowsFormsApp
 
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            this.recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
+            recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
 
             if (recetaAEditar != null)
             {
                 CargarContenidosRecetasAEditar(recetaAEditar);
-                this.ingredientesSeleccionados = recetaAEditar.GetIngredientesReceta();
+                ingredientesSeleccionados = recetaAEditar.GetIngredientesReceta();
+                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
             }
 
         }
@@ -63,53 +64,40 @@ namespace WindowsFormsApp
         {
             grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
-            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+            grillaIngredientesSeleccionados.DataSource = recetaAEditar.GetIngredientesReceta();
+            //= ingredientesSeleccionados;
             //this.ingredientesSeleccionados = ingredientesSeleccionados;
         }
-       
+
 
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
             grillaCargaRecetas.AutoGenerateColumns = false;
             ActualizarGrillaCargaIngredientes();
+            ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
         }
 
         private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
         {
-            if (ingredientesSeleccionados.Count() == 0) //primer vez q cargo ingredientes 
+            this.ingredientesSeleccionados = ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas();
+            if (ingredientesSeleccionados.Count() == 0)
             {
-                this.ingredientesSeleccionados = ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas();
-                if (ingredientesSeleccionados.Count() == 0)
-                {
-                    MessageBox.Show("Seleccionar ingredientes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Seleccionar ingredientes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                
-                List<Ingrediente> noRepetidos = ComprobarElementosNoSeleccionadosAnteriormente(ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas());
-                if(noRepetidos.Count() > 0)
-                {
-                    ingredientesSeleccionados.AddRange(noRepetidos);
-                }
-                
-                
-            }
+
             HacerVisibleIngredientesSeleccionadosYFinCarga();
             ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
         }
-        private List<Ingrediente> ComprobarElementosNoSeleccionadosAnteriormente(List < Ingrediente> NuevasSelecciones)
+        private List<Ingrediente> ComprobarElementosNoSeleccionadosAnteriormente(List<Ingrediente> NuevasSelecciones)
         {
-            foreach (Ingrediente element in ingredientesSeleccionados)
+            List<Ingrediente> ValidosACargar = new List<Ingrediente>();
+            foreach (Ingrediente element in NuevasSelecciones)
             {
-                int IndiceRepetido = NuevasSelecciones.FindIndex(x => x.Codigo == element.Codigo);
-                if(IndiceRepetido > -1)
-                {
-                    NuevasSelecciones.RemoveAt(IndiceRepetido);
-                }
+                ValidosACargar.Add(ingredientesSeleccionados.Find(x => x.Codigo != element.Codigo));
             }
-            return NuevasSelecciones;
+            return ValidosACargar;
         }
         private void HacerVisibleIngredientes()
         {
@@ -155,8 +143,8 @@ namespace WindowsFormsApp
             string nombre = textBoxNombreRecetas.Text;
             bool esSaludable = checkBoxRecetaSaludable.Checked;
 
-            this.ingredientesSeleccionados = ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados();
-            Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ingredientesSeleccionados);
+            //this.ingredientesSeleccionados = ();
+            Receta nuevaReceta = new Receta(codigo, momentoComida, nombre, esSaludable, ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados());
 
             Receta recetaEditada = administradorRecetas.BuscarCodigoReceta(codigo);
             if (recetaEditada == null)
@@ -206,7 +194,6 @@ namespace WindowsFormsApp
         }
         private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas()
         {
-            List<Ingrediente> ingredienteLista = new List<Ingrediente>();
             foreach (DataGridViewRow row in grillaCargaRecetas.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
@@ -215,26 +202,25 @@ namespace WindowsFormsApp
                     var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[row.Index].Cells[0].Value.ToString());
                     AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                     Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                    ingredienteLista.Add(ingredienteSeleccionado);
+                    ingredientesSeleccionados.Add(ingredienteSeleccionado);
                 }
             }
-            return ingredienteLista;
+            return ingredientesSeleccionados;
         }
 
         private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados()
         {
+            List<Ingrediente> ingredientesObtenidos = new List<Ingrediente>();
             foreach (DataGridViewRow row in grillaIngredientesSeleccionados.Rows)
             {
                 var codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[row.Index].Cells[0].Value.ToString());
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+
                 ingredienteSeleccionado.Cantidad = int.Parse(grillaIngredientesSeleccionados.Rows[row.Index].Cells[2].Value.ToString());
-
-                int indice = ingredientesSeleccionados.FindIndex(x => x.Codigo == codigoIngrediente);
-                ingredientesSeleccionados[indice] = ingredienteSeleccionado;
-
+                ingredientesObtenidos.Add(ingredienteSeleccionado);
             }
-            return ingredientesSeleccionados;
+            return ingredientesObtenidos;
         }
 
         private void button1_Click(object sender, EventArgs e)
