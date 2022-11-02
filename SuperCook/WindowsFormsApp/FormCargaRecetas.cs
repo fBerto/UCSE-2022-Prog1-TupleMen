@@ -38,6 +38,8 @@ namespace WindowsFormsApp
             InitializeComponent();
 
             this.edicion = true;
+            HacerVisibleIngredientes();
+            HacerVisibleIngredientesSeleccionadosYFinCarga();
 
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
@@ -48,7 +50,7 @@ namespace WindowsFormsApp
                 CargarContenidosRecetasAEditar(recetaAEditar);
                 this.ingredientesSeleccionados = recetaAEditar.GetIngredientesReceta();
             }
-           
+
         }
 
         private void ActualizarGrillaCargaIngredientes()
@@ -72,32 +74,32 @@ namespace WindowsFormsApp
         }
 
         private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
-        {
-            if (NoHayCamposNulos())
-            {
+        {            
+                HacerVisibleIngredientesSeleccionadosYFinCarga();
                 this.ingredientesSeleccionados = ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas();
                 //TODO: Buscar si el ingrediente chequeado ya esta en la grilla, sino lo puedo repetir 
                 ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
-                IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
-                if (padre != null)
-                {
-                    padre.CargarGrillaIngredientes();
-                }
-
-            }
+                //IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                //if (padre != null)
+                //{
+                //    padre.CargarGrillaIngredientes();
+                //}
+           
         }
-        private bool NoHayCamposNulos()
+        private void HacerVisibleIngredientes()
         {
-            bool resultado = true;
-            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text))
-            {
-                MessageBox.Show("Falta de informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                resultado = false;
-            }
-            return resultado;
-        }
+            label3.Visible = true;
+            grillaCargaRecetas.Visible = true;
+            buttonAceptarCargaRecetas.Visible = true;
 
+        }
+        private void HacerVisibleIngredientesSeleccionadosYFinCarga()
+        {
+            label4.Visible = true;
+            grillaIngredientesSeleccionados.Visible = true;
+            FinalizarCargaRecetas.Visible = true;
+        }
         private int ObtenerIndice(DataGridView grilla, string nombreColumna)
         {
             foreach (DataGridViewColumn column in grilla.Columns)
@@ -118,7 +120,7 @@ namespace WindowsFormsApp
             if (edicion)
             {
                 codigo = recetaAEditar.Codigo;
-                
+
             }
             else
             {
@@ -165,8 +167,17 @@ namespace WindowsFormsApp
 
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+                List<Ingrediente> ingredientes;
+                if (recetaAEditar != null)
+                {
+                    ingredientes = recetaAEditar.GetIngredientesReceta();
 
-                List<Ingrediente> ingredientes = recetaAEditar.GetIngredientesReceta();
+                }
+                else
+                {
+                    ingredientes = ingredientesSeleccionados;
+
+                }
                 EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientes);
                 edicionIngredientesEnRecetas.ShowDialog(this);
 
@@ -204,11 +215,30 @@ namespace WindowsFormsApp
                 Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
                 ingredienteSeleccionado.Cantidad = int.Parse(grillaIngredientesSeleccionados.Rows[row.Index].Cells[2].Value.ToString());
 
-                int  indice = ingredientesSeleccionados.FindIndex(x => x.Codigo == codigoIngrediente);
+                int indice = ingredientesSeleccionados.FindIndex(x => x.Codigo == codigoIngrediente);
                 ingredientesSeleccionados[indice] = ingredienteSeleccionado;
 
             }
             return ingredientesSeleccionados;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (NoHayCamposNulos())
+            {
+                HacerVisibleIngredientes();
+            }
+
+        }
+        private bool NoHayCamposNulos()
+        {
+            bool resultado = true;
+            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text))
+            {
+                MessageBox.Show("Falta de informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                resultado = false;
+            }
+            return resultado;
         }
     }
 }
