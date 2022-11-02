@@ -39,35 +39,42 @@ namespace WindowsFormsApp
         
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
         {
-            if (NoHayCamposNulos() && NoHayLetrasEnCamposNumericos() && NoHayNumerosEnElNombre())
+            if (NoHayLetrasEnCamposNumericos())
             {
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
                 string nombre = textBoxNombreIngrediente.Text;
                 int cantidad = int.Parse(textBoxCantidadIngrediente.Text);
-                decimal precioPorUnidad = decimal.Parse(textBoxPrecioPorUnidadIngrediente.Text); //TODO: rompe
+                decimal precioPorUnidad = decimal.Parse(textBoxPrecioPorUnidadIngrediente.Text);
                 int unidadMinima = int.Parse(textBoxUnidadMinimaIngrediente.Text);
 
                 TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
+
+                Resultado resultado = new Resultado();
 
                 if (tipoIngrediente is TiposIngredientes.Bebida)
                 {
                     TiposBebidas tipoBebida = (TiposBebidas)comboBoxTipoBebida.SelectedItem;
                     Bebida nuevaBebida = new Bebida(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
-                    administradorIngredientes.CargarModificarIngrediente(nuevaBebida);
+                    resultado = administradorIngredientes.CargarModificarIngrediente(nuevaBebida);
                 } else
                 {
                     Solido nuevoSolido = new Solido(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
-                    administradorIngredientes.CargarModificarIngrediente(nuevoSolido);
+                    resultado = administradorIngredientes.CargarModificarIngrediente(nuevoSolido);
                 }
 
-                IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
-                if (padre != null)
+                if (resultado.Ok == false)
                 {
-                    padre.CargarGrillaIngredientes();
-                }
-
-                this.Close();
+                    MessageBox.Show(resultado.Mensaje, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else
+                {
+                    IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
+                    if (padre != null)
+                    {
+                        padre.CargarGrillaIngredientes();
+                    }
+                    this.Close();
+                } 
             }
         }
 
@@ -106,37 +113,6 @@ namespace WindowsFormsApp
                 MessageBox.Show("Cantidad, Precio y Unidad son campos numericos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             } 
-        }
-
-        private bool NoHayCamposNulos()
-        {
-            List<TextBox> textBoxes = new List<TextBox>() { textBoxNombreIngrediente, textBoxCantidadIngrediente, textBoxPrecioPorUnidadIngrediente, textBoxUnidadMinimaIngrediente };
-            if (textBoxes.Exists(x => string.IsNullOrEmpty(x.Text)) || string.IsNullOrEmpty(comboBoxTipoIngrediente.Text))
-            {
-                MessageBox.Show("Campos sin informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            } else
-            {
-                return true;
-            }
-        }
-
-        private bool NoHayNumerosEnElNombre()
-        {
-            string nombre = textBoxNombreIngrediente.Text;
-            if (NoContieneNumeros(nombre))
-            {
-                return true;
-            } else
-            {
-                MessageBox.Show("No puede haber numeros en el nombre", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        private bool NoContieneNumeros(string strAVerificar)
-        {
-            return strAVerificar.All(Char.IsLetter);
         }
 
         private void comboBoxTipoIngrediente_SelectionChangeCommitted(object sender, EventArgs e)

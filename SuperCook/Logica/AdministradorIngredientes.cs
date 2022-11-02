@@ -13,17 +13,36 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        public void CargarModificarIngrediente(Ingrediente nuevoIngrediente)
+        public Resultado CargarModificarIngrediente(Ingrediente nuevoIngrediente)
         {
+            if (string.IsNullOrEmpty(nuevoIngrediente.Nombre))
+            {
+                return new Resultado(false, "El ingrediente debe tener un nombre");
+            }
+            if (IngresoValoresNegativos(nuevoIngrediente))
+            {
+                return new Resultado(false, "No puede ingresar valores negativos");
+            }
             if (IngredienteYaExisteEnDespensa(nuevoIngrediente))
             {
-                int indiceAModificar = IngredientesEnDespensa.FindIndex(x => x.Codigo == nuevoIngrediente.Codigo);
-                IngredientesEnDespensa[indiceAModificar] = nuevoIngrediente;
+                SobreescribirIngrediente(nuevoIngrediente);
             } else
             {
                 IngredientesEnDespensa.Add(nuevoIngrediente);
             }
             GuardarIngredientesEnDespensa();
+            return new Resultado(true, "Carga exitosa");
+        }
+
+        private void SobreescribirIngrediente(Ingrediente ingrediente)
+        {
+            int indiceAModificar = IngredientesEnDespensa.FindIndex(x => x.Codigo == ingrediente.Codigo);
+            IngredientesEnDespensa[indiceAModificar] = ingrediente;
+        }
+
+        private bool IngresoValoresNegativos(Ingrediente nuevoIngrediente)
+        {
+            return nuevoIngrediente.Cantidad < 0 || nuevoIngrediente.UnidadMinima < 0 || nuevoIngrediente.PrecioPorUnidad < 0;
         }
 
         public void EliminarIngrediente(int codigo)
@@ -110,8 +129,7 @@ namespace Logica
             if (IngredientesEnDespensa.Count == 0)
             {
                 return codigoInicial;
-            }
-            else
+            } else
             {
                 return GetCodigoSiguiente();
             }

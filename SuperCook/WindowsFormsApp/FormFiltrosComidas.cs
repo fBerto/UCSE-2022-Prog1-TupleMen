@@ -13,6 +13,11 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosComidas : Form
     {
+        //TODO: Validaciones en logica
+        // Validaciones de negocios: ingresos de nulos o campos obligatorios
+        // Validaciones de tipo: en winform (parseos)
+        //Probar maskedTextbox para obligar ingresos
+
         public FormFiltrosComidas()
         {
             InitializeComponent();

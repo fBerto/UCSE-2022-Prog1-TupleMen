@@ -20,6 +20,11 @@ namespace WindowsFormsApp
          *verificar que existan elementos checkeados al confirmar la carga de estos 
          */
 
+        //TODO: Validaciones en logica
+        // Validaciones de negocios: ingresos de nulos o campos obligatorios
+        // Validaciones de tipo: en winform (parseos)
+        //Probar maskedTextbox para obligar ingresos
+
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
         Receta recetaAEditar ;
         public FormCargaRecetas(int codigoReceta)
@@ -157,13 +162,5 @@ namespace WindowsFormsApp
             checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
             ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
         }
-
-       
     }
-
-
-
-
-
-
 }

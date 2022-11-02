@@ -13,7 +13,6 @@ namespace WindowsFormsApp
 {
     public partial class FormCargaComidas : Form
     {
-        //TODO: Que por defecto te aparezca la fecha de hoy en el textbox
         public FormCargaComidas()
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace WindowsFormsApp
             grillaSeleccionRecetas.AutoGenerateColumns = false;
             ActualizarGrillaSeleccionRecetas();
 
-            //No permito ingresar fechas futuras
             dateTimePicker.MaxDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
         }
@@ -47,6 +45,7 @@ namespace WindowsFormsApp
 
             List<Ingrediente> ingredientesReceta = recetaSeleccionada.GetIngredientesReceta();
 
+            //TODO: De esto se debe encargar la logica
             if (administradorIngredientes.ConsultarStockIngredientesDeReceta(ingredientesReceta))
             {
                 int codigo = administradorComidas.GetNuevoCodigo();

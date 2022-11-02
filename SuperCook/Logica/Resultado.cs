@@ -11,7 +11,9 @@ namespace Logica
         public bool Ok { get; set; }
         public string Mensaje { get; set; }
 
-        Resultado(bool ok, string mensaje)
+        public Resultado() { }
+
+        public Resultado(bool ok, string mensaje)
         {
             this.Ok = ok;
             this.Mensaje = mensaje;

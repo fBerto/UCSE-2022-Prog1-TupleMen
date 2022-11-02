@@ -10,6 +10,12 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
+        //TODO:
+        /*
+         * Es decir, debe permitir seleccionar las recetas que tengan todos los ingredientes
+         * disponibles y filtrar por el tipo de comida. Una vez que registra la comida,
+         * se debe descontar las cantidades utilizadas de todos los ingredientes de la receta.
+         */
         private static List<Comida> HistorialComidas = new List<Comida>();
 
         const int codigoInicial = 1;
