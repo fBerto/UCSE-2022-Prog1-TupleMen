@@ -33,16 +33,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrarComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grillaCompras = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblTituloTotalCompra = new System.Windows.Forms.Label();
             this.lblCostoTotalCompra = new System.Windows.Forms.Label();
             this.buttonFiltrarCompras = new System.Windows.Forms.Button();
-            this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadEnDespensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadAComprar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorComprasBindingSource)).BeginInit();
@@ -54,7 +56,7 @@
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(510, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(718, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,9 +72,16 @@
             // filtrarComprasToolStripMenuItem
             // 
             this.filtrarComprasToolStripMenuItem.Name = "filtrarComprasToolStripMenuItem";
-            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.filtrarComprasToolStripMenuItem.Text = "Filtrar Compras";
             this.filtrarComprasToolStripMenuItem.Click += new System.EventHandler(this.filtrarComprasToolStripMenuItem_Click);
+            // 
+            // eliminarFiltrosToolStripMenuItem
+            // 
+            this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
+            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
+            this.eliminarFiltrosToolStripMenuItem.Click += new System.EventHandler(this.eliminarFiltrosToolStripMenuItem_Click);
             // 
             // grillaCompras
             // 
@@ -81,42 +90,15 @@
             this.grillaCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Tipo,
-            this.Cantidad,
+            this.Costo,
+            this.CantidadEnDespensa,
+            this.CantidadAComprar,
             this.Medida});
             this.grillaCompras.DataSource = this.administradorComprasBindingSource;
             this.grillaCompras.Location = new System.Drawing.Point(12, 27);
             this.grillaCompras.Name = "grillaCompras";
-            this.grillaCompras.Size = new System.Drawing.Size(486, 242);
+            this.grillaCompras.Size = new System.Drawing.Size(694, 242);
             this.grillaCompras.TabIndex = 1;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "TipoIngrediente";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Medida
-            // 
-            this.Medida.DataPropertyName = "UnidadDeMedida";
-            this.Medida.HeaderText = "Medida";
-            this.Medida.Name = "Medida";
-            // 
-            // administradorComprasBindingSource
-            // 
-            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
             // 
             // lblTituloTotalCompra
             // 
@@ -138,7 +120,7 @@
             // 
             // buttonFiltrarCompras
             // 
-            this.buttonFiltrarCompras.Location = new System.Drawing.Point(423, 282);
+            this.buttonFiltrarCompras.Location = new System.Drawing.Point(631, 280);
             this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
             this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
             this.buttonFiltrarCompras.TabIndex = 4;
@@ -146,18 +128,57 @@
             this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
             this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
             // 
-            // eliminarFiltrosToolStripMenuItem
+            // administradorComprasBindingSource
             // 
-            this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
-            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
-            this.eliminarFiltrosToolStripMenuItem.Click += new System.EventHandler(this.eliminarFiltrosToolStripMenuItem_Click);
+            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Tipo
+            // 
+            this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tipo.DataPropertyName = "TipoIngrediente";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Costo
+            // 
+            this.Costo.DataPropertyName = "Costo";
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.Width = 50;
+            // 
+            // CantidadEnDespensa
+            // 
+            this.CantidadEnDespensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CantidadEnDespensa.DataPropertyName = "Cantidad";
+            this.CantidadEnDespensa.HeaderText = "Cantidad en Despensa";
+            this.CantidadEnDespensa.Name = "CantidadEnDespensa";
+            // 
+            // CantidadAComprar
+            // 
+            this.CantidadAComprar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CantidadAComprar.DataPropertyName = "CantidadAComprar";
+            this.CantidadAComprar.HeaderText = "Cantidad a comprar";
+            this.CantidadAComprar.Name = "CantidadAComprar";
+            // 
+            // Medida
+            // 
+            this.Medida.DataPropertyName = "UnidadDeMedida";
+            this.Medida.HeaderText = "Medida";
+            this.Medida.Name = "Medida";
+            this.Medida.Width = 50;
             // 
             // MenuCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 317);
+            this.ClientSize = new System.Drawing.Size(718, 317);
             this.Controls.Add(this.buttonFiltrarCompras);
             this.Controls.Add(this.lblCostoTotalCompra);
             this.Controls.Add(this.lblTituloTotalCompra);
@@ -184,13 +205,15 @@
         private System.Windows.Forms.DataGridView grillaCompras;
         private System.Windows.Forms.BindingSource administradorComprasBindingSource;
         private System.Windows.Forms.ToolStripMenuItem filtrarComprasToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Medida;
         private System.Windows.Forms.Label lblTituloTotalCompra;
         private System.Windows.Forms.Label lblCostoTotalCompra;
         private System.Windows.Forms.Button buttonFiltrarCompras;
         private System.Windows.Forms.ToolStripMenuItem eliminarFiltrosToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadEnDespensa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadAComprar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Medida;
     }
 }

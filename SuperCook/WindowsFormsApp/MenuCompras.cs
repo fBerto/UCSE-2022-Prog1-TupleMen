@@ -13,6 +13,9 @@ namespace WindowsFormsApp
 {
     public partial class MenuCompras : Form, IActualizarGrillaCompras
     {
+        //TODO: Mostrar costo por cada ingrediente
+        //Definir el tema de la cantidad a comprar
+
         public MenuCompras()
         {
             InitializeComponent();

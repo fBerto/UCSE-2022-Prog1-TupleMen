@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.checkBoxFiltroTipoIngrediente = new System.Windows.Forms.CheckBox();
-            this.checkBoxFiltroPorPrecio = new System.Windows.Forms.CheckBox();
+            this.checkBoxFiltroPorCosto = new System.Windows.Forms.CheckBox();
             this.checkBoxFiltroEscasez = new System.Windows.Forms.CheckBox();
             this.checkBoxFiltroPorUnidadDeMedida = new System.Windows.Forms.CheckBox();
             this.comboBoxFiltroUnidadMedida = new System.Windows.Forms.ComboBox();
             this.comboBoxFiltroEscasez = new System.Windows.Forms.ComboBox();
             this.comboBoxFiltroTipoIngrediente = new System.Windows.Forms.ComboBox();
             this.comboBoxFiltroTipoBebida = new System.Windows.Forms.ComboBox();
-            this.textBoxPrecioIngresado = new System.Windows.Forms.TextBox();
-            this.groupBoxPrecioMinimoMaximo = new System.Windows.Forms.GroupBox();
-            this.radioButtonPrecioMaximo = new System.Windows.Forms.RadioButton();
-            this.radioButtonPrecioMinimo = new System.Windows.Forms.RadioButton();
+            this.textBoxCostoIngresado = new System.Windows.Forms.TextBox();
+            this.groupBoxCostoMinimoMaximo = new System.Windows.Forms.GroupBox();
+            this.radioButtonCostoMaximo = new System.Windows.Forms.RadioButton();
+            this.radioButtonCostoMinimo = new System.Windows.Forms.RadioButton();
             this.checkBoxFiltroTipoBebida = new System.Windows.Forms.CheckBox();
             this.botonConfirmarFiltrosCompras = new System.Windows.Forms.Button();
-            this.groupBoxPrecioMinimoMaximo.SuspendLayout();
+            this.groupBoxCostoMinimoMaximo.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBoxFiltroTipoIngrediente
@@ -56,16 +56,16 @@
             this.checkBoxFiltroTipoIngrediente.UseVisualStyleBackColor = true;
             this.checkBoxFiltroTipoIngrediente.CheckedChanged += new System.EventHandler(this.checkBoxFiltroTipoIngrediente_CheckedChanged);
             // 
-            // checkBoxFiltroPorPrecio
+            // checkBoxFiltroPorCosto
             // 
-            this.checkBoxFiltroPorPrecio.AutoSize = true;
-            this.checkBoxFiltroPorPrecio.Location = new System.Drawing.Point(198, 78);
-            this.checkBoxFiltroPorPrecio.Name = "checkBoxFiltroPorPrecio";
-            this.checkBoxFiltroPorPrecio.Size = new System.Drawing.Size(75, 17);
-            this.checkBoxFiltroPorPrecio.TabIndex = 1;
-            this.checkBoxFiltroPorPrecio.Text = "Por Precio";
-            this.checkBoxFiltroPorPrecio.UseVisualStyleBackColor = true;
-            this.checkBoxFiltroPorPrecio.CheckedChanged += new System.EventHandler(this.checkBoxFiltroPorPrecio_CheckedChanged);
+            this.checkBoxFiltroPorCosto.AutoSize = true;
+            this.checkBoxFiltroPorCosto.Location = new System.Drawing.Point(198, 78);
+            this.checkBoxFiltroPorCosto.Name = "checkBoxFiltroPorCosto";
+            this.checkBoxFiltroPorCosto.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxFiltroPorCosto.TabIndex = 1;
+            this.checkBoxFiltroPorCosto.Text = "Por Costo";
+            this.checkBoxFiltroPorCosto.UseVisualStyleBackColor = true;
+            this.checkBoxFiltroPorCosto.CheckedChanged += new System.EventHandler(this.checkBoxFiltroPorPrecio_CheckedChanged);
             // 
             // checkBoxFiltroEscasez
             // 
@@ -122,45 +122,45 @@
             this.comboBoxFiltroTipoBebida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxFiltroTipoBebida.TabIndex = 7;
             // 
-            // textBoxPrecioIngresado
+            // textBoxCostoIngresado
             // 
-            this.textBoxPrecioIngresado.Location = new System.Drawing.Point(195, 178);
-            this.textBoxPrecioIngresado.Name = "textBoxPrecioIngresado";
-            this.textBoxPrecioIngresado.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPrecioIngresado.TabIndex = 8;
+            this.textBoxCostoIngresado.Location = new System.Drawing.Point(195, 178);
+            this.textBoxCostoIngresado.Name = "textBoxCostoIngresado";
+            this.textBoxCostoIngresado.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCostoIngresado.TabIndex = 8;
             // 
-            // groupBoxPrecioMinimoMaximo
+            // groupBoxCostoMinimoMaximo
             // 
-            this.groupBoxPrecioMinimoMaximo.Controls.Add(this.radioButtonPrecioMaximo);
-            this.groupBoxPrecioMinimoMaximo.Controls.Add(this.radioButtonPrecioMinimo);
-            this.groupBoxPrecioMinimoMaximo.Location = new System.Drawing.Point(198, 101);
-            this.groupBoxPrecioMinimoMaximo.Name = "groupBoxPrecioMinimoMaximo";
-            this.groupBoxPrecioMinimoMaximo.Size = new System.Drawing.Size(97, 71);
-            this.groupBoxPrecioMinimoMaximo.TabIndex = 9;
-            this.groupBoxPrecioMinimoMaximo.TabStop = false;
-            this.groupBoxPrecioMinimoMaximo.Text = "Inserte el precio";
+            this.groupBoxCostoMinimoMaximo.Controls.Add(this.radioButtonCostoMaximo);
+            this.groupBoxCostoMinimoMaximo.Controls.Add(this.radioButtonCostoMinimo);
+            this.groupBoxCostoMinimoMaximo.Location = new System.Drawing.Point(198, 101);
+            this.groupBoxCostoMinimoMaximo.Name = "groupBoxCostoMinimoMaximo";
+            this.groupBoxCostoMinimoMaximo.Size = new System.Drawing.Size(97, 71);
+            this.groupBoxCostoMinimoMaximo.TabIndex = 9;
+            this.groupBoxCostoMinimoMaximo.TabStop = false;
+            this.groupBoxCostoMinimoMaximo.Text = "Inserte el costo";
             // 
-            // radioButtonPrecioMaximo
+            // radioButtonCostoMaximo
             // 
-            this.radioButtonPrecioMaximo.AutoSize = true;
-            this.radioButtonPrecioMaximo.Location = new System.Drawing.Point(7, 44);
-            this.radioButtonPrecioMaximo.Name = "radioButtonPrecioMaximo";
-            this.radioButtonPrecioMaximo.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonPrecioMaximo.TabIndex = 1;
-            this.radioButtonPrecioMaximo.TabStop = true;
-            this.radioButtonPrecioMaximo.Text = "Maximo";
-            this.radioButtonPrecioMaximo.UseVisualStyleBackColor = true;
+            this.radioButtonCostoMaximo.AutoSize = true;
+            this.radioButtonCostoMaximo.Location = new System.Drawing.Point(7, 44);
+            this.radioButtonCostoMaximo.Name = "radioButtonCostoMaximo";
+            this.radioButtonCostoMaximo.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonCostoMaximo.TabIndex = 1;
+            this.radioButtonCostoMaximo.TabStop = true;
+            this.radioButtonCostoMaximo.Text = "Maximo";
+            this.radioButtonCostoMaximo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonPrecioMinimo
+            // radioButtonCostoMinimo
             // 
-            this.radioButtonPrecioMinimo.AutoSize = true;
-            this.radioButtonPrecioMinimo.Location = new System.Drawing.Point(7, 20);
-            this.radioButtonPrecioMinimo.Name = "radioButtonPrecioMinimo";
-            this.radioButtonPrecioMinimo.Size = new System.Drawing.Size(58, 17);
-            this.radioButtonPrecioMinimo.TabIndex = 0;
-            this.radioButtonPrecioMinimo.TabStop = true;
-            this.radioButtonPrecioMinimo.Text = "Minimo";
-            this.radioButtonPrecioMinimo.UseVisualStyleBackColor = true;
+            this.radioButtonCostoMinimo.AutoSize = true;
+            this.radioButtonCostoMinimo.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonCostoMinimo.Name = "radioButtonCostoMinimo";
+            this.radioButtonCostoMinimo.Size = new System.Drawing.Size(58, 17);
+            this.radioButtonCostoMinimo.TabIndex = 0;
+            this.radioButtonCostoMinimo.TabStop = true;
+            this.radioButtonCostoMinimo.Text = "Minimo";
+            this.radioButtonCostoMinimo.UseVisualStyleBackColor = true;
             // 
             // checkBoxFiltroTipoBebida
             // 
@@ -190,21 +190,21 @@
             this.ClientSize = new System.Drawing.Size(333, 259);
             this.Controls.Add(this.botonConfirmarFiltrosCompras);
             this.Controls.Add(this.checkBoxFiltroTipoBebida);
-            this.Controls.Add(this.groupBoxPrecioMinimoMaximo);
-            this.Controls.Add(this.textBoxPrecioIngresado);
+            this.Controls.Add(this.groupBoxCostoMinimoMaximo);
+            this.Controls.Add(this.textBoxCostoIngresado);
             this.Controls.Add(this.comboBoxFiltroTipoBebida);
             this.Controls.Add(this.comboBoxFiltroTipoIngrediente);
             this.Controls.Add(this.comboBoxFiltroEscasez);
             this.Controls.Add(this.comboBoxFiltroUnidadMedida);
             this.Controls.Add(this.checkBoxFiltroPorUnidadDeMedida);
             this.Controls.Add(this.checkBoxFiltroEscasez);
-            this.Controls.Add(this.checkBoxFiltroPorPrecio);
+            this.Controls.Add(this.checkBoxFiltroPorCosto);
             this.Controls.Add(this.checkBoxFiltroTipoIngrediente);
             this.Name = "FormFiltrosCompras";
             this.Text = "FormFiltrosCompras";
             this.Load += new System.EventHandler(this.FormFiltrosCompras_Load);
-            this.groupBoxPrecioMinimoMaximo.ResumeLayout(false);
-            this.groupBoxPrecioMinimoMaximo.PerformLayout();
+            this.groupBoxCostoMinimoMaximo.ResumeLayout(false);
+            this.groupBoxCostoMinimoMaximo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,17 +213,17 @@
         #endregion
 
         private System.Windows.Forms.CheckBox checkBoxFiltroTipoIngrediente;
-        private System.Windows.Forms.CheckBox checkBoxFiltroPorPrecio;
+        private System.Windows.Forms.CheckBox checkBoxFiltroPorCosto;
         private System.Windows.Forms.CheckBox checkBoxFiltroEscasez;
         private System.Windows.Forms.CheckBox checkBoxFiltroPorUnidadDeMedida;
         private System.Windows.Forms.ComboBox comboBoxFiltroUnidadMedida;
         private System.Windows.Forms.ComboBox comboBoxFiltroEscasez;
         private System.Windows.Forms.ComboBox comboBoxFiltroTipoIngrediente;
         private System.Windows.Forms.ComboBox comboBoxFiltroTipoBebida;
-        private System.Windows.Forms.TextBox textBoxPrecioIngresado;
-        private System.Windows.Forms.GroupBox groupBoxPrecioMinimoMaximo;
-        private System.Windows.Forms.RadioButton radioButtonPrecioMaximo;
-        private System.Windows.Forms.RadioButton radioButtonPrecioMinimo;
+        private System.Windows.Forms.TextBox textBoxCostoIngresado;
+        private System.Windows.Forms.GroupBox groupBoxCostoMinimoMaximo;
+        private System.Windows.Forms.RadioButton radioButtonCostoMaximo;
+        private System.Windows.Forms.RadioButton radioButtonCostoMinimo;
         private System.Windows.Forms.CheckBox checkBoxFiltroTipoBebida;
         private System.Windows.Forms.Button botonConfirmarFiltrosCompras;
     }
