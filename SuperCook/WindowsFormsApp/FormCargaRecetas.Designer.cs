@@ -58,7 +58,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(461, 9);
+            this.label1.Location = new System.Drawing.Point(420, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
@@ -67,7 +67,7 @@
             // checkBoxRecetaSaludable
             // 
             this.checkBoxRecetaSaludable.AutoSize = true;
-            this.checkBoxRecetaSaludable.Location = new System.Drawing.Point(464, 97);
+            this.checkBoxRecetaSaludable.Location = new System.Drawing.Point(466, 195);
             this.checkBoxRecetaSaludable.Name = "checkBoxRecetaSaludable";
             this.checkBoxRecetaSaludable.Size = new System.Drawing.Size(73, 17);
             this.checkBoxRecetaSaludable.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // textBoxNombreRecetas
             // 
-            this.textBoxNombreRecetas.Location = new System.Drawing.Point(511, 6);
+            this.textBoxNombreRecetas.Location = new System.Drawing.Point(466, 76);
             this.textBoxNombreRecetas.Name = "textBoxNombreRecetas";
             this.textBoxNombreRecetas.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreRecetas.TabIndex = 3;
@@ -97,7 +97,7 @@
             this.comboBoxMomentosComida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxMomentosComida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxMomentosComida.FormattingEnabled = true;
-            this.comboBoxMomentosComida.Location = new System.Drawing.Point(464, 70);
+            this.comboBoxMomentosComida.Location = new System.Drawing.Point(454, 149);
             this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
             this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMomentosComida.TabIndex = 6;
@@ -106,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(461, 54);
+            this.label2.Location = new System.Drawing.Point(451, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 7;
@@ -158,7 +158,7 @@
             // 
             // FinalizarCargaRecetas
             // 
-            this.FinalizarCargaRecetas.Location = new System.Drawing.Point(828, 242);
+            this.FinalizarCargaRecetas.Location = new System.Drawing.Point(839, 318);
             this.FinalizarCargaRecetas.Name = "FinalizarCargaRecetas";
             this.FinalizarCargaRecetas.Size = new System.Drawing.Size(75, 23);
             this.FinalizarCargaRecetas.TabIndex = 10;
@@ -177,7 +177,7 @@
             this.Editar});
             this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 34);
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
-            this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 150);
+            this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 278);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
             this.grillaIngredientesSeleccionados.Visible = false;
             this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaIngredientesSeleccionados_CellClick);
@@ -222,7 +222,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(485, 152);
+            this.button1.Location = new System.Drawing.Point(464, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;

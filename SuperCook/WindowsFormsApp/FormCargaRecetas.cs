@@ -16,7 +16,6 @@ namespace WindowsFormsApp
     public partial class FormCargaRecetas : Form, IActualizarGrillaIngredientesSeleccionados
     {
         /*TODO:
-         *Hacer que si edito un ingrediente se sobreescriba en la grilla 
          *verificar que existan elementos checkeados al confirmar la carga de estos 
          */
 
@@ -60,12 +59,14 @@ namespace WindowsFormsApp
             grillaCargaRecetas.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
         }
 
-        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
+        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionadosPorBox)
         {
             grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
             grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+            //this.ingredientesSeleccionados = ingredientesSeleccionados;
         }
+       
 
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
@@ -74,18 +75,41 @@ namespace WindowsFormsApp
         }
 
         private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
-        {            
-                HacerVisibleIngredientesSeleccionadosYFinCarga();
+        {
+            if (ingredientesSeleccionados.Count() == 0) //primer vez q cargo ingredientes 
+            {
                 this.ingredientesSeleccionados = ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas();
-                //TODO: Buscar si el ingrediente chequeado ya esta en la grilla, sino lo puedo repetir 
-                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
+                if (ingredientesSeleccionados.Count() == 0)
+                {
+                    MessageBox.Show("Seleccionar ingredientes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                
+                List<Ingrediente> noRepetidos = ComprobarElementosNoSeleccionadosAnteriormente(ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas());
+                if(noRepetidos.Count() > 0)
+                {
+                    ingredientesSeleccionados.AddRange(noRepetidos);
+                }
+                
+                
+            }
+            HacerVisibleIngredientesSeleccionadosYFinCarga();
+            ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
-                //IActualizarGrillaIngredientes padre = this.Owner as IActualizarGrillaIngredientes;
-                //if (padre != null)
-                //{
-                //    padre.CargarGrillaIngredientes();
-                //}
-           
+        }
+        private List<Ingrediente> ComprobarElementosNoSeleccionadosAnteriormente(List < Ingrediente> NuevasSelecciones)
+        {
+            foreach (Ingrediente element in ingredientesSeleccionados)
+            {
+                int IndiceRepetido = NuevasSelecciones.FindIndex(x => x.Codigo == element.Codigo);
+                if(IndiceRepetido > -1)
+                {
+                    NuevasSelecciones.RemoveAt(IndiceRepetido);
+                }
+            }
+            return NuevasSelecciones;
         }
         private void HacerVisibleIngredientes()
         {
@@ -167,18 +191,7 @@ namespace WindowsFormsApp
 
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                List<Ingrediente> ingredientes;
-                if (recetaAEditar != null)
-                {
-                    ingredientes = recetaAEditar.GetIngredientesReceta();
-
-                }
-                else
-                {
-                    ingredientes = ingredientesSeleccionados;
-
-                }
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientes);
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesSeleccionados);
                 edicionIngredientesEnRecetas.ShowDialog(this);
 
             }
@@ -193,6 +206,7 @@ namespace WindowsFormsApp
         }
         private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas()
         {
+            List<Ingrediente> ingredienteLista = new List<Ingrediente>();
             foreach (DataGridViewRow row in grillaCargaRecetas.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
@@ -201,11 +215,12 @@ namespace WindowsFormsApp
                     var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[row.Index].Cells[0].Value.ToString());
                     AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                     Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                    ingredientesSeleccionados.Add(ingredienteSeleccionado);
+                    ingredienteLista.Add(ingredienteSeleccionado);
                 }
             }
-            return ingredientesSeleccionados;
+            return ingredienteLista;
         }
+
         private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados()
         {
             foreach (DataGridViewRow row in grillaIngredientesSeleccionados.Rows)
