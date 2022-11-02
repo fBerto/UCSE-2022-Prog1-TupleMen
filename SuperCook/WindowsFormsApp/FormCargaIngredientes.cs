@@ -20,13 +20,8 @@ namespace WindowsFormsApp
             this.Codigo = codigoIngrediente;
 
             InitializeComponent();
-            comboBoxTipoIngrediente.DataSource = Enum.GetValues(typeof(TiposIngredientes));
-            comboBoxTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
-            comboBoxTipoBebida.Visible = false;
-            lblTipoBebida.Visible = false;
 
-            comboBoxTipoBebida.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTipoIngrediente.DropDownStyle = ComboBoxStyle.DropDownList;
+            ConfigurarElementosForm();
 
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
@@ -35,6 +30,17 @@ namespace WindowsFormsApp
             {
                 CargarContenidoIngredienteAEditar(ingredienteAEditar);
             }
+        }
+
+        private void ConfigurarElementosForm()
+        {
+            comboBoxTipoIngrediente.DataSource = Enum.GetValues(typeof(TiposIngredientes));
+            comboBoxTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
+
+            ModificarVisibilidadTipoBebida(false);
+
+            comboBoxTipoBebida.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTipoIngrediente.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         
         public void BotonConfirmarCargaIngredientes_Click(object sender, EventArgs e)
@@ -55,11 +61,11 @@ namespace WindowsFormsApp
                 if (tipoIngrediente is TiposIngredientes.Bebida)
                 {
                     TiposBebidas tipoBebida = (TiposBebidas)comboBoxTipoBebida.SelectedItem;
-                    Bebida nuevaBebida = new Bebida(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
+                    Bebida nuevaBebida = new Bebida(this.Codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima, tipoBebida);
                     resultado = administradorIngredientes.CargarModificarIngrediente(nuevaBebida);
                 } else
                 {
-                    Solido nuevoSolido = new Solido(GetCodigoCorrespondiente(), nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
+                    Solido nuevoSolido = new Solido(this.Codigo, nombre, tipoIngrediente, cantidad, precioPorUnidad, unidadMinima);
                     resultado = administradorIngredientes.CargarModificarIngrediente(nuevoSolido);
                 }
 
@@ -76,27 +82,6 @@ namespace WindowsFormsApp
                     this.Close();
                 } 
             }
-        }
-
-        private bool EstaEditando()
-        {
-            return this.Codigo == 0 ? false : true;
-        }
-
-        private int GetCodigoCorrespondiente()
-        {
-            AdministradorIngredientes admin = new AdministradorIngredientes();
-
-            int codigo = 0;
-
-            if (EstaEditando())
-            {
-                codigo = this.Codigo;
-            } else
-            {
-                codigo = admin.GetNuevoCodigo();
-            }
-            return codigo;
         }
 
         private bool NoHayLetrasEnCamposNumericos()
@@ -118,25 +103,13 @@ namespace WindowsFormsApp
         private void comboBoxTipoIngrediente_SelectionChangeCommitted(object sender, EventArgs e)
         {
             TiposIngredientes tipoSeleccionado = (TiposIngredientes)comboBoxTipoIngrediente.SelectedItem;
-            if (tipoSeleccionado is TiposIngredientes.Bebida)
-            {
-                MostrarSeleccionTipoBebida();
-            } else
-            {
-                OcultarSeleccionTipoBebida();
-            }
+            ModificarVisibilidadTipoBebida(tipoSeleccionado is TiposIngredientes.Bebida);
         }
 
-        private void OcultarSeleccionTipoBebida()
+        private void ModificarVisibilidadTipoBebida(bool esVisible)
         {
-            comboBoxTipoBebida.Visible = false;
-            lblTipoBebida.Visible = false;
-        }
-
-        private void MostrarSeleccionTipoBebida()
-        {
-            comboBoxTipoBebida.Visible = true;
-            lblTipoBebida.Visible = true;
+            comboBoxTipoBebida.Visible = esVisible;
+            lblTipoBebida.Visible = esVisible;
         }
 
         private void CargarContenidoIngredienteAEditar(Ingrediente ingredienteAEditar)
@@ -151,6 +124,7 @@ namespace WindowsFormsApp
             if (ingredienteAEditar.TipoIngrediente is TiposIngredientes.Bebida)
             {
                 comboBoxTipoBebida.SelectedItem = (ingredienteAEditar as Bebida).TipoBebida;
+                ModificarVisibilidadTipoBebida(true);
             }
         }
     }

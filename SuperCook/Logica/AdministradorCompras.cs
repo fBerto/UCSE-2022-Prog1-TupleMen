@@ -49,11 +49,6 @@ namespace Logica
             return IngredientesAComprar.Where(x => x.GetGradoDeEscasez() == escasez).ToList();
         }
 
-        //public List<Ingrediente> FiltrarIngredientesAComprar(EleccionFiltro)
-        //{
-        //    List<Ingrediente> ingredientesFiltrados = new List<Ingrediente>();
-        //}
-
         public decimal CalcularTotalCompra()
         {
             decimal totalCompra = 0;
