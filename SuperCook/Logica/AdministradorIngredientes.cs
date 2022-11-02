@@ -23,12 +23,13 @@ namespace Logica
             {
                 return new Resultado(false, "No puede ingresar valores negativos");
             }
-            if (IngredienteYaExisteEnDespensa(nuevoIngrediente))
+            if (nuevoIngrediente.Codigo == 0)
             {
-                SobreescribirIngrediente(nuevoIngrediente);
+                nuevoIngrediente.Codigo = GetNuevoCodigo();
+                IngredientesEnDespensa.Add(nuevoIngrediente);
             } else
             {
-                IngredientesEnDespensa.Add(nuevoIngrediente);
+                SobreescribirIngrediente(nuevoIngrediente);
             }
             GuardarIngredientesEnDespensa();
             return new Resultado(true, "Carga exitosa");

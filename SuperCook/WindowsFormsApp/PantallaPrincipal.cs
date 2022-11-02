@@ -47,15 +47,18 @@ namespace WindowsFormsApp
             LeerArchivosListasEnDisco();
         }
 
+        //TODO: Esto deberia estar en logica
         private void LeerArchivosListasEnDisco()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
             AdministradorComidas administradorComidas = new AdministradorComidas();
+            AdministradorCompras administradorCompras = new AdministradorCompras();
 
             administradorIngredientes.BuscarIngredientesEnArchivos();
             administradorRecetas.BuscarRecetasEnArchivos();
             administradorComidas.BuscarComidasEnArchivos();
+            administradorCompras.BuscarIngredientesAComprar();
         }
     }
 }

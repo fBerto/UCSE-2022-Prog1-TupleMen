@@ -33,8 +33,8 @@ namespace WindowsFormsApp
             comboBoxFiltroTipoBebida.Visible = false;
             checkBoxFiltroTipoBebida.Visible = false;
 
-            textBoxPrecioIngresado.Visible = false;
-            groupBoxPrecioMinimoMaximo.Visible = false;
+            textBoxCostoIngresado.Visible = false;
+            groupBoxCostoMinimoMaximo.Visible = false;
 
             comboBoxFiltroEscasez.DataSource = Enum.GetValues(typeof(GradosDeEscasez));
             comboBoxFiltroTipoBebida.DataSource = Enum.GetValues(typeof(TiposBebidas));
@@ -46,7 +46,7 @@ namespace WindowsFormsApp
             comboBoxFiltroTipoIngrediente.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxFiltroUnidadMedida.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            radioButtonPrecioMaximo.Checked = true;
+            radioButtonCostoMaximo.Checked = true;
         }
 
         private void checkBoxFiltroPorUnidadDeMedida_CheckedChanged(object sender, EventArgs e)
@@ -71,9 +71,9 @@ namespace WindowsFormsApp
 
         private void checkBoxFiltroPorPrecio_CheckedChanged(object sender, EventArgs e)
         {
-            bool condicion = checkBoxFiltroPorPrecio.Checked;
-            textBoxPrecioIngresado.Visible = condicion;
-            groupBoxPrecioMinimoMaximo.Visible = condicion;
+            bool condicion = checkBoxFiltroPorCosto.Checked;
+            textBoxCostoIngresado.Visible = condicion;
+            groupBoxCostoMinimoMaximo.Visible = condicion;
         }
 
         private void comboBoxFiltroTipoIngrediente_SelectionChangeCommitted(object sender, EventArgs e)
@@ -100,24 +100,21 @@ namespace WindowsFormsApp
 
         private bool IngresoCorrecto()
         {
-            if (checkBoxFiltroPorPrecio.Checked)
+            if (checkBoxFiltroPorCosto.Checked)
             {
-                if (string.IsNullOrEmpty(textBoxPrecioIngresado.Text))
+                if (decimal.TryParse(textBoxCostoIngresado.Text, out decimal precio) == false)
                 {
-                    MessageBox.Show("Ingrese un precio o desmarque la casilla", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El precio debe ser numerico y no puede ser 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
-                } else
-                {
-                    if (decimal.TryParse(textBoxPrecioIngresado.Text, out decimal precio) == false)
-                    {
-                        MessageBox.Show("El precio debe ser numerico", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
                 }
             }
             return true;
         }
 
+        //TODO: tiene que estar en la logica gran parte de esto, dificil
+        //Ya probe pasar un objeto con los datos de los filtros pero los enum no pueden ser nulos,
+        //En otro caso crearia 50 constructores distintos para las diferentes combinaciones de filtros,
+        //La otra termina siendo descartar lo de filtros en simultaneo, y modificar el form.
         private List<Ingrediente> FiltrarIngredientesAComprar()
         {
             AdministradorCompras administradorCompras = new AdministradorCompras();
@@ -152,25 +149,25 @@ namespace WindowsFormsApp
                 }
             }
 
-            if (checkBoxFiltroPorPrecio.Checked)
+            if (checkBoxFiltroPorCosto.Checked)
             {
-                decimal precio = decimal.Parse(textBoxPrecioIngresado.Text);
-                List<Ingrediente> comprasFiltradasPorPrecio = new List<Ingrediente>();
+                decimal costo = decimal.Parse(textBoxCostoIngresado.Text);
+                List<Ingrediente> comprasFiltradasPorCosto = new List<Ingrediente>();
 
-                if (radioButtonPrecioMaximo.Checked)
+                if (radioButtonCostoMaximo.Checked)
                 {
-                    comprasFiltradasPorPrecio = administradorCompras.FiltrarPorPrecioMaximo(precio);
+                    comprasFiltradasPorCosto = administradorCompras.FiltrarPorCostoMaximo(costo);
                 } else
                 {
-                    comprasFiltradasPorPrecio = administradorCompras.FiltrarPorPrecioMinimo(precio);
+                    comprasFiltradasPorCosto = administradorCompras.FiltrarPorCostoMinimo(costo);
                 }
 
                 if (comprasFiltradas.Count > 0)
                 {
-                    comprasFiltradas = comprasFiltradas.Intersect(comprasFiltradasPorPrecio).ToList();
+                    comprasFiltradas = comprasFiltradas.Intersect(comprasFiltradasPorCosto).ToList();
                 } else
                 {
-                    comprasFiltradas = comprasFiltradasPorPrecio;
+                    comprasFiltradas = comprasFiltradasPorCosto;
                 }
             }
 
@@ -190,5 +187,7 @@ namespace WindowsFormsApp
 
             return comprasFiltradas;
         }
+
+
     }
 }

@@ -12,6 +12,12 @@ namespace Logica
     {
         private static List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
+        public void BuscarIngredientesAComprar()
+        {
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+            IngredientesAComprar = administradorIngredientes.GetIngredientesAComprar();
+        }
+
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
         {
             return IngredientesAComprar.Where(x => x.TipoIngrediente == tipoDeIngrediente).ToList();
@@ -23,14 +29,14 @@ namespace Logica
             return BebidasAComprar.Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorPrecioMinimo(decimal precio)
+        public List<Ingrediente> FiltrarPorCostoMinimo(decimal costoMinimo)
         {
-            return IngredientesAComprar.Where(x => x.PrecioPorUnidad >= precio).ToList();
+            return IngredientesAComprar.Where(x => x.GetCosto() >= costoMinimo).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorPrecioMaximo(decimal precio)
+        public List<Ingrediente> FiltrarPorCostoMaximo(decimal costoMaximo)
         {
-            return IngredientesAComprar.Where(x => x.PrecioPorUnidad <= precio).ToList();
+            return IngredientesAComprar.Where(x => x.GetCosto() <= costoMaximo).ToList();
         }
 
         public List<Ingrediente> FiltrarPorUnidadDeMedida(UnidadesDeMedida unidad)
@@ -48,7 +54,7 @@ namespace Logica
             decimal totalCompra = 0;
             foreach (Ingrediente ingrediente in IngredientesAComprar)
             {
-                totalCompra += ingrediente.CalcularCosto();
+                totalCompra += ingrediente.GetCosto();
             }
             return totalCompra;
         }

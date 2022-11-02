@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +19,17 @@ namespace Logica
         public int UnidadMinima { get; set; }
         [JsonIgnore]
         public UnidadesDeMedida UnidadDeMedida { get { return GetUnidadMedida(); } }
+        [JsonIgnore]
+        public decimal Costo { get { return GetCosto(); } }
+        [JsonIgnore]
+        public int CantidadAComprar { get { return GetCantidadAComprar(); } }
 
+        private int GetCantidadAComprar()
+        {
+            return UnidadMinima * 5;
+        }
 
-        public decimal CalcularCosto()
+        public decimal GetCosto()
         {
             return PrecioPorUnidad * UnidadMinima;
         }
@@ -53,23 +62,29 @@ namespace Logica
 
         public GradosDeEscasez GetGradoDeEscasez()
         {
-            float relacion = this.Cantidad / this.UnidadMinima;
-            if (relacion > 10)
+            float relacion = (float)this.Cantidad / (float)this.UnidadMinima;
+            if (relacion > 3)
             {
                 return GradosDeEscasez.Sobra;
             } else
             {
-                if (relacion > 3)
+                if (relacion > 0.9)
                 {
                     return GradosDeEscasez.Normal;
                 } else
                 {
-                    if (relacion > 0.3)
+                    if (relacion > 0.5)
                     {
                         return GradosDeEscasez.Bajo;
                     } else
                     {
-                        return GradosDeEscasez.Vacio;
+                        if (relacion > 0.1)
+                        {
+                            return GradosDeEscasez.Escaso;
+                        } else
+                        {
+                            return GradosDeEscasez.Vacio;
+                        }
                     }
                 }
             }

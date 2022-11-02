@@ -3,6 +3,7 @@
         Sobra,
         Normal,
         Bajo,
+        Escaso,
         Vacio
     }
 }

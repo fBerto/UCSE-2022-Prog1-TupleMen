@@ -10,11 +10,6 @@ namespace Logica
 {
     public abstract class Archivos
     {
-        //CONSULTA PARA MAXI:
-        //Guardamos la carpeta JSON con las listas modificando el gitignore?
-        //O guardamos una carpeta JSON fuera de la solucion para que el usuario
-        //pueda elegir si usarla como su base de datos o comenzar de cero???
-
         public const string nombreArchivoLibroRecetas = "LibroRecetas.txt";
         public const string nombreArchivoHistorialComidas = "HistorialComidas.txt";
         public const string nombreArchivoBebidasDespensa = "BebidasDespensa.txt";
