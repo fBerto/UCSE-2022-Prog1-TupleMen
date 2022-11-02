@@ -13,23 +13,26 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp
 {
-    public partial class FormCargaRecetas : Form
+    public partial class FormCargaRecetas : Form, IActualizarGrillaIngredientesSeleccionados
     {
         /*TODO:
-         *Hacer que si edito un ingrediente se sobreescriba en la grilla  
+         *Hacer que si edito un ingrediente se sobreescriba en la grilla 
+         *verificar que existan elementos checkeados al confirmar la carga de estos 
          */
 
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+        Receta recetaAEditar ;
         public FormCargaRecetas(int codigoReceta)
         {
             InitializeComponent();
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-            Receta recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
+            this.recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
 
             if(recetaAEditar != null)
             {
                 CargarContenidosRecetasAEditar(recetaAEditar);
+                this.ingredientesSeleccionados = recetaAEditar.GetIngredientesReceta();
             }
         }
 
@@ -40,7 +43,7 @@ namespace WindowsFormsApp
             grillaCargaRecetas.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
         }
 
-        private void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
+        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
         {
             grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
@@ -140,10 +143,9 @@ namespace WindowsFormsApp
                 AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
                 Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
 
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesSeleccionados);
+                List<Ingrediente> ingredientes = recetaAEditar.GetIngredientesReceta();
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientes);
                 edicionIngredientesEnRecetas.ShowDialog(this);
-
-                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
 
             }
         }
@@ -155,6 +157,8 @@ namespace WindowsFormsApp
             checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
             ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
         }
+
+       
     }
 
 

@@ -86,6 +86,7 @@
     <Compile Include="IActualizarGrillaCompras.cs" />
     <Compile Include="IActualizarGrillaIngredientes.cs" />
     <Compile Include="IActualizarGrillaRecetas.cs" />
+    <Compile Include="IActualizarGrillaIngredientesSeleccionados.cs" />
     <Compile Include="MenuComidas.cs">
       <SubType>Form</SubType>
     </Compile>
