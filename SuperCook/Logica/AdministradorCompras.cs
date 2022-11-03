@@ -10,6 +10,7 @@ namespace Logica
 {
     public class AdministradorCompras
     {
+        //TODO: preguntar si el tipo de ingrediente cuenta como filtro o hay que agregar otro
         private static List<Ingrediente> IngredientesAComprar = new List<Ingrediente>();
 
         public void BuscarIngredientesAComprar()

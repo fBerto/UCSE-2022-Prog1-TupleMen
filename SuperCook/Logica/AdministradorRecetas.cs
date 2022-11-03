@@ -13,23 +13,29 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        public void CargarReceta(Receta nuevaReceta)
+        public void CargarModificarReceta(Receta nuevaReceta)
         {
-            LibroRecetas.Add(nuevaReceta);
+            if (nuevaReceta.Codigo == 0)
+            {
+                nuevaReceta.Codigo = GetNuevoCodigo();
+                LibroRecetas.Add(nuevaReceta);
+            } else
+            {
+                SobreescribirReceta(nuevaReceta);
+            }
             GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
+        }
+
+        private void SobreescribirReceta(Receta nuevaReceta)
+        {
+            int IndiceRecetaModificar = LibroRecetas.FindIndex(x => x.Codigo == nuevaReceta.Codigo);
+            LibroRecetas[IndiceRecetaModificar] = nuevaReceta;
         }
 
         public void EliminarReceta(int codigoReceta)
         {
             int indiceRecetaAEliminar = LibroRecetas.FindIndex(x => x.Codigo == codigoReceta);
             LibroRecetas.RemoveAt(indiceRecetaAEliminar);
-            GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
-        }
-
-        public void ModificarReceta(Receta recetaModificada)
-        {
-            int IndiceRecetaModificar = LibroRecetas.FindIndex(x => x.Codigo == recetaModificada.Codigo);
-            LibroRecetas[IndiceRecetaModificar] = recetaModificada;
             GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
