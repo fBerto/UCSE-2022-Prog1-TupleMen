@@ -13,18 +13,20 @@ namespace WindowsFormsApp
 {
     public partial class EdicionIngredientesEnRecetas : Form
     {
+        int CodigoReceta;
         private Ingrediente ingrediente { get; set; }
-        List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+        List<Ingrediente> ingredientesAEditar = new List<Ingrediente>();
         public EdicionIngredientesEnRecetas()
         {
             InitializeComponent();
         }
 
-        public EdicionIngredientesEnRecetas(Ingrediente ingrediente, List<Ingrediente> ingredientesSeleccionados)
+        public EdicionIngredientesEnRecetas(Ingrediente ingrediente, int codigoReceta, List<Ingrediente> IngredientesAEditar)
         {
-            this.ingrediente = ingrediente;          
-            this.ingredientesSeleccionados = ingredientesSeleccionados;
             InitializeComponent();
+            this.ingrediente = ingrediente;
+            CodigoReceta = codigoReceta;
+            this.ingredientesAEditar = IngredientesAEditar;
         }
 
         private void EdicionIngredientesEnRecetas_Load(object sender, EventArgs e)
@@ -34,9 +36,9 @@ namespace WindowsFormsApp
         }
 
         private void buttonConfirmarNuevaCantidad_Click(object sender, EventArgs e)
-        {  
+        {
             int nuevaCantidad = 0;
-            if (!string.IsNullOrEmpty(textBoxNuevaCantidadIngrediente.Text ))
+            if (!string.IsNullOrEmpty(textBoxNuevaCantidadIngrediente.Text))
             {
                 nuevaCantidad = int.Parse(textBoxNuevaCantidadIngrediente.Text);
                 if (nuevaCantidad <= 0)
@@ -46,23 +48,23 @@ namespace WindowsFormsApp
                 else
                 {
 
-                int indice = ingredientesSeleccionados.FindIndex(x => x.Codigo == ingrediente.Codigo);
+                    int indice = ingredientesAEditar.FindIndex(x => x.Codigo == ingrediente.Codigo);
 
-                if (ingrediente is Solido)
-                {
-                    Solido solidoModificado = new Solido(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
-                    ingredientesSeleccionados[indice] = solidoModificado;
-                }
-                else
-                {   //TODO: como se que tipo de bebida es?
-                    //Bebida bebida = 
-                    //Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima, );
-                    //ingredientesSeleccionados[indice] = bebidaModificada;
-                }
+                    if (ingrediente is Solido)
+                    {
+                        Solido solidoModificado = new Solido(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
+                        ingredientesAEditar[indice] = solidoModificado;
+                    }
+                    else
+                    {
+                        Bebida bebidaAModificar = ingrediente as Bebida;
+                        Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, ingrediente.Cantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima,bebidaAModificar.TipoBebida );
+                        ingredientesAEditar[indice] = bebidaModificada;
+                    }
                     IActualizarGrillaIngredientesSeleccionados padre = this.Owner as IActualizarGrillaIngredientesSeleccionados;
                     if (padre != null)
                     {
-                        padre.ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
+                        padre.ActualizarGrillaIngredientesSeleccionados(ingredientesAEditar);
                     }
                     this.Close();
                 }
@@ -73,7 +75,7 @@ namespace WindowsFormsApp
                 MessageBox.Show("Cargale numero papi", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            
+
         }
     }
 }
