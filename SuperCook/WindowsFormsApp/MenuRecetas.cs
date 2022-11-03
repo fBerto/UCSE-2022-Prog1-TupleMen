@@ -15,7 +15,6 @@ namespace WindowsFormsApp
     public partial class MenuRecetas : Form, IActualizarGrillaRecetas
     {
         //TODO: corregir e.rowindex en otras grillas
-        //TODO: 
 
         public MenuRecetas()
         {

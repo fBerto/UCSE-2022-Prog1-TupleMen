@@ -13,8 +13,17 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        public void CargarModificarReceta(Receta nuevaReceta)
+        //Ingrediente con cantidad igual a 0
+        public Resultado CargarModificarReceta(Receta nuevaReceta)
         {
+            if (string.IsNullOrEmpty(nuevaReceta.Nombre))
+            {
+                return new Resultado(false, "La receta debe tener un nombre");
+            }
+            if (nuevaReceta.GetIngredientesReceta().Count == 0)
+            {
+                return new Resultado(false, "Debe cargarle ingredientes a la receta");
+            }
             if (nuevaReceta.Codigo == 0)
             {
                 nuevaReceta.Codigo = GetNuevoCodigo();
@@ -24,6 +33,7 @@ namespace Logica
                 SobreescribirReceta(nuevaReceta);
             }
             GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
+            return new Resultado(true, "Carga exitosa");
         }
 
         private void SobreescribirReceta(Receta nuevaReceta)

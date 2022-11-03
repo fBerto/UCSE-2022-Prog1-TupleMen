@@ -24,7 +24,7 @@ namespace WindowsFormsApp
         // Validaciones de tipo: en winform (parseos)
         //Probar maskedTextbox para obligar ingresos
 
-        int codigoReceta;
+        private int codigoReceta;
 
         public FormCargaRecetas(int codigoReceta)
         {
@@ -38,6 +38,7 @@ namespace WindowsFormsApp
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             comboBoxMomentosComida.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaSeleccionarIngredientes.AutoGenerateColumns = false;
             ActualizarGrillaSeleccionarIngredientes();
 
@@ -61,6 +62,14 @@ namespace WindowsFormsApp
             return codigoReceta > 0;
         }
 
+        private void CargarContenidosRecetasAEditar(Receta recetaRecibida)
+        {
+            textBoxNombreRecetas.Text = recetaRecibida.Nombre;
+            comboBoxMomentosComida.Text = recetaRecibida.MomentoComida.ToString();
+            checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
+            ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
+        }
+
         private void ActualizarGrillaSeleccionarIngredientes()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
@@ -71,11 +80,12 @@ namespace WindowsFormsApp
 
         public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
         {
-            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
             grillaIngredientesSeleccionados.DataSource = null;
             grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
         }
-
+        
+        //TODO: El fijarse si no selecciono ingredientes no debe estar en logica?
+        //En todo caso ya lo contempla en la cargamodificarreceta()
         private void buttonConfirmarIngredientesSeleccionados_Click(object sender, EventArgs e)
         {
             List<Ingrediente> ingredientesSeleccionados = ObtenerIngredientesSeleccionados();
@@ -129,6 +139,7 @@ namespace WindowsFormsApp
                     return column.Index;
                 }
             }
+            //TODO: Dejamos esta excepcion o la sacamos?
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
@@ -143,17 +154,19 @@ namespace WindowsFormsApp
 
             Receta nuevaReceta = new Receta(this.codigoReceta, momentoComida, nombre, esSaludable, ingredientesReceta);
             
-            administradorRecetas.CargarModificarReceta(nuevaReceta);
+            Resultado resultadoCarga = administradorRecetas.CargarModificarReceta(nuevaReceta);
 
-            IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
-            if (padre != null)
+            if (resultadoCarga.Ok == false)
             {
-                padre.ActualizarGrillaRecetas();
-                this.Close();
-            }
-            else
+                MessageBox.Show(resultadoCarga.Mensaje, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
             {
-                MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
+                if (padre != null)
+                {
+                    padre.ActualizarGrillaRecetas();
+                    this.Close();
+                }
             }
         }
 
@@ -174,14 +187,6 @@ namespace WindowsFormsApp
             }
         }
 
-        private void CargarContenidosRecetasAEditar(Receta recetaRecibida)
-        {
-            textBoxNombreRecetas.Text = recetaRecibida.Nombre;
-            comboBoxMomentosComida.Text = recetaRecibida.MomentoComida.ToString();
-            checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
-            ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
-        }
-
         private List<Ingrediente> ObtenerIngredientesConfirmados()
         {
             List<Ingrediente> ingredientesConfirmados = new List<Ingrediente>();
@@ -194,23 +199,10 @@ namespace WindowsFormsApp
             return ingredientesConfirmados;
         }
 
+        //TODO: Y si sacamos a la mierda el boton siguiente?
         private void buttonSiguiente_Click(object sender, EventArgs e)
         {
-            if (NoHayCamposNulos())
-            {
-                HacerVisibleSeleccionIngredientes();
-            }
-        }
-
-        private bool NoHayCamposNulos()
-        {
-            bool resultado = true;
-            if ((string.IsNullOrEmpty(comboBoxMomentosComida.Text)) || string.IsNullOrEmpty(textBoxNombreRecetas.Text))
-            {
-                MessageBox.Show("Falta de informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                resultado = false;
-            }
-            return resultado;
+            HacerVisibleSeleccionIngredientes();
         }
     }
 }
