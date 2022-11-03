@@ -100,6 +100,11 @@ namespace WindowsFormsApp
             return true;
         }
 
+        //TODO: tiene que estar en la logica gran parte de esto, dificil
+        //Ya probe pasar un objeto con los datos de los filtros pero los enum no pueden ser nulos,
+        //En otro caso crearia 50 constructores distintos para las diferentes combinaciones de filtros,
+        //La otra termina siendo descartar lo de filtros en simultaneo, y modificar el form.
+
         private List<Comida> FiltrarComidas()
         {
             AdministradorComidas administradorComidas = new AdministradorComidas();

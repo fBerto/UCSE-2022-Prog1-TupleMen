@@ -13,11 +13,6 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosCompras : Form
     {
-        //TODO: Validaciones en logica
-        // Validaciones de negocios: ingresos de nulos o campos obligatorios
-        // Validaciones de tipo: en winform (parseos)
-        //Probar maskedTextbox para obligar ingresos
-
         public FormFiltrosCompras()
         {
             InitializeComponent();
@@ -80,14 +75,14 @@ namespace WindowsFormsApp
         {
             TiposIngredientes tipoSeleccionado = (TiposIngredientes)comboBoxFiltroTipoIngrediente.SelectedItem;
             bool condicion = tipoSeleccionado is TiposIngredientes.Bebida;
-            
+
             checkBoxFiltroTipoBebida.Visible = condicion;
             comboBoxFiltroTipoBebida.Visible = condicion && checkBoxFiltroTipoBebida.Checked;
         }
 
         private void botonConfirmarFiltrosCompras_Click(object sender, EventArgs e)
         {
-            if (IngresoCorrecto())
+            if (PrecioEsNumerico())
             {
                 IActualizarGrillaCompras padre = this.Owner as IActualizarGrillaCompras;
                 if (padre != null)
@@ -98,96 +93,43 @@ namespace WindowsFormsApp
             }
         }
 
-        private bool IngresoCorrecto()
+        private bool PrecioEsNumerico()
         {
             if (checkBoxFiltroPorCosto.Checked)
             {
                 if (decimal.TryParse(textBoxCostoIngresado.Text, out decimal precio) == false)
                 {
-                    MessageBox.Show("El precio debe ser numerico y no puede ser 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El precio debe ser numerico", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
             return true;
         }
 
-        //TODO: tiene que estar en la logica gran parte de esto, dificil
-        //Ya probe pasar un objeto con los datos de los filtros pero los enum no pueden ser nulos,
-        //En otro caso crearia 50 constructores distintos para las diferentes combinaciones de filtros,
-        //La otra termina siendo descartar lo de filtros en simultaneo, y modificar el form.
         private List<Ingrediente> FiltrarIngredientesAComprar()
         {
+            bool porTipoIngrediente = checkBoxFiltroTipoIngrediente.Checked;
+            bool porTipoBebida = checkBoxFiltroTipoBebida.Checked;
+            bool porEscasez = checkBoxFiltroEscasez.Checked;
+            bool porCosto = checkBoxFiltroPorCosto.Checked;
+            bool porUnidadDeMedida = checkBoxFiltroPorUnidadDeMedida.Checked;
+            bool esCostoMaximo = radioButtonCostoMaximo.Checked;
+
+            TiposIngredientes tipoIngrediente = (TiposIngredientes)comboBoxFiltroTipoIngrediente.SelectedItem;
+            TiposBebidas tipoBebida = (TiposBebidas)comboBoxFiltroTipoBebida.SelectedItem;
+            GradosDeEscasez escasez = (GradosDeEscasez)comboBoxFiltroEscasez.SelectedItem;
+            UnidadesDeMedida unidadDeMedida = (UnidadesDeMedida)comboBoxFiltroUnidadMedida.SelectedItem;
+
+            decimal costo = 0;
+            decimal.TryParse(textBoxCostoIngresado.Text, out costo);
+
+            SeleccionFiltrosCompras filtros = new SeleccionFiltrosCompras(
+                porTipoIngrediente, porTipoBebida, porEscasez, porCosto, esCostoMaximo, porUnidadDeMedida,
+                tipoIngrediente, tipoBebida, escasez, costo, unidadDeMedida);
+
             AdministradorCompras administradorCompras = new AdministradorCompras();
-            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
 
-            //Asigno la lista por si no se aplica ningun filtro
-            List<Ingrediente> comprasFiltradas = administradorIngredientes.GetIngredientesAComprar();
-
-            if (checkBoxFiltroTipoIngrediente.Checked)
-            {
-                TiposIngredientes tipoSeleccionado = (TiposIngredientes)comboBoxFiltroTipoIngrediente.SelectedItem;
-                comprasFiltradas = administradorCompras.FiltrarPorTipoDeIngrediente(tipoSeleccionado);
-
-                if (tipoSeleccionado is TiposIngredientes.Bebida)
-                {
-                    TiposBebidas tipoBebidaSeleccionado = (TiposBebidas)comboBoxFiltroTipoBebida.SelectedItem;
-                    comprasFiltradas = administradorCompras.FiltrarPorTipoDeBebida(tipoBebidaSeleccionado);
-                }
-            }
-
-            if (checkBoxFiltroEscasez.Checked)
-            {
-                GradosDeEscasez escasez = (GradosDeEscasez)comboBoxFiltroEscasez.SelectedItem;
-                List<Ingrediente> comprasFiltradasPorEscasez = administradorCompras.FiltrarPorEscasez(escasez);
-
-                if (comprasFiltradas.Count > 0)
-                {
-                    comprasFiltradas = comprasFiltradas.Intersect(comprasFiltradasPorEscasez).ToList();
-                } else
-                {
-                    comprasFiltradas = comprasFiltradasPorEscasez;
-                }
-            }
-
-            if (checkBoxFiltroPorCosto.Checked)
-            {
-                decimal costo = decimal.Parse(textBoxCostoIngresado.Text);
-                List<Ingrediente> comprasFiltradasPorCosto = new List<Ingrediente>();
-
-                if (radioButtonCostoMaximo.Checked)
-                {
-                    comprasFiltradasPorCosto = administradorCompras.FiltrarPorCostoMaximo(costo);
-                } else
-                {
-                    comprasFiltradasPorCosto = administradorCompras.FiltrarPorCostoMinimo(costo);
-                }
-
-                if (comprasFiltradas.Count > 0)
-                {
-                    comprasFiltradas = comprasFiltradas.Intersect(comprasFiltradasPorCosto).ToList();
-                } else
-                {
-                    comprasFiltradas = comprasFiltradasPorCosto;
-                }
-            }
-
-            if (checkBoxFiltroPorUnidadDeMedida.Checked)
-            {
-                UnidadesDeMedida unidadDeMedida = (UnidadesDeMedida)comboBoxFiltroUnidadMedida.SelectedItem;
-                List<Ingrediente> comprasFiltradasPorUnidadMedida = administradorCompras.FiltrarPorUnidadDeMedida(unidadDeMedida);
-
-                if (comprasFiltradas.Count > 0)
-                {
-                    comprasFiltradas = comprasFiltradas.Intersect(comprasFiltradasPorUnidadMedida).ToList();
-                } else
-                {
-                    comprasFiltradas = comprasFiltradasPorUnidadMedida;
-                }
-            }
-
-            return comprasFiltradas;
+            return administradorCompras.FiltrarIngredientesAComprar(filtros);
         }
-
-
     }
 }

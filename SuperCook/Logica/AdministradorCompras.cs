@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,55 @@ namespace Logica
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
             IngredientesAComprar = administradorIngredientes.GetIngredientesAComprar();
+        }
+
+        public List<Ingrediente> FiltrarIngredientesAComprar(SeleccionFiltrosCompras filtros)
+        {
+            List<Ingrediente> comprasFiltradas = IngredientesAComprar;
+            
+            if (filtros.PorTipoIngrediente)
+            {
+                if (filtros.PorTipoBebida)
+                {
+                    comprasFiltradas = FiltrarPorTipoDeBebida(filtros.TipoBebida);
+                } else
+                {
+                    comprasFiltradas = FiltrarPorTipoDeIngrediente(filtros.TipoIngrediente);
+                }
+            }
+
+            if (filtros.PorEscasez)
+            {
+                List<Ingrediente> comprasFiltradasPorEscasez = FiltrarPorEscasez(filtros.GradoDeEscasez);
+                comprasFiltradas = CombinarFiltros(comprasFiltradas, comprasFiltradasPorEscasez);
+            }
+
+            if (filtros.PorCosto)
+            {
+                List<Ingrediente> comprasFiltradasPorCosto = filtros.EsCostoMaximo ?
+                    FiltrarPorCostoMaximo(filtros.Costo) : FiltrarPorCostoMinimo(filtros.Costo);
+
+                comprasFiltradas = CombinarFiltros(comprasFiltradas, comprasFiltradasPorCosto);
+            }
+
+            if (filtros.PorUnidadDeMedida)
+            {
+                List<Ingrediente> comprasFiltradasPorUnidadMedida = FiltrarPorUnidadDeMedida(filtros.UnidadDeMedida);
+                comprasFiltradas = CombinarFiltros(comprasFiltradas, comprasFiltradasPorUnidadMedida);
+            }
+            return comprasFiltradas;
+        }
+
+        private List<Ingrediente> CombinarFiltros(List<Ingrediente> comprasFiltradoPrevio, List<Ingrediente> comprasFiltradoNuevo)
+        {
+            if (comprasFiltradoPrevio.Count > 0)
+            {
+                comprasFiltradoPrevio = comprasFiltradoPrevio.Intersect(comprasFiltradoNuevo).ToList();
+            } else
+            {
+                comprasFiltradoPrevio = comprasFiltradoNuevo;
+            }
+            return comprasFiltradoPrevio;
         }
 
         public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
