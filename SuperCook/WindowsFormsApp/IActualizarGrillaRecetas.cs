@@ -8,6 +8,6 @@ namespace WindowsFormsApp
 {
     internal interface IActualizarGrillaRecetas
     {
-        void CargarGrillaRecetas();
+        void ActualizarGrillaRecetas();
     }
 }

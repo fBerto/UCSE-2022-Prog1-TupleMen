@@ -139,7 +139,7 @@ namespace WindowsFormsApp
             IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
             if (padre != null)
             {
-                padre.CargarGrillaRecetas();
+                padre.ActualizarGrillaRecetas();
                 this.Close();
             }
             else

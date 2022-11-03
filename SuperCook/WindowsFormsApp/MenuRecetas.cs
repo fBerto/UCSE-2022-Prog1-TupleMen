@@ -18,15 +18,15 @@ namespace WindowsFormsApp
         public MenuRecetas()
         {
             InitializeComponent();
-
         }
+
         private void MenuRecetas_Load(object sender, EventArgs e)
         {
             grillaRecetas.AutoGenerateColumns = false;
             ActualizarGrillaRecetas();
         }
 
-        private void ActualizarGrillaRecetas()
+        public void ActualizarGrillaRecetas()
         {
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
@@ -34,10 +34,7 @@ namespace WindowsFormsApp
             grillaRecetas.DataSource = administradorRecetas.GetLibroRecetas();
 
         }
-        public void CargarGrillaRecetas()
-        {
-            ActualizarGrillaRecetas();
-        }
+ 
         private void cargarRecetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCargaRecetas cargaRecetas = new FormCargaRecetas(0);
