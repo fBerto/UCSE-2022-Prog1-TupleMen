@@ -44,12 +44,11 @@ namespace Logica
 
             if (filtros.PorFecha)
             {
-                //TODO: contemplar error fecha menor es mayor a fecha mayor
-
                 List<Comida> comidasFiltradasPorFecha = FiltroFecha(filtros.FechaMenor, filtros.FechaMayor);
 
                 CombinarFiltros(comidasFiltradas, comidasFiltradasPorFecha);
             }
+
             if (filtros.PorReceta)
             {
                 List<Comida> comidasFiltradasPorReceta = FiltroPorRecetas(filtros.Receta);
@@ -71,22 +70,22 @@ namespace Logica
             return comidasFiltradoPrevio;
         }
 
-        public List<Comida> FiltroSaludable(bool saludable)
+        private List<Comida> FiltroSaludable(bool saludable)
         {
             return HistorialComidas.Where(x => x.Receta.EsSaludable == saludable).ToList();
         }
 
-        public List<Comida> FiltroMomentoComida(MomentosComida momento)
+        private List<Comida> FiltroMomentoComida(MomentosComida momento)
         {
             return HistorialComidas.Where(x => x.Receta.MomentoComida == momento).ToList();
         }
 
-        public List<Comida> FiltroFecha(DateTime FechaMenor, DateTime FechaMayor)
+        private List<Comida> FiltroFecha(DateTime FechaMenor, DateTime FechaMayor)
         {
             return HistorialComidas.Where(x => x.Fecha >= FechaMenor && x.Fecha <= FechaMayor).ToList();
         }
 
-        public List<Comida> FiltroPorRecetas(Receta receta)
+        private List<Comida> FiltroPorRecetas(Receta receta)
         {
             return HistorialComidas.Where(x => x.Receta.Codigo == receta.Codigo).ToList();
         }

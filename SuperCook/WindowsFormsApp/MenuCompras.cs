@@ -44,10 +44,8 @@ namespace WindowsFormsApp
 
         private void buttonFiltrarCompras_Click(object sender, EventArgs e)
         {
-
             FormFiltrosCompras formFiltrosCompras = new FormFiltrosCompras();
             formFiltrosCompras.ShowDialog(this);
-
         }
 
         private void eliminarFiltrosToolStripMenuItem_Click(object sender, EventArgs e)

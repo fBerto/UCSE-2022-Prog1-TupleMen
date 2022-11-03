@@ -17,14 +17,17 @@ namespace WindowsFormsApp
 
         public FormCargaIngredientes(int codigoIngrediente)
         {
-            this.Codigo = codigoIngrediente;
-
             InitializeComponent();
 
+            this.Codigo = codigoIngrediente;
+        }
+
+        private void FormCargaIngredientes_Load(object sender, EventArgs e)
+        {
             ConfigurarElementosForm();
 
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-            Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
+            Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(Codigo);
 
             if (ingredienteAEditar != null)
             {

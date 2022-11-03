@@ -29,8 +29,8 @@ namespace WindowsFormsApp
         int codigoReceta;
         public FormCargaRecetas(int codigoReceta)
         {
-            
             InitializeComponent();
+
             this.codigoReceta = codigoReceta;
 
             comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
