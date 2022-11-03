@@ -116,6 +116,7 @@
             this.dateTimeFechaFinal.Name = "dateTimeFechaFinal";
             this.dateTimeFechaFinal.Size = new System.Drawing.Size(200, 20);
             this.dateTimeFechaFinal.TabIndex = 6;
+            this.dateTimeFechaFinal.ValueChanged += new System.EventHandler(this.dateTimeFechaFinal_ValueChanged);
             // 
             // lblFechaInicial
             // 

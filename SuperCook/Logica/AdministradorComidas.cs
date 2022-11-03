@@ -26,6 +26,51 @@ namespace Logica
             GuardarLista(SerializarLista(HistorialComidas), nombreArchivoHistorialComidas);
         }
 
+        public List<Comida> FiltrarHistorialComidas (SeleccionFiltrosComidas filtros)
+        {
+            List<Comida> comidasFiltradas = HistorialComidas;
+
+            if (filtros.PorSaludable)
+            {
+                comidasFiltradas = FiltroSaludable(filtros.EsSaludable);
+            }
+
+            if (filtros.PorMomentoComida)
+            {
+                List<Comida> comidasFiltradasPorMomento = FiltroMomentoComida(filtros.Momento);
+
+                CombinarFiltros(comidasFiltradas, comidasFiltradasPorMomento);
+            }
+
+            if (filtros.PorFecha)
+            {
+                //TODO: contemplar error fecha menor es mayor a fecha mayor
+
+                List<Comida> comidasFiltradasPorFecha = FiltroFecha(filtros.FechaMenor, filtros.FechaMayor);
+
+                CombinarFiltros(comidasFiltradas, comidasFiltradasPorFecha);
+            }
+            if (filtros.PorReceta)
+            {
+                List<Comida> comidasFiltradasPorReceta = FiltroPorRecetas(filtros.Receta);
+
+                CombinarFiltros(comidasFiltradas, comidasFiltradasPorReceta);
+            }
+            return comidasFiltradas;
+        }
+
+        private List<Comida> CombinarFiltros(List<Comida> comidasFiltradoPrevio, List<Comida> comidasFiltradoNuevo)
+        {
+            if (comidasFiltradoPrevio.Count > 0)
+            {
+                comidasFiltradoPrevio = comidasFiltradoPrevio.Intersect(comidasFiltradoNuevo).ToList();
+            } else
+            {
+                comidasFiltradoPrevio = comidasFiltradoNuevo;
+            }
+            return comidasFiltradoPrevio;
+        }
+
         public List<Comida> FiltroSaludable(bool saludable)
         {
             return HistorialComidas.Where(x => x.Receta.EsSaludable == saludable).ToList();

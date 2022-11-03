@@ -13,10 +13,7 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosComidas : Form
     {
-        //TODO: Validaciones en logica
-        // Validaciones de negocios: ingresos de nulos o campos obligatorios
-        // Validaciones de tipo: en winform (parseos)
-        //Probar maskedTextbox para obligar ingresos
+        //TODO: Probarlo una vez que se pueda cargar recetas
 
         public FormFiltrosComidas()
         {
@@ -29,6 +26,7 @@ namespace WindowsFormsApp
             comboBoxFiltroMomentoComida.Visible = false;
             grillaSeleccionRecetas.Visible = false;
             ModificarVisibilidadFechas(false);
+            dateTimeFechaInicial.MaxDate = dateTimeFechaFinal.Value;
 
             comboBoxFiltroMomentoComida.DataSource = Enum.GetValues(typeof(MomentosComida));
             CargarGrillaRecetas();
@@ -73,94 +71,47 @@ namespace WindowsFormsApp
             dateTimeFechaFinal.Visible = visible;
         }
 
+        private void dateTimeFechaFinal_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimeFechaInicial.MaxDate = dateTimeFechaFinal.Value;
+        }
+
         private void botonConfirmarFiltrosComidas_Click(object sender, EventArgs e)
         {
-            if (IngresoFechasCoherentes())
+            IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
+            if (padre != null)
             {
-                IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
-                if (padre != null)
-                {
-                    padre.ActualizarGrillaComidas(FiltrarComidas());
-                }
-
-                this.Close();
+                padre.ActualizarGrillaComidas(FiltrarComidas());
             }
-        }
 
-        private bool IngresoFechasCoherentes()
-        {
-            if (checkBoxFiltroPorFecha.Checked == true)
-            {
-                if (dateTimeFechaFinal.Value < dateTimeFechaInicial.Value)
-                {
-                    MessageBox.Show("La fecha final debe ser mayor a la inicial", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            return true;
+            this.Close();
         }
-
-        //TODO: tiene que estar en la logica gran parte de esto, dificil
-        //Ya probe pasar un objeto con los datos de los filtros pero los enum no pueden ser nulos,
-        //En otro caso crearia 50 constructores distintos para las diferentes combinaciones de filtros,
-        //La otra termina siendo descartar lo de filtros en simultaneo, y modificar el form.
 
         private List<Comida> FiltrarComidas()
         {
+            bool porSaludable = checkBoxFiltroSaludable.Checked;
+            bool porMomentoComida = checkBoxFiltroPorMomentoComida.Checked;
+            bool porFecha = checkBoxFiltroPorFecha.Checked;
+            bool porReceta = checkBoxFiltroPorReceta.Checked;
+
+            bool esSaludable = radioButtonSaludables.Checked;
+            MomentosComida momento = (MomentosComida)comboBoxFiltroMomentoComida.SelectedItem;
+            DateTime fechaMenor = dateTimeFechaInicial.Value;
+            DateTime fechaMayor = dateTimeFechaFinal.Value;
+
+            Receta receta = new Receta();
+
+            if (grillaSeleccionRecetas.SelectedRows.Count > 0)
+            {
+                receta = grillaSeleccionRecetas.SelectedRows[0].DataBoundItem as Receta;
+            }
+
+            SeleccionFiltrosComidas filtros = new SeleccionFiltrosComidas(porSaludable, porMomentoComida, porFecha,
+                porReceta, esSaludable, momento, fechaMenor, fechaMayor, receta);
+
             AdministradorComidas administradorComidas = new AdministradorComidas();
 
-            //Asigno el historial por si no se aplica ningun filtro
-            List<Comida> comidasFiltradas = administradorComidas.GetHistorialComidas();
-
-            if (checkBoxFiltroSaludable.Checked)
-            {
-                bool condicion = radioButtonSaludables.Checked;
-                comidasFiltradas = administradorComidas.FiltroSaludable(condicion);
-            }
-            if (checkBoxFiltroPorMomentoComida.Checked)
-            {
-                MomentosComida momento = (MomentosComida)comboBoxFiltroMomentoComida.SelectedItem;
-                List<Comida> comidasFiltradasPorMomento = administradorComidas.FiltroMomentoComida(momento);
-
-                if (comidasFiltradas.Count > 0)
-                {
-                    comidasFiltradas = comidasFiltradas.Intersect(comidasFiltradasPorMomento).ToList();
-                } else
-                {
-                    comidasFiltradas = comidasFiltradasPorMomento;
-                }
-            }
-            if (checkBoxFiltroPorFecha.Checked)
-            {
-                //TODO: contemplar error fecha menor es mayor a fecha mayor
-                DateTime fechaMenor = dateTimeFechaInicial.Value;
-                DateTime fechaMayor = dateTimeFechaFinal.Value;
-
-                List<Comida> comidasFiltradasPorFecha = administradorComidas.FiltroFecha(fechaMenor, fechaMayor);
-
-                if (comidasFiltradas.Count > 0)
-                {
-                    comidasFiltradas = comidasFiltradas.Intersect(comidasFiltradasPorFecha).ToList();
-                } else
-                {
-                    comidasFiltradas = comidasFiltradasPorFecha;
-                }
-            }
-            if (checkBoxFiltroPorReceta.Checked)
-            {
-                Receta receta = grillaSeleccionRecetas.SelectedRows[0].DataBoundItem as Receta;
-
-                List<Comida> comidasFiltradasPorReceta = administradorComidas.FiltroPorRecetas(receta);
-
-                if (comidasFiltradas.Count > 0)
-                {
-                    comidasFiltradas = comidasFiltradas.Intersect(comidasFiltradasPorReceta).ToList();
-                } else
-                {
-                    comidasFiltradas = comidasFiltradasPorReceta;
-                }
-            }
-            return comidasFiltradas;
+            return administradorComidas.FiltrarHistorialComidas(filtros);
         }
     }
 }

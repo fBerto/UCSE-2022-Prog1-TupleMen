@@ -47,6 +47,8 @@ namespace Logica
             }
         }
 
+        public Receta() { }
+
         public string GetNombre()
         {
             return Nombre;
