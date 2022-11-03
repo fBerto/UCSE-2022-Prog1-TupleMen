@@ -106,16 +106,23 @@ namespace Logica
             return SolidosDesdeArchivo;
         }
 
-        public List<Ingrediente> UnificarBebidasYSolidos(List<Bebida> Bebidas, List<Solido> Solidos) //TODO: deberiamos hacer lo mismo con los solidos 
+        public List<Ingrediente> UnificarBebidasYSolidos(List<Bebida> Bebidas, List<Solido> Solidos)
         {
-            List<Ingrediente> SolidosCasteados = Solidos.Select(x => x as Ingrediente).ToList();
+            List<Ingrediente> BebidasYSolidosUnificados = new List<Ingrediente>();
+
+            if (Solidos != null)
+            {
+                List<Ingrediente> SolidosCasteados = Solidos.Select(x => x as Ingrediente).ToList();
+                BebidasYSolidosUnificados.AddRange(SolidosCasteados);
+            }
+
             if (Bebidas != null)
             {
                 List<Ingrediente> BebidasCasteadas = Bebidas.Select(x => x as Ingrediente).ToList();
-                SolidosCasteados.AddRange(BebidasCasteadas);
+                BebidasYSolidosUnificados.AddRange(BebidasCasteadas);
             }          
             
-            return SolidosCasteados;
+            return BebidasYSolidosUnificados;
         }
 
         private bool ArchivoYaExisteOCrearlo(string path)
