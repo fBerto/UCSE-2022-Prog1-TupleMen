@@ -10,6 +10,5 @@ namespace WindowsFormsApp
     public interface IActualizarGrillaIngredientesSeleccionados
     {
         void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados);
-        
     }
 }

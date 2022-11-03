@@ -33,10 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxRecetaSaludable = new System.Windows.Forms.CheckBox();
             this.textBoxNombreRecetas = new System.Windows.Forms.TextBox();
-            this.buttonAceptarCargaRecetas = new System.Windows.Forms.Button();
-            this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
+            this.buttonConfirmarIngredientesSeleccionados = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.grillaCargaRecetas = new System.Windows.Forms.DataGridView();
+            this.grillaSeleccionarIngredientes = new System.Windows.Forms.DataGridView();
             this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -49,8 +48,9 @@
             this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaCargaRecetas)).BeginInit();
+            this.buttonSiguiente = new System.Windows.Forms.Button();
+            this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -81,27 +81,16 @@
             this.textBoxNombreRecetas.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreRecetas.TabIndex = 3;
             // 
-            // buttonAceptarCargaRecetas
+            // buttonConfirmarIngredientesSeleccionados
             // 
-            this.buttonAceptarCargaRecetas.Location = new System.Drawing.Point(47, 318);
-            this.buttonAceptarCargaRecetas.Name = "buttonAceptarCargaRecetas";
-            this.buttonAceptarCargaRecetas.Size = new System.Drawing.Size(263, 23);
-            this.buttonAceptarCargaRecetas.TabIndex = 5;
-            this.buttonAceptarCargaRecetas.Text = "Confirmar Ingredientes para receta";
-            this.buttonAceptarCargaRecetas.UseVisualStyleBackColor = true;
-            this.buttonAceptarCargaRecetas.Visible = false;
-            this.buttonAceptarCargaRecetas.Click += new System.EventHandler(this.buttonAceptarCargaRecetas_Click);
-            // 
-            // comboBoxMomentosComida
-            // 
-            this.comboBoxMomentosComida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.comboBoxMomentosComida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxMomentosComida.FormattingEnabled = true;
-            this.comboBoxMomentosComida.Location = new System.Drawing.Point(454, 149);
-            this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
-            this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMomentosComida.TabIndex = 6;
-            this.comboBoxMomentosComida.SelectionChangeCommitted += new System.EventHandler(this.FormCargaRecetas_Load);
+            this.buttonConfirmarIngredientesSeleccionados.Location = new System.Drawing.Point(47, 318);
+            this.buttonConfirmarIngredientesSeleccionados.Name = "buttonConfirmarIngredientesSeleccionados";
+            this.buttonConfirmarIngredientesSeleccionados.Size = new System.Drawing.Size(263, 23);
+            this.buttonConfirmarIngredientesSeleccionados.TabIndex = 5;
+            this.buttonConfirmarIngredientesSeleccionados.Text = "Confirmar Ingredientes para receta";
+            this.buttonConfirmarIngredientesSeleccionados.UseVisualStyleBackColor = true;
+            this.buttonConfirmarIngredientesSeleccionados.Visible = false;
+            this.buttonConfirmarIngredientesSeleccionados.Click += new System.EventHandler(this.buttonConfirmarIngredientesSeleccionados_Click);
             // 
             // label2
             // 
@@ -112,20 +101,20 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Momento de la comida";
             // 
-            // grillaCargaRecetas
+            // grillaSeleccionarIngredientes
             // 
-            this.grillaCargaRecetas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.grillaCargaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaCargaRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grillaSeleccionarIngredientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.grillaSeleccionarIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaSeleccionarIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoIngredientes,
             this.Nombre_Ingrediente,
             this.Check});
-            this.grillaCargaRecetas.Location = new System.Drawing.Point(20, 25);
-            this.grillaCargaRecetas.Name = "grillaCargaRecetas";
-            this.grillaCargaRecetas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.grillaCargaRecetas.Size = new System.Drawing.Size(343, 290);
-            this.grillaCargaRecetas.TabIndex = 8;
-            this.grillaCargaRecetas.Visible = false;
+            this.grillaSeleccionarIngredientes.Location = new System.Drawing.Point(20, 25);
+            this.grillaSeleccionarIngredientes.Name = "grillaSeleccionarIngredientes";
+            this.grillaSeleccionarIngredientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.grillaSeleccionarIngredientes.Size = new System.Drawing.Size(343, 290);
+            this.grillaSeleccionarIngredientes.TabIndex = 8;
+            this.grillaSeleccionarIngredientes.Visible = false;
             // 
             // CodigoIngredientes
             // 
@@ -180,7 +169,7 @@
             this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 278);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
             this.grillaIngredientesSeleccionados.Visible = false;
-            this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaIngredientesSeleccionados_CellClick);
+            this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCantidad_CellClick);
             // 
             // Codigo
             // 
@@ -220,30 +209,38 @@
             // 
             this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
             // 
-            // button1
+            // buttonSiguiente
             // 
-            this.button1.Location = new System.Drawing.Point(464, 242);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Siguiente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSiguiente.Location = new System.Drawing.Point(464, 242);
+            this.buttonSiguiente.Name = "buttonSiguiente";
+            this.buttonSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.buttonSiguiente.TabIndex = 13;
+            this.buttonSiguiente.Text = "Siguiente";
+            this.buttonSiguiente.UseVisualStyleBackColor = true;
+            this.buttonSiguiente.Click += new System.EventHandler(this.buttonSiguiente_Click);
+            // 
+            // comboBoxMomentosComida
+            // 
+            this.comboBoxMomentosComida.FormattingEnabled = true;
+            this.comboBoxMomentosComida.Location = new System.Drawing.Point(445, 150);
+            this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
+            this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMomentosComida.TabIndex = 14;
             // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 353);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBoxMomentosComida);
+            this.Controls.Add(this.buttonSiguiente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grillaIngredientesSeleccionados);
             this.Controls.Add(this.FinalizarCargaRecetas);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.grillaCargaRecetas);
+            this.Controls.Add(this.grillaSeleccionarIngredientes);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxMomentosComida);
-            this.Controls.Add(this.buttonAceptarCargaRecetas);
+            this.Controls.Add(this.buttonConfirmarIngredientesSeleccionados);
             this.Controls.Add(this.textBoxNombreRecetas);
             this.Controls.Add(this.checkBoxRecetaSaludable);
             this.Controls.Add(this.label1);
@@ -254,7 +251,7 @@
             this.Name = "FormCargaRecetas";
             this.Text = "Carga de Recetas";
             this.Load += new System.EventHandler(this.FormCargaRecetas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grillaCargaRecetas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -267,10 +264,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxRecetaSaludable;
         private System.Windows.Forms.TextBox textBoxNombreRecetas;
-        private System.Windows.Forms.Button buttonAceptarCargaRecetas;
-        private System.Windows.Forms.ComboBox comboBoxMomentosComida;
+        private System.Windows.Forms.Button buttonConfirmarIngredientesSeleccionados;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView grillaCargaRecetas;
+        private System.Windows.Forms.DataGridView grillaSeleccionarIngredientes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button FinalizarCargaRecetas;
         private System.Windows.Forms.DataGridView grillaIngredientesSeleccionados;
@@ -283,6 +279,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewLinkColumn Editar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSiguiente;
+        private System.Windows.Forms.ComboBox comboBoxMomentosComida;
     }
 }

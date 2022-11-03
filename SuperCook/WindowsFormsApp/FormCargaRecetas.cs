@@ -24,94 +24,102 @@ namespace WindowsFormsApp
         // Validaciones de tipo: en winform (parseos)
         //Probar maskedTextbox para obligar ingresos
 
-        List<Ingrediente> ingredientesAEditar = new List<Ingrediente>();
-        Receta recetaAEditar;
         int codigoReceta;
+
         public FormCargaRecetas(int codigoReceta)
         {
             InitializeComponent();
 
             this.codigoReceta = codigoReceta;
-
-            comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
-            if (codigoReceta > 0)
-            {
-                HacerVisibleIngredientes();
-                HacerVisibleIngredientesSeleccionadosYFinCarga();
-
-                AdministradorRecetas administradorRecetas = new AdministradorRecetas();
-                recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
-
-
-                CargarContenidosRecetasAEditar(recetaAEditar);
-               
-            }
         }
-
-        private void ActualizarGrillaCargaIngredientes()
-        {
-            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-            grillaCargaRecetas.DataSource = null;
-            grillaCargaRecetas.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
-        }
-
-        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionadosPorBox)
-        {
-            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
-            grillaIngredientesSeleccionados.DataSource = null;
-            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionadosPorBox;
-
-        }
-
 
         private void FormCargaRecetas_Load(object sender, EventArgs e)
         {
-            grillaCargaRecetas.AutoGenerateColumns = false;
-            ActualizarGrillaCargaIngredientes();
-            if (codigoReceta > 0)
+            comboBoxMomentosComida.DataSource = Enum.GetValues(typeof(MomentosComida));
+            comboBoxMomentosComida.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            grillaSeleccionarIngredientes.AutoGenerateColumns = false;
+            ActualizarGrillaSeleccionarIngredientes();
+
+            if (EstaEditando())
             {
+                HacerVisibleSeleccionIngredientes();
+                HacerVisibleIngredientesSeleccionadosYFinCarga();
+
+                AdministradorRecetas administradorRecetas = new AdministradorRecetas();
+                Receta recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
+
+                CargarContenidosRecetasAEditar(recetaAEditar);
+
                 List<Ingrediente> ingredientesRecetaAEditar = recetaAEditar.GetIngredientesReceta();
                 ActualizarGrillaIngredientesSeleccionados(ingredientesRecetaAEditar);
-
             }
-
         }
 
-        private void buttonAceptarCargaRecetas_Click(object sender, EventArgs e)
+        private bool EstaEditando()
         {
-            this.ingredientesAEditar = ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas();
+            return codigoReceta > 0;
+        }
 
-            if (ingredientesAEditar.Count() == 0)
+        private void ActualizarGrillaSeleccionarIngredientes()
+        {
+            AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+
+            grillaSeleccionarIngredientes.DataSource = null;
+            grillaSeleccionarIngredientes.DataSource = administradorIngredientes.GetIngredientesEnDespensa();
+        }
+
+        public void ActualizarGrillaIngredientesSeleccionados(List<Ingrediente> ingredientesSeleccionados)
+        {
+            grillaIngredientesSeleccionados.AutoGenerateColumns = false;
+            grillaIngredientesSeleccionados.DataSource = null;
+            grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
+        }
+
+        private void buttonConfirmarIngredientesSeleccionados_Click(object sender, EventArgs e)
+        {
+            List<Ingrediente> ingredientesSeleccionados = ObtenerIngredientesSeleccionados();
+
+            if (ingredientesSeleccionados.Count == 0)
             {
                 MessageBox.Show("Seleccionar ingredientes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            HacerVisibleIngredientesSeleccionadosYFinCarga();
-            ActualizarGrillaIngredientesSeleccionados(ingredientesAEditar);
-
-        }
-        private List<Ingrediente> ComprobarElementosNoSeleccionadosAnteriormente(List<Ingrediente> NuevasSelecciones)
-        {
-            List<Ingrediente> ValidosACargar = new List<Ingrediente>();
-            foreach (Ingrediente element in NuevasSelecciones)
+            } else
             {
-                ValidosACargar.Add(ingredientesAEditar.Find(x => x.Codigo != element.Codigo));
+                HacerVisibleIngredientesSeleccionadosYFinCarga();
+                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
             }
-            return ValidosACargar;
         }
-        private void HacerVisibleIngredientes()
+
+        private List<Ingrediente> ObtenerIngredientesSeleccionados()
+        {
+            List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+
+            foreach (DataGridViewRow row in grillaSeleccionarIngredientes.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
+                if (chk.Value == chk.TrueValue)
+                {
+                    Ingrediente ingredienteSeleccionado = grillaSeleccionarIngredientes.Rows[row.Index].DataBoundItem as Ingrediente;
+                    ingredientesSeleccionados.Add(ingredienteSeleccionado);
+                }
+            }
+            return ingredientesSeleccionados;
+        }
+
+        private void HacerVisibleSeleccionIngredientes()
         {
             label3.Visible = true;
-            grillaCargaRecetas.Visible = true;
-            buttonAceptarCargaRecetas.Visible = true;
-
+            grillaSeleccionarIngredientes.Visible = true;
+            buttonConfirmarIngredientesSeleccionados.Visible = true;
         }
+
         private void HacerVisibleIngredientesSeleccionadosYFinCarga()
         {
             label4.Visible = true;
             grillaIngredientesSeleccionados.Visible = true;
             FinalizarCargaRecetas.Visible = true;
         }
+
         private int ObtenerIndice(DataGridView grilla, string nombreColumna)
         {
             foreach (DataGridViewColumn column in grilla.Columns)
@@ -121,7 +129,6 @@ namespace WindowsFormsApp
                     return column.Index;
                 }
             }
-
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
@@ -132,8 +139,10 @@ namespace WindowsFormsApp
             MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
             string nombre = textBoxNombreRecetas.Text;
             bool esSaludable = checkBoxRecetaSaludable.Checked;
+            List<Ingrediente> ingredientesReceta = ObtenerIngredientesConfirmados();
 
-            Receta nuevaReceta = new Receta(this.codigoReceta, momentoComida, nombre, esSaludable, ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados());
+            Receta nuevaReceta = new Receta(this.codigoReceta, momentoComida, nombre, esSaludable, ingredientesReceta);
+            
             administradorRecetas.CargarModificarReceta(nuevaReceta);
 
             IActualizarGrillaRecetas padre = this.Owner as IActualizarGrillaRecetas;
@@ -146,24 +155,22 @@ namespace WindowsFormsApp
             {
                 MessageBox.Show("error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void grillaIngredientesSeleccionados_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void EditarCantidad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
+
             if (indiceEditar == e.ColumnIndex)
             {
-                var indiceIdentificador = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
-                int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[indiceIdentificador].Value.ToString()); //accede tipo matris 
-                //TODO: ver si accedo con receta o no 
-                this.ingredientesAEditar = ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados();
+                int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
+                int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
+                
+                List<Ingrediente> ingredientesConfirmados = ObtenerIngredientesConfirmados();
+                Ingrediente ingredienteAEditar = ingredientesConfirmados.Find(x => x.Codigo == codigoIngrediente);
 
-                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                Ingrediente ingredienteAEditar = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, codigoReceta,ingredientesAEditar);
+                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesConfirmados);
                 edicionIngredientesEnRecetas.ShowDialog(this);
-
             }
         }
 
@@ -174,45 +181,27 @@ namespace WindowsFormsApp
             checkBoxRecetaSaludable.Checked = recetaRecibida.EsSaludable;
             ActualizarGrillaIngredientesSeleccionados(recetaRecibida.GetIngredientesReceta());
         }
-        private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaCargaRecetas()
-        {
-            foreach (DataGridViewRow row in grillaCargaRecetas.Rows)
-            {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
-                if (chk.Value == chk.TrueValue)
-                {
-                    var codigoIngrediente = int.Parse(grillaCargaRecetas.Rows[row.Index].Cells[0].Value.ToString());
-                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                    Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-                    ingredientesAEditar.Add(ingredienteSeleccionado);
-                }
-            }
-            return ingredientesAEditar;
-        }
 
-        private List<Ingrediente> ObtenerListaIngredientesSeleccionadosEnGrillaIngredientesSeleccionados()
+        private List<Ingrediente> ObtenerIngredientesConfirmados()
         {
-            List<Ingrediente> ingredientesObtenidos = new List<Ingrediente>();
+            List<Ingrediente> ingredientesConfirmados = new List<Ingrediente>();
+
             foreach (DataGridViewRow row in grillaIngredientesSeleccionados.Rows)
             {
-                var codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[row.Index].Cells[0].Value.ToString());
-                AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                Ingrediente ingredienteSeleccionado = administradorIngredientes.BuscarCodigoIngrediente(codigoIngrediente);
-
-                ingredienteSeleccionado.Cantidad = int.Parse(grillaIngredientesSeleccionados.Rows[row.Index].Cells[2].Value.ToString());
-                ingredientesObtenidos.Add(ingredienteSeleccionado);
+                Ingrediente ingredienteConfirmado = grillaIngredientesSeleccionados.Rows[row.Index].DataBoundItem as Ingrediente;
+                ingredientesConfirmados.Add(ingredienteConfirmado);
             }
-            return ingredientesObtenidos;
+            return ingredientesConfirmados;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSiguiente_Click(object sender, EventArgs e)
         {
             if (NoHayCamposNulos())
             {
-                HacerVisibleIngredientes();
+                HacerVisibleSeleccionIngredientes();
             }
-
         }
+
         private bool NoHayCamposNulos()
         {
             bool resultado = true;
