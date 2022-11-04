@@ -249,6 +249,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCargaRecetas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carga de Recetas";
             this.Load += new System.EventHandler(this.FormCargaRecetas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).EndInit();

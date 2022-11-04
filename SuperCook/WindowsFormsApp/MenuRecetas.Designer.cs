@@ -146,9 +146,12 @@
             this.Controls.Add(this.btnNuevaReceta);
             this.Controls.Add(this.grillaRecetas);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "MenuRecetas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Menu Recetas";
             this.Load += new System.EventHandler(this.MenuRecetas_Load);
             this.menuStrip1.ResumeLayout(false);

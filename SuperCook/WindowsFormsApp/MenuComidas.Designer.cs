@@ -67,21 +67,21 @@
             // cargarComidaToolStripMenuItem
             // 
             this.cargarComidaToolStripMenuItem.Name = "cargarComidaToolStripMenuItem";
-            this.cargarComidaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarComidaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.cargarComidaToolStripMenuItem.Text = "Registrar Comida";
             this.cargarComidaToolStripMenuItem.Click += new System.EventHandler(this.registrarComidaToolStripMenuItem_Click);
             // 
             // filtrarToolStripMenuItem
             // 
             this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
-            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.filtrarToolStripMenuItem.Text = "Filtrar Comidas";
             this.filtrarToolStripMenuItem.Click += new System.EventHandler(this.filtrarToolStripMenuItem_Click);
             // 
             // eliminarFiltrosToolStripMenuItem
             // 
             this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
-            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
             this.eliminarFiltrosToolStripMenuItem.Click += new System.EventHandler(this.eliminarFiltrosToolStripMenuItem_Click);
             // 
@@ -144,9 +144,12 @@
             this.Controls.Add(this.btnRegistrarComida);
             this.Controls.Add(this.grillaComidas);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimizeBox = false;
             this.Name = "MenuComidas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Comidas";
             this.Load += new System.EventHandler(this.MenuComidas_Load);
             this.menuStrip1.ResumeLayout(false);

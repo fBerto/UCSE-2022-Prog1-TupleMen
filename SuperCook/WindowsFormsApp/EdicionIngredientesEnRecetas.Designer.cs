@@ -91,8 +91,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNuevaCantidadIngrediente);
             this.Controls.Add(this.NombreIngredienteAEditar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "EdicionIngredientesEnRecetas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edicion Ingredientes";
             this.Load += new System.EventHandler(this.EdicionIngredientesEnRecetas_Load);
             this.ResumeLayout(false);

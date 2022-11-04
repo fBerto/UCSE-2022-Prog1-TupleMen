@@ -230,7 +230,10 @@
             this.Controls.Add(this.checkBoxFiltroPorReceta);
             this.Controls.Add(this.checkBoxFiltroSaludable);
             this.Controls.Add(this.botonConfirmarFiltrosComidas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FormFiltrosComidas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FiltrosComidas";
             this.Load += new System.EventHandler(this.FormFiltrosComidas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).EndInit();

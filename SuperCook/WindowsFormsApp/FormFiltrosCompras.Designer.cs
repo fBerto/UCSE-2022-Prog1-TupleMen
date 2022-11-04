@@ -200,7 +200,10 @@
             this.Controls.Add(this.checkBoxFiltroEscasez);
             this.Controls.Add(this.checkBoxFiltroPorCosto);
             this.Controls.Add(this.checkBoxFiltroTipoIngrediente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FormFiltrosCompras";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormFiltrosCompras";
             this.Load += new System.EventHandler(this.FormFiltrosCompras_Load);
             this.groupBoxCostoMinimoMaximo.ResumeLayout(false);

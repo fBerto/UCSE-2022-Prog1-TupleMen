@@ -35,16 +35,16 @@
             this.filtrarComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grillaCompras = new System.Windows.Forms.DataGridView();
-            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
-            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
-            this.buttonFiltrarCompras = new System.Windows.Forms.Button();
-            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadEnDespensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadAComprar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
+            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
+            this.buttonFiltrarCompras = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorComprasBindingSource)).BeginInit();
@@ -100,38 +100,6 @@
             this.grillaCompras.Size = new System.Drawing.Size(694, 242);
             this.grillaCompras.TabIndex = 1;
             // 
-            // lblTituloTotalCompra
-            // 
-            this.lblTituloTotalCompra.AutoSize = true;
-            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 290);
-            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
-            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
-            this.lblTituloTotalCompra.TabIndex = 2;
-            this.lblTituloTotalCompra.Text = "Total Compra ($):";
-            // 
-            // lblCostoTotalCompra
-            // 
-            this.lblCostoTotalCompra.AutoSize = true;
-            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 290);
-            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
-            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
-            this.lblCostoTotalCompra.TabIndex = 3;
-            this.lblCostoTotalCompra.Text = "[costo]";
-            // 
-            // buttonFiltrarCompras
-            // 
-            this.buttonFiltrarCompras.Location = new System.Drawing.Point(631, 280);
-            this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
-            this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
-            this.buttonFiltrarCompras.TabIndex = 4;
-            this.buttonFiltrarCompras.Text = "Filtrar";
-            this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
-            this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
-            // 
-            // administradorComprasBindingSource
-            // 
-            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
-            // 
             // Nombre
             // 
             this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -174,6 +142,38 @@
             this.Medida.Name = "Medida";
             this.Medida.Width = 50;
             // 
+            // administradorComprasBindingSource
+            // 
+            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
+            // 
+            // lblTituloTotalCompra
+            // 
+            this.lblTituloTotalCompra.AutoSize = true;
+            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 290);
+            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
+            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
+            this.lblTituloTotalCompra.TabIndex = 2;
+            this.lblTituloTotalCompra.Text = "Total Compra ($):";
+            // 
+            // lblCostoTotalCompra
+            // 
+            this.lblCostoTotalCompra.AutoSize = true;
+            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 290);
+            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
+            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
+            this.lblCostoTotalCompra.TabIndex = 3;
+            this.lblCostoTotalCompra.Text = "[costo]";
+            // 
+            // buttonFiltrarCompras
+            // 
+            this.buttonFiltrarCompras.Location = new System.Drawing.Point(631, 280);
+            this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
+            this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
+            this.buttonFiltrarCompras.TabIndex = 4;
+            this.buttonFiltrarCompras.Text = "Filtrar";
+            this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
+            this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
+            // 
             // MenuCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,9 +184,12 @@
             this.Controls.Add(this.lblTituloTotalCompra);
             this.Controls.Add(this.grillaCompras);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "MenuCompras";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Compras";
             this.Load += new System.EventHandler(this.MenuCompras_Load);
             this.menuStrip1.ResumeLayout(false);

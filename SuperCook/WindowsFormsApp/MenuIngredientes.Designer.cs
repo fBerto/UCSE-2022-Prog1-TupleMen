@@ -52,6 +52,7 @@
             // 
             // grillaIngredientes
             // 
+            this.grillaIngredientes.AllowUserToResizeColumns = false;
             this.grillaIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -188,9 +189,12 @@
             this.Controls.Add(this.btnNuevoIngrediente);
             this.Controls.Add(this.grillaIngredientes);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "MenuIngredientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Menu Ingredientes";
             this.Load += new System.EventHandler(this.MenuIngredientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientes)).EndInit();

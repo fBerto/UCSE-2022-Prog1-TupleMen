@@ -158,8 +158,11 @@
             this.Controls.Add(this.BotonRecetas);
             this.Controls.Add(this.BotonCompras);
             this.Controls.Add(this.BotonIngredientes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "PantallaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Cook";
             this.Load += new System.EventHandler(this.PantallaPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
