@@ -48,7 +48,6 @@
             this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonSiguiente = new System.Windows.Forms.Button();
             this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
@@ -89,7 +88,6 @@
             this.buttonConfirmarIngredientesSeleccionados.TabIndex = 5;
             this.buttonConfirmarIngredientesSeleccionados.Text = "Confirmar Ingredientes para receta";
             this.buttonConfirmarIngredientesSeleccionados.UseVisualStyleBackColor = true;
-            this.buttonConfirmarIngredientesSeleccionados.Visible = false;
             this.buttonConfirmarIngredientesSeleccionados.Click += new System.EventHandler(this.buttonConfirmarIngredientesSeleccionados_Click);
             // 
             // label2
@@ -114,7 +112,6 @@
             this.grillaSeleccionarIngredientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grillaSeleccionarIngredientes.Size = new System.Drawing.Size(343, 290);
             this.grillaSeleccionarIngredientes.TabIndex = 8;
-            this.grillaSeleccionarIngredientes.Visible = false;
             // 
             // CodigoIngredientes
             // 
@@ -143,7 +140,6 @@
             this.label3.Size = new System.Drawing.Size(197, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Seleccionar Ingredientes para la Receta";
-            this.label3.Visible = false;
             // 
             // FinalizarCargaRecetas
             // 
@@ -153,7 +149,6 @@
             this.FinalizarCargaRecetas.TabIndex = 10;
             this.FinalizarCargaRecetas.Text = "Finalizar";
             this.FinalizarCargaRecetas.UseVisualStyleBackColor = true;
-            this.FinalizarCargaRecetas.Visible = false;
             this.FinalizarCargaRecetas.Click += new System.EventHandler(this.FinalizarCargaRecetas_Click);
             // 
             // grillaIngredientesSeleccionados
@@ -168,7 +163,6 @@
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
             this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 278);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
-            this.grillaIngredientesSeleccionados.Visible = false;
             this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCantidad_CellClick);
             // 
             // Codigo
@@ -203,21 +197,10 @@
             this.label4.Size = new System.Drawing.Size(189, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ingresar cantidad por cada ingrediente";
-            this.label4.Visible = false;
             // 
             // administradorRecetasBindingSource
             // 
             this.administradorRecetasBindingSource.DataSource = typeof(Logica.AdministradorRecetas);
-            // 
-            // buttonSiguiente
-            // 
-            this.buttonSiguiente.Location = new System.Drawing.Point(464, 242);
-            this.buttonSiguiente.Name = "buttonSiguiente";
-            this.buttonSiguiente.Size = new System.Drawing.Size(75, 23);
-            this.buttonSiguiente.TabIndex = 13;
-            this.buttonSiguiente.Text = "Siguiente";
-            this.buttonSiguiente.UseVisualStyleBackColor = true;
-            this.buttonSiguiente.Click += new System.EventHandler(this.buttonSiguiente_Click);
             // 
             // comboBoxMomentosComida
             // 
@@ -233,7 +216,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 353);
             this.Controls.Add(this.comboBoxMomentosComida);
-            this.Controls.Add(this.buttonSiguiente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grillaIngredientesSeleccionados);
             this.Controls.Add(this.FinalizarCargaRecetas);
@@ -280,7 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewLinkColumn Editar;
-        private System.Windows.Forms.Button buttonSiguiente;
         private System.Windows.Forms.ComboBox comboBoxMomentosComida;
     }
 }
