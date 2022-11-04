@@ -155,5 +155,22 @@ namespace WindowsFormsApp
             }
             return ingredientesConfirmados;
         }
+
+        private void grillaIngredientesSeleccionados_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            CargarCeldasEditar();
+        }
+
+        private void CargarCeldasEditar()
+        {
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+
+            int indiceColumnaEditar = utilidad.ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
+
+            foreach (DataGridViewRow row in grillaIngredientesSeleccionados.Rows)
+            {
+                row.Cells[indiceColumnaEditar].Value = "Editar";
+            }
+        }
     }
 }

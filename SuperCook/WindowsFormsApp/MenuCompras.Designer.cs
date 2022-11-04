@@ -35,16 +35,16 @@
             this.filtrarComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grillaCompras = new System.Windows.Forms.DataGridView();
+            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
+            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
+            this.buttonFiltrarCompras = new System.Windows.Forms.Button();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadEnDespensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadAComprar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTituloTotalCompra = new System.Windows.Forms.Label();
-            this.lblCostoTotalCompra = new System.Windows.Forms.Label();
-            this.buttonFiltrarCompras = new System.Windows.Forms.Button();
-            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorComprasBindingSource)).BeginInit();
@@ -56,7 +56,7 @@
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(718, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(542, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,19 +72,21 @@
             // filtrarComprasToolStripMenuItem
             // 
             this.filtrarComprasToolStripMenuItem.Name = "filtrarComprasToolStripMenuItem";
-            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.filtrarComprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.filtrarComprasToolStripMenuItem.Text = "Filtrar Compras";
             this.filtrarComprasToolStripMenuItem.Click += new System.EventHandler(this.filtrarComprasToolStripMenuItem_Click);
             // 
             // eliminarFiltrosToolStripMenuItem
             // 
             this.eliminarFiltrosToolStripMenuItem.Name = "eliminarFiltrosToolStripMenuItem";
-            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.eliminarFiltrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarFiltrosToolStripMenuItem.Text = "Eliminar Filtros";
             this.eliminarFiltrosToolStripMenuItem.Click += new System.EventHandler(this.eliminarFiltrosToolStripMenuItem_Click);
             // 
             // grillaCompras
             // 
+            this.grillaCompras.AllowUserToAddRows = false;
+            this.grillaCompras.AllowUserToDeleteRows = false;
             this.grillaCompras.AllowUserToResizeColumns = false;
             this.grillaCompras.AllowUserToResizeRows = false;
             this.grillaCompras.AutoGenerateColumns = false;
@@ -100,8 +102,40 @@
             this.grillaCompras.Location = new System.Drawing.Point(12, 27);
             this.grillaCompras.Name = "grillaCompras";
             this.grillaCompras.ReadOnly = true;
-            this.grillaCompras.Size = new System.Drawing.Size(694, 242);
+            this.grillaCompras.Size = new System.Drawing.Size(518, 242);
             this.grillaCompras.TabIndex = 1;
+            // 
+            // administradorComprasBindingSource
+            // 
+            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
+            // 
+            // lblTituloTotalCompra
+            // 
+            this.lblTituloTotalCompra.AutoSize = true;
+            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 285);
+            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
+            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
+            this.lblTituloTotalCompra.TabIndex = 2;
+            this.lblTituloTotalCompra.Text = "Total Compra ($):";
+            // 
+            // lblCostoTotalCompra
+            // 
+            this.lblCostoTotalCompra.AutoSize = true;
+            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 285);
+            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
+            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
+            this.lblCostoTotalCompra.TabIndex = 3;
+            this.lblCostoTotalCompra.Text = "[costo]";
+            // 
+            // buttonFiltrarCompras
+            // 
+            this.buttonFiltrarCompras.Location = new System.Drawing.Point(455, 280);
+            this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
+            this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
+            this.buttonFiltrarCompras.TabIndex = 4;
+            this.buttonFiltrarCompras.Text = "Filtrar";
+            this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
+            this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
             // 
             // Nombre
             // 
@@ -113,7 +147,6 @@
             // 
             // Tipo
             // 
-            this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Tipo.DataPropertyName = "TipoIngrediente";
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
@@ -129,19 +162,19 @@
             // 
             // CantidadEnDespensa
             // 
-            this.CantidadEnDespensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CantidadEnDespensa.DataPropertyName = "Cantidad";
             this.CantidadEnDespensa.HeaderText = "Cantidad en Despensa";
             this.CantidadEnDespensa.Name = "CantidadEnDespensa";
             this.CantidadEnDespensa.ReadOnly = true;
+            this.CantidadEnDespensa.Width = 90;
             // 
             // CantidadAComprar
             // 
-            this.CantidadAComprar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CantidadAComprar.DataPropertyName = "CantidadAComprar";
             this.CantidadAComprar.HeaderText = "Cantidad a comprar";
             this.CantidadAComprar.Name = "CantidadAComprar";
             this.CantidadAComprar.ReadOnly = true;
+            this.CantidadAComprar.Width = 90;
             // 
             // Medida
             // 
@@ -151,43 +184,11 @@
             this.Medida.ReadOnly = true;
             this.Medida.Width = 50;
             // 
-            // lblTituloTotalCompra
-            // 
-            this.lblTituloTotalCompra.AutoSize = true;
-            this.lblTituloTotalCompra.Location = new System.Drawing.Point(12, 290);
-            this.lblTituloTotalCompra.Name = "lblTituloTotalCompra";
-            this.lblTituloTotalCompra.Size = new System.Drawing.Size(88, 13);
-            this.lblTituloTotalCompra.TabIndex = 2;
-            this.lblTituloTotalCompra.Text = "Total Compra ($):";
-            // 
-            // lblCostoTotalCompra
-            // 
-            this.lblCostoTotalCompra.AutoSize = true;
-            this.lblCostoTotalCompra.Location = new System.Drawing.Point(106, 290);
-            this.lblCostoTotalCompra.Name = "lblCostoTotalCompra";
-            this.lblCostoTotalCompra.Size = new System.Drawing.Size(39, 13);
-            this.lblCostoTotalCompra.TabIndex = 3;
-            this.lblCostoTotalCompra.Text = "[costo]";
-            // 
-            // buttonFiltrarCompras
-            // 
-            this.buttonFiltrarCompras.Location = new System.Drawing.Point(631, 280);
-            this.buttonFiltrarCompras.Name = "buttonFiltrarCompras";
-            this.buttonFiltrarCompras.Size = new System.Drawing.Size(75, 23);
-            this.buttonFiltrarCompras.TabIndex = 4;
-            this.buttonFiltrarCompras.Text = "Filtrar";
-            this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
-            this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
-            // 
-            // administradorComprasBindingSource
-            // 
-            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
-            // 
             // MenuCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 317);
+            this.ClientSize = new System.Drawing.Size(542, 317);
             this.Controls.Add(this.buttonFiltrarCompras);
             this.Controls.Add(this.lblCostoTotalCompra);
             this.Controls.Add(this.lblTituloTotalCompra);
