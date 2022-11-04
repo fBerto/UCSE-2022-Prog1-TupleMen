@@ -14,7 +14,6 @@ namespace WindowsFormsApp
     public partial class EdicionIngredientesEnRecetas : Form
     {
         private Ingrediente ingrediente { get; set; }
-
         private List<Ingrediente> ingredientesAEditar { get; set; }
 
         public EdicionIngredientesEnRecetas()
@@ -40,39 +39,30 @@ namespace WindowsFormsApp
         {
             int nuevaCantidad = 0;
 
-            if (!string.IsNullOrEmpty(textBoxNuevaCantidadIngrediente.Text))
+            if (int.TryParse(textBoxNuevaCantidadIngrediente.Text, out nuevaCantidad))
             {
-                nuevaCantidad = int.Parse(textBoxNuevaCantidadIngrediente.Text);
+                int indice = ingredientesAEditar.FindIndex(x => x.Codigo == ingrediente.Codigo);
 
-                if (nuevaCantidad <= 0)
+                if (ingrediente is Solido)
                 {
-                    MessageBox.Show("che pero mayor a 0 banana", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Solido solidoModificado = new Solido(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
+                    ingredientesAEditar[indice] = solidoModificado;
                 } else
                 {
-                    int indice = ingredientesAEditar.FindIndex(x => x.Codigo == ingrediente.Codigo);
-
-                    if (ingrediente is Solido)
-                    {
-                        Solido solidoModificado = new Solido(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima);
-                        ingredientesAEditar[indice] = solidoModificado;
-                    } else
-                    {
-                        Bebida bebidaAModificar = ingrediente as Bebida;
-                        Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima,bebidaAModificar.TipoBebida);
-                        ingredientesAEditar[indice] = bebidaModificada;
-                    }
-
-                    IActualizarGrillaIngredientesSeleccionados padre = this.Owner as IActualizarGrillaIngredientesSeleccionados;
-                    if (padre != null)
-                    {
-                        padre.ActualizarGrillaIngredientesSeleccionados(ingredientesAEditar);
-                    }
-                    this.Close();
+                    Bebida bebidaAModificar = ingrediente as Bebida;
+                    Bebida bebidaModificada = new Bebida(ingrediente.Codigo, ingrediente.Nombre, ingrediente.TipoIngrediente, nuevaCantidad, ingrediente.PrecioPorUnidad, ingrediente.UnidadMinima, bebidaAModificar.TipoBebida);
+                    ingredientesAEditar[indice] = bebidaModificada;
                 }
-            }
-            else
+
+                IActualizarGrillaIngredientesSeleccionados padre = this.Owner as IActualizarGrillaIngredientesSeleccionados;
+                if (padre != null)
+                {
+                    padre.ActualizarGrillaIngredientesSeleccionados(ingredientesAEditar);
+                }
+                this.Close();
+            } else
             {
-                MessageBox.Show("Cargale numero papi", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La cantidad debe ser numerica", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

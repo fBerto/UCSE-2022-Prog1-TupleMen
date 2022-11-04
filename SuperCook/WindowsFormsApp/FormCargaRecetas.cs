@@ -139,8 +139,7 @@ namespace WindowsFormsApp
                     return column.Index;
                 }
             }
-            //TODO: Dejamos esta excepcion o la sacamos?
-            throw new Exception("No hay una columna con nombre solicitado en la grilla");
+            return -1;
         }
 
         private void FinalizarCargaRecetas_Click(object sender, EventArgs e)

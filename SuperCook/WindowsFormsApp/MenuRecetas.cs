@@ -59,6 +59,7 @@ namespace WindowsFormsApp
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
+        //TODO: El mensaje que arroja es sobre el ingrediente
         private void grillaRecetas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaRecetas, "Editar");

@@ -13,7 +13,6 @@ namespace Logica
 
         const int codigoInicial = 1;
 
-        //Ingrediente con cantidad igual a 0
         public Resultado CargarModificarReceta(Receta nuevaReceta)
         {
             if (string.IsNullOrEmpty(nuevaReceta.Nombre))
@@ -23,6 +22,10 @@ namespace Logica
             if (nuevaReceta.GetIngredientesReceta().Count == 0)
             {
                 return new Resultado(false, "Debe cargarle ingredientes a la receta");
+            }
+            if (HayCantidadesDeIngredienteNulas(nuevaReceta))
+            {
+                return new Resultado(false, "Las cantidades de los ingredientes no pueden ser negativas ni iguales a cero");
             }
             if (nuevaReceta.Codigo == 0)
             {
@@ -34,6 +37,19 @@ namespace Logica
             }
             GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
             return new Resultado(true, "Carga exitosa");
+        }
+
+        private bool HayCantidadesDeIngredienteNulas(Receta receta)
+        {
+            List<Ingrediente> ingredientes = receta.GetIngredientesReceta();
+            foreach (Ingrediente ingrediente in ingredientes)
+            {
+                if (ingrediente.Cantidad <= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void SobreescribirReceta(Receta nuevaReceta)
