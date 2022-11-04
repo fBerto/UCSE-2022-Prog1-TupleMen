@@ -9,22 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logica;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp
 {
     public partial class FormCargaRecetas : Form, IActualizarGrillaIngredientesSeleccionados
     {
-        /*TODO:
-         *verificar que existan elementos checkeados al confirmar la carga de estos 
-         *volver a poner invisible la grilla de editar cuando cargas una receta pq si no seleccionaste items y le das al boton de editar rompe 
-         */
-
-        //TODO: Validaciones en logica
-        // Validaciones de negocios: ingresos de nulos o campos obligatorios
-        // Validaciones de tipo: en winform (parseos)
-        //Probar maskedTextbox para obligar ingresos
-
         private int codigoReceta;
 
         public FormCargaRecetas(int codigoReceta)
@@ -147,11 +136,13 @@ namespace WindowsFormsApp
         private void EditarCantidad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
+            
             if (indiceEditar >= 0)
             {
-                if (indiceEditar == e.ColumnIndex)
+                if (indiceEditar == e.ColumnIndex && e.RowIndex >= 0)
                 {
                     int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
+
                     int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
 
                     List<Ingrediente> ingredientesConfirmados = ObtenerIngredientesConfirmados();

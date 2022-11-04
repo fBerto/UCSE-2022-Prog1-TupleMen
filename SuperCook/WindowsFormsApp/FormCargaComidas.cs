@@ -39,26 +39,33 @@ namespace WindowsFormsApp
             grillaSeleccionRecetas.AutoGenerateColumns = false;
             ActualizarGrillaSeleccionRecetas();
         }
-        //TODO: revisar si hay elementos seleccionados
+
         private void botonConfirmarCargaComida_Click(object sender, EventArgs e)
         {
             AdministradorComidas administradorComidas = new AdministradorComidas();
 
-            Receta recetaSeleccionada = grillaSeleccionRecetas.SelectedRows[0].DataBoundItem as Receta;
-
-            int codigo = administradorComidas.GetNuevoCodigo();
-            DateTime fecha = dateTimePicker.Value;
-
-            Comida nuevaComida = new Comida(codigo, recetaSeleccionada, fecha);
-            administradorComidas.CargarComida(nuevaComida);
-
-            IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
-            if (padre != null)
+            //Si la grilla no esta vacia cargo
+            if (grillaSeleccionRecetas.RowCount > 0)
             {
-                padre.ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
-            }
+                Receta recetaSeleccionada = grillaSeleccionRecetas.SelectedRows[0].DataBoundItem as Receta;
 
-            this.Close();
+                int codigo = administradorComidas.GetNuevoCodigo();
+                DateTime fecha = dateTimePicker.Value;
+
+                Comida nuevaComida = new Comida(codigo, recetaSeleccionada, fecha);
+                administradorComidas.CargarComida(nuevaComida);
+
+                IActualizarGrillaComidas padre = this.Owner as IActualizarGrillaComidas;
+                if (padre != null)
+                {
+                    padre.ActualizarGrillaComidas(administradorComidas.GetHistorialComidas());
+                }
+
+                this.Close();
+            } else
+            {
+                MessageBox.Show("No hay recetas disponibles para el momento elegido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void comboBoxMomentoComida_SelectionChangeCommitted(object sender, EventArgs e)

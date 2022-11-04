@@ -10,8 +10,6 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
-        //TODO: Arreglar filtros
-
         private static List<Comida> HistorialComidas = new List<Comida>();
 
         const int codigoInicial = 1;
@@ -41,34 +39,29 @@ namespace Logica
             {
                 List<Comida> comidasFiltradasPorMomento = FiltroMomentoComida(filtros.Momento);
 
-                CombinarFiltros(comidasFiltradas, comidasFiltradasPorMomento);
+                comidasFiltradas = CombinarFiltros(comidasFiltradas, comidasFiltradasPorMomento);
             }
 
             if (filtros.PorFecha)
             {
                 List<Comida> comidasFiltradasPorFecha = FiltroFecha(filtros.FechaMenor, filtros.FechaMayor);
 
-                CombinarFiltros(comidasFiltradas, comidasFiltradasPorFecha);
+                comidasFiltradas = CombinarFiltros(comidasFiltradas, comidasFiltradasPorFecha);
             }
 
             if (filtros.PorReceta)
             {
                 List<Comida> comidasFiltradasPorReceta = FiltroPorRecetas(filtros.Receta);
 
-                CombinarFiltros(comidasFiltradas, comidasFiltradasPorReceta);
+                comidasFiltradas = CombinarFiltros(comidasFiltradas, comidasFiltradasPorReceta);
             }
             return comidasFiltradas;
         }
 
         private List<Comida> CombinarFiltros(List<Comida> comidasFiltradoPrevio, List<Comida> comidasFiltradoNuevo)
         {
-            if (comidasFiltradoPrevio.Count > 0)
-            {
-                comidasFiltradoPrevio = comidasFiltradoPrevio.Intersect(comidasFiltradoNuevo).ToList();
-            } else
-            {
-                comidasFiltradoPrevio = comidasFiltradoNuevo;
-            }
+            comidasFiltradoPrevio = comidasFiltradoPrevio.Intersect(comidasFiltradoNuevo).ToList();
+            
             return comidasFiltradoPrevio;
         }
 

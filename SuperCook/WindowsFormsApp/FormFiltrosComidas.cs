@@ -13,7 +13,7 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosComidas : Form
     {
-        //TODO: Probarlo una vez que se pueda cargar recetas
+        //TODO: Ver filtro fechas y combinacion de filtros
 
         public FormFiltrosComidas()
         {

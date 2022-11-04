@@ -14,8 +14,6 @@ namespace WindowsFormsApp
 {
     public partial class MenuRecetas : Form, IActualizarGrillaRecetas
     {
-        //TODO: corregir e.rowindex en otras grillas
-
         public MenuRecetas()
         {
             InitializeComponent();
@@ -59,7 +57,6 @@ namespace WindowsFormsApp
             throw new Exception("No hay una columna con nombre solicitado en la grilla");
         }
 
-        //TODO: El mensaje que arroja es sobre el ingrediente
         private void grillaRecetas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaRecetas, "Editar");
@@ -79,7 +76,7 @@ namespace WindowsFormsApp
                 if (indiceEliminar == e.ColumnIndex)
                 {
                     //Hizo clic en eliminar
-                    DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el ingrediente?", "Eliminar ingrediente", MessageBoxButtons.OKCancel);
+                    DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar la receta?", "Eliminar receta", MessageBoxButtons.OKCancel);
 
                     if (resultado == DialogResult.OK)
                     {

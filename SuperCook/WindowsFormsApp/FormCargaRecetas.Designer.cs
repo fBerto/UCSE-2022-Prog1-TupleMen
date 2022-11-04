@@ -36,6 +36,9 @@
             this.buttonConfirmarIngredientesSeleccionados = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.grillaSeleccionarIngredientes = new System.Windows.Forms.DataGridView();
+            this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.FinalizarCargaRecetas = new System.Windows.Forms.Button();
             this.grillaIngredientesSeleccionados = new System.Windows.Forms.DataGridView();
@@ -46,9 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
-            this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -115,6 +115,27 @@
             this.grillaSeleccionarIngredientes.Size = new System.Drawing.Size(343, 290);
             this.grillaSeleccionarIngredientes.TabIndex = 8;
             // 
+            // CodigoIngredientes
+            // 
+            this.CodigoIngredientes.DataPropertyName = "Codigo";
+            this.CodigoIngredientes.HeaderText = "Codigo";
+            this.CodigoIngredientes.Name = "CodigoIngredientes";
+            this.CodigoIngredientes.ReadOnly = true;
+            // 
+            // Nombre_Ingrediente
+            // 
+            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
+            this.Nombre_Ingrediente.HeaderText = "Nombre";
+            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
+            this.Nombre_Ingrediente.ReadOnly = true;
+            // 
+            // Check
+            // 
+            this.Check.FalseValue = "false";
+            this.Check.HeaderText = "Check";
+            this.Check.Name = "Check";
+            this.Check.TrueValue = "true";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -136,6 +157,8 @@
             // 
             // grillaIngredientesSeleccionados
             // 
+            this.grillaIngredientesSeleccionados.AllowUserToAddRows = false;
+            this.grillaIngredientesSeleccionados.AllowUserToDeleteRows = false;
             this.grillaIngredientesSeleccionados.AllowUserToResizeColumns = false;
             this.grillaIngredientesSeleccionados.AllowUserToResizeRows = false;
             this.grillaIngredientesSeleccionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -145,8 +168,10 @@
             this.Cantidad,
             this.Editar});
             this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 34);
+            this.grillaIngredientesSeleccionados.MultiSelect = false;
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
             this.grillaIngredientesSeleccionados.ReadOnly = true;
+            this.grillaIngredientesSeleccionados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 278);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
             this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCantidad_CellClick);
@@ -199,27 +224,6 @@
             this.comboBoxMomentosComida.Name = "comboBoxMomentosComida";
             this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMomentosComida.TabIndex = 14;
-            // 
-            // CodigoIngredientes
-            // 
-            this.CodigoIngredientes.DataPropertyName = "Codigo";
-            this.CodigoIngredientes.HeaderText = "Codigo";
-            this.CodigoIngredientes.Name = "CodigoIngredientes";
-            this.CodigoIngredientes.ReadOnly = true;
-            // 
-            // Nombre_Ingrediente
-            // 
-            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
-            this.Nombre_Ingrediente.HeaderText = "Nombre";
-            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
-            this.Nombre_Ingrediente.ReadOnly = true;
-            // 
-            // Check
-            // 
-            this.Check.FalseValue = "false";
-            this.Check.HeaderText = "Check";
-            this.Check.Name = "Check";
-            this.Check.TrueValue = "true";
             // 
             // FormCargaRecetas
             // 
