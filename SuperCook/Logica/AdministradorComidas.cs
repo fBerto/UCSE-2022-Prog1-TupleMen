@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logica
 {
@@ -12,7 +9,7 @@ namespace Logica
     {
         private static List<Comida> HistorialComidas = new List<Comida>();
 
-        const int codigoInicial = 1;
+        private const int codigoInicial = 1;
 
         public void CargarComida(Comida nuevaComida)
         {

@@ -57,7 +57,6 @@ namespace WindowsFormsApp
 
                 if (indiceEliminar == e.ColumnIndex)
                 {
-                    //Hizo clic en eliminar
                     DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar la receta?", "Eliminar receta", MessageBoxButtons.OKCancel);
 
                     if (resultado == DialogResult.OK)

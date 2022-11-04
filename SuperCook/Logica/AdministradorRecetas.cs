@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logica
 {
@@ -11,7 +8,7 @@ namespace Logica
     {
         private static List<Receta> LibroRecetas = new List<Receta>();
 
-        const int codigoInicial = 1;
+        private const int codigoInicial = 1;
 
         public Resultado CargarModificarReceta(Receta nuevaReceta)
         {
