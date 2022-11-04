@@ -87,12 +87,15 @@
             // 
             // grillaComidas
             // 
+            this.grillaComidas.AllowUserToResizeColumns = false;
+            this.grillaComidas.AllowUserToResizeRows = false;
             this.grillaComidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaComidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreReceta,
             this.fechaComida});
             this.grillaComidas.Location = new System.Drawing.Point(12, 82);
             this.grillaComidas.Name = "grillaComidas";
+            this.grillaComidas.ReadOnly = true;
             this.grillaComidas.RowHeadersWidth = 51;
             this.grillaComidas.Size = new System.Drawing.Size(374, 338);
             this.grillaComidas.TabIndex = 1;

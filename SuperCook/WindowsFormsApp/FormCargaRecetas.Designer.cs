@@ -101,6 +101,8 @@
             // 
             // grillaSeleccionarIngredientes
             // 
+            this.grillaSeleccionarIngredientes.AllowUserToResizeColumns = false;
+            this.grillaSeleccionarIngredientes.AllowUserToResizeRows = false;
             this.grillaSeleccionarIngredientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.grillaSeleccionarIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaSeleccionarIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -109,6 +111,7 @@
             this.Check});
             this.grillaSeleccionarIngredientes.Location = new System.Drawing.Point(20, 25);
             this.grillaSeleccionarIngredientes.Name = "grillaSeleccionarIngredientes";
+            this.grillaSeleccionarIngredientes.ReadOnly = true;
             this.grillaSeleccionarIngredientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grillaSeleccionarIngredientes.Size = new System.Drawing.Size(343, 290);
             this.grillaSeleccionarIngredientes.TabIndex = 8;
@@ -118,18 +121,21 @@
             this.CodigoIngredientes.DataPropertyName = "Codigo";
             this.CodigoIngredientes.HeaderText = "Codigo";
             this.CodigoIngredientes.Name = "CodigoIngredientes";
+            this.CodigoIngredientes.ReadOnly = true;
             // 
             // Nombre_Ingrediente
             // 
             this.Nombre_Ingrediente.DataPropertyName = "Nombre";
             this.Nombre_Ingrediente.HeaderText = "Nombre";
             this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
+            this.Nombre_Ingrediente.ReadOnly = true;
             // 
             // Check
             // 
             this.Check.FalseValue = "false";
             this.Check.HeaderText = "Check";
             this.Check.Name = "Check";
+            this.Check.ReadOnly = true;
             this.Check.TrueValue = "true";
             // 
             // label3
@@ -153,6 +159,8 @@
             // 
             // grillaIngredientesSeleccionados
             // 
+            this.grillaIngredientesSeleccionados.AllowUserToResizeColumns = false;
+            this.grillaIngredientesSeleccionados.AllowUserToResizeRows = false;
             this.grillaIngredientesSeleccionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaIngredientesSeleccionados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -161,6 +169,7 @@
             this.Editar});
             this.grillaIngredientesSeleccionados.Location = new System.Drawing.Point(654, 34);
             this.grillaIngredientesSeleccionados.Name = "grillaIngredientesSeleccionados";
+            this.grillaIngredientesSeleccionados.ReadOnly = true;
             this.grillaIngredientesSeleccionados.Size = new System.Drawing.Size(429, 278);
             this.grillaIngredientesSeleccionados.TabIndex = 11;
             this.grillaIngredientesSeleccionados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCantidad_CellClick);
@@ -170,24 +179,28 @@
             this.Codigo.DataPropertyName = "Codigo";
             this.Codigo.HeaderText = "Codigo";
             this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Cantidad
             // 
             this.Cantidad.DataPropertyName = "Cantidad";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // Editar
             // 
             this.Editar.HeaderText = " ";
             this.Editar.LinkColor = System.Drawing.Color.Fuchsia;
             this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             // 
             // label4
             // 

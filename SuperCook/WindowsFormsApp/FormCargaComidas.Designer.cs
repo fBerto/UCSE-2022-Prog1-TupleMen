@@ -33,9 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botonCargarComida = new System.Windows.Forms.Button();
             this.grillaSeleccionRecetas = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EsSaludable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBoxMomentoComida = new System.Windows.Forms.ComboBox();
             this.lblMomentoComida = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionRecetas)).BeginInit();
@@ -71,6 +71,8 @@
             // 
             // grillaSeleccionRecetas
             // 
+            this.grillaSeleccionRecetas.AllowUserToResizeColumns = false;
+            this.grillaSeleccionRecetas.AllowUserToResizeRows = false;
             this.grillaSeleccionRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaSeleccionRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Receta,
@@ -78,9 +80,26 @@
             this.grillaSeleccionRecetas.Location = new System.Drawing.Point(12, 36);
             this.grillaSeleccionRecetas.MultiSelect = false;
             this.grillaSeleccionRecetas.Name = "grillaSeleccionRecetas";
+            this.grillaSeleccionRecetas.ReadOnly = true;
             this.grillaSeleccionRecetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grillaSeleccionRecetas.Size = new System.Drawing.Size(404, 307);
             this.grillaSeleccionRecetas.TabIndex = 5;
+            // 
+            // Receta
+            // 
+            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta.DataPropertyName = "Nombre";
+            this.Receta.HeaderText = "Nombre";
+            this.Receta.Name = "Receta";
+            this.Receta.ReadOnly = true;
+            // 
+            // EsSaludable
+            // 
+            this.EsSaludable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EsSaludable.DataPropertyName = "EsSaludable";
+            this.EsSaludable.HeaderText = "Es Saludable?";
+            this.EsSaludable.Name = "EsSaludable";
+            this.EsSaludable.ReadOnly = true;
             // 
             // dateTimePicker
             // 
@@ -91,20 +110,6 @@
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 6;
             this.dateTimePicker.Value = new System.DateTime(2022, 10, 30, 0, 0, 0, 0);
-            // 
-            // Receta
-            // 
-            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Receta.DataPropertyName = "Nombre";
-            this.Receta.HeaderText = "Nombre";
-            this.Receta.Name = "Receta";
-            // 
-            // EsSaludable
-            // 
-            this.EsSaludable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EsSaludable.DataPropertyName = "EsSaludable";
-            this.EsSaludable.HeaderText = "Es Saludable?";
-            this.EsSaludable.Name = "EsSaludable";
             // 
             // comboBoxMomentoComida
             // 

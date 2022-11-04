@@ -41,10 +41,10 @@
             this.CantidadEnDespensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadAComprar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblTituloTotalCompra = new System.Windows.Forms.Label();
             this.lblCostoTotalCompra = new System.Windows.Forms.Label();
             this.buttonFiltrarCompras = new System.Windows.Forms.Button();
+            this.administradorComprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorComprasBindingSource)).BeginInit();
@@ -85,6 +85,8 @@
             // 
             // grillaCompras
             // 
+            this.grillaCompras.AllowUserToResizeColumns = false;
+            this.grillaCompras.AllowUserToResizeRows = false;
             this.grillaCompras.AutoGenerateColumns = false;
             this.grillaCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -97,6 +99,7 @@
             this.grillaCompras.DataSource = this.administradorComprasBindingSource;
             this.grillaCompras.Location = new System.Drawing.Point(12, 27);
             this.grillaCompras.Name = "grillaCompras";
+            this.grillaCompras.ReadOnly = true;
             this.grillaCompras.Size = new System.Drawing.Size(694, 242);
             this.grillaCompras.TabIndex = 1;
             // 
@@ -106,6 +109,7 @@
             this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Tipo
             // 
@@ -113,12 +117,14 @@
             this.Tipo.DataPropertyName = "TipoIngrediente";
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
             // 
             // Costo
             // 
             this.Costo.DataPropertyName = "Costo";
             this.Costo.HeaderText = "Costo";
             this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
             this.Costo.Width = 50;
             // 
             // CantidadEnDespensa
@@ -127,6 +133,7 @@
             this.CantidadEnDespensa.DataPropertyName = "Cantidad";
             this.CantidadEnDespensa.HeaderText = "Cantidad en Despensa";
             this.CantidadEnDespensa.Name = "CantidadEnDespensa";
+            this.CantidadEnDespensa.ReadOnly = true;
             // 
             // CantidadAComprar
             // 
@@ -134,17 +141,15 @@
             this.CantidadAComprar.DataPropertyName = "CantidadAComprar";
             this.CantidadAComprar.HeaderText = "Cantidad a comprar";
             this.CantidadAComprar.Name = "CantidadAComprar";
+            this.CantidadAComprar.ReadOnly = true;
             // 
             // Medida
             // 
             this.Medida.DataPropertyName = "UnidadDeMedida";
             this.Medida.HeaderText = "Medida";
             this.Medida.Name = "Medida";
+            this.Medida.ReadOnly = true;
             this.Medida.Width = 50;
-            // 
-            // administradorComprasBindingSource
-            // 
-            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
             // 
             // lblTituloTotalCompra
             // 
@@ -173,6 +178,10 @@
             this.buttonFiltrarCompras.Text = "Filtrar";
             this.buttonFiltrarCompras.UseVisualStyleBackColor = true;
             this.buttonFiltrarCompras.Click += new System.EventHandler(this.buttonFiltrarCompras_Click);
+            // 
+            // administradorComprasBindingSource
+            // 
+            this.administradorComprasBindingSource.DataSource = typeof(Logica.AdministradorCompras);
             // 
             // MenuCompras
             // 

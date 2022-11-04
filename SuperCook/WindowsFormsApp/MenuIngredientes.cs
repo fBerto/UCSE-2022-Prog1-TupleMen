@@ -91,26 +91,29 @@ namespace WindowsFormsApp
             int indiceEditar = ObtenerIndice(grillaIngredientes, "Editar");
             int indiceEliminar = ObtenerIndice(grillaIngredientes, "Eliminar");
 
-            Ingrediente ingredienteSeleccionado = grillaIngredientes.Rows[e.RowIndex].DataBoundItem as Ingrediente;
-            int codigoIngrediente = ingredienteSeleccionado.Codigo;
-
-            if (indiceEditar == e.ColumnIndex)
+            if (e.RowIndex >= 0)
             {
-                FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes(codigoIngrediente);
-                formCargaIngredientes.ShowDialog(this);
-            }
+                Ingrediente ingredienteSeleccionado = grillaIngredientes.Rows[e.RowIndex].DataBoundItem as Ingrediente;
+                int codigoIngrediente = ingredienteSeleccionado.Codigo;
 
-            if (indiceEliminar == e.ColumnIndex)
-            {
-                //Hizo clic en eliminar
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el ingrediente?", "Eliminar ingrediente", MessageBoxButtons.OKCancel);
-
-                if (resultado == DialogResult.OK)
+                if (indiceEditar == e.ColumnIndex)
                 {
-                    AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
-                    administradorIngredientes.EliminarIngrediente(codigoIngrediente);
+                    FormCargaIngredientes formCargaIngredientes = new FormCargaIngredientes(codigoIngrediente);
+                    formCargaIngredientes.ShowDialog(this);
+                }
 
-                    ActualizarGrillaIngredientes();
+                if (indiceEliminar == e.ColumnIndex)
+                {
+                    //Hizo clic en eliminar
+                    DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el ingrediente?", "Eliminar ingrediente", MessageBoxButtons.OKCancel);
+
+                    if (resultado == DialogResult.OK)
+                    {
+                        AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
+                        administradorIngredientes.EliminarIngrediente(codigoIngrediente);
+
+                        ActualizarGrillaIngredientes();
+                    }
                 }
             }
         }

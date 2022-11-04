@@ -74,6 +74,8 @@
             // 
             // grillaRecetas
             // 
+            this.grillaRecetas.AllowUserToResizeColumns = false;
+            this.grillaRecetas.AllowUserToResizeRows = false;
             this.grillaRecetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaRecetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoReceta,
@@ -84,6 +86,7 @@
             this.Eliminar});
             this.grillaRecetas.Location = new System.Drawing.Point(24, 76);
             this.grillaRecetas.Name = "grillaRecetas";
+            this.grillaRecetas.ReadOnly = true;
             this.grillaRecetas.Size = new System.Drawing.Size(643, 334);
             this.grillaRecetas.TabIndex = 1;
             this.grillaRecetas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRecetas_CellClick);
@@ -93,18 +96,21 @@
             this.CodigoReceta.DataPropertyName = "Codigo";
             this.CodigoReceta.HeaderText = "Codigo";
             this.CodigoReceta.Name = "CodigoReceta";
+            this.CodigoReceta.ReadOnly = true;
             // 
             // NombreReceta
             // 
             this.NombreReceta.DataPropertyName = "Nombre";
             this.NombreReceta.HeaderText = "Nombre";
             this.NombreReceta.Name = "NombreReceta";
+            this.NombreReceta.ReadOnly = true;
             // 
             // Momento_Comida
             // 
             this.Momento_Comida.DataPropertyName = "MomentoComida";
             this.Momento_Comida.HeaderText = "Momento de la Comida";
             this.Momento_Comida.Name = "Momento_Comida";
+            this.Momento_Comida.ReadOnly = true;
             // 
             // Es_Saludable
             // 
@@ -112,17 +118,20 @@
             this.Es_Saludable.FalseValue = "false";
             this.Es_Saludable.HeaderText = "Saludable?";
             this.Es_Saludable.Name = "Es_Saludable";
+            this.Es_Saludable.ReadOnly = true;
             this.Es_Saludable.TrueValue = "true";
             // 
             // Editar
             // 
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             // 
             // Eliminar
             // 
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // administradorRecetasBindingSource
             // 

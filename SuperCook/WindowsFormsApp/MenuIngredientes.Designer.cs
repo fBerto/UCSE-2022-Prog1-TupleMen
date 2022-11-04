@@ -53,6 +53,7 @@
             // grillaIngredientes
             // 
             this.grillaIngredientes.AllowUserToResizeColumns = false;
+            this.grillaIngredientes.AllowUserToResizeRows = false;
             this.grillaIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -67,7 +68,7 @@
             this.grillaIngredientes.Location = new System.Drawing.Point(12, 78);
             this.grillaIngredientes.Name = "grillaIngredientes";
             this.grillaIngredientes.ReadOnly = true;
-            this.grillaIngredientes.Size = new System.Drawing.Size(743, 211);
+            this.grillaIngredientes.Size = new System.Drawing.Size(738, 211);
             this.grillaIngredientes.TabIndex = 0;
             this.grillaIngredientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaIngredientes_CellClick);
             this.grillaIngredientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grillaIngredientes_DataBindingComplete);
