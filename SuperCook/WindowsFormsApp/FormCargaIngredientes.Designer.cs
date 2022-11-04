@@ -46,75 +46,84 @@
             // 
             // textBoxNombreIngrediente
             // 
-            this.textBoxNombreIngrediente.Location = new System.Drawing.Point(15, 42);
+            this.textBoxNombreIngrediente.Location = new System.Drawing.Point(16, 52);
+            this.textBoxNombreIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNombreIngrediente.Name = "textBoxNombreIngrediente";
-            this.textBoxNombreIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNombreIngrediente.Size = new System.Drawing.Size(132, 22);
             this.textBoxNombreIngrediente.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 26);
+            this.label1.Location = new System.Drawing.Point(13, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 125);
+            this.label2.Location = new System.Drawing.Point(13, 154);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(35, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tipo";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 76);
+            this.label3.Location = new System.Drawing.Point(13, 94);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(61, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Cantidad";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(152, 76);
+            this.label4.Location = new System.Drawing.Point(210, 94);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.Size = new System.Drawing.Size(117, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Precio Por Unidad";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(152, 26);
+            this.label5.Location = new System.Drawing.Point(210, 32);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.Size = new System.Drawing.Size(97, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Unidad Minima";
             // 
             // textBoxCantidadIngrediente
             // 
-            this.textBoxCantidadIngrediente.Location = new System.Drawing.Point(15, 93);
+            this.textBoxCantidadIngrediente.Location = new System.Drawing.Point(16, 114);
+            this.textBoxCantidadIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCantidadIngrediente.Name = "textBoxCantidadIngrediente";
-            this.textBoxCantidadIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCantidadIngrediente.Size = new System.Drawing.Size(132, 22);
             this.textBoxCantidadIngrediente.TabIndex = 6;
             // 
             // textBoxPrecioPorUnidadIngrediente
             // 
-            this.textBoxPrecioPorUnidadIngrediente.Location = new System.Drawing.Point(155, 93);
+            this.textBoxPrecioPorUnidadIngrediente.Location = new System.Drawing.Point(213, 114);
+            this.textBoxPrecioPorUnidadIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPrecioPorUnidadIngrediente.Name = "textBoxPrecioPorUnidadIngrediente";
-            this.textBoxPrecioPorUnidadIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrecioPorUnidadIngrediente.Size = new System.Drawing.Size(132, 22);
             this.textBoxPrecioPorUnidadIngrediente.TabIndex = 7;
             // 
             // textBoxUnidadMinimaIngrediente
             // 
-            this.textBoxUnidadMinimaIngrediente.Location = new System.Drawing.Point(155, 42);
+            this.textBoxUnidadMinimaIngrediente.Location = new System.Drawing.Point(213, 52);
+            this.textBoxUnidadMinimaIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxUnidadMinimaIngrediente.Name = "textBoxUnidadMinimaIngrediente";
-            this.textBoxUnidadMinimaIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUnidadMinimaIngrediente.Size = new System.Drawing.Size(132, 22);
             this.textBoxUnidadMinimaIngrediente.TabIndex = 8;
             // 
             // comboBoxTipoIngrediente
@@ -124,17 +133,19 @@
             this.comboBoxTipoIngrediente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxTipoIngrediente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxTipoIngrediente.FormattingEnabled = true;
-            this.comboBoxTipoIngrediente.Location = new System.Drawing.Point(15, 141);
+            this.comboBoxTipoIngrediente.Location = new System.Drawing.Point(16, 174);
+            this.comboBoxTipoIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTipoIngrediente.Name = "comboBoxTipoIngrediente";
-            this.comboBoxTipoIngrediente.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxTipoIngrediente.Size = new System.Drawing.Size(132, 24);
             this.comboBoxTipoIngrediente.TabIndex = 10;
             this.comboBoxTipoIngrediente.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTipoIngrediente_SelectionChangeCommitted);
             // 
             // BotonConfirmarCargaIngredientes
             // 
-            this.BotonConfirmarCargaIngredientes.Location = new System.Drawing.Point(101, 176);
+            this.BotonConfirmarCargaIngredientes.Location = new System.Drawing.Point(132, 219);
+            this.BotonConfirmarCargaIngredientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonConfirmarCargaIngredientes.Name = "BotonConfirmarCargaIngredientes";
-            this.BotonConfirmarCargaIngredientes.Size = new System.Drawing.Size(75, 23);
+            this.BotonConfirmarCargaIngredientes.Size = new System.Drawing.Size(100, 28);
             this.BotonConfirmarCargaIngredientes.TabIndex = 11;
             this.BotonConfirmarCargaIngredientes.Text = "Aceptar";
             this.BotonConfirmarCargaIngredientes.UseVisualStyleBackColor = true;
@@ -143,25 +154,27 @@
             // comboBoxTipoBebida
             // 
             this.comboBoxTipoBebida.FormattingEnabled = true;
-            this.comboBoxTipoBebida.Location = new System.Drawing.Point(155, 141);
+            this.comboBoxTipoBebida.Location = new System.Drawing.Point(213, 174);
+            this.comboBoxTipoBebida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTipoBebida.Name = "comboBoxTipoBebida";
-            this.comboBoxTipoBebida.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxTipoBebida.Size = new System.Drawing.Size(132, 24);
             this.comboBoxTipoBebida.TabIndex = 12;
             // 
             // lblTipoBebida
             // 
             this.lblTipoBebida.AutoSize = true;
-            this.lblTipoBebida.Location = new System.Drawing.Point(155, 125);
+            this.lblTipoBebida.Location = new System.Drawing.Point(210, 154);
+            this.lblTipoBebida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoBebida.Name = "lblTipoBebida";
-            this.lblTipoBebida.Size = new System.Drawing.Size(64, 13);
+            this.lblTipoBebida.Size = new System.Drawing.Size(82, 16);
             this.lblTipoBebida.TabIndex = 13;
             this.lblTipoBebida.Text = "Tipo Bebida";
             // 
             // FormCargaIngredientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 211);
+            this.ClientSize = new System.Drawing.Size(358, 260);
             this.Controls.Add(this.lblTipoBebida);
             this.Controls.Add(this.comboBoxTipoBebida);
             this.Controls.Add(this.textBoxNombreIngrediente);
@@ -177,6 +190,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCargaIngredientes";

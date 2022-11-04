@@ -46,7 +46,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 13);
+            this.label1.Size = new System.Drawing.Size(217, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Recetas disponibles para preparar";
             // 
@@ -55,13 +55,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 357);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 13);
+            this.label2.Size = new System.Drawing.Size(141, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fecha de Preparacion";
             // 
             // botonCargarComida
             // 
-            this.botonCargarComida.Location = new System.Drawing.Point(179, 456);
+            this.botonCargarComida.Location = new System.Drawing.Point(180, 427);
             this.botonCargarComida.Name = "botonCargarComida";
             this.botonCargarComida.Size = new System.Drawing.Size(75, 23);
             this.botonCargarComida.TabIndex = 3;
@@ -81,6 +81,7 @@
             this.grillaSeleccionRecetas.MultiSelect = false;
             this.grillaSeleccionRecetas.Name = "grillaSeleccionRecetas";
             this.grillaSeleccionRecetas.ReadOnly = true;
+            this.grillaSeleccionRecetas.RowHeadersWidth = 51;
             this.grillaSeleccionRecetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grillaSeleccionRecetas.Size = new System.Drawing.Size(404, 307);
             this.grillaSeleccionRecetas.TabIndex = 5;
@@ -90,6 +91,7 @@
             this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Receta.DataPropertyName = "Nombre";
             this.Receta.HeaderText = "Nombre";
+            this.Receta.MinimumWidth = 6;
             this.Receta.Name = "Receta";
             this.Receta.ReadOnly = true;
             // 
@@ -98,6 +100,7 @@
             this.EsSaludable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.EsSaludable.DataPropertyName = "EsSaludable";
             this.EsSaludable.HeaderText = "Es Saludable?";
+            this.EsSaludable.MinimumWidth = 6;
             this.EsSaludable.Name = "EsSaludable";
             this.EsSaludable.ReadOnly = true;
             // 
@@ -107,7 +110,7 @@
             this.dateTimePicker.Location = new System.Drawing.Point(12, 373);
             this.dateTimePicker.MaxDate = new System.DateTime(2022, 10, 30, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker.TabIndex = 6;
             this.dateTimePicker.Value = new System.DateTime(2022, 10, 30, 0, 0, 0, 0);
             // 
@@ -116,7 +119,7 @@
             this.comboBoxMomentoComida.FormattingEnabled = true;
             this.comboBoxMomentoComida.Location = new System.Drawing.Point(256, 373);
             this.comboBoxMomentoComida.Name = "comboBoxMomentoComida";
-            this.comboBoxMomentoComida.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMomentoComida.Size = new System.Drawing.Size(121, 24);
             this.comboBoxMomentoComida.TabIndex = 7;
             this.comboBoxMomentoComida.SelectionChangeCommitted += new System.EventHandler(this.comboBoxMomentoComida_SelectionChangeCommitted);
             // 
@@ -125,7 +128,7 @@
             this.lblMomentoComida.AutoSize = true;
             this.lblMomentoComida.Location = new System.Drawing.Point(253, 357);
             this.lblMomentoComida.Name = "lblMomentoComida";
-            this.lblMomentoComida.Size = new System.Drawing.Size(89, 13);
+            this.lblMomentoComida.Size = new System.Drawing.Size(113, 16);
             this.lblMomentoComida.TabIndex = 8;
             this.lblMomentoComida.Text = "Momento Comida";
             // 
@@ -133,7 +136,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(428, 491);
+            this.ClientSize = new System.Drawing.Size(428, 462);
             this.Controls.Add(this.lblMomentoComida);
             this.Controls.Add(this.comboBoxMomentoComida);
             this.Controls.Add(this.dateTimePicker);

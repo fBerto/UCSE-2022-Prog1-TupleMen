@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilidadesGrilla.cs" />
     <EmbeddedResource Include="EdicionIngredientesEnRecetas.resx">
       <DependentUpon>EdicionIngredientesEnRecetas.cs</DependentUpon>
     </EmbeddedResource>

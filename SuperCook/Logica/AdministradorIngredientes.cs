@@ -92,6 +92,11 @@ namespace Logica
             {
                 Ingrediente ingredienteDespensa = IngredientesEnDespensa.Find(x => x.Codigo == ingredienteReceta.Codigo);
 
+                if (ingredienteDespensa is null)
+                {
+                    return false;
+                }
+
                 int cantidadEnStock = ingredienteDespensa.Cantidad;
                 int cantidadRequerida = ingredienteReceta.Cantidad;
 

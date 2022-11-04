@@ -40,52 +40,57 @@
             // 
             this.NombreIngredienteAEditar.AllowDrop = true;
             this.NombreIngredienteAEditar.AutoSize = true;
-            this.NombreIngredienteAEditar.Location = new System.Drawing.Point(12, 20);
+            this.NombreIngredienteAEditar.Location = new System.Drawing.Point(16, 25);
+            this.NombreIngredienteAEditar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NombreIngredienteAEditar.Name = "NombreIngredienteAEditar";
-            this.NombreIngredienteAEditar.Size = new System.Drawing.Size(97, 13);
+            this.NombreIngredienteAEditar.Size = new System.Drawing.Size(123, 16);
             this.NombreIngredienteAEditar.TabIndex = 0;
             this.NombreIngredienteAEditar.Text = "NombreIngrediente";
             // 
             // textBoxNuevaCantidadIngrediente
             // 
-            this.textBoxNuevaCantidadIngrediente.Location = new System.Drawing.Point(102, 74);
+            this.textBoxNuevaCantidadIngrediente.Location = new System.Drawing.Point(118, 89);
+            this.textBoxNuevaCantidadIngrediente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNuevaCantidadIngrediente.Name = "textBoxNuevaCantidadIngrediente";
-            this.textBoxNuevaCantidadIngrediente.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNuevaCantidadIngrediente.Size = new System.Drawing.Size(132, 22);
             this.textBoxNuevaCantidadIngrediente.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 58);
+            this.label1.Location = new System.Drawing.Point(105, 69);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 13);
+            this.label1.Size = new System.Drawing.Size(162, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Escriba la nueva cantidad";
             // 
             // UnidadMedidaAEditar
             // 
             this.UnidadMedidaAEditar.AutoSize = true;
-            this.UnidadMedidaAEditar.Location = new System.Drawing.Point(208, 77);
+            this.UnidadMedidaAEditar.Location = new System.Drawing.Point(258, 95);
+            this.UnidadMedidaAEditar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UnidadMedidaAEditar.Name = "UnidadMedidaAEditar";
-            this.UnidadMedidaAEditar.Size = new System.Drawing.Size(74, 13);
+            this.UnidadMedidaAEditar.Size = new System.Drawing.Size(94, 16);
             this.UnidadMedidaAEditar.TabIndex = 3;
             this.UnidadMedidaAEditar.Text = "unidadMedida";
             // 
             // buttonConfirmarNuevaCantidad
             // 
-            this.buttonConfirmarNuevaCantidad.Location = new System.Drawing.Point(84, 118);
+            this.buttonConfirmarNuevaCantidad.Location = new System.Drawing.Point(134, 162);
+            this.buttonConfirmarNuevaCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonConfirmarNuevaCantidad.Name = "buttonConfirmarNuevaCantidad";
-            this.buttonConfirmarNuevaCantidad.Size = new System.Drawing.Size(132, 23);
+            this.buttonConfirmarNuevaCantidad.Size = new System.Drawing.Size(116, 28);
             this.buttonConfirmarNuevaCantidad.TabIndex = 4;
-            this.buttonConfirmarNuevaCantidad.Text = "Confirmar Cambios";
+            this.buttonConfirmarNuevaCantidad.Text = "Confirmar";
             this.buttonConfirmarNuevaCantidad.UseVisualStyleBackColor = true;
             this.buttonConfirmarNuevaCantidad.Click += new System.EventHandler(this.buttonConfirmarNuevaCantidad_Click);
             // 
             // EdicionIngredientesEnRecetas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 165);
+            this.ClientSize = new System.Drawing.Size(372, 203);
             this.Controls.Add(this.buttonConfirmarNuevaCantidad);
             this.Controls.Add(this.UnidadMedidaAEditar);
             this.Controls.Add(this.label1);
@@ -93,10 +98,11 @@
             this.Controls.Add(this.NombreIngredienteAEditar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "EdicionIngredientesEnRecetas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edicion Ingredientes";
+            this.Text = "Edicion Cantidad Ingrediente";
             this.Load += new System.EventHandler(this.EdicionIngredientesEnRecetas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

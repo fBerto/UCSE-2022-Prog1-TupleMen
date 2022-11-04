@@ -49,11 +49,12 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(700, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(933, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,13 +63,13 @@
             this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cargarRecetaToolStripMenuItem});
             this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
-            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.accionesToolStripMenuItem.Text = "Acciones";
             // 
             // cargarRecetaToolStripMenuItem
             // 
             this.cargarRecetaToolStripMenuItem.Name = "cargarRecetaToolStripMenuItem";
-            this.cargarRecetaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.cargarRecetaToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.cargarRecetaToolStripMenuItem.Text = "Cargar Receta";
             this.cargarRecetaToolStripMenuItem.Click += new System.EventHandler(this.cargarRecetaToolStripMenuItem_Click);
             // 
@@ -84,54 +85,69 @@
             this.Es_Saludable,
             this.Editar,
             this.Eliminar});
-            this.grillaRecetas.Location = new System.Drawing.Point(24, 76);
+            this.grillaRecetas.Location = new System.Drawing.Point(32, 94);
+            this.grillaRecetas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grillaRecetas.Name = "grillaRecetas";
             this.grillaRecetas.ReadOnly = true;
-            this.grillaRecetas.Size = new System.Drawing.Size(643, 334);
+            this.grillaRecetas.RowHeadersWidth = 51;
+            this.grillaRecetas.Size = new System.Drawing.Size(857, 411);
             this.grillaRecetas.TabIndex = 1;
             this.grillaRecetas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRecetas_CellClick);
+            this.grillaRecetas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grillaRecetas_DataBindingComplete);
             // 
             // CodigoReceta
             // 
             this.CodigoReceta.DataPropertyName = "Codigo";
             this.CodigoReceta.HeaderText = "Codigo";
+            this.CodigoReceta.MinimumWidth = 6;
             this.CodigoReceta.Name = "CodigoReceta";
             this.CodigoReceta.ReadOnly = true;
+            this.CodigoReceta.Width = 125;
             // 
             // NombreReceta
             // 
             this.NombreReceta.DataPropertyName = "Nombre";
             this.NombreReceta.HeaderText = "Nombre";
+            this.NombreReceta.MinimumWidth = 6;
             this.NombreReceta.Name = "NombreReceta";
             this.NombreReceta.ReadOnly = true;
+            this.NombreReceta.Width = 125;
             // 
             // Momento_Comida
             // 
             this.Momento_Comida.DataPropertyName = "MomentoComida";
             this.Momento_Comida.HeaderText = "Momento de la Comida";
+            this.Momento_Comida.MinimumWidth = 6;
             this.Momento_Comida.Name = "Momento_Comida";
             this.Momento_Comida.ReadOnly = true;
+            this.Momento_Comida.Width = 125;
             // 
             // Es_Saludable
             // 
             this.Es_Saludable.DataPropertyName = "EsSaludable";
             this.Es_Saludable.FalseValue = "false";
             this.Es_Saludable.HeaderText = "Saludable?";
+            this.Es_Saludable.MinimumWidth = 6;
             this.Es_Saludable.Name = "Es_Saludable";
             this.Es_Saludable.ReadOnly = true;
             this.Es_Saludable.TrueValue = "true";
+            this.Es_Saludable.Width = 125;
             // 
             // Editar
             // 
             this.Editar.HeaderText = "Editar";
+            this.Editar.MinimumWidth = 6;
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
+            this.Editar.Width = 125;
             // 
             // Eliminar
             // 
             this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.MinimumWidth = 6;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 125;
             // 
             // administradorRecetasBindingSource
             // 
@@ -139,9 +155,10 @@
             // 
             // btnNuevaReceta
             // 
-            this.btnNuevaReceta.Location = new System.Drawing.Point(263, 47);
+            this.btnNuevaReceta.Location = new System.Drawing.Point(351, 58);
+            this.btnNuevaReceta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevaReceta.Name = "btnNuevaReceta";
-            this.btnNuevaReceta.Size = new System.Drawing.Size(149, 23);
+            this.btnNuevaReceta.Size = new System.Drawing.Size(199, 28);
             this.btnNuevaReceta.TabIndex = 2;
             this.btnNuevaReceta.Text = "Nueva Receta";
             this.btnNuevaReceta.UseVisualStyleBackColor = true;
@@ -149,15 +166,16 @@
             // 
             // MenuRecetas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 422);
+            this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.btnNuevaReceta);
             this.Controls.Add(this.grillaRecetas);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "MenuRecetas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

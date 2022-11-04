@@ -54,41 +54,18 @@ namespace WindowsFormsApp
             AbrirFormularioParaCarga();
         }
 
-        private void CargarCamposAcciones(DataGridView grilla)
-        {
-            int indiceColumnaEditar = ObtenerIndice(grilla, "Editar");
-            int indiceColumnaEliminar = ObtenerIndice(grilla, "Eliminar");
-
-            foreach (DataGridViewRow row in grilla.Rows) //en este caso recorremos filas 
-            {
-                //le asignamos valores a las celdas 
-                row.Cells[indiceColumnaEliminar].Value = "Eliminar";
-                row.Cells[indiceColumnaEditar].Value = "Editar";
-            }
-        }
-
-        private int ObtenerIndice(DataGridView grilla, string nombreColumna) //para poder usarlo desde cualquier formulario 
-        {
-            foreach (DataGridViewColumn column in grilla.Columns)
-            {
-                if (column.Name == nombreColumna)
-                {
-                    return column.Index;
-                }
-            }
-
-            throw new Exception("No hay una columna con nombre solicitado en la grilla");
-        }
-
         private void grillaIngredientes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            CargarCamposAcciones(grillaIngredientes);
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+            utilidad.CargarCamposAcciones(grillaIngredientes);
         }
 
         private void grillaIngredientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int indiceEditar = ObtenerIndice(grillaIngredientes, "Editar");
-            int indiceEliminar = ObtenerIndice(grillaIngredientes, "Eliminar");
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+
+            int indiceEditar = utilidad.ObtenerIndice(grillaIngredientes, "Editar");
+            int indiceEliminar = utilidad.ObtenerIndice(grillaIngredientes, "Eliminar");
 
             if (e.RowIndex >= 0)
             {

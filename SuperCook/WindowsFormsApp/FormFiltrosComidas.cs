@@ -13,8 +13,8 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosComidas : Form
     {
-        //TODO: Ver filtro fechas y combinacion de filtros
-
+        //TODO: Las recetas que muestra en la grilla, deberia sacarlas del libro de recetas,
+        //o las obtiene de las recetas que aparecen en el historial de comidas
         public FormFiltrosComidas()
         {
             InitializeComponent();
@@ -26,6 +26,8 @@ namespace WindowsFormsApp
             comboBoxFiltroMomentoComida.Visible = false;
             grillaSeleccionRecetas.Visible = false;
             ModificarVisibilidadFechas(false);
+
+            dateTimeFechaFinal.MaxDate = DateTime.Today.Date;
             dateTimeFechaInicial.MaxDate = dateTimeFechaFinal.Value;
 
             comboBoxFiltroMomentoComida.DataSource = Enum.GetValues(typeof(MomentosComida));
@@ -96,8 +98,8 @@ namespace WindowsFormsApp
 
             bool esSaludable = radioButtonSaludables.Checked;
             MomentosComida momento = (MomentosComida)comboBoxFiltroMomentoComida.SelectedItem;
-            DateTime fechaMenor = dateTimeFechaInicial.Value;
-            DateTime fechaMayor = dateTimeFechaFinal.Value;
+            DateTime fechaMenor = dateTimeFechaInicial.Value.Date;
+            DateTime fechaMayor = dateTimeFechaFinal.Value.Date;
 
             Receta receta = new Receta();
 

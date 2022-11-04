@@ -45,22 +45,12 @@ namespace WindowsFormsApp
             formCargaRecetas.ShowDialog(this);
         }
 
-        private int ObtenerIndice(DataGridView grilla, string nombreColumna) //para poder usarlo desde cualquier formulario 
-        {
-            foreach (DataGridViewColumn column in grilla.Columns)
-            {
-                if (column.Name == nombreColumna)
-                {
-                    return column.Index;
-                }
-            }
-            throw new Exception("No hay una columna con nombre solicitado en la grilla");
-        }
-
         private void grillaRecetas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int indiceEditar = ObtenerIndice(grillaRecetas, "Editar");
-            int indiceEliminar = ObtenerIndice(grillaRecetas, "Eliminar");
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+
+            int indiceEditar = utilidad.ObtenerIndice(grillaRecetas, "Editar");
+            int indiceEliminar = utilidad.ObtenerIndice(grillaRecetas, "Eliminar");
 
             if (e.RowIndex >= 0)
             {
@@ -86,6 +76,12 @@ namespace WindowsFormsApp
                     }
                 }
             }
+        }
+
+        private void grillaRecetas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+            utilidad.CargarCamposAcciones(grillaRecetas);
         }
     }
 }

@@ -94,18 +94,6 @@ namespace WindowsFormsApp
             return ingredientesSeleccionados;
         }
 
-        private int ObtenerIndice(DataGridView grilla, string nombreColumna)
-        {
-            foreach (DataGridViewColumn column in grilla.Columns)
-            {
-                if (column.Name == nombreColumna)
-                {
-                    return column.Index;
-                }
-            }
-            return -1;
-        }
-
         private void FinalizarCargaRecetas_Click(object sender, EventArgs e)
         {
             AdministradorRecetas administradorRecetas = new AdministradorRecetas();
@@ -135,13 +123,15 @@ namespace WindowsFormsApp
 
         private void EditarCantidad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
+            UtilidadesGrilla utilidad = new UtilidadesGrilla();
+
+            int indiceEditar = utilidad.ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
             
             if (indiceEditar >= 0)
             {
                 if (indiceEditar == e.ColumnIndex && e.RowIndex >= 0)
                 {
-                    int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
+                    int columnaCodigo = utilidad.ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
 
                     int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
 
