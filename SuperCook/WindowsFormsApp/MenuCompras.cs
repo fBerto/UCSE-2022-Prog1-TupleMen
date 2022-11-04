@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    //TODO: Hace falta un boton comprar?
     public partial class MenuCompras : Form, IActualizarGrillaCompras
     {
         public MenuCompras()

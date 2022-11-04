@@ -14,6 +14,7 @@ namespace Logica
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public TiposIngredientes TipoIngrediente { get; set; }
+        //TODO: podria pasar la cantidad a decimal, ver si no rompe y se muestra bien en grillas
         public int Cantidad { get; set; }
         public decimal PrecioPorUnidad { get; set; }
         public int UnidadMinima { get; set; }
@@ -34,7 +35,6 @@ namespace Logica
             return PrecioPorUnidad * UnidadMinima;
         }
 
-        //TODO: Mi menor unidad para los por peso es el kg, medio inutil
         public UnidadesDeMedida GetUnidadMedida()
         {
             switch (this.TipoIngrediente)

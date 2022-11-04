@@ -13,8 +13,6 @@ namespace WindowsFormsApp
 {
     public partial class FormFiltrosComidas : Form
     {
-        //TODO: Las recetas que muestra en la grilla, deberia sacarlas del libro de recetas,
-        //o las obtiene de las recetas que aparecen en el historial de comidas
         public FormFiltrosComidas()
         {
             InitializeComponent();
