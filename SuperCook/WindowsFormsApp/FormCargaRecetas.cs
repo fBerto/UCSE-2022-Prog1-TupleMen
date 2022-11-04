@@ -17,8 +17,6 @@ namespace WindowsFormsApp
     {
         /*TODO:
          *verificar que existan elementos checkeados al confirmar la carga de estos 
-         * si permitimos la edicion en la grilla de ingredientes en despensa le podemos cambiar las propiedades (error), pero si le sacamos la edicion no lo podemos chequear
-         *  podmos agg otra columna como boton que confirme el ingrediente 
          *volver a poner invisible la grilla de editar cuando cargas una receta pq si no seleccionaste items y le das al boton de editar rompe 
          */
 

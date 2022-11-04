@@ -36,9 +36,6 @@
             this.buttonConfirmarIngredientesSeleccionados = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.grillaSeleccionarIngredientes = new System.Windows.Forms.DataGridView();
-            this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.FinalizarCargaRecetas = new System.Windows.Forms.Button();
             this.grillaIngredientesSeleccionados = new System.Windows.Forms.DataGridView();
@@ -49,6 +46,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.administradorRecetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBoxMomentosComida = new System.Windows.Forms.ComboBox();
+            this.CodigoIngredientes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaSeleccionarIngredientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaIngredientesSeleccionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.administradorRecetasBindingSource)).BeginInit();
@@ -111,32 +111,9 @@
             this.Check});
             this.grillaSeleccionarIngredientes.Location = new System.Drawing.Point(20, 25);
             this.grillaSeleccionarIngredientes.Name = "grillaSeleccionarIngredientes";
-            this.grillaSeleccionarIngredientes.ReadOnly = true;
             this.grillaSeleccionarIngredientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grillaSeleccionarIngredientes.Size = new System.Drawing.Size(343, 290);
             this.grillaSeleccionarIngredientes.TabIndex = 8;
-            // 
-            // CodigoIngredientes
-            // 
-            this.CodigoIngredientes.DataPropertyName = "Codigo";
-            this.CodigoIngredientes.HeaderText = "Codigo";
-            this.CodigoIngredientes.Name = "CodigoIngredientes";
-            this.CodigoIngredientes.ReadOnly = true;
-            // 
-            // Nombre_Ingrediente
-            // 
-            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
-            this.Nombre_Ingrediente.HeaderText = "Nombre";
-            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
-            this.Nombre_Ingrediente.ReadOnly = true;
-            // 
-            // Check
-            // 
-            this.Check.FalseValue = "false";
-            this.Check.HeaderText = "Check";
-            this.Check.Name = "Check";
-            this.Check.ReadOnly = true;
-            this.Check.TrueValue = "true";
             // 
             // label3
             // 
@@ -223,6 +200,27 @@
             this.comboBoxMomentosComida.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMomentosComida.TabIndex = 14;
             // 
+            // CodigoIngredientes
+            // 
+            this.CodigoIngredientes.DataPropertyName = "Codigo";
+            this.CodigoIngredientes.HeaderText = "Codigo";
+            this.CodigoIngredientes.Name = "CodigoIngredientes";
+            this.CodigoIngredientes.ReadOnly = true;
+            // 
+            // Nombre_Ingrediente
+            // 
+            this.Nombre_Ingrediente.DataPropertyName = "Nombre";
+            this.Nombre_Ingrediente.HeaderText = "Nombre";
+            this.Nombre_Ingrediente.Name = "Nombre_Ingrediente";
+            this.Nombre_Ingrediente.ReadOnly = true;
+            // 
+            // Check
+            // 
+            this.Check.FalseValue = "false";
+            this.Check.HeaderText = "Check";
+            this.Check.Name = "Check";
+            this.Check.TrueValue = "true";
+            // 
             // FormCargaRecetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,13 +266,13 @@
         private System.Windows.Forms.DataGridView grillaIngredientesSeleccionados;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource administradorRecetasBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoIngredientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Ingrediente;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewLinkColumn Editar;
         private System.Windows.Forms.ComboBox comboBoxMomentosComida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoIngredientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Ingrediente;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
     }
 }
