@@ -44,9 +44,6 @@ namespace WindowsFormsApp
 
             if (EstaEditando())
             {
-                HacerVisibleSeleccionIngredientes();
-                HacerVisibleIngredientesSeleccionadosYFinCarga();
-
                 AdministradorRecetas administradorRecetas = new AdministradorRecetas();
                 Receta recetaAEditar = administradorRecetas.BuscarCodigoReceta(codigoReceta);
 
@@ -83,21 +80,12 @@ namespace WindowsFormsApp
             grillaIngredientesSeleccionados.DataSource = null;
             grillaIngredientesSeleccionados.DataSource = ingredientesSeleccionados;
         }
-        
-        //TODO: El fijarse si no selecciono ingredientes no debe estar en logica?
-        //En todo caso ya lo contempla en la cargamodificarreceta()
+
         private void buttonConfirmarIngredientesSeleccionados_Click(object sender, EventArgs e)
         {
             List<Ingrediente> ingredientesSeleccionados = ObtenerIngredientesSeleccionados();
 
-            if (ingredientesSeleccionados.Count == 0)
-            {
-                MessageBox.Show("Seleccionar ingredientes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else
-            {
-                HacerVisibleIngredientesSeleccionadosYFinCarga();
-                ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
-            }
+            ActualizarGrillaIngredientesSeleccionados(ingredientesSeleccionados);
         }
 
         private List<Ingrediente> ObtenerIngredientesSeleccionados()
@@ -116,20 +104,6 @@ namespace WindowsFormsApp
             return ingredientesSeleccionados;
         }
 
-        private void HacerVisibleSeleccionIngredientes()
-        {
-            label3.Visible = true;
-            grillaSeleccionarIngredientes.Visible = true;
-            buttonConfirmarIngredientesSeleccionados.Visible = true;
-        }
-
-        private void HacerVisibleIngredientesSeleccionadosYFinCarga()
-        {
-            label4.Visible = true;
-            grillaIngredientesSeleccionados.Visible = true;
-            FinalizarCargaRecetas.Visible = true;
-        }
-
         private int ObtenerIndice(DataGridView grilla, string nombreColumna)
         {
             foreach (DataGridViewColumn column in grilla.Columns)
@@ -144,7 +118,7 @@ namespace WindowsFormsApp
 
         private void FinalizarCargaRecetas_Click(object sender, EventArgs e)
         {
-            AdministradorRecetas administradorRecetas = new AdministradorRecetas();          
+            AdministradorRecetas administradorRecetas = new AdministradorRecetas();
 
             MomentosComida momentoComida = (MomentosComida)comboBoxMomentosComida.SelectedItem;
             string nombre = textBoxNombreRecetas.Text;
@@ -152,7 +126,7 @@ namespace WindowsFormsApp
             List<Ingrediente> ingredientesReceta = ObtenerIngredientesConfirmados();
 
             Receta nuevaReceta = new Receta(this.codigoReceta, momentoComida, nombre, esSaludable, ingredientesReceta);
-            
+
             Resultado resultadoCarga = administradorRecetas.CargarModificarReceta(nuevaReceta);
 
             if (resultadoCarga.Ok == false)
@@ -177,7 +151,7 @@ namespace WindowsFormsApp
             {
                 int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
                 int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
-                
+
                 List<Ingrediente> ingredientesConfirmados = ObtenerIngredientesConfirmados();
                 Ingrediente ingredienteAEditar = ingredientesConfirmados.Find(x => x.Codigo == codigoIngrediente);
 
@@ -196,12 +170,6 @@ namespace WindowsFormsApp
                 ingredientesConfirmados.Add(ingredienteConfirmado);
             }
             return ingredientesConfirmados;
-        }
-
-        //TODO: Y si sacamos a la mierda el boton siguiente?
-        private void buttonSiguiente_Click(object sender, EventArgs e)
-        {
-            HacerVisibleSeleccionIngredientes();
         }
     }
 }

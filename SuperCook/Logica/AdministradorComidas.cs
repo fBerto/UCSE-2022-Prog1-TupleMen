@@ -10,6 +10,8 @@ namespace Logica
 {
     public class AdministradorComidas : Archivos
     {
+        //TODO: Arreglar filtros
+
         private static List<Comida> HistorialComidas = new List<Comida>();
 
         const int codigoInicial = 1;
