@@ -149,17 +149,19 @@ namespace WindowsFormsApp
         private void EditarCantidad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indiceEditar = ObtenerIndice(grillaIngredientesSeleccionados, "Editar");
-
-            if (indiceEditar == e.ColumnIndex)
+            if (indiceEditar >= 0)
             {
-                int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
-                int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
+                if (indiceEditar == e.ColumnIndex)
+                {
+                    int columnaCodigo = ObtenerIndice(grillaIngredientesSeleccionados, "Codigo");
+                    int codigoIngrediente = int.Parse(grillaIngredientesSeleccionados.Rows[e.RowIndex].Cells[columnaCodigo].Value.ToString()); //accede tipo matris 
 
-                List<Ingrediente> ingredientesConfirmados = ObtenerIngredientesConfirmados();
-                Ingrediente ingredienteAEditar = ingredientesConfirmados.Find(x => x.Codigo == codigoIngrediente);
+                    List<Ingrediente> ingredientesConfirmados = ObtenerIngredientesConfirmados();
+                    Ingrediente ingredienteAEditar = ingredientesConfirmados.Find(x => x.Codigo == codigoIngrediente);
 
-                EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesConfirmados);
-                edicionIngredientesEnRecetas.ShowDialog(this);
+                    EdicionIngredientesEnRecetas edicionIngredientesEnRecetas = new EdicionIngredientesEnRecetas(ingredienteAEditar, ingredientesConfirmados);
+                    edicionIngredientesEnRecetas.ShowDialog(this);
+                }
             }
         }
 
