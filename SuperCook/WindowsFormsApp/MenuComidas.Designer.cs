@@ -125,12 +125,12 @@
             // 
             // nombreReceta
             // 
-            this.nombreReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombreReceta.DataPropertyName = "NombreReceta";
             this.nombreReceta.HeaderText = "Receta";
             this.nombreReceta.MinimumWidth = 6;
             this.nombreReceta.Name = "nombreReceta";
             this.nombreReceta.ReadOnly = true;
+            this.nombreReceta.Width = 162;
             // 
             // fechaComida
             // 

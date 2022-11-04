@@ -127,7 +127,6 @@
             // 
             // EsSaludable
             // 
-            this.EsSaludable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.EsSaludable.DataPropertyName = "EsSaludable";
             this.EsSaludable.HeaderText = "Es Saludable?";
             this.EsSaludable.MinimumWidth = 6;
@@ -135,6 +134,7 @@
             this.EsSaludable.ReadOnly = true;
             this.EsSaludable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.EsSaludable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EsSaludable.Width = 127;
             // 
             // FormCargaComidas
             // 
