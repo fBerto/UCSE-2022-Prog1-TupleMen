@@ -39,7 +39,7 @@ namespace WindowsFormsApp
             grillaSeleccionRecetas.AutoGenerateColumns = false;
             ActualizarGrillaSeleccionRecetas();
         }
-
+        //TODO: revisar si hay elementos seleccionados
         private void botonConfirmarCargaComida_Click(object sender, EventArgs e)
         {
             AdministradorComidas administradorComidas = new AdministradorComidas();
