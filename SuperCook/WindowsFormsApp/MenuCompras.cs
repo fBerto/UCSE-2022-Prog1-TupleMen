@@ -21,13 +21,16 @@ namespace WindowsFormsApp
 
             AdministradorCompras administradorCompras = new AdministradorCompras();
             administradorCompras.BuscarIngredientesAComprar();
-            lblCostoTotalCompra.Text = administradorCompras.CalcularTotalCompra().ToString();
         }
 
         public void ActualizarGrillaCompras(List<Ingrediente> dataSource)
         {
+            AdministradorCompras administradorCompras = new AdministradorCompras();
+
             grillaCompras.DataSource = null;
             grillaCompras.DataSource = dataSource;
+
+            lblCostoTotalCompra.Text = administradorCompras.CalcularTotalCompra(dataSource).ToString();
         }
 
         private void filtrarComprasToolStripMenuItem_Click(object sender, EventArgs e)

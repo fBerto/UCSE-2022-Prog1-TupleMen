@@ -93,10 +93,10 @@ namespace Logica
             return IngredientesAComprar.Where(x => x.GetGradoDeEscasez() == escasez).ToList();
         }
 
-        public decimal CalcularTotalCompra()
+        public decimal CalcularTotalCompra(List<Ingrediente> ingredientesFiltrados)
         {
             decimal totalCompra = 0;
-            foreach (Ingrediente ingrediente in IngredientesAComprar)
+            foreach (Ingrediente ingrediente in ingredientesFiltrados)
             {
                 totalCompra += ingrediente.GetCosto();
             }
