@@ -62,7 +62,7 @@ namespace Logica
             GuardarLista(SerializarLista(LibroRecetas), nombreArchivoLibroRecetas);
         }
 
-        public int GetNuevoCodigo()
+        private int GetNuevoCodigo()
         {
             if (LibroRecetas.Count == 0)
             {
@@ -100,6 +100,11 @@ namespace Logica
             return receta;
         }
 
+        public List<Receta> GetRecetasDisponiblesPorMomentoComida(MomentosComida momento)
+        {
+            return GetRecetasDisponibles().Where(x => x.MomentoComida == momento).ToList();
+        }
+
         private List<Receta> GetRecetasDisponibles()
         {
             AdministradorIngredientes administradorIngredientes = new AdministradorIngredientes();
@@ -108,11 +113,6 @@ namespace Logica
             RecetasDisponibles = LibroRecetas.Where(x => administradorIngredientes.ConsultarStockIngredientesDeReceta(x.GetIngredientesReceta())).ToList();
 
             return RecetasDisponibles;
-        }
-
-        public List<Receta> GetRecetasDisponiblesPorMomentoComida(MomentosComida momento)
-        {
-            return GetRecetasDisponibles().Where(x => x.MomentoComida == momento).ToList();
         }
     }
 }

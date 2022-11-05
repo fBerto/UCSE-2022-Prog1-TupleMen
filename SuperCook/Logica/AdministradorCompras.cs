@@ -62,33 +62,33 @@ namespace Logica
             return comprasFiltradoPrevio;
         }
 
-        public List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
+        private List<Ingrediente> FiltrarPorTipoDeIngrediente(TiposIngredientes tipoDeIngrediente)
         {
             return IngredientesAComprar.Where(x => x.TipoIngrediente == tipoDeIngrediente).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorTipoDeBebida(TiposBebidas tipoDeBebida)
+        private List<Ingrediente> FiltrarPorTipoDeBebida(TiposBebidas tipoDeBebida)
         {
             List<Bebida> BebidasAComprar = IngredientesAComprar.Where(x => x is Bebida).Select(x => x as Bebida).ToList();
             return BebidasAComprar.Where(x => x.TipoBebida == tipoDeBebida).Select(x => x as Ingrediente).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorCostoMinimo(decimal costoMinimo)
+        private List<Ingrediente> FiltrarPorCostoMinimo(decimal costoMinimo)
         {
             return IngredientesAComprar.Where(x => x.GetCosto() >= costoMinimo).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorCostoMaximo(decimal costoMaximo)
+        private List<Ingrediente> FiltrarPorCostoMaximo(decimal costoMaximo)
         {
             return IngredientesAComprar.Where(x => x.GetCosto() <= costoMaximo).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorUnidadDeMedida(UnidadesDeMedida unidad)
+        private List<Ingrediente> FiltrarPorUnidadDeMedida(UnidadesDeMedida unidad)
         {
             return IngredientesAComprar.Where(x => x.GetUnidadMedida() == unidad).ToList();
         }
 
-        public List<Ingrediente> FiltrarPorEscasez(GradosDeEscasez escasez)
+        private List<Ingrediente> FiltrarPorEscasez(GradosDeEscasez escasez)
         {
             return IngredientesAComprar.Where(x => x.GetGradoDeEscasez() == escasez).ToList();
         }

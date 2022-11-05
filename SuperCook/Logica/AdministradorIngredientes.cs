@@ -8,7 +8,7 @@ namespace Logica
     {
         private static List<Ingrediente> IngredientesEnDespensa = new List<Ingrediente>();
 
-        const int codigoInicial = 1;
+        private const int codigoInicial = 1;
 
         public Resultado CargarModificarIngrediente(Ingrediente nuevoIngrediente)
         {
@@ -126,7 +126,7 @@ namespace Logica
             return IngredientesEnDespensa;
         }
 
-        public int GetNuevoCodigo()
+        private int GetNuevoCodigo()
         {
             if (IngredientesEnDespensa.Count == 0)
             {
@@ -152,11 +152,6 @@ namespace Logica
         {
             Ingrediente ingredienteEncontrado = IngredientesEnDespensa.Find(x => x.Codigo == codigoPasado);
             return ingredienteEncontrado;
-        }
-
-        private bool IngredienteYaExisteEnDespensa(Ingrediente ingrediente)
-        {
-            return IngredientesEnDespensa.Exists(x => x.Codigo == ingrediente.Codigo);
         }
     }
 }
